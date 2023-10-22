@@ -1,14 +1,14 @@
 package com.example.demoproject;
 
 import java.sql.Connection; //ho aggiunto nei moduli x farlo funzionare
-import java.sql.Driver;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.logging.Logger;
+
 
 public class DBConnection {
-
+    private static final Logger logger = Logger.getLogger(DBConnection.class.getName());
     public Connection connection(){
         String jdbcUrl = "jdbc:mysql://localhost:3306/utenti";
         String username = "root";
@@ -21,7 +21,7 @@ public class DBConnection {
 
     }
     catch (ClassNotFoundException | SQLException e){
-        System.err.println("errore nel tentativo di stabilire la connessione col db");
+        logger.severe("errore nel tentativo di stabilire la connessione col db");
 
     }
 
@@ -35,8 +35,8 @@ public class DBConnection {
             conn.close();
         }
         catch (SQLException e){
-            System.err.println("Errore nella chiusura della connessione");
-            e.printStackTrace();
+            logger.severe("Errore nella chiusura della connessione");
+
         }
     }
 

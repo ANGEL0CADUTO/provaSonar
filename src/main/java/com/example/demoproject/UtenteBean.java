@@ -9,7 +9,7 @@ public class UtenteBean {
 
     private String ruolo;
 
-    public UtenteBean(){
+    public UtenteBean(){//DA USARE PER SESSIONE
     }
 
     public String getUsername() {

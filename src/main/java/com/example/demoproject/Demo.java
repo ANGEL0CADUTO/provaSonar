@@ -1,18 +1,17 @@
 package com.example.demoproject;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 
+import javafx.scene.paint.Color;
+
+import javafx.stage.Stage;
+import java.sql.Connection;
 import java.io.IOException;
 
 
@@ -30,26 +29,6 @@ public class Demo extends Application {
         //Group root = new Group(); //Group rappresenta un gruppo di nodi grafici
         Scene scene = new Scene(root, Color.BLUE);//CREO LA SCENA
 
-        /* Circle circle1 = new Circle(350,350,50);//creo il primo cerchio
-        circle1.setFill(Color.AZURE);//riempio il cerchio
-
-        Circle circle2 = new Circle(350,100,50);//secondo cerchio
-        circle2.setFill(Color.GRAY);
-
-        root.getChildren().addAll(circle1,circle2);//renderizzo i cerchi inserendoli nel group node
-
-        Image icon = new Image("MangaInk Logo.png"); //linko l'immagine all'oggetto Image
-
-        ImageView imageView = new ImageView("MangaInk Logo.png");
-
-        imageView.setFitHeight(150);
-        imageView.setFitWidth(200);
-
-        root.getChildren().add(imageView);
-
-        primaryStage.getIcons().add(icon); //AGGIUNGO LA ICON COME LOGO IN ALTO A SINISTRA
-
-         */
 
 
         primaryStage.setResizable(false);
