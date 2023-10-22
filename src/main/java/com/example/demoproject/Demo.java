@@ -36,7 +36,6 @@ public class Demo extends Application {
         primaryStage.setScene(scene);//SETTO LA SCENA NELLO STAGE
         primaryStage.show();//MOSTRO LO STAGE
 
-
     }
 
 

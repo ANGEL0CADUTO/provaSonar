@@ -4,25 +4,25 @@ import java.util.logging.Logger;
 public class UtenteDAO {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
     public boolean searchUser(String email,String password){
-        DBConnection DB = new DBConnection();
+        DBConnection connection = new DBConnection();
         boolean b = false;
         String query = "SELECT password FROM utenti.utente WHERE email = ?"; //il ? verrà gestito in maniera sicura da st.setString
 
-        try(Connection conn = DB.connection();
+        try(Connection conn = connection.connection();
             PreparedStatement st = conn.prepareStatement(query)){
 
             st.setString(1,email);
 
             try(ResultSet rs = st.executeQuery()) {
-                rs.next();
+
                 if (rs.next() && rs.getString("password").equals(password)) {
                     logger.info("ha funzionato");
                     b = true;
-                    DB.close(conn);
+                    connection.close(conn);
                 } else {
 
                     logger.info("fallito");
-                    DB.close(conn);
+                    connection.close(conn);
                 }
             }
 

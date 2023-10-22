@@ -8,8 +8,7 @@ public class LoginApplicativo {
         UtenteDAO ricercaUtente = new UtenteDAO();
 
 
-        // UtenteBean utenteLoggato = new UtenteBean();
-        //utenteLoggato.setEmail(email);
+
         return ricercaUtente.searchUser(email, password);
 
 
