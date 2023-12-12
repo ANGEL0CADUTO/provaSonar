@@ -25,7 +25,7 @@ public class Demo extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         //Group root = new Group(); //Group rappresenta un gruppo di nodi grafici
         Scene scene = new Scene(root, Color.BLUE);//CREO LA SCENA
 
@@ -36,6 +36,7 @@ public class Demo extends Application {
         primaryStage.setScene(scene);//SETTO LA SCENA NELLO STAGE
         primaryStage.show();//MOSTRO LO STAGE
 
+
     }
 
 
@@ -44,11 +45,14 @@ public class Demo extends Application {
         Scene scene = new Scene(root);
         Stage stage = (Stage) loginHomePage.getScene().getWindow();
         stage.setScene(scene);
-
     }
+
 
     public static void main(String[] args) {
         launch(args);
-
     }
+
+
 }
+
+

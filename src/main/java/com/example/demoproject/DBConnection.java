@@ -8,19 +8,19 @@ import java.util.logging.Logger;
 
 
 public class DBConnection {
-    private static final Logger logger = Logger.getLogger(DBConnection.class.getName());
+    private static final Logger logger = Logger.getLogger(DBConnection.class.getName());//BUONA PRATICA USARE IL LOGGER(lo dice sonarcloud)
     public Connection connection(){
         String jdbcUrl = "jdbc:mysql://localhost:3306/utenti";
         String username = "root";
-        String password = System.getenv("MySQL_Password");
+        String password = System.getenv("MySQL_Password");//BUONA PRATICA NON MOSTRARE LA PASSWORD DB IN CHIARO(dichiaro variabile d'ambiente WINDOWS)
         Connection conn = null;
 
     try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
+       // Class.forName("com.mysql.cj.jdbc.Driver"); QUESTO SERVIVA A CARICARE IL DRIVER, SEMBRA CHE CON LE VERSIONI JDBC RECENTI VENGA CREATO DIRETTAMENTE NELLA PROX LINEA DI CODICE
         conn = DriverManager.getConnection(jdbcUrl,username,password);
 
     }
-    catch (ClassNotFoundException | SQLException e){
+    catch (SQLException e){
         logger.severe("errore nel tentativo di stabilire la connessione col db");
 
     }
