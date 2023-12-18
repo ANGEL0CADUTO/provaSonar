@@ -45,6 +45,11 @@ public class Demo extends Application {
         Scene scene = new Scene(root);
         Stage stage = (Stage) loginHomePage.getScene().getWindow();
         stage.setScene(scene);
+
+        //TESTING DEL DAO, TOGLIERE APPENA LEO COSTRUISCE IL SENTIERO VERSO IL DAO CHE MANCO GLI ANTICHI ROMANI
+        //UtenteDAO ut = new UtenteDAO();
+        //ut.addUser();
+
     }
 
 

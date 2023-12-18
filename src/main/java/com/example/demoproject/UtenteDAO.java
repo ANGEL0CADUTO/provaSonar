@@ -1,29 +1,31 @@
 package com.example.demoproject;
+import javax.xml.xpath.XPathEvaluationResult;
+import java.io.PipedReader;
 import java.sql.*;
 import java.util.logging.Logger;
 public class UtenteDAO {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
 
     //Questa funzione non può ritornare semplicemente true o false, ma anche il bean O --FORSE-- NO LO DEVE POPOLARE!!!!
-    public boolean searchUser(UtenteBean bean){
+    public boolean searchUser(UtenteBean bean) {
         DBConnection connection = new DBConnection();
         boolean b = false;
-        String query = "SELECT * FROM mangaink.utente WHERE email = ?" ; //il ? verrà gestito in maniera sicura da st.setString
+        String query = "SELECT * FROM mangaink.utente WHERE email = ?"; //il ? verrà gestito in maniera sicura da st.setString
         //BISOGNA CREARE UN FILE DI CONFIGURAZIONE PER DISACCOPIARE LE INFO DI CONFIGURAZIONE DEL DB, AD ESEMPIO IL NOME DEL DB
         //NON DEVE ESSERE HARDCODED NELL'APPLICAZIONE
         Connection conn = connection.connection();
-        try(
-            PreparedStatement st = conn.prepareStatement(query)){
 
-            st.setString(1,bean.getEmail());
+        try (PreparedStatement st = conn.prepareStatement(query)) {
 
-            try(ResultSet rs = st.executeQuery()) {
+            st.setString(1, bean.getEmail());
+
+            try (ResultSet rs = st.executeQuery()) {
 
                 if (rs != null && rs.next() && rs.getString("password").equals(bean.getPassword())) {
                     System.out.println(rs.getMetaData().getColumnCount()); //CARINO PERCHE RIDA IL NUMERO DI COLONNE CHE HA PRESO
 
-                    System.out.println(rs.getString("password" ) + " " + rs.getBigDecimal("credito") );
-//PORCODIO
+                    System.out.println(rs.getString("password") + " " + rs.getBigDecimal("credito"));
+
                     bean.setIdUtente(rs.getInt("idutente"));
                     bean.setUsername(rs.getString("username"));
                     bean.setCredito(rs.getBigDecimal("credito"));
@@ -40,12 +42,10 @@ public class UtenteDAO {
                 }
             }
 
-        }
-        catch(SQLException e){
-            logger.severe("E' stata lanciata la exception nell'utenteDAO" + e.getMessage());
+        } catch (SQLException e) {
+            logger.severe("E' stata lanciata la exception nella searchUser in utenteDAO" + e.getMessage());
 
-        }
-        finally {
+        } finally {
             connection.close(conn);  // Chiudi la connessione nel blocco finally
         }
 
@@ -54,5 +54,36 @@ public class UtenteDAO {
 
     }
 
+    public boolean addUser() {
+        DBConnection connection = new DBConnection();
+        boolean b = false;
+        String query = "INSERT INTO mangaink.utente (email, password, username) VALUES (?, ?, ?)";
+        Connection conn = connection.connection();
+
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setString(1,"Ade@gmail.com");
+            st.setString(2, "1234");
+            st.setString(3, "Ade");
+
+
+            //
+            int righeScritte = st.executeUpdate();
+
+            if (righeScritte > 0) {
+                b = true;
+                logger.info("Inserimento utente riuscito");
+            } else {
+                logger.info("Inserimento utente fallito");
+            }
+
+
+
+        }
+        catch (SQLException e){
+            logger.severe("E' stata lanciata la exception nell'addUser in utenteDao" + e.getMessage());
+        }
+
+        return true;
+    }
 
 }
