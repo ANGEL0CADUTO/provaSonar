@@ -54,16 +54,16 @@ public class UtenteDAO {
 
     }
 
-    public boolean addUser() {
+    public boolean addUser(UtenteBean bean) {
         DBConnection connection = new DBConnection();
         boolean b = false;
         String query = "INSERT INTO mangaink.utente (email, password, username) VALUES (?, ?, ?)";
         Connection conn = connection.connection();
 
         try(PreparedStatement st = conn.prepareStatement(query)){
-            st.setString(1,"Ade@gmail.com");
-            st.setString(2, "1234");
-            st.setString(3, "Ade");
+            st.setString(1,bean.getEmail());
+            st.setString(2, bean.getPassword());
+            st.setString(3, bean.getUsername());
 
 
             //
