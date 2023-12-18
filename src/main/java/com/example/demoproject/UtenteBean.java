@@ -1,14 +1,19 @@
 package com.example.demoproject;
 
+import java.math.BigDecimal;
+
 public class UtenteBean {
 
     private int idUtente;//NON VOGLIO CAMBIARE IL DB ADESSO, DA RIMUOVERE E METTERE COME CHIAVE PRIMARIA DIRETTAMENTE L'EMAIL RICORDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     private String username;
     private String email;
     private String password;
-    private String ruolo;
 
-    public UtenteBean(){//DA USARE PER SESSIONE
+    private double votoRecensione;
+
+    private BigDecimal credito;
+
+    public UtenteBean() {//DA USARE PER SESSIONE
     }
 
     public int getIdUtente() {
@@ -31,9 +36,6 @@ public class UtenteBean {
         return password;
     }
 
-    public String getRuolo(){
-        return ruolo;
-    }
     public void setUsername(String username) {
         this.username = username;
     }
@@ -46,8 +48,20 @@ public class UtenteBean {
         this.password = password;
     }
 
+    public double getVotoRecensione() {
+        return votoRecensione;
+    }
 
-    public void setRuolo(String newRuolo){
-        this.ruolo = newRuolo;
+    public void setVotoRecensione(double votoRecensione) {
+        this.votoRecensione = votoRecensione;
+    }
+
+    public BigDecimal getCredito() {
+        return credito;
+    }
+
+    public void setCredito(BigDecimal credito) {
+        this.credito = credito;
     }
 }
+

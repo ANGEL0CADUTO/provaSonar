@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class DBConnection {
     private static final Logger logger = Logger.getLogger(DBConnection.class.getName());//BUONA PRATICA USARE IL LOGGER(lo dice sonarcloud)
     public Connection connection(){
-        String jdbcUrl = "jdbc:mysql://localhost:3306/utenti";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/mangaink";
         String username = "root";
         String password = System.getenv("MySQL_Password");//BUONA PRATICA NON MOSTRARE LA PASSWORD DB IN CHIARO(dichiaro variabile d'ambiente WINDOWS)
         Connection conn = null;

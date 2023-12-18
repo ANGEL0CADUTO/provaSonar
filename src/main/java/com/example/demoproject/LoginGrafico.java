@@ -53,7 +53,7 @@ public class LoginGrafico {
             //DOVRO IMPLEMENTARE UNA FUNZIONA CHE DALLA EMAIL MI PESCA QUELLO DI CUI HO BISOGNO
 
             wrongLogin.setText("Hai effettuato l'accesso!");
-            System.out.println(bean.getIdUtente() + " " + bean.getUsername()+ " " + bean.getPassword()+ " " + bean.getEmail()+ " " + bean.getRuolo());
+            System.out.println(bean.getIdUtente() + " " + bean.getUsername()+ " " + bean.getPassword()+ " " + bean.getEmail()+ " " + bean.getCredito());
 
 
             //cambio view ((LO FACCIO COL TRY CATCH MA DEVO CAPIRE SE E BENE O MALE))
