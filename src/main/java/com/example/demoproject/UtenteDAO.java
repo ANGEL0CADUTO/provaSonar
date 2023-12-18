@@ -68,7 +68,7 @@ public class UtenteDAO {
 
             //
             int righeScritte = st.executeUpdate();
-
+//mMASNDSAM
             if (righeScritte > 0) {
                 b = true;
                 logger.info("Inserimento utente riuscito");
