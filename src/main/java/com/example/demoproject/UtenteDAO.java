@@ -23,7 +23,7 @@ public class UtenteDAO {
                     System.out.println(rs.getMetaData().getColumnCount()); //CARINO PERCHE RIDA IL NUMERO DI COLONNE CHE HA PRESO
 
                     System.out.println(rs.getString("password" ) + " " + rs.getBigDecimal("credito") );
-
+//PORCODIO
                     bean.setIdUtente(rs.getInt("idutente"));
                     bean.setUsername(rs.getString("username"));
                     bean.setCredito(rs.getBigDecimal("credito"));
