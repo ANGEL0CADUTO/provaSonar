@@ -35,8 +35,10 @@ public class LoginGrafico {
     public void userLogin(){
         LoginApplicativo lg = new LoginApplicativo();
         UtenteBean bean = new UtenteBean();
-        // System.out.println(enteredEmail.getText() + enteredPassword.getText()); FIN QUI BENE
-        boolean esitoLogin = lg.login(enteredEmail.getText(),enteredPassword.getText(), bean);
+        bean.setEmail(enteredEmail.getText());
+        bean.setPassword(enteredPassword.getText());
+
+        boolean esitoLogin = lg.login(bean);
 
 
         //DEVO FAR ARRIVARE ANCHE L'USERNAME E LA PASSWORD

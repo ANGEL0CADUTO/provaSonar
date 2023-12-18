@@ -4,10 +4,10 @@ public class LoginApplicativo {
 
 
 
-    public boolean login(String email, String password, UtenteBean bean){
+    public boolean login(UtenteBean bean){
         UtenteDAO ricercaUtente = new UtenteDAO();
 
-        return ricercaUtente.searchUser(email, password, bean);
+        return ricercaUtente.searchUser(bean);
 
 
     }
