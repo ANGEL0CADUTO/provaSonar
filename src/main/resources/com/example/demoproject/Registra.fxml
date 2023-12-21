@@ -25,31 +25,49 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="423.0" style="-fx-background-color: #b0b5d9;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="122.0" layoutY="139.0" text="Email">
+            <Label layoutX="40.0" layoutY="102.0" text="Email">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="180.0" text="Username">
+            <Label layoutX="14.0" layoutY="137.0" text="Username">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="217.0" text="Password">
+            <Label layoutX="21.0" layoutY="289.0" text="Password">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="enteredUsername" layoutX="172.0" layoutY="177.0" promptText="Username" />
-            <TextField fx:id="enteredEmail" layoutX="172.0" layoutY="136.0" promptText="Email" />
-            <Button fx:id="registra" layoutX="164.0" layoutY="298.0" mnemonicParsing="false" onAction="#userRegistra" style="-fx-background-color: #fa8000;" text="registra" />
+            <TextField fx:id="enteredUsername" layoutX="89.0" layoutY="134.0" promptText="Username" />
+            <TextField fx:id="enteredEmail" layoutX="89.0" layoutY="99.0" promptText="Email" />
+            <Button fx:id="registra" layoutX="159.0" layoutY="334.0" mnemonicParsing="false" onAction="#userRegistra" style="-fx-background-color: #fa8000;" text="registra" />
             <ImageView fitHeight="95.0" fitWidth="152.0" layoutX="111.0">
                <image>
                   <Image url="@../../../MangaInk%20Loghino.png" />
                </image>
             </ImageView>
             <Label fx:id="wrongLogin" layoutX="173.0" layoutY="103.0" textFill="#fc0e0e" />
-            <PasswordField fx:id="enteredPassword" layoutX="172.0" layoutY="214.0" promptText="Password" />
+            <PasswordField fx:id="enteredPassword" layoutX="89.0" layoutY="286.0" promptText="Password" />
+            <Label layoutX="24.0" layoutY="171.0" text="Indirizzo">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enteredIndirizzo" layoutX="89.0" layoutY="168.0" promptText="Inserisci indirizzo" />
+            <Label layoutX="36.0" layoutY="208.0" text="Civico">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enteredCivico" layoutX="89.0" layoutY="205.0" promptText="Inserisci civico" />
+            <Label layoutX="45.0" layoutY="249.0" text="Cap">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enteredCap" layoutX="89.0" layoutY="246.0" promptText="Inserisci cap" />
          </children>
       </AnchorPane>
    </center>

@@ -61,6 +61,7 @@ public class UtenteDAO {
         Connection conn = connection.connection();
 
         try(PreparedStatement st = conn.prepareStatement(query)){
+
             st.setString(1,bean.getEmail());
             st.setString(2, bean.getPassword());
             st.setString(3, bean.getUsername());
