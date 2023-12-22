@@ -66,9 +66,9 @@ public class UtenteDAO {
             st.setString(2, bean.getPassword());
             st.setString(3, bean.getUsername());
 
-            ResultSet rs = st.executeQuery();//STO CERCANDO DI CORREGGERE IL FATTO DI INERIRE I CAMPI
-            if (rs!=null && rs.getString("email")!=null&& rs.getString("password")&&rs.getString("username")){
-
+          /*  ResultSet rs = st.executeQuery();//STO CERCANDO DI CORREGGERE IL FATTO DI INERIRE I CAMPI
+            if (rs != null && rs.getString("email").isEmpty()!= true && rs.getString("password").isEmpty()!= true && rs.getString("username").isEmpty()!= true){
+               b= true;*/
 
             int righeScritte = st.executeUpdate();
 
@@ -78,8 +78,8 @@ public class UtenteDAO {
             } else {
                 logger.info("Inserimento utente fallito");
             }
-            }
-            else{}
+           // }
+           // else{b=false;}
 
 
 

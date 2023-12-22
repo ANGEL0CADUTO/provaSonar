@@ -2,6 +2,7 @@ package com.example.demoproject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -27,6 +28,9 @@ public class RegistraGrafico {
 
     @FXML
     private PasswordField enteredPassword;
+
+    @FXML
+    private Label wrongSignUp;
 
     public void userRegistra(){
         UtenteBean bean = new UtenteBean();
