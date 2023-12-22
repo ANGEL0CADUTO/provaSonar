@@ -66,8 +66,10 @@ public class UtenteDAO {
             st.setString(2, bean.getPassword());
             st.setString(3, bean.getUsername());
 
+            ResultSet rs = st.executeQuery();//STO CERCANDO DI CORREGGERE IL FATTO DI INERIRE I CAMPI
+            if (rs!=null && rs.getString("email")!=null&& rs.getString("password")&&rs.getString("username")){
 
-            //
+
             int righeScritte = st.executeUpdate();
 
             if (righeScritte > 0) {
@@ -76,6 +78,8 @@ public class UtenteDAO {
             } else {
                 logger.info("Inserimento utente fallito");
             }
+            }
+            else{}
 
 
 

@@ -41,6 +41,7 @@ public class LoginGrafico {
         boolean esitoLogin = lg.login(bean);
 
 
+
         //DEVO FAR ARRIVARE ANCHE L'USERNAME E LA PASSWORD
         // (ecco perchè andava creato a prescindere e popolato dai tizi che la ricevono)
 
