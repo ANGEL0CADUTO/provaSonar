@@ -52,6 +52,12 @@ public class Demo extends Application {
 
     }
 
+    public void registrazione() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) registratiHomePage.getScene().getWindow();
+        stage.setScene(scene);
+    }
 
     public static void main(String[] args) {
         launch(args);
