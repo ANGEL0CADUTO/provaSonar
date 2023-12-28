@@ -22,9 +22,9 @@ public class UtenteDAO {
             try (ResultSet rs = st.executeQuery()) {
 
                 if (rs != null && rs.next() && rs.getString("password").equals(bean.getPassword())) {
-                    System.out.println(rs.getMetaData().getColumnCount()); //CARINO PERCHE RIDA IL NUMERO DI COLONNE CHE HA PRESO
+                    //System.out.println(rs.getMetaData().getColumnCount()); //CARINO PERCHE RIDA IL NUMERO DI COLONNE CHE HA PRESO
 
-                    System.out.println(rs.getString("password") + " " + rs.getBigDecimal("credito"));
+                    //System.out.println(rs.getString("password") + " " + rs.getBigDecimal("credito"));
 
                     bean.setIdUtente(rs.getInt("idUtente"));
                     bean.setUsername(rs.getString("username"));
@@ -76,7 +76,7 @@ public class UtenteDAO {
 
 
             int righeScritte = st.executeUpdate();
-//mMASNDSAM
+
             if (righeScritte > 0) {
                 b = true;
                 logger.info("Inserimento utente riuscito");
@@ -97,7 +97,7 @@ public class UtenteDAO {
    public boolean informazioniUtente(UtenteBean bean){
     DBConnection conn = new DBConnection();
     String query = "UPDATE mangaink.utene SET informazioniUtenteID=(SELECT LAST_INSERT_ID() FROM mangaink.informazioniUtente) WHERE utente.email = ?";
-
+    return true;
     }
 
 

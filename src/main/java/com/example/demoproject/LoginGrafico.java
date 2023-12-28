@@ -42,13 +42,6 @@ public class LoginGrafico {
 
 
 
-        //DEVO FAR ARRIVARE ANCHE L'USERNAME E LA PASSWORD
-        // (ecco perchè andava creato a prescindere e popolato dai tizi che la ricevono)
-
-
-
-
-
         if(esitoLogin){
             //UtenteBean utenteLoggato = new UtenteBean(EnteredEmail); VOGLIO PASSARE STO CAZZO DI BEAN PER MANTENERE LA SESSIONE
             //DOVRO IMPLEMENTARE UNA FUNZIONA CHE DALLA EMAIL MI PESCA QUELLO DI CUI HO BISOGNO
@@ -60,13 +53,27 @@ public class LoginGrafico {
             //cambio view ((LO FACCIO COL TRY CATCH MA DEVO CAPIRE SE E BENE O MALE))
             try{
 
-                Parent root = FXMLLoader.load(getClass().getResource("LibreriaUtente.fxml"));
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("LibreriaUtente.fxml"));
+
+                Parent root = loader.load();
+
+
+                //Istanzio il rafico e chiamo la funzione per settare il bean(nella quale viene istanziata anche la tabella)
+                LibreriaUtenteControllerGrafico libreriaUtenteController = loader.getController();
+                libreriaUtenteController.setUtenteBean(bean);
+
                 Scene scene = new Scene(root);
+
+
                 Stage stage = (Stage) login.getScene().getWindow();
+
                 stage.setScene(scene);
+
 
             } catch(IOException e) {
                 logger.severe("BROOO QUA STANNO LANCIANDO EXCEPTION ((login grafico cambio view))");
+                logger.info("info");
             }
 
         }

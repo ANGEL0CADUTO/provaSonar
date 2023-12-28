@@ -37,6 +37,7 @@ public class Demo extends Application {
         primaryStage.show();//MOSTRO LO STAGE
 
 
+
     }
 
 
@@ -46,9 +47,10 @@ public class Demo extends Application {
         Stage stage = (Stage) loginHomePage.getScene().getWindow();
         stage.setScene(scene);
 
-        //TESTING DEL DAO, TOGLIERE APPENA LEO COSTRUISCE IL SENTIERO VERSO IL DAO CHE MANCO GLI ANTICHI ROMANI
-        //UtenteDAO ut = new UtenteDAO();
-        //ut.addUser();
+
+        //StupidTesting
+        //CopiaMangaDAO cm = new CopiaMangaDAO();
+        //cm.getCopieMangaListByUserID();
 
     }
 
@@ -58,6 +60,8 @@ public class Demo extends Application {
         Stage stage = (Stage) registratiHomePage.getScene().getWindow();
         stage.setScene(scene);
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
