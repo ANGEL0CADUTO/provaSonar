@@ -26,7 +26,7 @@ public class UtenteDAO {
 
                     System.out.println(rs.getString("password") + " " + rs.getBigDecimal("credito"));
 
-                    bean.setIdUtente(rs.getInt("idutente"));
+                    bean.setIdUtente(rs.getInt("idUtente"));
                     bean.setUsername(rs.getString("username"));
                     bean.setCredito(rs.getBigDecimal("credito"));
                     bean.setVotoRecensione(rs.getDouble("votoRecensioni"));
@@ -43,7 +43,7 @@ public class UtenteDAO {
             }
 
         } catch (SQLException e) {
-            logger.severe("E' stata lanciata la exception nella searchUser in utenteDAO" + e.getMessage());
+            logger.severe("E' stata lanciata la exception nella searchUser in utenteDAO " + e.getMessage());
 
         } finally {
             connection.close(conn);  // Chiudi la connessione nel blocco finally
@@ -57,17 +57,24 @@ public class UtenteDAO {
     public boolean addUser(UtenteBean bean) {
         DBConnection connection = new DBConnection();
         boolean b = false;
-        String query = "INSERT INTO mangaink.utente (email, password, username) VALUES (?, ?, ?)";
+        String query = "INSERT INTO mangaink.utente (email, username ,password ) VALUES (?, ?, ?)";
         Connection conn = connection.connection();
+
 
         try(PreparedStatement st = conn.prepareStatement(query)){
 
+            if(bean.getEmail().isEmpty() || bean.getUsername().isEmpty()||bean.getPassword().isEmpty()) {
+                logger.warning("Uno o più campi sono vuoti. Inserimento utente fallito.");
+                return false;}
+
             st.setString(1,bean.getEmail());
-            st.setString(2, bean.getPassword());
-            st.setString(3, bean.getUsername());
+            st.setString(2, bean.getUsername());
+            st.setString(3, bean.getPassword());
 
 
-            //
+
+
+
             int righeScritte = st.executeUpdate();
 //mMASNDSAM
             if (righeScritte > 0) {
@@ -78,13 +85,29 @@ public class UtenteDAO {
             }
 
 
-
         }
+
         catch (SQLException e){
-            logger.severe("E' stata lanciata la exception nell'addUser in utenteDao" + e.getMessage());
+            logger.severe("E' stata lanciata la exception nell'addUser in utenteDao " + e.getMessage());
         }
 
         return true;
     }
+
+   public boolean informazioniUtente(UtenteBean bean){
+    DBConnection conn = new DBConnection();
+    String query = "UPDATE mangaink.utene SET informazioniUtenteID=(SELECT LAST_INSERT_ID() FROM mangaink.informazioniUtente) WHERE utente.email = ?";
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 }
