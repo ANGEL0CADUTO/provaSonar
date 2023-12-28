@@ -40,13 +40,21 @@ public class RegistraGrafico {
         bean.setEmail(enteredEmail.getText());
         bean.setPassword(enteredPassword.getText());
         bean.setUsername(enteredUsername.getText());
-        ra.registra(bean);
+
 
 
         bean1.setIndirizzo(enteredIndirizzo.getText());
         bean1.setCap(Integer.parseInt(enteredCivico.getText()));
         bean1.setCivico(Integer.parseInt(enteredCap.getText()));
-        ra.registraDati(bean1);
+
+
+    //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO DA AGGIUSTARE
+        boolean esitoRegistra = ra.registra(bean);
+        boolean esitoRegistraDati= ra.registraDati(bean1);
+        //CONTROLLO SU EMAIl-PASSWORS-USERNAME-INDIRIZZO-CAP-CIVICO HA INSERITO CAMPI NON VOUTI FUNGE
+        if(esitoRegistra && esitoRegistraDati){
+            wrongSignUp.setText("Hai effettuato la registrazione!");}
+        else{wrongSignUp.setText("Devi inserire tutti i campi");}
     }
 
 
