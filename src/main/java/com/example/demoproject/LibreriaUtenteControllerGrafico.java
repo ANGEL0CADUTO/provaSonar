@@ -3,8 +3,13 @@ package com.example.demoproject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 public class LibreriaUtenteControllerGrafico {
@@ -22,19 +27,23 @@ public class LibreriaUtenteControllerGrafico {
     @FXML
     private TableColumn<CopiaMangaModel, String> nomeColumn;
 
-    public void setUtenteBean(UtenteBean bean){
+    @FXML
+    private Button homePageButton;
+
+
+    public void setUtenteBean(UtenteBean bean) {
         this.utenteBean = bean;
         initializeData(); //Devo istanziarne subito la tabella per evitare problemi di sincronizzazione
     }
 
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         //L'ho svuotato perchè ho avuto problemi di sincronizzazione(popolare tabella prima ancora di aver preso i dati)
-        }
+    }
 
 
-        //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
+    //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
     private void initializeData() {
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
         CopiaMangaCollectionModel collezione = controller.showUserManga(utenteBean);
@@ -45,8 +54,23 @@ public class LibreriaUtenteControllerGrafico {
         table.getItems().addAll(collezione.getListaManga());
     }
 
-}
 
+    public void goToHomePage() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        Parent root = loader.load();
+
+        Demo controller = loader.getController();
+        controller.setUtenteBean(utenteBean);
+
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) homePageButton.getScene().getWindow();
+        stage.setScene(scene);
+
+    }
+
+}
 
 
 

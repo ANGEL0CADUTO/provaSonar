@@ -13,8 +13,20 @@ public class UtenteBean {
 
     private BigDecimal credito;
 
+    private boolean isLogged;
     public UtenteBean() {//DA USARE PER SESSIONE
+        this.isLogged = false;
     }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
+
+
 
     public int getIdUtente() {
         return idUtente;

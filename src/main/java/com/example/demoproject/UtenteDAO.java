@@ -96,7 +96,7 @@ public class UtenteDAO {
 
    public boolean informazioniUtente(UtenteBean bean){
     DBConnection conn = new DBConnection();
-    String query = "UPDATE mangaink.utene SET informazioniUtenteID=(SELECT LAST_INSERT_ID() FROM mangaink.informazioniUtente) WHERE utente.email = ?";
+    String query = "UPDATE mangaink.utente SET informazioniUtenteID=(SELECT LAST_INSERT_ID() FROM mangaink.informazioniUtente) WHERE utente.email = ?";
     return true;
     }
 

@@ -23,8 +23,14 @@ public class Demo extends Application {
     @FXML
     private Button registratiHomePage;
 
+    @FXML
+    private Button logoutHomePage;
+
+    private UtenteBean utente;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         //Group root = new Group(); //Group rappresenta un gruppo di nodi grafici
         Scene scene = new Scene(root, Color.BLUE);//CREO LA SCENA
@@ -36,16 +42,42 @@ public class Demo extends Application {
         primaryStage.setScene(scene);//SETTO LA SCENA NELLO STAGE
         primaryStage.show();//MOSTRO LO STAGE
 
+        //Creo il bean che si passeranno tutti i grafici per mantenere la sessione
 
 
     }
 
+    public void initialize(){
+        if(utente == null){
+            utente = new UtenteBean();
+        }
+
+    }
+
+    public void setUtenteBean(UtenteBean bean){
+        this.utente= bean;
+    }
 
     public void changeScene() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) loginHomePage.getScene().getWindow();
-        stage.setScene(scene);
+
+        if(utente.isLogged()){
+            System.out.println("sei già loggato");
+        }
+        else{
+            utente = new UtenteBean();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+            LoginGrafico controller = loader.getController();
+            controller.setUtenteBean(utente);
+
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) loginHomePage.getScene().getWindow();
+            stage.setScene(scene);
+
+        }
+
 
 
         //StupidTesting
@@ -59,6 +91,17 @@ public class Demo extends Application {
         Scene scene = new Scene(root);
         Stage stage = (Stage) registratiHomePage.getScene().getWindow();
         stage.setScene(scene);
+    }
+
+    public void gotoLibreria() throws IOException{
+
+        Parent root  = FXMLLoader.load(getClass().getResource(("LibreriaUtente.fxml")));
+    }
+
+
+    //da testare se funziona anche post login
+    public void logout(){
+        utente.setLogged(false);
     }
 
 
