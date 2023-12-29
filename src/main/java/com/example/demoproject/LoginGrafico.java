@@ -63,16 +63,22 @@ public class LoginGrafico {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("LibreriaUtente.fxml"));
 
-                Parent root = loader.load();
 
+                Parent root = loader.load();
                 //Istanzio il rafico e chiamo la funzione per settare il bean(nella quale viene istanziata anche la tabella)
                 LibreriaUtenteControllerGrafico libreriaUtenteController = loader.getController();
                 libreriaUtenteController.setUtenteBean(utente);
+                /*loader.setControllerFactory(c -> { LibreriaUtenteControllerGrafico controller = new LibreriaUtenteControllerGrafico(utente);
+                controller.initializeData();
+                return controller;
+                });*/
+
+
+
+
 
                 Scene scene = new Scene(root);
-
                 Stage stage = (Stage) login.getScene().getWindow();
-
                 stage.setScene(scene);
 
 

@@ -8,5 +8,6 @@
       <Button fx:id="loginHomePage" layoutX="522.0" layoutY="26.0" mnemonicParsing="false" onAction="#changeScene" style="-fx-background-color: #fa8000;" text="Log In" />
       <Button fx:id="registratiHomePage" layoutX="441.0" layoutY="26.0" mnemonicParsing="false" onAction="#registrazione" style="-fx-background-color: #de1429;" text="Registrati" />
       <Button fx:id="logoutHomePage" layoutX="517.0" layoutY="352.0" mnemonicParsing="false" onAction="#logout" text="Log Out" />
+      <Button fx:id="profiloHomePage" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#goToProfiloUtente" text="Profilo" />
    </children>
 </AnchorPane>

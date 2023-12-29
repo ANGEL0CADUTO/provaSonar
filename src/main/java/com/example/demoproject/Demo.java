@@ -24,6 +24,9 @@ public class Demo extends Application {
     private Button registratiHomePage;
 
     @FXML
+    private Button profiloHomePage;
+
+    @FXML
     private Button logoutHomePage;
 
     private UtenteBean utente;
@@ -96,6 +99,25 @@ public class Demo extends Application {
     public void gotoLibreria() throws IOException{
 
         Parent root  = FXMLLoader.load(getClass().getResource(("LibreriaUtente.fxml")));
+    }
+
+    public void goToProfiloUtente() throws IOException{
+
+        //carico l'interfaccia utente
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfiloUtente.fxml"));
+
+        loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
+
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) profiloHomePage.getScene().getWindow();
+
+        stage.setScene(scene);
+
+
+
     }
 
 

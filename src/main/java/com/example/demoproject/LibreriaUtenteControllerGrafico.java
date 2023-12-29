@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-public class LibreriaUtenteControllerGrafico {
+public class LibreriaUtenteControllerGrafico  {
 
     private UtenteBean utenteBean;
 
@@ -31,20 +31,25 @@ public class LibreriaUtenteControllerGrafico {
     private Button homePageButton;
 
 
+
     public void setUtenteBean(UtenteBean bean) {
         this.utenteBean = bean;
         initializeData(); //Devo istanziarne subito la tabella per evitare problemi di sincronizzazione
     }
-
-
+/*
+    protected LibreriaUtenteControllerGrafico(UtenteBean bean){
+        super(bean);
+    }
+*/
     @FXML
     private void initialize() {
         //L'ho svuotato perchè ho avuto problemi di sincronizzazione(popolare tabella prima ancora di aver preso i dati)
+        //initializeData();
     }
 
 
     //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
-    private void initializeData() {
+    public void initializeData() {
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
         CopiaMangaCollectionModel collezione = controller.showUserManga(utenteBean);
         SimpleDateFormat myDateFormat = new SimpleDateFormat();
@@ -64,11 +69,14 @@ public class LibreriaUtenteControllerGrafico {
         controller.setUtenteBean(utenteBean);
 
 
+
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);
 
     }
+
+
 
 }
 
