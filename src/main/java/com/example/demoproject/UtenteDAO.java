@@ -94,20 +94,61 @@ public class UtenteDAO {
         return true;
     }
 
-   public boolean informazioniUtente(UtenteBean bean){
-    DBConnection conn = new DBConnection();
-    String query = "UPDATE mangaink.utene SET informazioniUtenteID=(SELECT LAST_INSERT_ID() FROM mangaink.informazioniUtente) WHERE utente.email = ?";
+   public boolean informazioniUtente(UtenteBean bean ){
+        Boolean b= false;
+    DBConnection connection = new DBConnection();
+    String query = "UPDATE mangaink.utente " +
+            "SET informazioniUtenteID = (SELECT MAX(idInformazioniUtente) FROM mangaink.informazioniutente) " +
+            "WHERE email = ?";
+
+
+       Connection conn = connection.connection();
+
+    try(PreparedStatement st = conn.prepareStatement(query)){
+
+        st.setString(1,bean.getEmail());
+
+       // st.setString(1,"Ade@gmail.com");
+
+
+        int righeScritte = st.executeUpdate();
+        System.out.println(righeScritte);
+
+
+        if (righeScritte > 0) {
+            b = true;
+            logger.info("Accoppiamente Riuscito");
+
+        } else {
+            logger.info("Accoppiamente Fallito");
+            System.out.println(righeScritte);
+
+        }
+
+
+    } catch (SQLException e) {
+      //  e.printStackTrace(); PER FARMI DIRE L'ERRORE COMPLETO
+        throw new RuntimeException(e);}
+
+ return b ;
 
     }
 
 
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

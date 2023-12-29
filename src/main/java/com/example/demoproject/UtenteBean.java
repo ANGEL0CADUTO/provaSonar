@@ -9,9 +9,12 @@ public class UtenteBean {
     private String email;
     private String password;
 
+
     private double votoRecensione;
 
     private BigDecimal credito;
+
+    private int informazioniUtenteID;
 
     public UtenteBean() {//DA USARE PER SESSIONE
     }
@@ -63,5 +66,9 @@ public class UtenteBean {
     public void setCredito(BigDecimal credito) {
         this.credito = credito;
     }
+
+    public void setInformazioniUtenteID(int informazioniUtenteID){this.informazioniUtenteID= informazioniUtenteID;}
+
+    public int getInformazioniUtenteID(){return informazioniUtenteID;}
 }
 

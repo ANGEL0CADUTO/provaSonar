@@ -9,6 +9,8 @@ public class DatiUtenteBean {
     private int civico;
     private int cap;
 
+    private int idInformazioniUtente;
+
 
 
 
@@ -31,4 +33,18 @@ public class DatiUtenteBean {
 
     public int getCap() {
         return cap;}
+
+    public int getIdInformazioniUtente() {
+        return idInformazioniUtente;
+    }
+
+    public void setIdInformazioniUtente(int idInformazioniUtente) {
+        this.idInformazioniUtente = idInformazioniUtente;
+    }
+
+
+
+
+
+
 }
