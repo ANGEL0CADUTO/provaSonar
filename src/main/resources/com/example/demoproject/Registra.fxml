@@ -42,7 +42,7 @@
             </Label>
             <TextField fx:id="enteredUsername" layoutX="89.0" layoutY="134.0" promptText="Username" />
             <TextField fx:id="enteredEmail" layoutX="89.0" layoutY="99.0" promptText="Email" />
-            <Button fx:id="registra" layoutX="159.0" layoutY="334.0" mnemonicParsing="false" onAction="#userRegistra" style="-fx-background-color: #fa8000;" text="registra" />
+            <Button fx:id="registra" layoutX="136.0" layoutY="332.0" mnemonicParsing="false" onAction="#userRegistra" style="-fx-background-color: #fa8000;" text="registra" />
             <ImageView fitHeight="95.0" fitWidth="152.0" layoutX="111.0">
                <image>
                   <Image url="@../../../MangaInk%20Loghino.png" />
@@ -69,6 +69,7 @@
             </Label>
             <TextField fx:id="enteredCap" layoutX="89.0" layoutY="246.0" promptText="Inserisci cap" />
             <Label fx:id="wrongSignUp" layoutX="44.0" layoutY="64.0" textFill="#fc0e0e" />
+            <Button fx:id="home" layoutX="256.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToHomePage" style="-fx-background-color: #fa8000;" text="Home Page" />
          </children>
       </AnchorPane>
    </center>

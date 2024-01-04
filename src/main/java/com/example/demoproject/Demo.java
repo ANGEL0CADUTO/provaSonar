@@ -96,6 +96,9 @@ public class Demo extends Application {
         stage.setScene(scene);
     }
 
+
+
+
     public void gotoLibreria() throws IOException{
 
         Parent root  = FXMLLoader.load(getClass().getResource(("LibreriaUtente.fxml")));
@@ -106,7 +109,7 @@ public class Demo extends Application {
         //carico l'interfaccia utente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfiloUtente.fxml"));
 
-        loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
+     //   loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
 
         Parent root = loader.load();
 

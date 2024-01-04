@@ -1,6 +1,7 @@
 package com.example.demoproject;
 import javax.xml.xpath.XPathEvaluationResult;
 import java.io.PipedReader;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.logging.Logger;
 public class UtenteDAO {
@@ -134,6 +135,49 @@ public class UtenteDAO {
 
     }
 
+
+    public boolean userDeposit(UtenteBean bean){
+        Boolean b= false;
+        DBConnection connection = new DBConnection();
+        String query = "UPDATE mangaink.utente SET credito= ?  \n" +
+                "WHERE email =? ";
+         Connection conn = connection.connection();
+        System.out.println(bean.getEmail());
+        try(PreparedStatement st = conn.prepareStatement(query)){
+
+            if (bean.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE DEPOSITATA UNA CIFRA POSITIVA
+                logger.info("Non puoi depositare cifre negative");
+                return false;
+            }
+            st.setBigDecimal(1,bean.getCredito());//SONO LEGATI ALLA QUERY
+            st.setString(2,bean.getEmail());
+
+
+            int righeScritte = st.executeUpdate();
+            System.out.println(righeScritte);
+
+
+            if (righeScritte > 0) {
+                b = true;
+                logger.info("Deposito Credito Riuscito");
+
+            } else {
+                logger.info("Deposito Credito Fallito");
+                System.out.println(righeScritte);
+
+            }
+
+
+        } catch (SQLException e) {
+            //  e.printStackTrace(); PER FARMI DIRE L'ERRORE COMPLETO
+            throw new RuntimeException(e);}
+
+        return b;
+
+
+
+
+    }
 
 }
 

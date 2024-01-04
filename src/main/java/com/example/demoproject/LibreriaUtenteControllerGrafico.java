@@ -30,6 +30,8 @@ public class LibreriaUtenteControllerGrafico  {
     @FXML
     private Button homePageButton;
 
+    @FXML
+    private Button depositaPreleva;
 
 
     public void setUtenteBean(UtenteBean bean) {
@@ -72,6 +74,25 @@ public class LibreriaUtenteControllerGrafico  {
 
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
+        stage.setScene(scene);
+
+    }
+
+    public void goToDeposit() throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("DepositaEPreleva.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage = (Stage) depositaPreleva.getScene().getWindow();
+//        stage.setScene(scene);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("DepositaEPreleva.fxml"));
+        Parent root = loader.load();
+
+         DepositaEPrelevaGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
+        controller.setUtenteBean(utenteBean);
+
+
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) depositaPreleva.getScene().getWindow();
         stage.setScene(scene);
 
     }
