@@ -139,7 +139,7 @@ public class UtenteDAO {
     public boolean userDeposit(UtenteBean bean){ //DEPOSITA IL TUO CREDITO
         Boolean b= false;
         DBConnection connection = new DBConnection();
-        String query = "UPDATE mangaink.utente SET credito= ?  \n" +
+        String query = "UPDATE mangaink.utente SET credito= credito + ?  \n" +
                 "WHERE email =? ";
          Connection conn = connection.connection();
         System.out.println(bean.getEmail());
@@ -149,6 +149,7 @@ public class UtenteDAO {
                 logger.info("Non puoi depositare cifre negative");
                 return false;
             }
+
             st.setBigDecimal(1,bean.getCredito());//SONO LEGATI ALLA QUERY
             st.setString(2,bean.getEmail());
 
@@ -163,6 +164,51 @@ public class UtenteDAO {
 
             } else {
                 logger.info("Deposito Credito Fallito");
+                System.out.println(righeScritte);
+
+            }
+
+
+        } catch (SQLException e) {
+            //  e.printStackTrace(); PER FARMI DIRE L'ERRORE COMPLETO
+            throw new RuntimeException(e);}
+
+        return b;
+
+
+
+
+    }
+
+    public boolean userPreliev(UtenteBean bean){ //PRELEVAA IL TUO CREDITO
+        DepositaEPrelevaGrafico pr = new DepositaEPrelevaGrafico();
+        Boolean b= false;
+        DBConnection connection = new DBConnection();
+        String query = "UPDATE mangaink.utente SET credito= credito - ?  \n" +
+                "WHERE email =? ";
+        Connection conn = connection.connection();
+        System.out.println(bean.getEmail());
+        try(PreparedStatement st = conn.prepareStatement(query)){
+
+            if (bean.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE PRELEVATA UNA CIFRA POSITIVA
+                logger.info("Non puoi prelevare cifre negative");
+                return false;
+            }
+
+            st.setBigDecimal(1,bean.getCredito());//SONO LEGATI ALLA QUERY
+            st.setString(2,bean.getEmail());
+
+
+            int righeScritte = st.executeUpdate();
+            System.out.println(righeScritte);
+
+
+            if (righeScritte > 0) {
+                b = true;
+                logger.info("Prelievo Credito Riuscito");
+
+            } else {
+                logger.info("Prelievo Credito Fallito");
                 System.out.println(righeScritte);
 
             }

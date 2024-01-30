@@ -21,7 +21,10 @@ public class DepositaEPrelevaGrafico {
     private TextField preleva;
 
     @FXML
-    private Button continua;
+    private Button depositaCredito;
+
+    @FXML
+    private Button prelevaCredito;
 
     @FXML
     private Button homePageButton;
@@ -51,7 +54,16 @@ public class DepositaEPrelevaGrafico {
 
     @FXML
     public void userDeposita() {
-    utenteBean.setCredito(BigDecimal.valueOf(Integer.parseInt(deposita.getText())));
+        if(deposita.getText().isEmpty()){this.utenteBean.setCredito(BigDecimal.valueOf(0));}
+        else{
+            try{
+                this.utenteBean.setCredito(BigDecimal.valueOf(Integer.parseInt(deposita.getText())));
+            }catch (NumberFormatException ex){
+                this.utenteBean.setCredito(BigDecimal.valueOf(0));
+            }
+        }
+
+  //      this.utenteBean.setCredito(BigDecimal.valueOf(Double.parseDouble(deposita.getText())));PER FAR INSERIRE CIFRE CON LA VIRGOLA
 //        System.out.print("YOOOOO");
 //        System.out.println(utenteBean);
         DepositaEPrelevaApplicativo dp = new DepositaEPrelevaApplicativo();
@@ -64,6 +76,29 @@ public class DepositaEPrelevaGrafico {
         }
     }
 
+
+
+    @FXML
+    public void userPreleva() {
+        if(preleva.getText().isEmpty()){this.utenteBean.setCredito(BigDecimal.valueOf(0));}
+        else{
+            try{
+                this.utenteBean.setCredito(BigDecimal.valueOf(Integer.parseInt(preleva.getText())));
+            }catch (NumberFormatException ex){
+                this.utenteBean.setCredito(BigDecimal.valueOf(0));
+            }
+        }
+
+
+        DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
+
+        boolean esitoPrelievo = pr.Preleva(utenteBean);
+        if (esitoPrelievo) {
+            System.out.println("PRELIEVO ANDATO A BUON FINE");
+        } else {
+            System.out.println("NON HAI NULLA DA PRELEVARE");
+        }
+    }
 
 
 }
