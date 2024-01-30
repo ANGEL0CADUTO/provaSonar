@@ -136,7 +136,7 @@ public class UtenteDAO {
     }
 
 
-    public boolean userDeposit(UtenteBean bean){
+    public boolean userDeposit(UtenteBean bean){ //DEPOSITA IL TUO CREDITO
         Boolean b= false;
         DBConnection connection = new DBConnection();
         String query = "UPDATE mangaink.utente SET credito= ?  \n" +

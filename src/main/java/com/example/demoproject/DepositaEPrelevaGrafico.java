@@ -65,9 +65,6 @@ public class DepositaEPrelevaGrafico {
     }
 
 
-//    public void lecca(){
-//        System.out.println("LECCAMI LA MINCHIA");
-//    }
 
 }
 
