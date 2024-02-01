@@ -16,6 +16,8 @@ public class LibreriaUtenteControllerGrafico  {
 
     private UtenteBean utenteBean;
 
+    private CopiaMangaBean copiaMangaBean;//MANGA
+
 
     @FXML
     private TableView table;
@@ -31,7 +33,14 @@ public class LibreriaUtenteControllerGrafico  {
     private Button homePageButton;
 
     @FXML
+    private Button annuncio;
+
+    @FXML
     private Button depositaPreleva;
+
+   /* public void setCopiaMangaBean(CopiaMangaBean mangaBean) {
+        this.copiaMangaBean = mangaBean;
+    }*///NON CREDO MI SERVA
 
 
     public void setUtenteBean(UtenteBean bean) {
@@ -93,6 +102,25 @@ public class LibreriaUtenteControllerGrafico  {
 
         Scene scene = new Scene(root);
         Stage stage = (Stage) depositaPreleva.getScene().getWindow();
+        stage.setScene(scene);
+
+    }
+
+    public void goToAnnuncio() throws IOException {//DA FARE!!!
+
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
+        Parent root = loader.load();
+
+        AnnuncioControllerGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
+        controller.setUtenteBean(utenteBean);
+       // controller.setCopiaMangaBean(copiaMangaBean);NON SO SE MI SERVE
+
+
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) annuncio.getScene().getWindow();
         stage.setScene(scene);
 
     }

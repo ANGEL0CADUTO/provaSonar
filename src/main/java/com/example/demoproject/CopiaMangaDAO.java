@@ -52,5 +52,36 @@ public class CopiaMangaDAO {
         return collezione;
     }
 
+/*    //SELECT mangaink.copiamanga WHERE idCopiaManga = ?"
+public CopiaMangaModel getCopiaManga (int id){
+    DBConnection connection = new DBConnection();
+    //boolean b = false;
+    String query = "SELECT mangaink.copiamanga WHERE idCopiaManga = ?";
+    Connection conn = connection.connection();
+
+    try ( PreparedStatement st = conn.prepareStatement(query)) {
+
+        st.setString(1, String.valueOf(copiaMangaModel.getIdCopiaManga()));
+
+        try(ResultSet rs = st.executeQuery()){
+         CopiaMangaModel mangaModel= new CopiaMangaModel();
+            while(rs.next()){
+
+            }
+
+        }
+
+    } catch (SQLException e) {
+        logger.severe("E' stata lanciata eccezione in CopieMangaDAO" + " " + e.getMessage());
+
+    }
+
+
+}*/
+
+
+
+
+
 
 }

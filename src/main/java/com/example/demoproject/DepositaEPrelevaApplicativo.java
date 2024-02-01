@@ -4,7 +4,7 @@ public class DepositaEPrelevaApplicativo {
 
     public boolean Deposita(UtenteBean bean){
         UtenteDAO depositaCredito = new UtenteDAO();
-        return depositaCredito.userDeposit(bean);//METODO NEL DAO SI STA FACENDO
+        return depositaCredito.userDeposit(bean);
     }
 
     public boolean Preleva(UtenteBean bean){

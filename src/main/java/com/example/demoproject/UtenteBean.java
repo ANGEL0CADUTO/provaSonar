@@ -1,5 +1,7 @@
 package com.example.demoproject;
 
+import com.example.demoproject.adapter.ValutaAdapter;
+
 import java.math.BigDecimal;
 
 public class UtenteBean {
@@ -13,10 +15,14 @@ public class UtenteBean {
 
     private BigDecimal credito;
 
+    private ValutaAdapter adattatore;//IMPLEMENTAZIONE ADAPTER
     private boolean isLogged;
     public UtenteBean() {//DA USARE PER SESSIONE
-        this.isLogged = false;
-    }
+        this.isLogged = false;    }
+
+    public UtenteBean(ValutaAdapter adattatore){this.adattatore=adattatore;}// PER ACCETTARE ADATTATORE
+
+
 
     public boolean isLogged() {
         return isLogged;
@@ -69,8 +75,8 @@ public class UtenteBean {
     }
 
     public BigDecimal getCredito() {
-        return credito;
-    }
+        return credito ;
+    }// ADAPTER CONVERTE adattatore.convertiCredito(credito)
 
     public void setCredito(BigDecimal credito) {
         this.credito = credito;

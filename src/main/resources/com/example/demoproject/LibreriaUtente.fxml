@@ -18,5 +18,6 @@
       </TableView>
       <Button fx:id="homePageButton" layoutX="531.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
       <Button fx:id="depositaPreleva" layoutX="477.0" layoutY="345.0" mnemonicParsing="false" onAction="#goToDeposit" text="Deposita/Preleva" />
+      <Button fx:id="annuncio" layoutX="337.0" layoutY="346.0" mnemonicParsing="false" onAction="#goToAnnuncio" text="Annuncio" />
    </children>
 </AnchorPane>
