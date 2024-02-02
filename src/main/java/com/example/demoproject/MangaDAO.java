@@ -13,7 +13,7 @@ public class MangaDAO {
     public MangaBean getMangaByIDManga(int id){
         DBConnection connection = new DBConnection();
         MangaBean bean =  new MangaBean();
-        String query = "SELECT * FROM mangaink.manga WHERE idmanga = ?"; //BISOGNA CREARE UN FILE DI CONFIGURAZIONE
+        String query = "SELECT * FROM mangaink.manga WHERE idManga = ?"; //BISOGNA CREARE UN FILE DI CONFIGURAZIONE
         // PER DISACCOPIARE LE INFO DI CONFIGURAZIONE DEL DB, AD ESEMPIO IL NOME DEL DB, NON DEVE ESSERE HARDCODED NELL'APPLICAZIONE
 
         Connection conn = connection.connection();
@@ -28,6 +28,7 @@ public class MangaDAO {
 
                     bean.setNome(rs.getString("nome"));
                     bean.setAutore(rs.getString("autore"));
+                    bean.setIdManga(rs.getInt("idManga"));
                     logger.info("ha funzionato");
                     return bean;
 

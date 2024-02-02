@@ -38,9 +38,28 @@ public void userAnnunce(){
 
     AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
+  //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
+    CopiaMangaBean copiaMangaBean= new CopiaMangaBean();
+    MangaDAO mangaDAO = new MangaDAO();
+    CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
+    UtenteModel utenteModel = new UtenteModel();
+    utenteModel.setIdUtente(utenteBean.getIdUtente());
+    //
+
+    //OTTENGO LA LISTA DI COPIE MANGA PER L'UTENTE
+    CopiaMangaCollectionModel copieManga = copiaMangaDAO.getCopieMangaListByUserID(utenteModel);
+
+    CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();
+    copiaMangaBean.setIdManga(primaCopiaManga.getIdManga());
 
 
-    boolean esitoAnnuncio = an.inserisciAnnuncio(utenteBean,prezzo,dataFormattata);
+
+
+    System.out.println("AO " + utenteBean.getIdUtente());
+    
+    System.out.println("AOOO " + copiaMangaBean.getIdManga());
+
+    boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
     if (esitoAnnuncio) {
         System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
     } else {

@@ -43,10 +43,10 @@ public class LoginGrafico {
     public void userLogin(){
         LoginApplicativo lg = new LoginApplicativo();
 
-       /* utente.setEmail("leo@gmail.com");
-        utente.setPassword("0000");*/
-        utente.setEmail("Angelo@gmail.com");
+        utente.setEmail("Utente2");
         utente.setPassword("1234");
+       /* utente.setEmail("Angelo@gmail.com");
+        utente.setPassword("1234");*/
 //          utente.setEmail(enteredEmail.getText());
 //          utente.setPassword(enteredPassword.getText());
 
