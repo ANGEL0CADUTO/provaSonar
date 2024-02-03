@@ -38,9 +38,9 @@
             <TextField fx:id="enteredEmail" layoutX="172.0" layoutY="136.0" promptText="Username" />
             <Button fx:id="login" layoutX="164.0" layoutY="298.0" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: #fa8000;" text="Log In" />
             <ImageView fitHeight="95.0" fitWidth="152.0" layoutX="111.0">
-               <image>
-                  <Image url="@../../../MangaInk%20Loghino.png" />
-               </image>
+              <!-- <image>
+                  <Image url="classpath:/MangaInk Loghino.png" />
+               </image>-->
             </ImageView>
             <Label fx:id="wrongLogin" layoutX="173.0" layoutY="103.0" textFill="#fc0e0e" />
             <PasswordField fx:id="enteredPassword" layoutX="172.0" layoutY="214.0" promptText="Password" />

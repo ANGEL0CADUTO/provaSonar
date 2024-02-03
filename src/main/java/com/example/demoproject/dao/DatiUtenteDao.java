@@ -1,6 +1,6 @@
 package com.example.demoproject.dao;
 
-import com.example.demoproject.bean.utentebean.DatiUtenteBean;
+import com.example.demoproject.bean.DatiUtenteBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

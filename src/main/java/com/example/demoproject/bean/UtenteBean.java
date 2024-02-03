@@ -1,4 +1,4 @@
-package com.example.demoproject.bean.utentebean;
+package com.example.demoproject.bean;
 
 import com.example.demoproject.adapter.ValutaAdapter;
 

@@ -1,6 +1,6 @@
 package com.example.demoproject.controllerapplicativo;
 
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.dao.UtenteDAO;
 
 public class LoginApplicativo {

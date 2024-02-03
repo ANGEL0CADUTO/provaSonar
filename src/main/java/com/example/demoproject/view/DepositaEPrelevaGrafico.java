@@ -1,7 +1,7 @@
 package com.example.demoproject.view;
 
 import com.example.demoproject.controllerapplicativo.DepositaEPrelevaApplicativo;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +47,7 @@ public class DepositaEPrelevaGrafico {
 //    }
 
     public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);

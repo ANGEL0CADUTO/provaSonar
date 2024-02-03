@@ -1,5 +1,5 @@
 package com.example.demoproject.dao;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.view.DepositaEPrelevaGrafico;
 
 import java.math.BigDecimal;

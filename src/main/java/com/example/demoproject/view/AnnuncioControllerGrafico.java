@@ -3,11 +3,10 @@ package com.example.demoproject.view;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.demoproject.bean.mangabean.CopiaMangaBean;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.CopiaMangaBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.controllerapplicativo.AnnuncioControllerApplicativo;
 import com.example.demoproject.dao.CopiaMangaDAO;
-import com.example.demoproject.dao.MangaDAO;
 import com.example.demoproject.model.CopiaMangaCollectionModel;
 import com.example.demoproject.model.CopiaMangaModel;
 import com.example.demoproject.model.UtenteModel;
@@ -79,7 +78,7 @@ public void userAnnunce(){
 
 
     public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);

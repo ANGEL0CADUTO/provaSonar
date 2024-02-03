@@ -1,7 +1,7 @@
 package com.example.demoproject.controllerapplicativo;
 
 import com.example.demoproject.dao.AnnuncioDAO;
-import com.example.demoproject.bean.mangabean.CopiaMangaBean;
+import com.example.demoproject.bean.CopiaMangaBean;
 import com.example.demoproject.model.CopiaMangaModel;
 
 public class AnnuncioControllerApplicativo {

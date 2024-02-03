@@ -1,6 +1,6 @@
 package com.example.demoproject.dao;
 
-import com.example.demoproject.bean.mangabean.MangaBean;
+import com.example.demoproject.bean.MangaBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,7 +1,6 @@
 package com.example.demoproject.view;
 
-import com.example.demoproject.BaseController;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

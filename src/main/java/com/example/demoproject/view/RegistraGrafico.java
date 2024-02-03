@@ -1,8 +1,8 @@
 package com.example.demoproject.view;
 
-import com.example.demoproject.bean.utentebean.DatiUtenteBean;
+import com.example.demoproject.bean.DatiUtenteBean;
 import com.example.demoproject.controllerapplicativo.RegistraApplicativo;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,7 +46,7 @@ public class RegistraGrafico {
 
 
     public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) home.getScene().getWindow();
         stage.setScene(scene);
@@ -88,7 +88,7 @@ public class RegistraGrafico {
             wrongSignUp.setText("Hai effettuato la registrazione!");
 
             // CAMBIO SCENA E VADO ALLA LIBRERIA UTENTE SOLO DOPO AVER EFFETTUATO LA REGISTRAZIONE
-            Parent root = FXMLLoader.load(getClass().getResource("LibreriaUtente.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) registra.getScene().getWindow();
             stage.setScene(scene);

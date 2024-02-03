@@ -1,6 +1,6 @@
-package com.example.demoproject;
+package com.example.demoproject.view;
 
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.view.LoginGrafico;
 import javafx.application.Application;
 
@@ -36,7 +36,7 @@ public class Demo extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         //Group root = new Group(); //Group rappresenta un gruppo di nodi grafici
         Scene scene = new Scene(root, Color.BLUE);//CREO LA SCENA
 
@@ -71,7 +71,7 @@ public class Demo extends Application {
         else{
             utente = new UtenteBean();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/Login.fxml"));
             Parent root = loader.load();
             LoginGrafico controller = loader.getController();
             controller.setUtenteBean(utente);
@@ -92,7 +92,7 @@ public class Demo extends Application {
     }
 
     public void registrazione() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/Registra.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) registratiHomePage.getScene().getWindow();
         stage.setScene(scene);
@@ -103,13 +103,13 @@ public class Demo extends Application {
 
     public void gotoLibreria() throws IOException{
 
-        Parent root  = FXMLLoader.load(getClass().getResource(("LibreriaUtente.fxml")));
+        Parent root  = FXMLLoader.load(getClass().getResource(("/com/example/demoproject/LibreriaUtente.fxml")));
     }
 
     public void goToProfiloUtente() throws IOException{
 
         //carico l'interfaccia utente
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfiloUtente.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
 
      //   loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
 

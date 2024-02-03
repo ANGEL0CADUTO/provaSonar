@@ -1,8 +1,8 @@
 package com.example.demoproject.controllerapplicativo;
 
-import com.example.demoproject.bean.utentebean.DatiUtenteBean;
+import com.example.demoproject.bean.DatiUtenteBean;
 import com.example.demoproject.dao.DatiUtenteDao;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.dao.UtenteDAO;
 
 public class RegistraApplicativo {

@@ -2,7 +2,7 @@ package com.example.demoproject.view;
 
 
 import com.example.demoproject.controllerapplicativo.LoginApplicativo;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.UtenteBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -66,7 +66,7 @@ public class LoginGrafico {
             try{
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("LibreriaUtente.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
 
 
                 Parent root = loader.load();

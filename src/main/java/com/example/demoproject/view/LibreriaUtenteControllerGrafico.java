@@ -1,9 +1,7 @@
 package com.example.demoproject.view;
 
-import com.example.demoproject.*;
-import com.example.demoproject.bean.mangabean.CopiaMangaBean;
-import com.example.demoproject.bean.mangabean.MangaBean;
-import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.bean.CopiaMangaBean;
+import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.controllerapplicativo.LibreriaUtenteControllerApplicativo;
 import com.example.demoproject.model.CopiaMangaCollectionModel;
 import com.example.demoproject.model.CopiaMangaModel;
@@ -14,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.TableCell;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -115,7 +112,7 @@ public class LibreriaUtenteControllerGrafico  {
 
     public void goToHomePage() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         Parent root = loader.load();
 
         Demo controller = loader.getController();
@@ -134,7 +131,7 @@ public class LibreriaUtenteControllerGrafico  {
 //        Scene scene = new Scene(root);
 //        Stage stage = (Stage) depositaPreleva.getScene().getWindow();
 //        stage.setScene(scene);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("DepositaEPreleva.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/DepositaEPreleva.fxml"));
         Parent root = loader.load();
 
          DepositaEPrelevaGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
@@ -152,7 +149,7 @@ public class LibreriaUtenteControllerGrafico  {
 
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/InserisciAnnuncio.fxml"));
         Parent root = loader.load();
 
         AnnuncioControllerGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
