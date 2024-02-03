@@ -1,9 +1,11 @@
-package com.example.demoproject;
+package com.example.demoproject.controllerapplicativo;
 
-import java.util.Date;
+import com.example.demoproject.dao.AnnuncioDAO;
+import com.example.demoproject.bean.mangabean.CopiaMangaBean;
+import com.example.demoproject.model.CopiaMangaModel;
 
 public class AnnuncioControllerApplicativo {
-    public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean,int prezzo, String dataFormattata) {
+    public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean, int prezzo, String dataFormattata) {
         AnnuncioDAO creaAnnuncio = new AnnuncioDAO();
 
        /* CopiaMangaDAO dao = new CopiaMangaDAO();

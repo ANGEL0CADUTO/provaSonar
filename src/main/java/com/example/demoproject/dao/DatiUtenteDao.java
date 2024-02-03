@@ -1,8 +1,9 @@
-package com.example.demoproject;
+package com.example.demoproject.dao;
+
+import com.example.demoproject.bean.utentebean.DatiUtenteBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 

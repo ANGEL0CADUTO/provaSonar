@@ -1,4 +1,8 @@
-package com.example.demoproject;
+package com.example.demoproject.dao;
+import com.example.demoproject.model.CopiaMangaCollectionModel;
+import com.example.demoproject.model.CopiaMangaModel;
+import com.example.demoproject.model.UtenteModel;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

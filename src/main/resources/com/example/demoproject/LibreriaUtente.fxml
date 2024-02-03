@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoproject.LibreriaUtenteControllerGrafico">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoproject.view.LibreriaUtenteControllerGrafico">
    <children>
       <Accordion fx:id="accordion" layoutX="14.0" layoutY="67.0" prefHeight="53.0" prefWidth="280.0" />
       <TableView fx:id="table" layoutX="52.0" layoutY="67.0" prefHeight="200.0" prefWidth="478.0">
@@ -14,6 +14,7 @@
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome" />
           <TableColumn fx:id="provaColumn" prefWidth="104.0" text="Data Acquisto" />
+            <TableColumn fx:id="annuncioColumn" prefWidth="75.0" text="Annuncio" />
         </columns>
       </TableView>
       <Button fx:id="homePageButton" layoutX="531.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />

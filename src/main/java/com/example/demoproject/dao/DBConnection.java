@@ -1,4 +1,4 @@
-package com.example.demoproject;
+package com.example.demoproject.dao;
 
 import java.sql.Connection; //ho aggiunto nei moduli x farlo funzionare
 

@@ -1,7 +1,16 @@
-package com.example.demoproject;
+package com.example.demoproject.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.example.demoproject.bean.mangabean.CopiaMangaBean;
+import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.controllerapplicativo.AnnuncioControllerApplicativo;
+import com.example.demoproject.dao.CopiaMangaDAO;
+import com.example.demoproject.dao.MangaDAO;
+import com.example.demoproject.model.CopiaMangaCollectionModel;
+import com.example.demoproject.model.CopiaMangaModel;
+import com.example.demoproject.model.UtenteModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,9 +48,9 @@ public void userAnnunce(){
     AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
   //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
-    CopiaMangaBean copiaMangaBean= new CopiaMangaBean();
-    MangaDAO mangaDAO = new MangaDAO();
+    CopiaMangaBean copiaMangaBean= new CopiaMangaBean();//
     CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
+
     UtenteModel utenteModel = new UtenteModel();
     utenteModel.setIdUtente(utenteBean.getIdUtente());
     //
@@ -49,15 +58,10 @@ public void userAnnunce(){
     //OTTENGO LA LISTA DI COPIE MANGA PER L'UTENTE
     CopiaMangaCollectionModel copieManga = copiaMangaDAO.getCopieMangaListByUserID(utenteModel);
 
-    CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();
+    CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();//MI RIDA' IL PRIMO MANGA, LO DOVRO' CAMBIARE CON SCENEBUILDER
     copiaMangaBean.setIdManga(primaCopiaManga.getIdManga());
 
 
-
-
-    System.out.println("AO " + utenteBean.getIdUtente());
-    
-    System.out.println("AOOO " + copiaMangaBean.getIdManga());
 
     boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
     if (esitoAnnuncio) {

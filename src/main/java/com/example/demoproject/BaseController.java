@@ -1,5 +1,6 @@
 package com.example.demoproject;
 
+import com.example.demoproject.bean.utentebean.UtenteBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

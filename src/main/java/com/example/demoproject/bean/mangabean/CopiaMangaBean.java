@@ -1,4 +1,4 @@
-package com.example.demoproject;
+package com.example.demoproject.bean.mangabean;
 
 import java.util.Date;
 

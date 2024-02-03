@@ -1,4 +1,4 @@
-package com.example.demoproject;
+package com.example.demoproject.bean.mangabean;
 
 
 //RAPPRESENTA IL BEAN PER LA SERIE MANGA ( BERSERK, JOJO) MA I SUOI USI SONO PER ORA SBAGLIATI, DOVREBBE ESSERE MODEL

@@ -1,4 +1,4 @@
-package com.example.demoproject;
+package com.example.demoproject.bean.utentebean;
 
 import java.util.Random;
 

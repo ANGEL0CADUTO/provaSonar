@@ -1,4 +1,9 @@
-package com.example.demoproject;
+package com.example.demoproject.controllerapplicativo;
+
+import com.example.demoproject.model.CopiaMangaCollectionModel;
+import com.example.demoproject.dao.CopiaMangaDAO;
+import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.model.UtenteModel;
 
 public class LibreriaUtenteControllerApplicativo {
 

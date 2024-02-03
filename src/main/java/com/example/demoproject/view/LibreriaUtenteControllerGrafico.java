@@ -1,6 +1,12 @@
-package com.example.demoproject;
+package com.example.demoproject.view;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import com.example.demoproject.*;
+import com.example.demoproject.bean.mangabean.CopiaMangaBean;
+import com.example.demoproject.bean.mangabean.MangaBean;
+import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.controllerapplicativo.LibreriaUtenteControllerApplicativo;
+import com.example.demoproject.model.CopiaMangaCollectionModel;
+import com.example.demoproject.model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.TableCell;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -28,6 +35,10 @@ public class LibreriaUtenteControllerGrafico  {
     private TableColumn<CopiaMangaModel, String> provaColumn;
     @FXML
     private TableColumn<CopiaMangaModel, String> nomeColumn;
+
+    //COLONNA PER IL TASTO AUTOCREATO
+    @FXML
+    private TableColumn<CopiaMangaModel, String> annuncioColumn;
 
     @FXML
     private Button homePageButton;
@@ -67,6 +78,37 @@ public class LibreriaUtenteControllerGrafico  {
         idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdManga())));
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(myDateFormat.format(cellData.getValue().getDataAcquisto())));
+       //COLONNA AZIONI CON BOTTONE
+
+        /*annuncioColumn.setCellFactory(param -> new TableCell<>() {
+            private final Button bottone = new Button("Prendi ID");
+
+            {
+                // Gestisci l'evento di clic del bottone
+                bottone.setOnAction(event -> {
+                  CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
+                  CopiaMangaBean copiaMangaBean1 = new CopiaMangaBean();
+                  copiaMangaBean1.setIdManga(copiaMangaModel.getIdManga());
+
+                    AnnuncioControllerGrafico an = new AnnuncioControllerGrafico();
+                    an.userAnnunce();//copiaMangaBean1 lo dovrò passare qua
+                });
+            }
+
+            @Override  // DA AGGIUSTARE SENNO GLIE MENO
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+
+                // Verifica se la riga è vuota
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(bottone);
+                }
+            }
+        });*/
+
+
         table.getItems().addAll(collezione.getListaManga());
     }
 

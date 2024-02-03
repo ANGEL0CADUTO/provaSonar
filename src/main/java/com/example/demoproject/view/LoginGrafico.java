@@ -1,6 +1,8 @@
-package com.example.demoproject;
+package com.example.demoproject.view;
 
 
+import com.example.demoproject.controllerapplicativo.LoginApplicativo;
+import com.example.demoproject.bean.utentebean.UtenteBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

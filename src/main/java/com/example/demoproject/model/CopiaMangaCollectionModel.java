@@ -1,4 +1,6 @@
-package com.example.demoproject;
+package com.example.demoproject.model;
+
+import com.example.demoproject.model.CopiaMangaModel;
 
 import java.util.ArrayList;
 

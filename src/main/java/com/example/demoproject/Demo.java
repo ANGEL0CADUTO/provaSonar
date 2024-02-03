@@ -1,5 +1,7 @@
 package com.example.demoproject;
 
+import com.example.demoproject.bean.utentebean.UtenteBean;
+import com.example.demoproject.view.LoginGrafico;
 import javafx.application.Application;
 
 import javafx.fxml.FXML;
