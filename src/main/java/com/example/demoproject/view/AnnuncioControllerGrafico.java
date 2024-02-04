@@ -38,7 +38,7 @@ public class AnnuncioControllerGrafico {
     public void setCopiaMangaBean(CopiaMangaBean mangaBean) {this.mangaBean = mangaBean;}
 
 
-public void userAnnunce(){
+public void userAnnunce(CopiaMangaBean copiaMangaBean){
      int prezzo= 12;
     Date dataCorrente = new Date();
     SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -47,18 +47,21 @@ public void userAnnunce(){
     AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
   //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
-    CopiaMangaBean copiaMangaBean= new CopiaMangaBean();//
+   // CopiaMangaBean copiaMangaBean= new CopiaMangaBean();//
+
     CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
 
+    System.out.println("MA POOO " + this.utenteBean.getIdUtente());
+
     UtenteModel utenteModel = new UtenteModel();
-    utenteModel.setIdUtente(utenteBean.getIdUtente());
+    utenteModel.setIdUtente(this.utenteBean.getIdUtente());
     //
 
     //OTTENGO LA LISTA DI COPIE MANGA PER L'UTENTE
-    CopiaMangaCollectionModel copieManga = copiaMangaDAO.getCopieMangaListByUserID(utenteModel);
+    //CopiaMangaCollectionModel copieManga = copiaMangaDAO.getCopieMangaListByUserID(utenteModel);
 
-    CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();//MI RIDA' IL PRIMO MANGA, LO DOVRO' CAMBIARE CON SCENEBUILDER
-    copiaMangaBean.setIdManga(primaCopiaManga.getIdManga());
+   // CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();//MI RIDA' IL PRIMO MANGA, LO DOVRO' CAMBIARE CON SCENEBUILDER
+    //copiaMangaBean.setIdManga(primaCopiaManga.getIdManga());
 
 
 

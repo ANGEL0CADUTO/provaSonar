@@ -15,14 +15,7 @@ public class AnnuncioDAO {
         String query = "INSERT INTO mangaink.annuncio (copiaMangaID, prezzoDiVendita ,statoAnnuncio,dataAnnuncio ) VALUES (?, ?, ?, ?)";
         Connection conn = connection.connection();
 
-      // CopiaMangaModel mangaModel = new CopiaMangaModel();
-      /*  CopiaMangaDAO dao =new CopiaMangaDAO();
-        UtenteModel utenteModel = new UtenteModel();
-        utenteModel.setIdUtente(utenteBean.getIdUtente());
-        MangaBean mangaBean = new MangaBean();*/
 
-       // mangaModel.setIdCopiaManga(1);
-        //dao.getCopieMangaListByUserID(utenteModel);
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 

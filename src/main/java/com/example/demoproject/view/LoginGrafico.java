@@ -73,6 +73,8 @@ public class LoginGrafico {
                 //Istanzio il rafico e chiamo la funzione per settare il bean(nella quale viene istanziata anche la tabella)
                 LibreriaUtenteControllerGrafico libreriaUtenteController = loader.getController();
                 libreriaUtenteController.setUtenteBean(utente);
+
+
                 /*loader.setControllerFactory(c -> { LibreriaUtenteControllerGrafico controller = new LibreriaUtenteControllerGrafico(utente);
                 controller.initializeData();
                 return controller;

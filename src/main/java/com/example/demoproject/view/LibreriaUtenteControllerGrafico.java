@@ -77,8 +77,8 @@ public class LibreriaUtenteControllerGrafico  {
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(myDateFormat.format(cellData.getValue().getDataAcquisto())));
        //COLONNA AZIONI CON BOTTONE
 
-        /*annuncioColumn.setCellFactory(param -> new TableCell<>() {
-            private final Button bottone = new Button("Prendi ID");
+        annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
+            private final Button bottone = new Button("Vendi");
 
             {
                 // Gestisci l'evento di clic del bottone
@@ -87,13 +87,16 @@ public class LibreriaUtenteControllerGrafico  {
                   CopiaMangaBean copiaMangaBean1 = new CopiaMangaBean();
                   copiaMangaBean1.setIdManga(copiaMangaModel.getIdManga());
 
+                    System.out.println("METTI IN VENDITA " +copiaMangaBean1.getIdManga());
+
+
                     AnnuncioControllerGrafico an = new AnnuncioControllerGrafico();
-                    an.userAnnunce();//copiaMangaBean1 lo dovrò passare qua
+                    an.userAnnunce(copiaMangaBean1);//copiaMangaBean1 lo dovrò passare qua
                 });
             }
 
             @Override  // DA AGGIUSTARE SENNO GLIE MENO
-            protected void updateItem(Void item, boolean empty) {
+            protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
 
                 // Verifica se la riga è vuota
@@ -103,7 +106,7 @@ public class LibreriaUtenteControllerGrafico  {
                     setGraphic(bottone);
                 }
             }
-        });*/
+        });
 
 
         table.getItems().addAll(collezione.getListaManga());
