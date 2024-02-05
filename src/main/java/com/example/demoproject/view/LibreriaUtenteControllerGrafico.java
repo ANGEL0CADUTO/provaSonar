@@ -90,12 +90,33 @@ public class LibreriaUtenteControllerGrafico  {
                     System.out.println("METTI IN VENDITA " +copiaMangaBean1.getIdManga());
 
 
-                    AnnuncioControllerGrafico an = new AnnuncioControllerGrafico();
-                    an.userAnnunce(copiaMangaBean1);//copiaMangaBean1 lo dovrò passare qua
+
+                    try {
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/InserisciAnnuncio.fxml"));
+                        Parent root = loader.load();
+
+                        AnnuncioControllerGrafico controller = loader.getController();
+                        controller.setUtenteBean(utenteBean);
+                        controller.setCopiaMangaBean(copiaMangaBean1);
+
+
+
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) bottone.getScene().getWindow();
+                        stage.setScene(scene);
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                   /* AnnuncioControllerGrafico an = new AnnuncioControllerGrafico();
+                    an.userAnnunce();//copiaMangaBean1 lo dovrò passare qua*/
                 });
             }
 
-            @Override  // DA AGGIUSTARE SENNO GLIE MENO
+            @Override  //
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
 
@@ -120,6 +141,7 @@ public class LibreriaUtenteControllerGrafico  {
 
         Demo controller = loader.getController();
         controller.setUtenteBean(utenteBean);
+
 
 
 
@@ -157,7 +179,7 @@ public class LibreriaUtenteControllerGrafico  {
 
         AnnuncioControllerGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
         controller.setUtenteBean(utenteBean);
-       // controller.setCopiaMangaBean(copiaMangaBean);NON SO SE MI SERVE
+        controller.setCopiaMangaBean(copiaMangaBean);//FORSE DA LEVARE
 
 
 

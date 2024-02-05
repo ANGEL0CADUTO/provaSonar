@@ -1,5 +1,6 @@
 package com.example.demoproject.view;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,41 +31,49 @@ public class AnnuncioControllerGrafico {
 
     @FXML
     private Button inserisciAnnuncio;
+
+    @FXML
+    private TextField inserisciPrezzo;
+
+    @FXML
+    private Label wrongPrice;
+
+    BigDecimal prezzo;
     private UtenteBean utenteBean;
 
-    private CopiaMangaBean mangaBean;
+    private CopiaMangaBean copiaMangaBean;
 
     public void setUtenteBean(UtenteBean utenteBean) {
         this.utenteBean = utenteBean;
     }
-    public void setCopiaMangaBean(CopiaMangaBean mangaBean) {this.mangaBean = mangaBean;}
+    public void setCopiaMangaBean(CopiaMangaBean copiamangaBean) {this.copiaMangaBean = copiamangaBean;}
+
+public void userAnnunce(){
+
+    if(inserisciPrezzo.getText().isEmpty()){wrongPrice.setText("Inserisci un prezzo");}
+    else {
+        try {
+            prezzo = BigDecimal.valueOf(Integer.parseInt(String.valueOf(inserisciPrezzo)));
+        } catch (NumberFormatException ex) {
+            wrongPrice.setText("Inserisci un prezzo valido");
+        }
+    }
 
 
-public void userAnnunce(CopiaMangaBean copiaMangaBean){
-     int prezzo= 12;
+
     Date dataCorrente = new Date();
     SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String dataFormattata = formatoData.format(dataCorrente);
-
     AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
   //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
-   // CopiaMangaBean copiaMangaBean= new CopiaMangaBean();//
 
     CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
 
-    System.out.println("MA POOO " + this.utenteBean.getIdUtente());
 
     UtenteModel utenteModel = new UtenteModel();
-    utenteModel.setIdUtente(this.utenteBean.getIdUtente());
+    utenteModel.setIdUtente(utenteBean.getIdUtente());
     //
-
-    //OTTENGO LA LISTA DI COPIE MANGA PER L'UTENTE
-    //CopiaMangaCollectionModel copieManga = copiaMangaDAO.getCopieMangaListByUserID(utenteModel);
-
-   // CopiaMangaModel primaCopiaManga = copieManga.getListaManga().getFirst();//MI RIDA' IL PRIMO MANGA, LO DOVRO' CAMBIARE CON SCENEBUILDER
-    //copiaMangaBean.setIdManga(primaCopiaManga.getIdManga());
-
 
 
     boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);

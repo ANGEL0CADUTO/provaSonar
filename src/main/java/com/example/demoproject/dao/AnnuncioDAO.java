@@ -2,6 +2,7 @@ package com.example.demoproject.dao;
 
 import com.example.demoproject.model.CopiaMangaModel;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import java.util.logging.Logger;
 
 public class AnnuncioDAO {
     private static final Logger logger = Logger.getLogger(AnnuncioDAO.class.getName());
-    public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, int prezzo, String dataFormattata) {//DA MIGLIORARE
+    public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata) {//DA MIGLIORARE
         DBConnection connection = new DBConnection();
         boolean b = false;
         String query = "INSERT INTO mangaink.annuncio (copiaMangaID, prezzoDiVendita ,statoAnnuncio,dataAnnuncio ) VALUES (?, ?, ?, ?)";
