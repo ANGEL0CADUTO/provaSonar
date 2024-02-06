@@ -18,4 +18,19 @@ public class AnnuncioControllerApplicativo {
 
         return creaAnnuncio.addAnnuncio(copiaMangaModel,prezzo,dataFormattata);
     }
+
+    public boolean cercaAnnuncio(CopiaMangaBean copiaMangaBean){
+        AnnuncioDAO creaAnnuncio = new AnnuncioDAO();
+
+        CopiaMangaModel copiaMangaModel1 = new CopiaMangaModel();
+        copiaMangaModel1.setIdCopiaManga(copiaMangaBean.getIdManga());
+
+
+        return creaAnnuncio.isAnnuncioPresente(copiaMangaModel1);
+    }
+
+
+
 }
+
+

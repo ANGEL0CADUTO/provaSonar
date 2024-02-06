@@ -41,7 +41,7 @@ public class LibreriaUtenteControllerGrafico  {
     private Button homePageButton;
 
     @FXML
-    private Button annuncio;
+    private Button cercaManga;
 
     @FXML
     private Button depositaPreleva;
@@ -170,7 +170,8 @@ public class LibreriaUtenteControllerGrafico  {
 
     }
 
-    public void goToAnnuncio() throws IOException {//DA FARE!!!
+    //goToAnnuncio LO FACCIO DIRETTAMENTE DAL TASTO NELLA TABELLA DELLA LIBRERIA
+    /*public void goToAnnuncio() throws IOException {
 
 
 
@@ -185,6 +186,25 @@ public class LibreriaUtenteControllerGrafico  {
 
         Scene scene = new Scene(root);
         Stage stage = (Stage) annuncio.getScene().getWindow();
+        stage.setScene(scene);
+
+    }*/
+
+    public void goToCompra() throws IOException {//DA FARE!!!
+
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/Compra.fxml"));
+        Parent root = loader.load();
+
+        CompraMangaControllerGrafico controller = loader.getController();
+        controller.setUtenteBean(utenteBean);
+       // controller.setCopiaMangaBean(copiaMangaBean);VEDIAMO SE MI SERVE
+
+
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)cercaManga.getScene().getWindow();
         stage.setScene(scene);
 
     }

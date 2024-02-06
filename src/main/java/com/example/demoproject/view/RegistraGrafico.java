@@ -68,18 +68,8 @@ public class RegistraGrafico {
         bean1.setCivico(Integer.parseInt(enteredCap.getText()));
 
 
-//       bean.setEmail("leom@gmail.com");
-//       bean.setPassword("123");
-//        bean.setUsername("le");
-//        bean1.setIndirizzo("via Romolo");
-//        bean1.setCap(00137);
-//        bean1.setCivico(4);
 
-
-
-
-
-    //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO DA AGGIUSTARE
+    //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO (CREDO DI AVERLO GIA RIPARATO RICONTROLLARE)
         boolean esitoRegistra = ra.registra(bean);
         boolean esitoRegistraDati= ra.registraDati(bean1);
         ra.informazioniUtente(bean);

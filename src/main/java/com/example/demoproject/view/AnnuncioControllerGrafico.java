@@ -30,7 +30,7 @@ public class AnnuncioControllerGrafico {
     private Button homePageButton;
 
     @FXML
-    private Button inserisciAnnuncio;
+    private Button inserisciAnnuncio;//LO USO PER CONTROLLARE GLI ANNUNCI
 
     @FXML
     private TextField inserisciPrezzo;
@@ -53,11 +53,12 @@ public void userAnnunce(){
     if(inserisciPrezzo.getText().isEmpty()){wrongPrice.setText("Inserisci un prezzo");}
     else {
         try {
-            prezzo = BigDecimal.valueOf(Integer.parseInt(String.valueOf(inserisciPrezzo)));
+            prezzo = BigDecimal.valueOf(Integer.parseInt(String.valueOf(inserisciPrezzo.getText())));
         } catch (NumberFormatException ex) {
             wrongPrice.setText("Inserisci un prezzo valido");
         }
     }
+
 
 
 
@@ -68,19 +69,24 @@ public void userAnnunce(){
 
   //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
 
-    CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
+    /*CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
 
 
     UtenteModel utenteModel = new UtenteModel();
-    utenteModel.setIdUtente(utenteBean.getIdUtente());
+    utenteModel.setIdUtente(utenteBean.getIdUtente());*/
     //
 
+    boolean esitoRicercaAnuncio= an.cercaAnnuncio(copiaMangaBean);
 
-    boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
+
+    if(esitoRicercaAnuncio){
+        System.out.println("ESISTE GIA' UN ANNUNCIO PER QUESTO MANGA");
+    }else{boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
     if (esitoAnnuncio) {
         System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
     } else {
         System.out.println("L'ANNUNCIO TE LO TIRI IN FACCIA");
+    }
     }
 }
 
