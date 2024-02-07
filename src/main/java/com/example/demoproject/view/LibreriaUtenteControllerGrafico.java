@@ -52,7 +52,6 @@ public class LibreriaUtenteControllerGrafico extends BaseController  {
     }*///NON CREDO MI SERVA
    protected LibreriaUtenteControllerGrafico(UtenteBean utente){
        super(utente);
-
    }
 
 /*
@@ -65,6 +64,7 @@ public class LibreriaUtenteControllerGrafico extends BaseController  {
 
     @FXML
     private void initialize() {
+        System.out.println(utenteBean);
         //L'ho svuotato perchè ho avuto problemi di sincronizzazione(popolare tabella prima ancora di aver preso i dati)
         initializeData();
     }
@@ -162,16 +162,15 @@ public class LibreriaUtenteControllerGrafico extends BaseController  {
 //        Stage stage = (Stage) depositaPreleva.getScene().getWindow();
 //        stage.setScene(scene);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/DepositaEPreleva.fxml"));
+        loader.setControllerFactory(c-> new DepositaEPrelevaGrafico(utenteBean));
         Parent root = loader.load();
-
-         DepositaEPrelevaGrafico controller = loader.getController();//PER FARE IL CAST DEVO USARE TIPI COMPATIBILI
-        controller.setUtenteBean(utenteBean);
-
-
-
         Scene scene = new Scene(root);
-        Stage stage = (Stage) depositaPreleva.getScene().getWindow();
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
         stage.setScene(scene);
+
+
+
+
 
     }
 

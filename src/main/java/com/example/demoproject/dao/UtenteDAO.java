@@ -182,7 +182,7 @@ public class UtenteDAO {
     }
 
     public boolean userPreliev(UtenteBean bean){ //PRELEVAA IL TUO CREDITO
-        DepositaEPrelevaGrafico pr = new DepositaEPrelevaGrafico();
+        //DepositaEPrelevaGrafico pr = new DepositaEPrelevaGrafico();
         Boolean b= false;
         DBConnection connection = new DBConnection();
         String query = "UPDATE mangaink.utente SET credito= credito - ?  \n" +

@@ -31,8 +31,7 @@ public class BaseController {
       void goToHomePage(ActionEvent event) throws IOException {
          //The Home Page button onAction method
          FXMLLoader loader=new FXMLLoader(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
-         loader.setControllerFactory(c -> new Demo());
-
+         loader.setControllerFactory(c -> new Demo(utenteBean));
          Parent root=loader.load();
          myAnchorPane.getChildren().setAll(root);
      }

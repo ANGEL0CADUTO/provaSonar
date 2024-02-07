@@ -35,6 +35,11 @@ public class LoginGrafico {
 
     private UtenteBean utente;
 
+    public LoginGrafico(UtenteBean utenteBean) {
+        this.utente = utenteBean;
+    }
+
+
     public void setUtenteBean(UtenteBean bean){
         this.utente = bean;
     }
@@ -49,14 +54,10 @@ public class LoginGrafico {
         utente.setPassword("1234");
        /* utente.setEmail("Angelo@gmail.com");
         utente.setPassword("1234");*/
-//          utente.setEmail(enteredEmail.getText());
-//          utente.setPassword(enteredPassword.getText());
 
         boolean esitoLogin = lg.login(utente);
 
         if(esitoLogin){
-            //UtenteBean utenteLoggato = new UtenteBean(EnteredEmail); VOGLIO PASSARE STO CAZZO DI BEAN PER MANTENERE LA SESSIONE
-            //DOVRO IMPLEMENTARE UNA FUNZIONA CHE DALLA EMAIL MI PESCA QUELLO DI CUI HO BISOGNO
 
             wrongLogin.setText("Hai effettuato l'accesso!");
             utente.setLogged(true);
@@ -65,15 +66,7 @@ public class LoginGrafico {
             //cambio view ((LO FACCIO COL TRY CATCH MA DEVO CAPIRE SE E BENE O MALE))
             try{
 
-                /*
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
 
-
-                Parent root = loader.load();
-                //Istanzio il rafico e chiamo la funzione per settare il bean(nella quale viene istanziata anche la tabella)
-                LibreriaUtenteControllerGrafico libreriaUtenteController = loader.getController();
-                libreriaUtenteController.setUtenteBean(utente);
-                */
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
 
                 loader.setControllerFactory(c-> new LibreriaUtenteControllerGrafico(utente));
@@ -88,20 +81,8 @@ public class LoginGrafico {
 
 
 
-                /*loader.setControllerFactory(c -> { LibreriaUtenteControllerGrafico controller = new LibreriaUtenteControllerGrafico(utente);
-                controller.initializeData();
-                return controller;
-                });*/
 
 
-
-/*
-
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) login.getScene().getWindow();
-                stage.setScene(scene);
-
- */
 
 
             } catch(IOException e) {

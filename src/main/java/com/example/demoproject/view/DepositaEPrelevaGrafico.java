@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class DepositaEPrelevaGrafico {
+public class DepositaEPrelevaGrafico extends BaseController {
 
     @FXML
     private TextField deposita;
@@ -27,14 +27,15 @@ public class DepositaEPrelevaGrafico {
     @FXML
     private Button prelevaCredito;
 
-    @FXML
-    private Button homePageButton;
-    private UtenteBean utenteBean;
 
-    //CREARE UN METODO SET UTENTE BEAN
-    public void setUtenteBean(UtenteBean utenteBean) {
-        this.utenteBean = utenteBean;
+
+
+    protected DepositaEPrelevaGrafico(UtenteBean bean) {
+        super(bean);
+        System.out.println("Istanziato correttamente il bean N: " + utenteBean);
     }
+
+
 
 
 
@@ -46,12 +47,15 @@ public class DepositaEPrelevaGrafico {
 //    N.setUtenteBean(utenteBean);
 //    }
 
+    /*
     public void goToHomePage() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);
     }
+    */
+
 
     @FXML
     public void userDeposita() {

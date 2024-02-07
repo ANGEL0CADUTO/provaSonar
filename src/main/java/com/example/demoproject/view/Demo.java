@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class Demo extends Application {
+public class Demo extends BaseController {
 
     @FXML
     private Button loginHomePage;
@@ -31,52 +31,48 @@ public class Demo extends Application {
     @FXML
     private Button logoutHomePage;
 
-    private UtenteBean utente;
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
-        //Group root = new Group(); //Group rappresenta un gruppo di nodi grafici
-        Scene scene = new Scene(root, Color.BLUE);//CREO LA SCENA
 
 
 
-        primaryStage.setResizable(false);
-        primaryStage.setTitle("MangaInk"); //SETTO IL TITOLO APP
-        primaryStage.setScene(scene);//SETTO LA SCENA NELLO STAGE
-        primaryStage.show();//MOSTRO LO STAGE
 
-        //Creo il bean che si passeranno tutti i grafici per mantenere la sessione
+    protected Demo(UtenteBean bean) {
+        super(bean);
+        System.out.println("Controller Demo istanziato con UtenteBean: " + bean);
 
+    }
+
+
+    public void initializeData(){
+        if(utenteBean == null){
+            System.out.println("porcatroia");
+            utenteBean = new UtenteBean();
+        }
 
     }
 
     public void initialize(){
-        if(utente == null){
-            utente = new UtenteBean();
-        }
+        initializeData();
+        System.out.println(utenteBean);
 
     }
 
     public void setUtenteBean(UtenteBean bean){
-        this.utente= bean;
+        this.utenteBean= bean;
     }
 
     public void changeScene() throws IOException {
 
-        if(utente.isLogged()){
+        if(utenteBean.isLogged()){
             System.out.println("sei già loggato");
         }
         else{
-            utente = new UtenteBean();
+
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/Login.fxml"));
+            loader.setControllerFactory(c -> new LoginGrafico(utenteBean));
+
+
             Parent root = loader.load();
-            LoginGrafico controller = loader.getController();
-            controller.setUtenteBean(utente);
-
-
             Scene scene = new Scene(root);
             Stage stage = (Stage) loginHomePage.getScene().getWindow();
             stage.setScene(scene);
@@ -122,7 +118,7 @@ public class Demo extends Application {
         stage.setScene(scene);*/
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
 
-        loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
+        loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utenteBean));
 
         Parent root = loader.load();
 
@@ -139,13 +135,7 @@ public class Demo extends Application {
 
     //da testare se funziona anche post login
     public void logout(){
-        utente.setLogged(false);
-    }
-
-
-
-    public static void main(String[] args) {
-        launch(args);
+        utenteBean.setLogged(false);
     }
 
 
