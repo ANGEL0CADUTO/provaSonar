@@ -12,7 +12,7 @@ public class DBConnection {
     public Connection connection(){
         String jdbcUrl = "jdbc:mysql://localhost:3306/mangaink";
         String username = "root";
-        String password = "Ingegneria&1";//BUONA PRATICA NON MOSTRARE LA PASSWORD DB IN CHIARO(dichiaro variabile d'ambiente WINDOWS)
+        String password = "root";//BUONA PRATICA NON MOSTRARE LA PASSWORD DB IN CHIARO(dichiaro variabile d'ambiente WINDOWS)
         Connection conn = null;
 
     try{

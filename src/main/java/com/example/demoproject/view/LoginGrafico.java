@@ -60,12 +60,12 @@ public class LoginGrafico {
 
             wrongLogin.setText("Hai effettuato l'accesso!");
             utente.setLogged(true);
-            System.out.println(utente.getIdUtente() + " " + utente.getUsername()+ " " + utente.getPassword()+ " " + utente.getEmail()+ " " + utente.getCredito());
+            System.out.println("LOGIN GRAFICO : " + utente.getIdUtente() + " " + utente.getUsername()+ " " + utente.getPassword()+ " " + utente.getEmail()+ " " + utente.getCredito());
 
             //cambio view ((LO FACCIO COL TRY CATCH MA DEVO CAPIRE SE E BENE O MALE))
             try{
 
-
+                /*
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
 
 
@@ -73,6 +73,19 @@ public class LoginGrafico {
                 //Istanzio il rafico e chiamo la funzione per settare il bean(nella quale viene istanziata anche la tabella)
                 LibreriaUtenteControllerGrafico libreriaUtenteController = loader.getController();
                 libreriaUtenteController.setUtenteBean(utente);
+                */
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/LibreriaUtente.fxml"));
+
+                loader.setControllerFactory(c-> new LibreriaUtenteControllerGrafico(utente));
+
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+
+                Stage stage = (Stage) login.getScene().getWindow();
+
+                stage.setScene(scene);
+
 
 
                 /*loader.setControllerFactory(c -> { LibreriaUtenteControllerGrafico controller = new LibreriaUtenteControllerGrafico(utente);
@@ -82,11 +95,13 @@ public class LoginGrafico {
 
 
 
-
+/*
 
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) login.getScene().getWindow();
                 stage.setScene(scene);
+
+ */
 
 
             } catch(IOException e) {

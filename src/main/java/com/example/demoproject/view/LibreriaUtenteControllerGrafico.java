@@ -14,11 +14,12 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
-public class LibreriaUtenteControllerGrafico  {
+public class LibreriaUtenteControllerGrafico extends BaseController  {
 
-    private UtenteBean utenteBean;
+
 
     private CopiaMangaBean copiaMangaBean;//MANGA
 
@@ -37,8 +38,8 @@ public class LibreriaUtenteControllerGrafico  {
     @FXML
     private TableColumn<CopiaMangaModel, String> annuncioColumn;
 
-    @FXML
-    private Button homePageButton;
+
+
 
     @FXML
     private Button cercaManga;
@@ -49,21 +50,23 @@ public class LibreriaUtenteControllerGrafico  {
    /* public void setCopiaMangaBean(CopiaMangaBean mangaBean) {
         this.copiaMangaBean = mangaBean;
     }*///NON CREDO MI SERVA
+   protected LibreriaUtenteControllerGrafico(UtenteBean utente){
+       super(utente);
 
+   }
 
+/*
     public void setUtenteBean(UtenteBean bean) {
         this.utenteBean = bean;
         initializeData(); //Devo istanziarne subito la tabella per evitare problemi di sincronizzazione
     }
-/*
-    protected LibreriaUtenteControllerGrafico(UtenteBean bean){
-        super(bean);
-    }
 */
+
+
     @FXML
     private void initialize() {
         //L'ho svuotato perchè ho avuto problemi di sincronizzazione(popolare tabella prima ancora di aver preso i dati)
-        //initializeData();
+        initializeData();
     }
 
 
@@ -76,6 +79,8 @@ public class LibreriaUtenteControllerGrafico  {
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(myDateFormat.format(cellData.getValue().getDataAcquisto())));
        //COLONNA AZIONI CON BOTTONE
+
+        System.out.println("LibreriaUtenteControllerGrafico : "+ utenteBean.getIdUtente() + " " + utenteBean.getUsername()+ " " + utenteBean.getPassword()+ " " + utenteBean.getEmail()+ " " + utenteBean.getCredito());
 
         annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
             private final Button bottone = new Button("Vendi");
@@ -133,7 +138,7 @@ public class LibreriaUtenteControllerGrafico  {
         table.getItems().addAll(collezione.getListaManga());
     }
 
-
+/*
     public void goToHomePage() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
@@ -146,10 +151,10 @@ public class LibreriaUtenteControllerGrafico  {
 
 
         Scene scene = new Scene(root);
-        Stage stage = (Stage) homePageButton.getScene().getWindow();
+        Stage stage = (Stage) homeButton.getScene().getWindow();
         stage.setScene(scene);
 
-    }
+    }*/
 
     public void goToDeposit() throws IOException {
 //        Parent root = FXMLLoader.load(getClass().getResource("DepositaEPreleva.fxml"));

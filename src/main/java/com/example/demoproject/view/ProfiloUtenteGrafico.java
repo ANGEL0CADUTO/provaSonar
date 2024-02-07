@@ -1,8 +1,11 @@
 package com.example.demoproject.view;
 
 import com.example.demoproject.bean.UtenteBean;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 public class ProfiloUtenteGrafico extends BaseController {
 

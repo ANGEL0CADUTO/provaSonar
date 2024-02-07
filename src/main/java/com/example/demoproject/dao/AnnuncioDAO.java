@@ -1,6 +1,6 @@
 package com.example.demoproject.dao;
 
-import com.example.demoproject.bean.CopiaMangaBean;
+
 import com.example.demoproject.model.CopiaMangaModel;
 
 import java.math.BigDecimal;

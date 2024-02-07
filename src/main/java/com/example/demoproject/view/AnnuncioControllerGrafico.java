@@ -7,10 +7,7 @@ import java.util.Date;
 import com.example.demoproject.bean.CopiaMangaBean;
 import com.example.demoproject.bean.UtenteBean;
 import com.example.demoproject.controllerapplicativo.AnnuncioControllerApplicativo;
-import com.example.demoproject.dao.CopiaMangaDAO;
-import com.example.demoproject.model.CopiaMangaCollectionModel;
-import com.example.demoproject.model.CopiaMangaModel;
-import com.example.demoproject.model.UtenteModel;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

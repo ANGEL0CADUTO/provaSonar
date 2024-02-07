@@ -108,10 +108,21 @@ public class Demo extends Application {
 
     public void goToProfiloUtente() throws IOException{
 
-        //carico l'interfaccia utente
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
+       /*carico l'interfaccia utente
+       // FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
 
      //   loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
+
+        // Parent root = loader.load();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) registratiHomePage.getScene().getWindow();
+
+        stage.setScene(scene);*/
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/ProfiloUtente.fxml"));
+
+        loader.setControllerFactory(c-> new ProfiloUtenteGrafico(utente));
 
         Parent root = loader.load();
 
