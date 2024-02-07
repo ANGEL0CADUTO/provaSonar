@@ -1,13 +1,17 @@
 package com.example.demoproject.dao;
 
 
+import com.example.demoproject.model.AnnunciModel;
+import com.example.demoproject.model.CopiaMangaCollectionModel;
 import com.example.demoproject.model.CopiaMangaModel;
+import com.example.demoproject.model.UtenteModel;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class AnnuncioDAO {
@@ -39,7 +43,43 @@ public class AnnuncioDAO {
     }
 
 
+    public AnnunciModel getAnnunci(){
+        DBConnection connection = new DBConnection();
 
+        String query = "SELECT utente.username, manga.nome, annuncio.prezzoDiVendita " +
+                "FROM annuncio " +
+                "JOIN copiamanga ON copiamanga.idCopiaManga = annuncio.copiaMangaID " +
+                "JOIN manga ON manga.idManga = copiamanga.mangaID " +
+                "JOIN utente ON copiamanga.utenteID = utente.idUtente;";
+
+
+        AnnunciModel annuncio = new AnnunciModel();
+
+        Connection conn = connection.connection();
+
+        try ( PreparedStatement st = conn.prepareStatement(query)) {
+
+
+            try(ResultSet rs = st.executeQuery()){
+
+                while(rs.next()){
+                    Object[] annuncioArray = new Object[3];
+                    annuncioArray[0] = rs.getString("username");
+                    annuncioArray[1] = rs.getString("nome");
+                    annuncioArray[2] = rs.getInt("prezzoDiVendita");
+                    annuncio.getListaDiAnnunci().add(annuncioArray);
+
+                }
+
+            }
+
+        } catch (SQLException e) {
+            logger.severe("E' stata lanciata eccezione in getAnnunci in AnnuncioDao" + " " + e.getMessage());
+
+        }
+      //  System.out.println("BECCA STO ANNUNCIO " +  annuncio);
+        return annuncio ;
+    }
 
     public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata) {//DA MIGLIORARE
         DBConnection connection = new DBConnection();
