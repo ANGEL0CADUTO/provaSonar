@@ -1,25 +1,32 @@
-module com.example.demoproject {
+module logic {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
 
 
-    opens com.example.demoproject to javafx.fxml;
-   // exports com.example.demoproject;
-    exports com.example.demoproject.adapter;
-    opens com.example.demoproject.adapter to javafx.fxml;
-    exports com.example.demoproject.view;
-    opens com.example.demoproject.view to javafx.fxml;
-    exports com.example.demoproject.controllerapplicativo;
-    opens com.example.demoproject.controllerapplicativo to javafx.fxml;
-    exports com.example.demoproject.model;
-    opens com.example.demoproject.model to javafx.fxml;
-    exports com.example.demoproject.bean;
-    opens com.example.demoproject.bean to javafx.fxml;
-//    exports com.example.demoproject.bean.utentebean;
-//    opens com.example.demoproject.bean.utentebean to javafx.fxml;
-//    exports com.example.demoproject.bean.mangabean;
-//    opens com.example.demoproject.bean.mangabean to javafx.fxml;
-    exports com.example.demoproject.dao;
-    opens com.example.demoproject.dao to javafx.fxml;
+    exports adapter;
+    opens adapter to javafx.fxml;
+
+    exports view;
+    opens view to javafx.fxml;
+
+    exports controllerapplicativo;
+    opens controllerapplicativo to javafx.fxml;
+
+    exports model;
+    opens model to javafx.fxml;
+
+    exports bean;
+    opens bean to javafx.fxml;
+
+    // exports per i pacchetti specifici, se necessario
+    // exports bean.utentebean;
+    // opens bean.utentebean to javafx.fxml;
+    // exports bean.mangabean;
+    // opens bean.mangabean to javafx.fxml;
+
+    exports dao;
+    opens dao to javafx.fxml;
+
+
 }
