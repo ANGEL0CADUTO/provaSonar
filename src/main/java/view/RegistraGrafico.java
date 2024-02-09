@@ -75,11 +75,12 @@ public class RegistraGrafico  extends BaseController{
 
             // CAMBIO SCENA E VADO ALLA LIBRERIA UTENTE SOLO DOPO AVER EFFETTUATO LA REGISTRAZIONE
 
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            loader.setControllerFactory(c -> new Demo(bean));
+            loader.setControllerFactory(c-> new Demo(utenteBean));
             Parent root = loader.load();
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
             Scene scene = new Scene(root);
+            Stage stage = (Stage) registra.getScene().getWindow();
             stage.setScene(scene);
         }
         else{wrongSignUp.setText("Devi inserire tutti i campi");}

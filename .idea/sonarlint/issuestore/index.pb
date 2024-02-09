@@ -39,3 +39,5 @@ j
 Q.idea/sonarlint/securityhotspotstore/c/b/cbc2ba71d2ff793fb01b032fa5039c9f77544cba,4\3\430b28188b2f51a2e99222f6ec5805d11ae5fa68
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+T
+$src/main/java/view/LoginGrafico.java,3\1\31233c33232700ac43d13dcad3d8bf3d1cc3105e
