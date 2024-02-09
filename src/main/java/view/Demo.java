@@ -2,6 +2,7 @@ package view;
 
 import bean.UtenteBean;
 
+import dao.OffertaDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
+import model.OffertaModel;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Demo extends UserGuiController {
@@ -84,6 +88,18 @@ public class Demo extends UserGuiController {
             Scene scene = new Scene(root);
             Stage stage = (Stage) loginHomePage.getScene().getWindow();
             stage.setScene(scene);
+
+            OffertaDAO prova = new OffertaDAO();
+            OffertaModel offerta = new OffertaModel();
+            offerta.setAnnuncioID(1);
+            offerta.setOffertaPrezzo(4.2);
+            offerta.setUtenteOfferenteID(1);
+
+            Date dataCorrente = new Date();
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dataFormattata = formatoData.format(dataCorrente);
+            offerta.setDataOfferta(dataFormattata);
+            prova.insertOfferta(offerta);
 
         }
 

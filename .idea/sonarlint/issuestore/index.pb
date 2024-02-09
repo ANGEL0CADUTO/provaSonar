@@ -41,3 +41,25 @@ Q.idea/sonarlint/securityhotspotstore/c/b/cbc2ba71d2ff793fb01b032fa5039c9f77544c
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 T
 $src/main/java/view/LoginGrafico.java,3\1\31233c33232700ac43d13dcad3d8bf3d1cc3105e
+Q
+!src/main/java/dao/OffertaDAO.java,1\1\11030da5cd055881ccf3e51a510e84671d0d4038
+O
+src/main/java/dao/MangaDAO.java,1\6\16f5f1739e8f00adc8d1de7b184866a21c7f973a
+U
+%src/main/java/model/offertaModel.java,3\c\3c3b04252e4a0d33582003b9f1fd9a52c255a2a0
+U
+%src/main/java/model/OffertaModel.java,c\e\ceb15c894c3fbd929fa5e83a37851cf7432d7256
+S
+#src/main/java/bean/offertaBean.java,0\2\024fce70cb9d237824fa4c8a7f5e2dafcea99839
+S
+#src/main/java/bean/OffertaBean.java,9\9\9998345742cf839d04a4b37e0d09ac675b7490b0
+Q
+!src/main/java/bean/MangaBean.java,d\9\d98b9117c60d35626370ed318272b02c29db4861
+R
+"src/main/java/dao/AnnuncioDAO.java,2\9\29590cbedf4fdb63e074ac8eea6ce8d1852571c2
+U
+%src/main/java/model/AnnunciModel.java,6\3\6375f5172afd99b323d30f8778b388479d564468
+v
+Fsrc/main/java/controllerapplicativo/AnnuncioControllerApplicativo.java,b\d\bd39dddcf6e59b70171c131d06ab4dd75637dfec
+X
+(src/main/java/model/CopiaMangaModel.java,5\2\5240591593bdb9cecec4de5c12d80df284fd2bc3
