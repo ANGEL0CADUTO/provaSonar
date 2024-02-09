@@ -84,7 +84,7 @@ public class RegistraGrafico {
             // CAMBIO SCENA E VADO ALLA LIBRERIA UTENTE SOLO DOPO AVER EFFETTUATO LA REGISTRAZIONE
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            loader.setControllerFactory(c -> new CompraMangaControllerGrafico(bean));
+            loader.setControllerFactory(c -> new Demo(bean));
             Parent root = loader.load();
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
             Scene scene = new Scene(root);
