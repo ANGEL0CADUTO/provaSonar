@@ -96,9 +96,13 @@ public class Demo extends UserGuiController {
     }
 
     public void registrazione() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Registra.fxml"));
+        loader.setControllerFactory(c -> new RegistraGrafico(utenteBean));
+        Parent root = loader.load();
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
         Scene scene = new Scene(root);
-        Stage stage = (Stage) registratiHomePage.getScene().getWindow();
         stage.setScene(scene);
     }
 

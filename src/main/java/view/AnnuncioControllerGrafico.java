@@ -95,7 +95,7 @@ public void userAnnunce(){
 
 
     public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);

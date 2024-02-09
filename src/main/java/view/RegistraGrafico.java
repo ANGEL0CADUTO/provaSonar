@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegistraGrafico {
+public class RegistraGrafico  extends BaseController{
 
     @FXML
     private Button registra;
@@ -44,18 +44,10 @@ public class RegistraGrafico {
 
     @FXML
     private Label wrongSignUp;
-    @FXML
-    private AnchorPane myAnchorPane;
 
-
-
-    public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/HomePage.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) home.getScene().getWindow();
-        stage.setScene(scene);
+    protected RegistraGrafico(UtenteBean bean) {
+        super(bean);
     }
-
 
 
     public void userRegistra() throws IOException {
