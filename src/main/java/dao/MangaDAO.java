@@ -13,12 +13,13 @@ public class MangaDAO {
     private static final Logger logger = Logger.getLogger(MangaDAO.class.getName());
 
     public MangaBean getMangaByIDManga(int id){
-        DBConnection connection = new DBConnection();
+
         MangaBean bean =  new MangaBean();
         String query = "SELECT * FROM mangaink.manga WHERE idManga = ?"; //BISOGNA CREARE UN FILE DI CONFIGURAZIONE
         // PER DISACCOPIARE LE INFO DI CONFIGURAZIONE DEL DB, AD ESEMPIO IL NOME DEL DB, NON DEVE ESSERE HARDCODED NELL'APPLICAZIONE
 
-        Connection conn = connection.connection();
+        Connection conn = DBConnection.getIstance().connection();
+
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
@@ -45,10 +46,7 @@ public class MangaDAO {
         } catch (SQLException e) {
             logger.severe("E' stata lanciata la exception nella searchUser in mangaDAO" + e.getMessage());
 
-        } finally {
-            connection.close(conn);  // Chiudi la connessione nel blocco finally
         }
-
         return bean;
     }
 

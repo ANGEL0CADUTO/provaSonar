@@ -59,7 +59,7 @@ public class LoginGrafico extends UserGuiController {
             wrongLogin.setText("Hai effettuato l'accesso!");
             utenteBean.setLogged(true);
             System.out.println("LOGIN GRAFICO : " + utenteBean.getIdUtente() + " " + utenteBean.getUsername()+ " " + utenteBean.getPassword()+ " " + utenteBean.getEmail()+ " " + utenteBean.getCredito());
-
+            System.out.println("voto : " + utenteBean.getVotoRecensione());
             try{
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));

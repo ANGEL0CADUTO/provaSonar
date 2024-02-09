@@ -69,7 +69,7 @@
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <TextField layoutX="-9.0" layoutY="2.0" prefHeight="11.0" prefWidth="182.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
+                              <TextField fx:id="usernameTextField" layoutX="-9.0" layoutY="2.0" prefHeight="11.0" prefWidth="182.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
                            </children>
                         </Pane>
                      </children>
@@ -89,7 +89,7 @@
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <TextField layoutX="-9.0" layoutY="2.0" prefHeight="11.0" prefWidth="182.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
+                              <TextField fx:id="creditoTextField" layoutX="-9.0" layoutY="2.0" prefHeight="11.0" prefWidth="182.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
                            </children>
                         </Pane>
                      </children>
@@ -109,7 +109,7 @@
                               <Insets />
                            </HBox.margin>
                            <children>
-                              <TextField layoutX="-9.0" layoutY="2.0" prefHeight="26.0" prefWidth="49.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
+                              <TextField fx:id="votoTextField" layoutX="-9.0" layoutY="2.0" prefHeight="26.0" prefWidth="49.0" style="-fx-background-color: rgba(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #252551;" />
                            </children>
                         </Pane>
                      </children>
@@ -118,14 +118,19 @@
             </VBox>
             <VBox prefHeight="152.0" prefWidth="434.0" spacing="5.0">
                <children>
-                  <Label prefHeight="44.0" prefWidth="434.0" text="Dati di consegna:">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="30.0" top="10.0" />
-                     </padding>
-                  </Label>
+                  <HBox prefHeight="30.0" prefWidth="434.0">
+                     <children>
+                        <Label prefHeight="13.0" prefWidth="146.0" text="Dati di consegna:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" text="Modifica" />
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="434.0">
                      <children>
                         <Label prefHeight="28.0" prefWidth="96.0" text="Indirizzo:">
@@ -202,14 +207,10 @@
                <children>
                   <ImageView fx:id="profiloImage" fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../photo/notification.png" />
+                        <Image url="@../photo/user.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Profilo" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="profiloButton" mnemonicParsing="false" onAction="#goToProfilo" text="Profilo" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0">
@@ -233,11 +234,7 @@
                         <Image url="@../photo/book.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Tua Libreria" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="libreriaButton" mnemonicParsing="false" onAction="#goToLibreria" text="Libreria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0">
@@ -247,11 +244,7 @@
                         <Image url="@../photo/sales.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Annunci" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="compraButton" mnemonicParsing="false" onAction="#goToCompra" text="Compra" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0">
@@ -261,11 +254,7 @@
                         <Image url="@../photo/euro.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Credito" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="depositaEPrelevaButton" mnemonicParsing="false" onAction="#goToDepositaEPreleva" text="Deposita/Preleva" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" />
@@ -287,10 +276,6 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="compraButton" mnemonicParsing="false" onAction="#goToCompra" text="Compra" />
-            <Button fx:id="profiloButton" mnemonicParsing="false" onAction="#goToProfilo" text="Profilo" />
-            <Button fx:id="depositaEPrelevaButton" mnemonicParsing="false" onAction="#goToDepositaEPreleva" text="Deposita/Preleva" />
-            <Button fx:id="libreriaButton" mnemonicParsing="false" onAction="#goToLibreria" text="Libreria" />
          </children>
       </VBox>
    </children>

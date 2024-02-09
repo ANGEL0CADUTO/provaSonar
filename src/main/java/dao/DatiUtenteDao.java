@@ -12,9 +12,9 @@ public class DatiUtenteDao {
 
     public boolean addDatiUser(DatiUtenteBean bean1) {
         Boolean a = false;
-        DBConnection connection = new DBConnection(); //CREA CONNESIONE
+        Connection conn = DBConnection.getIstance().connection();
+
         String query = "INSERT INTO mangaink.informazioniutente (indirizzo, civico, cap) VALUES (? , ?, ?)";
-        Connection conn = connection.connection();
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 

@@ -1,18 +1,0 @@
-
-g	java:S112s"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ñ¢ Ø1
-Q
-java:S3740"/Provide the parametrized type for this generic.(Ê¾€ûüÿÿÿÿ8Ñ¢ Ø1
-]	java:S1252"<This block of commented-out lines of code should be removed.(¦í¹Çøÿÿÿÿ8ßÑ¢ Ø1
-X	java:S125;"<This block of commented-out lines of code should be removed.(è”º8èÑ¢ Ø1
-L	java:S106S"+Replace this use of System.out by a logger.(òƒ€¯ûÿÿÿÿ8ğÑ¢ Ø1
-{
-java:S1171X"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8óÑ¢ Ø1
-G	java:S106_"+Replace this use of System.out by a logger.(“ªø8õÑ¢ Ø1
-X	java:S125w"<This block of commented-out lines of code should be removed.(¨¹üØ8‘Ò¢ Ø1
-^	java:S125"<This block of commented-out lines of code should be removed.(ä®‡Ñøÿÿÿÿ8”Ò¢ Ø1
-Y	java:S125 "<This block of commented-out lines of code should be removed.(ñ†ìÆ8”Ò¢ Ø1
-Y	java:S125³"<This block of commented-out lines of code should be removed.(¤‡¶8–Ò¢ Ø1
-Q
-java:S1128"/Remove this unused import 'java.sql.SQLOutput'.(ê¤òÃùÿÿÿÿ8™Ò¢ Ø1
-T
-java:S1068"2Remove this unused "copiaMangaBean" private field.(“ç¦®üÿÿÿÿ8™Ò¢ Ø1

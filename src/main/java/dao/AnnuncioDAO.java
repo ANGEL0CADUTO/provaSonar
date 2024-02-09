@@ -15,10 +15,11 @@ public class AnnuncioDAO {
     private static final Logger logger = Logger.getLogger(AnnuncioDAO.class.getName());
 
     public boolean isAnnuncioPresente(CopiaMangaModel copiaMangaModel1){//GLI ARRIVA  ID 0
-        DBConnection connection = new DBConnection();
+
         boolean b = false;
         String query = "SELECT * FROM mangaink.annuncio WHERE copiaMangaID = ?";
-        Connection conn = connection.connection();
+        Connection conn = DBConnection.getIstance().connection();
+
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
             st.setString(1, String.valueOf(copiaMangaModel1.getIdCopiaManga()));
@@ -42,7 +43,7 @@ public class AnnuncioDAO {
 
 
     public AnnunciModel getAnnunci(){
-        DBConnection connection = new DBConnection();
+
 
         String query = "SELECT utente.username, manga.nome, annuncio.prezzoDiVendita " +
                 "FROM annuncio " +
@@ -53,7 +54,8 @@ public class AnnuncioDAO {
 
         AnnunciModel annuncio = new AnnunciModel();
 
-        Connection conn = connection.connection();
+        Connection conn = DBConnection.getIstance().connection();
+
 
         try ( PreparedStatement st = conn.prepareStatement(query)) {
 
@@ -80,10 +82,10 @@ public class AnnuncioDAO {
     }
 
     public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata) {//DA MIGLIORARE
-        DBConnection connection = new DBConnection();
+
         boolean b = false;
         String query = "INSERT INTO mangaink.annuncio (copiaMangaID, prezzoDiVendita ,statoAnnuncio,dataAnnuncio ) VALUES (?, ?, ?, ?)";
-        Connection conn = connection.connection();
+        Connection conn = DBConnection.getIstance().connection();
 
 
 

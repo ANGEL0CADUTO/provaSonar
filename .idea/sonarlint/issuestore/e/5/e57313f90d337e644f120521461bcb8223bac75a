@@ -1,7 +1,0 @@
-
-V	java:S125*"<This block of commented-out lines of code should be removed.(õ—Â²ıÿÿÿÿ
-V	java:S125D"<This block of commented-out lines of code should be removed.(£ÃĞÿÿÿÿÿ
-E	java:S106J"+Replace this use of System.out by a logger.(®Ÿ¾Úùÿÿÿÿ
-@	java:S106L"+Replace this use of System.out by a logger.(Á¼ñ
-@	java:S106b"+Replace this use of System.out by a logger.(Ÿê¡Î
-@	java:S106d"+Replace this use of System.out by a logger.(ç´¶„

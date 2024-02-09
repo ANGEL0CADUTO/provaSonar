@@ -76,7 +76,7 @@ public class Demo extends UserGuiController {
         else{
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoproject/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             loader.setControllerFactory(c -> new LoginGrafico(utenteBean));
 
 
@@ -96,7 +96,7 @@ public class Demo extends UserGuiController {
     }
 
     public void registrazione() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demoproject/Registra.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) registratiHomePage.getScene().getWindow();
         stage.setScene(scene);

@@ -17,13 +17,14 @@ public class CopiaMangaDAO {
     //PRENDE L'INTERA LISTA DI MANGA DI UNO SPECIFICO UTENTE//
     public CopiaMangaCollectionModel getCopieMangaListByUserID(UtenteModel model) {
 
-        DBConnection connection = new DBConnection();
+
         boolean b = false;
         String query = "SELECT * from mangaink.copiamanga WHERE utenteID = ? AND statoCopiaManga = ?";
 
         CopiaMangaCollectionModel collezione = new CopiaMangaCollectionModel();
 
-        Connection conn = connection.connection();
+        Connection conn = DBConnection.getIstance().connection();
+
 
         try ( PreparedStatement st = conn.prepareStatement(query)) {
             // st.setString(1,bean.getIdUtente());

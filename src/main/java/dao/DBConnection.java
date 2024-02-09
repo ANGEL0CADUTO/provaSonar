@@ -1,44 +1,71 @@
 package dao;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection; //ho aggiunto nei moduli x farlo funzionare
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 
 public class DBConnection {
-    private static final Logger logger = Logger.getLogger(DBConnection.class.getName());//BUONA PRATICA USARE IL LOGGER(lo dice sonarcloud)
-    public Connection connection(){
-        String jdbcUrl = "jdbc:mysql://localhost:3306/mangaink";
-        String username = "root";
-        String password = "root";//BUONA PRATICA NON MOSTRARE LA PASSWORD DB IN CHIARO(dichiaro variabile d'ambiente WINDOWS)
-        Connection conn = null;
+    private static final Logger logger = Logger.getLogger(DBConnection.class.getName());
 
-    try{
-       // Class.forName("com.mysql.cj.jdbc.Driver"); QUESTO SERVIVA A CARICARE IL DRIVER, SEMBRA CHE CON LE VERSIONI JDBC RECENTI VENGA CREATO DIRETTAMENTE NELLA PROX LINEA DI CODICE
-        conn = DriverManager.getConnection(jdbcUrl,username,password);
+    private static final String PATH = "src/main/resources/connection.properties";
 
+    private static DBConnection instance = null;
+    private Connection conn = null;
+
+    private String jdbcUrl;
+    private String username;
+    private String password;
+
+
+    public static synchronized DBConnection getIstance(){
+        if(instance == null) {
+            instance = new DBConnection();
+            System.out.println("DBconnection getIstance sta creando nuova connessione!! " +DBConnection.getIstance());
+        }
+        return instance;
     }
-    catch (SQLException e){
-        logger.severe("errore nel tentativo di stabilire la connessione col db");
-
-    }
-
-        return conn;
-    }
 
 
-    public void close(Connection conn){//CHIUSURA CONNESSIONE
+    public synchronized Connection connection(){
 
+        if(this.conn == null){
+            getInfo();
+
+            try {
+                this.conn = DriverManager.getConnection(jdbcUrl,username,password);
+            } catch (SQLException e) {
+                logger.severe("Errore in DBConnection nella connection() : " + e.getMessage());
+            }
+        }
         try {
-            conn.close();
+            System.out.println("spero sia tu: "+ this.conn.isClosed());
+        } catch (SQLException e) {
+            logger.severe("errore nella this.conn.isClosed() " + e.getMessage());
         }
-        catch (SQLException e){
-            logger.severe("Errore nella chiusura della connessione");
-
-        }
+        return this.conn;
     }
 
+    private void getInfo(){
+        try(FileInputStream config = new FileInputStream(PATH)){
+
+            Properties properties = new Properties();
+            properties.load(config);
+
+            jdbcUrl = properties.getProperty("CONNECTION_URL");
+            username = properties.getProperty("LOGIN_USER");
+            password = properties.getProperty("LOGIN_PASSWORD");
+            System.out.println("GetInfo è stata chiamata");
+
+        } catch (IOException e) {
+            logger.severe("Errore nella getInfo  " + e.getMessage());
+        }
+    }
 
 }

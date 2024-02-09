@@ -23,7 +23,7 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="423.0" style="-fx-background-color: #b0b5d9;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="423.0" style="-fx-background-color: #b0b5d9;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="40.0" layoutY="102.0" text="Email">
                <font>
@@ -43,11 +43,6 @@
             <TextField fx:id="enteredUsername" layoutX="89.0" layoutY="134.0" promptText="Username" />
             <TextField fx:id="enteredEmail" layoutX="89.0" layoutY="99.0" promptText="Email" />
             <Button fx:id="registra" layoutX="136.0" layoutY="332.0" mnemonicParsing="false" onAction="#userRegistra" style="-fx-background-color: #fa8000;" text="registra" />
-            <ImageView fitHeight="95.0" fitWidth="152.0" layoutX="111.0">
-               <image>
-                  <Image url="@../../../MangaInk%20Loghino.png" />
-               </image>
-            </ImageView>
             <Label fx:id="wrongLogin" layoutX="173.0" layoutY="103.0" textFill="#fc0e0e" />
             <PasswordField fx:id="enteredPassword" layoutX="89.0" layoutY="286.0" promptText="Password" />
             <Label layoutX="24.0" layoutY="171.0" text="Indirizzo">

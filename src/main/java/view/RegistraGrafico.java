@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -43,6 +44,9 @@ public class RegistraGrafico {
 
     @FXML
     private Label wrongSignUp;
+    @FXML
+    private AnchorPane myAnchorPane;
+
 
 
     public void goToHomePage() throws IOException {
@@ -78,9 +82,12 @@ public class RegistraGrafico {
             wrongSignUp.setText("Hai effettuato la registrazione!");
 
             // CAMBIO SCENA E VADO ALLA LIBRERIA UTENTE SOLO DOPO AVER EFFETTUATO LA REGISTRAZIONE
-            Parent root = FXMLLoader.load(getClass().getResource("LibreriaUtente.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            loader.setControllerFactory(c -> new CompraMangaControllerGrafico(bean));
+            Parent root = loader.load();
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
             Scene scene = new Scene(root);
-            Stage stage = (Stage) registra.getScene().getWindow();
             stage.setScene(scene);
         }
         else{wrongSignUp.setText("Devi inserire tutti i campi");}
