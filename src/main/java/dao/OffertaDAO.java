@@ -24,7 +24,7 @@ public class OffertaDAO {
         try (PreparedStatement st = conn.prepareStatement(query)) {
             st.setInt(1, offerta.getAnnuncioID());
             st.setInt(2, offerta.getUtenteOfferenteID());
-            st.setBigDecimal(3, BigDecimal.valueOf(offerta.getOffertaPrezzo()).setScale(2, RoundingMode.HALF_UP));//MICIDIALE, DA CORREGGERE
+            st.setBigDecimal(3, (offerta.getOffertaPrezzo()).setScale(2, RoundingMode.HALF_UP));//MICIDIALE, DA CORREGGERE
 
             st.setString(4, String.valueOf(offerta.getDataOfferta())); // Assicurati che il formato sia corretto
             st.setString(5, "1");

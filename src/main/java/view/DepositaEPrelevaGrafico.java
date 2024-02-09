@@ -55,9 +55,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController{
             }
         }
 
-  //      this.utenteBean.setCredito(BigDecimal.valueOf(Double.parseDouble(deposita.getText())));PER FAR INSERIRE CIFRE CON LA VIRGOLA
-//        System.out.print("YOOOOO");
-//        System.out.println(utenteBean);
+
         DepositaEPrelevaApplicativo dp = new DepositaEPrelevaApplicativo();
 
         boolean esitoDeposito = dp.Deposita(utenteBean);

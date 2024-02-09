@@ -89,7 +89,7 @@ public class Demo extends UserGuiController {
             Stage stage = (Stage) loginHomePage.getScene().getWindow();
             stage.setScene(scene);
 
-            OffertaDAO prova = new OffertaDAO();
+            /*OffertaDAO prova = new OffertaDAO();
             OffertaModel offerta = new OffertaModel();
             offerta.setAnnuncioID(1);
             offerta.setOffertaPrezzo(4.2);
@@ -99,7 +99,7 @@ public class Demo extends UserGuiController {
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dataFormattata = formatoData.format(dataCorrente);
             offerta.setDataOfferta(dataFormattata);
-            prova.insertOfferta(offerta);
+            prova.insertOfferta(offerta);*/
 
         }
 

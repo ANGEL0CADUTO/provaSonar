@@ -2,6 +2,7 @@ package dao;
 
 
 import model.AnnunciModel;
+import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
 import java.math.BigDecimal;
@@ -45,7 +46,7 @@ public class AnnuncioDAO {
     public AnnunciModel getAnnunci(){
 
 
-        String query = "SELECT utente.username, manga.nome, annuncio.prezzoDiVendita " +
+        String query = "SELECT utente.username, manga.nome, annuncio.prezzoDiVendita,annuncio.idAnnuncio " +
                 "FROM annuncio " +
                 "JOIN copiamanga ON copiamanga.idCopiaManga = annuncio.copiaMangaID " +
                 "JOIN manga ON manga.idManga = copiamanga.mangaID " +
@@ -63,11 +64,14 @@ public class AnnuncioDAO {
             try(ResultSet rs = st.executeQuery()){
 
                 while(rs.next()){
-                    Object[] annuncioArray = new Object[3];
-                    annuncioArray[0] = rs.getString("username");
-                    annuncioArray[1] = rs.getString("nome");
-                    annuncioArray[2] = rs.getInt("prezzoDiVendita");
-                    annuncio.getListaDiAnnunci().add(annuncioArray);
+
+                    AnnuncioModel annuncioModel = new AnnuncioModel();
+                   annuncioModel.setNomeUtente( rs.getString("username"));
+                   annuncioModel.setNomeManga(rs.getString("nome"));
+                    annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
+                    annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
+
+                    annuncio.getListaDiAnnunci().add(annuncioModel);
 
                 }
 

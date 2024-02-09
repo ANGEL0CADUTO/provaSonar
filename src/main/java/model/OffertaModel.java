@@ -1,12 +1,13 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class OffertaModel {
 
     private int annuncioID;
     private int utenteOfferenteID;
-    private double offertaPrezzo;
+    private BigDecimal offertaPrezzo;
 
     private String dataOfferta;
     private int statoOfferta;
@@ -27,11 +28,11 @@ public class OffertaModel {
         this.utenteOfferenteID = utenteOfferenteID;
     }
 
-    public double getOffertaPrezzo() {
+    public BigDecimal getOffertaPrezzo() {
         return offertaPrezzo;
     }
 
-    public void setOffertaPrezzo(double offertaPrezzo) {
+    public void setOffertaPrezzo(BigDecimal offertaPrezzo) {
         this.offertaPrezzo = offertaPrezzo;
     }
 

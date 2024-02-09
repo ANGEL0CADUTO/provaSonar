@@ -40,6 +40,8 @@ public class AnnuncioControllerGrafico {
 
     private CopiaMangaBean copiaMangaBean;
 
+
+
     public void setUtenteBean(UtenteBean utenteBean) {
         this.utenteBean = utenteBean;
     }

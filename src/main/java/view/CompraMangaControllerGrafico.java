@@ -1,15 +1,20 @@
 package view;
 
+import bean.CopiaMangaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.AnnunciModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class CompraMangaControllerGrafico extends UserGuiController{
 
@@ -50,26 +55,46 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     public void InizializzaDati(){
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
         AnnunciModel annunciModel = controller.showAnnunce();
-        // Imposta i valori delle celle nelle colonne
-        utenteColumn.setCellValueFactory(data -> {
-            int rowIndex = data.getTableView().getItems().indexOf(data.getValue());
-            Object[] rowData = annunciModel.getListaDiAnnunci().get(rowIndex);
-            return new SimpleStringProperty((String) rowData[0]);
+
+
+        utenteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeUtente())));
+        nomeMangaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeManga())));
+        prezzoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getPrezzo())));
+
+        compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
+            private int index;
+            private final Button bottone = new Button("Compra");
+
+            {
+                // Gestisci l'evento di clic del bottone
+                bottone.setOnAction(event -> {
+
+                    // Ora puoi eseguire un'azione basata su questo elemento
+
+
+                    try {
+                        goToOfferta(annunciModel.getListaDiAnnunci().get(index).getIdAnnuncio());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+
+            @Override  //
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                // Verifica se la riga è vuota
+                if (empty) {
+                    setGraphic(null);
+                } else { index=getIndex();
+                    setGraphic(bottone);
+                }
+            }
         });
 
-        nomeMangaColumn.setCellValueFactory(data -> {
-            int rowIndex = data.getTableView().getItems().indexOf(data.getValue());
-            Object[] rowData = annunciModel.getListaDiAnnunci().get(rowIndex);
-            return new SimpleStringProperty((String) rowData[1]);
-        });
 
-        prezzoColumn.setCellValueFactory(data -> {
-            int rowIndex = data.getTableView().getItems().indexOf(data.getValue());
-            Object[] rowData = annunciModel.getListaDiAnnunci().get(rowIndex);
-            return new SimpleStringProperty(String.valueOf(rowData[2]));
-        });
-
-        tableCompra.getItems().addAll(annunciModel.getListaDiAnnunci());
+                tableCompra.getItems().addAll(annunciModel.getListaDiAnnunci());
     }
 
 

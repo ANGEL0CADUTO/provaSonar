@@ -1,0 +1,9 @@
+
+{
+java:S1450'"YRemove the "utenteBean" field and declare it as a local variable in the relevant methods.(¥²µ ÿÿÿÿÿ8¯¹šóØ1
+X	java:S125G"<This block of commented-out lines of code should be removed.(Â‡ÿ™8À¹šóØ1
+L	java:S106R"+Replace this use of System.out by a logger.(ý¥æúÿÿÿÿ8Ã¹šóØ1
+G	java:S106U"+Replace this use of System.out by a logger.(—˜–³8Å¹šóØ1
+L	java:S106W"+Replace this use of System.out by a logger.(Ï¾Æùûÿÿÿÿ8Å¹šóØ1
+P
+java:S1068'".Remove this unused "utenteBean" private field.(¥²µ ÿÿÿÿÿ8Ô¹šóØ1
