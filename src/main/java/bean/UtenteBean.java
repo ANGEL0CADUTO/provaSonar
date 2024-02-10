@@ -15,6 +15,16 @@ public class UtenteBean {
 
     private BigDecimal credito;
 
+    private DatiUtenteBean datiUtente;
+
+    public DatiUtenteBean getDatiUtente() {
+        return datiUtente;
+    }
+
+    public void setDatiUtente(DatiUtenteBean datiUtente) {
+        this.datiUtente = datiUtente;
+    }
+
     private ValutaAdapter adattatore;//IMPLEMENTAZIONE ADAPTER
     private boolean isLogged;
     public UtenteBean() {//DA USARE PER SESSIONE

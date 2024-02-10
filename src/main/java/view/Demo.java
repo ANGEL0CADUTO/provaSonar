@@ -1,7 +1,9 @@
 package view;
 
+import bean.DatiUtenteBean;
 import bean.UtenteBean;
 
+import dao.DatiUtenteDao;
 import dao.OffertaDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
 import model.OffertaModel;
+import model.OffertaRicevuta;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -89,7 +92,24 @@ public class Demo extends UserGuiController {
             Stage stage = (Stage) loginHomePage.getScene().getWindow();
             stage.setScene(scene);
 
-            /*OffertaDAO prova = new OffertaDAO();
+            DatiUtenteBean bean = new DatiUtenteBean();
+            bean.setIndirizzo("via volo");
+            bean.setCap("0912");
+            bean.setCivico("233");
+            bean.setIdInformazioniUtente(4);
+
+            DatiUtenteDao dao = new DatiUtenteDao();
+            dao.modificaDatiUser(bean);
+
+            /*
+            OffertaRicevuta offerta = new OffertaRicevuta();
+            offerta.setIdOfferta(3);
+            offerta.setAnnuncioID(1);
+
+            OffertaDAO prova = new OffertaDAO();
+
+            prova.accettaOfferta(offerta);
+
             OffertaModel offerta = new OffertaModel();
             offerta.setAnnuncioID(1);
             offerta.setOffertaPrezzo(4.2);

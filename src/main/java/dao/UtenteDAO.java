@@ -1,4 +1,5 @@
 package dao;
+import bean.DatiUtenteBean;
 import bean.UtenteBean;
 
 import javax.xml.transform.Result;
@@ -29,6 +30,17 @@ public class UtenteDAO {
                 bean.setUsername(rs.getString("username"));
                 bean.setCredito(rs.getBigDecimal("credito"));
                 bean.setVotoRecensione(rs.getDouble("votoRecensioni"));
+
+                int informazioniUtenteID = rs.getInt("informazioniUtenteID");
+                if(!rs.wasNull()) {
+                    DatiUtenteDao dao = new DatiUtenteDao();
+                    DatiUtenteBean beanDati;
+
+                    beanDati = dao.getDatiUserByInformazioniUtenteID(rs.getInt("informazioniUtenteID"));
+                    beanDati.setIdInformazioniUtente(informazioniUtenteID);
+                    bean.setDatiUtente(beanDati);
+                }
+
 
                 logger.info("ha funzionato");
                 b = true;
@@ -112,6 +124,7 @@ public class UtenteDAO {
 
         return true;
     }
+
 
    public boolean informazioniUtente(UtenteBean bean ){
         Boolean b= false;

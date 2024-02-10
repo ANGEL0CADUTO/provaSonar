@@ -57,3 +57,31 @@ Q.idea/sonarlint/securityhotspotstore/a/7/a750441829e1d8ed256133185daa1e7e1f573b
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Å
 Q.idea/sonarlint/securityhotspotstore/8/f/8fd3431ff6b6735ded369c1dd0ef25790e7eb33f,9\4\9425d32d9fced5dd2687eb6e70c2cabb4db64b1a
+X
+(src/main/java/model/OffertaRicevuta.java,0\c\0cf3577f121256218c7c5c274e6f3b757e83f386
+O
+src/main/java/dao/MangaDAO.java,1\6\16f5f1739e8f00adc8d1de7b184866a21c7f973a
+T
+$src/main/java/view/LoginGrafico.java,3\1\31233c33232700ac43d13dcad3d8bf3d1cc3105e
+W
+'src/main/java/view/RegistraGrafico.java,2\6\26e3769989a464cb2742018f2eefa1c372242f14
+T
+$src/main/java/dao/DatiUtenteDao.java,1\3\130c501c0306615139b5a5928f8b3538e42bcb2c
+V
+&src/main/java/bean/DatiUtenteBean.java,6\7\67a6321d742c5905755695d057f300d44aaa409d
+q
+Asrc/main/java/controllerapplicativo/ProfiloUtenteApplicativo.java,0\7\0755e31864ce5fb3ddfb05d2c44f36a61d22a6fb
+\
+,src/main/java/view/ProfiloUtenteGrafico.java,1\f\1f54c87a4921a81df09e3509bd0e0f94b64fd794
+R
+"src/main/java/bean/UtenteBean.java,d\9\d9de602b8e1e20aceabf199e082e027c35afcb42
+i
+9src/main/java/controllerapplicativo/LoginApplicativo.java,1\e\1e15af6f53661b3d6fd27f2f917dfcc3732df598
+P
+ src/main/java/dao/UtenteDAO.java,e\e\ee40ba8ee421bd18e93480eafe660fa236680651
+l
+<src/main/java/controllerapplicativo/RegistraApplicativo.java,7\9\7904f89c653ec29a0451be1efcf98b3f2d81efeb
+ì
+c.idea/dataSources/27ec4b51-dd7c-4369-88f8-77814604899d/storage_v2/_src_/schema/mangaink.sseqBw.meta,9\3\93f5b8e3361ed6515b7317527d669b7ccb401a94
+j
+:.idea/dataSources/27ec4b51-dd7c-4369-88f8-77814604899d.xml,e\d\ed1e912f0a59376269a63744a97d4115ab04f16b

@@ -1,13 +1,11 @@
 package bean;
 
-import java.util.Random;
-
 public class DatiUtenteBean {
     // DOVE METTO TUTTI I DATI RELATIVI ALL'UTENTE.
 
     private String indirizzo;
-    private int civico;
-    private int cap;
+    private String civico;
+    private String cap;
 
     private int idInformazioniUtente;
 
@@ -21,17 +19,17 @@ public class DatiUtenteBean {
     public String getIndirizzo() {
         return indirizzo;}
 
-    public void setCivico(int civico){
+    public void setCivico(String civico){
         this.civico=civico;}
 
-    public int getCivico() {
+    public String getCivico() {
         return civico;}
 
-    public void setCap(int cap){
+    public void setCap(String cap){
         this.cap=cap;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;}
 
     public int getIdInformazioniUtente() {

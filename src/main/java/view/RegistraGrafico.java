@@ -60,8 +60,8 @@ public class RegistraGrafico  extends BaseController{
         bean.setUsername(enteredUsername.getText());
 
         bean1.setIndirizzo(enteredIndirizzo.getText());
-        bean1.setCap(Integer.parseInt(enteredCivico.getText()));
-        bean1.setCivico(Integer.parseInt(enteredCap.getText()));
+        bean1.setCap(enteredCivico.getText());
+        bean1.setCivico(enteredCap.getText());
 
 
 

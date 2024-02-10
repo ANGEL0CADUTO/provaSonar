@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 
-public class LoginGrafico extends UserGuiController {
+public class LoginGrafico extends BaseController {
 
     @FXML
     private Button login;
@@ -59,7 +59,7 @@ public class LoginGrafico extends UserGuiController {
             wrongLogin.setText("Hai effettuato l'accesso!");
             utenteBean.setLogged(true);
             System.out.println("LOGIN GRAFICO : " + utenteBean.getIdUtente() + " " + utenteBean.getUsername()+ " " + utenteBean.getPassword()+ " " + utenteBean.getEmail()+ " " + utenteBean.getCredito());
-            System.out.println("voto : " + utenteBean.getVotoRecensione());
+            System.out.println("voto : " + utenteBean.getVotoRecensione()+ " bean : " + utenteBean.getDatiUtente());
             try{
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
