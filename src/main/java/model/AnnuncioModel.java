@@ -1,9 +1,23 @@
 package model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class AnnuncioModel {
     private int idAnnuncio;
+    private String nomeUtente;
+    private String nomeManga;
+
+    private BigDecimal prezzo;
+    private LocalDateTime dataAnnuncio;
+
+    public LocalDateTime getDataAnnuncio() {
+        return dataAnnuncio;
+    }
+
+    public void setDataAnnuncio(LocalDateTime dataAnnuncio) {
+        this.dataAnnuncio = dataAnnuncio;
+    }
 
     public String getNomeUtente() {
         return nomeUtente;
@@ -29,10 +43,7 @@ public class AnnuncioModel {
         this.prezzo = prezzo;
     }
 
-    private String nomeUtente;
-    private String nomeManga;
 
-    private BigDecimal prezzo;
 
 
     public int getIdAnnuncio() {

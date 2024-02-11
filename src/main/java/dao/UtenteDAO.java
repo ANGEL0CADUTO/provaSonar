@@ -2,7 +2,7 @@ package dao;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
 
-import javax.xml.transform.Result;
+
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.logging.Logger;
@@ -229,7 +229,7 @@ public class UtenteDAO {
 
 
             int righeScritte = st.executeUpdate();
-            System.out.println(righeScritte);
+
 
 
             if (righeScritte > 0) {
@@ -238,7 +238,6 @@ public class UtenteDAO {
 
             } else {
                 logger.info("Prelievo Credito Fallito");
-                System.out.println(righeScritte);
 
             }
 

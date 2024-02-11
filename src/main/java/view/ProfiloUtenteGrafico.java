@@ -54,12 +54,16 @@ public class ProfiloUtenteGrafico extends UserGuiController {
         votoTextField.setText(Double.toString(utenteBean.getVotoRecensione()));
         votoTextField.setEditable(false);
 
-        indirizzoTextField.setText(utenteBean.getDatiUtente().getIndirizzo());
-        indirizzoTextField.setEditable(false);
-        civicoTextField.setText(utenteBean.getDatiUtente().getCivico());
-        civicoTextField.setEditable(false);
-        capTextField.setText(utenteBean.getDatiUtente().getCap());
-        capTextField.setEditable(false);
+        if (utenteBean.getDatiUtente() != null) {
+            indirizzoTextField.setText(utenteBean.getDatiUtente().getIndirizzo());
+            civicoTextField.setText(utenteBean.getDatiUtente().getCivico());
+            capTextField.setText(utenteBean.getDatiUtente().getCap());
+        }
+            indirizzoTextField.setEditable(false);
+            civicoTextField.setEditable(false);
+            capTextField.setEditable(false);
+
+
 
         }
         @FXML
@@ -75,23 +79,47 @@ public class ProfiloUtenteGrafico extends UserGuiController {
         @FXML
         private void modificaDati(){
             boolean b = false;
-
+            boolean a = false;
 
             if(!indirizzoTextField.getText().isEmpty() && !civicoTextField.getText().isEmpty() && !capTextField.getText().isEmpty()){
                 DatiUtenteBean bean = new DatiUtenteBean();
                 bean.setIndirizzo(indirizzoTextField.getText());
                 bean.setCivico(civicoTextField.getText());
                 bean.setCap(capTextField.getText());
-
                 ProfiloUtenteApplicativo pu = new ProfiloUtenteApplicativo();
 
-                b = pu.modificaDati(bean);
+
+                if(utenteBean.getDatiUtente() != null) {
+                    bean.setIdInformazioniUtente(utenteBean.getDatiUtente().getIdInformazioniUtente());
+                    b = pu.modificaDati(bean);
+                }
+                else{
+                    int i  = pu.insertDatiUtente(bean);
+                    utenteBean.setDatiUtente(bean);
+                    utenteBean.getDatiUtente().setIdInformazioniUtente(i);
+                    pu.updateInformazioniUtenteID(utenteBean);
+                    if(bean.getIdInformazioniUtente() != -1){
+                        a = true;
+                    }
+                }
+
 
                 if(b){
-
-                    utenteBean.setDatiUtente(pu.getDatiUtente(utenteBean.getIdUtente()));
+                    utenteBean.getDatiUtente().setIndirizzo(indirizzoTextField.getText());
+                    utenteBean.getDatiUtente().setCap(capTextField.getText());
+                    utenteBean.getDatiUtente().setCivico(civicoTextField.getText());
 
                     System.out.println("complimenti è andato a buon fine");
+                }
+                if(a){
+                    utenteBean.getDatiUtente().setIndirizzo(indirizzoTextField.getText());
+                    utenteBean.getDatiUtente().setCap(capTextField.getText());
+                    utenteBean.getDatiUtente().setCivico(civicoTextField.getText());
+                    System.out.println("Inserimento dati : andato a buon fine\n");
+                    System.out.println("Vediamo cosa c'è nel bean, ID: " + utenteBean.getDatiUtente().getIdInformazioniUtente() + " Civico : "+ utenteBean.getDatiUtente().getCivico());
+
+
+
                 }
 
             }else{

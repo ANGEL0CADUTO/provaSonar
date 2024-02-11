@@ -67,10 +67,10 @@ public class RegistraGrafico  extends BaseController{
 
     //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO (CREDO DI AVERLO GIA RIPARATO RICONTROLLARE)
         boolean esitoRegistra = ra.registra(bean);
-        boolean esitoRegistraDati= ra.registraDati(bean1);
+        int esitoRegistraDati= ra.registraDati(bean1);
         ra.informazioniUtente(bean);
         //CONTROLLO SU EMAIl-PASSWORS-USERNAME-INDIRIZZO-CAP-CIVICO HA INSERITO CAMPI NON VOUTI FUNGE
-        if(esitoRegistra && esitoRegistraDati){
+        if(esitoRegistra && esitoRegistraDati != -1){
             wrongSignUp.setText("Hai effettuato la registrazione!");
 
             // CAMBIO SCENA E VADO ALLA LIBRERIA UTENTE SOLO DOPO AVER EFFETTUATO LA REGISTRAZIONE

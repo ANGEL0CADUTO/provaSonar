@@ -9,17 +9,18 @@ import java.util.logging.Logger;
 public class DatiUtenteDao {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
 
-    public boolean addDatiUser(DatiUtenteBean bean1) {
-        Boolean a = false;
+    public int addDatiUser(DatiUtenteBean bean1) {
+        int generatedKey = -1;
+
         Connection conn = DBConnection.getIstance().connection();
 
         String query = "INSERT INTO mangaink.informazioniutente (indirizzo, civico, cap) VALUES (? , ?, ?)";
 
-        try (PreparedStatement st = conn.prepareStatement(query)) {
+        try (PreparedStatement st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             if(bean1.getIndirizzo().isEmpty() ||  bean1.getCivico().isEmpty()|| bean1.getCap().isEmpty()) {
                 logger.warning("Uno o più campi sono vuoti. Inserimento dati utente fallito.");
-                return false;}
+                return generatedKey;}
 
             st.setString(1, bean1.getIndirizzo());
             st.setString(2, bean1.getCivico());
@@ -28,17 +29,26 @@ public class DatiUtenteDao {
             int righeScritte = st.executeUpdate();
 
             if (righeScritte > 0) {
-                a = true;
+                ResultSet generatedKeys = st.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    System.out.println("SONO STATE GENERATE DELLE CHIAVI");
+                    generatedKey = generatedKeys.getInt(1);
+                    bean1.setIdInformazioniUtente(generatedKey);
+                    System.out.println("eccola : " + bean1.getIdInformazioniUtente());
+
+                    logger.info("Inserimento dati dell'utente riuscito, chiave generata: " + generatedKey);
+                } else {
+                    logger.info("Inserimento dati dell'utente riuscito, ma impossibile ottenere la chiave generata.");
+                }
                 logger.info("Inserimento dati  dell'utente riuscito");}
             else {
                 logger.info("Inserimento dati dell'utente fallito");}
         }
 
-
      catch(SQLException e){
         logger.severe("E' stata lanciata la exception nell'addDatiUser in DatiUtenteDao " + e.getMessage());}
 
-     return true;
+     return generatedKey;
     }
 
     //DA CORREGGERE PERCHE USIAMO IL BEAN CHE IN RELTA DOVREBBE SPARIRE DALL'APPLICATIVO IN GIU
@@ -47,6 +57,7 @@ public class DatiUtenteDao {
         Connection conn = DBConnection.getIstance().connection();
         String query = "SELECT indirizzo,civico,cap FROM informazioniutente WHERE idInformazioniUtente = ?";
         DatiUtenteBean bean = null;
+
         System.out.println(id);
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
@@ -68,8 +79,8 @@ public class DatiUtenteDao {
     public boolean modificaDatiUser(DatiUtenteBean bean){
         boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
-        String query = "UPDATE informazioniUtente SET indirizzo = ?, civico = ?, cap = ? WHERE idInformazioniUtente = ?";
-
+        String query = "UPDATE informazioniutente SET indirizzo = ?, civico = ?, cap = ? WHERE idInformazioniUtente = ?";
+        System.out.println("DATIUTENTEDAO modificaDatiUser riceve indirizzo =" + bean.getIndirizzo() + " idInformazioniUtente = "+ bean.getIdInformazioniUtente());
         try(PreparedStatement st = conn.prepareStatement(query)){
             st.setString(1,bean.getIndirizzo());
             st.setString(2,bean.getCivico());
@@ -77,7 +88,6 @@ public class DatiUtenteDao {
             st.setInt(4,bean.getIdInformazioniUtente());
             int rows = st.executeUpdate();
             if(rows>0){
-
                 b=true;
             }
 

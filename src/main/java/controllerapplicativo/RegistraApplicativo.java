@@ -20,7 +20,7 @@ public class RegistraApplicativo {
         return registraUtente.informazioniUtente(bean);
     }
 
-    public boolean registraDati(DatiUtenteBean bean1){
+    public int registraDati(DatiUtenteBean bean1){
         DatiUtenteDao registraDatiUtente = new DatiUtenteDao();
          return registraDatiUtente.addDatiUser(bean1);
 

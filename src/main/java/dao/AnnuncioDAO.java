@@ -6,11 +6,11 @@ import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Logger;
+
+
 
 public class AnnuncioDAO {
     private static final Logger logger = Logger.getLogger(AnnuncioDAO.class.getName());
@@ -44,7 +44,6 @@ public class AnnuncioDAO {
 
 
     public AnnunciModel getAnnunci(){
-
 
         String query = "SELECT utente.username, manga.nome, annuncio.prezzoDiVendita,annuncio.idAnnuncio " +
                 "FROM annuncio " +
@@ -95,17 +94,10 @@ public class AnnuncioDAO {
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
-
-
-
             st.setString(1,String.valueOf(copiaMangaModel.getIdCopiaManga()));
             st.setString(2,String.valueOf(prezzo));//
             st.setString(3, "1");
             st.setString(4,String.valueOf(dataFormattata));
-
-
-
-
 
             int righeScritte = st.executeUpdate();
 
@@ -125,9 +117,47 @@ public class AnnuncioDAO {
 
         return b;
         }
+
+
+    public ArrayList<AnnuncioModel> getMyAnnunci(int id){
+
+
+        String query = "SELECT manga.nome, annuncio.prezzoDiVendita, annuncio.dataAnnuncio, annuncio.idAnnuncio " +
+                "FROM annuncio " +
+                "JOIN copiamanga ON copiamanga.idCopiaManga = annuncio.copiaMangaID " +
+                "JOIN manga ON manga.idManga = copiamanga.mangaID " +
+                "WHERE annuncio.statoAnnuncio = '1' AND annuncio.utenteVenditoreID = ?; ";
+
+        ArrayList<AnnuncioModel> array = new ArrayList<>();
+        Connection conn = DBConnection.getIstance().connection();
+
+        try ( PreparedStatement st = conn.prepareStatement(query)) {
+            st.setInt(1,id);
+            ResultSet rs = st.executeQuery();
+
+
+            while(rs.next()){
+
+                AnnuncioModel annuncioModel = new AnnuncioModel();
+
+                annuncioModel.setNomeManga(rs.getString("nome"));
+                annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
+                annuncioModel.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
+                annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
+
+                array.add(annuncioModel);
+            }
+
+        }catch(SQLException e){
+            logger.severe("errore in AnnuncioDAO nella getMyAnnunci : " + e.getMessage());
+        }
+        for(AnnuncioModel a : array){
+            System.out.println(a.getIdAnnuncio()+ a.getNomeManga() + a.getDataAnnuncio() + a.getPrezzo());
+        }
+        return array ;
     }
 
-
+}
 
 
 

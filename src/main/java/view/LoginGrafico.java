@@ -48,8 +48,14 @@ public class LoginGrafico extends BaseController {
     public void userLogin(ActionEvent event){
         LoginApplicativo lg = new LoginApplicativo();
 
-        utenteBean.setEmail("Utente2");
-        utenteBean.setPassword("1234");
+        if(enteredEmail.getText().isEmpty() && enteredPassword.getText().isEmpty()){
+            utenteBean.setEmail("Utente2");
+            utenteBean.setPassword("1234");
+        }
+        else{
+            utenteBean.setEmail(enteredEmail.getText());
+            utenteBean.setPassword(enteredPassword.getText());
+        }
        /* utente.setEmail("Angelo@gmail.com");
         utente.setPassword("1234");*/
 

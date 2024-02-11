@@ -3,6 +3,7 @@ package view;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
 
+import dao.AnnuncioDAO;
 import dao.DatiUtenteDao;
 import dao.OffertaDAO;
 import javafx.fxml.FXML;
@@ -59,7 +60,7 @@ public class Demo extends UserGuiController {
 
     public void initializeData(){
         if(utenteBean == null){
-            System.out.println("porcatroia");
+
             utenteBean = new UtenteBean();
         }
 
@@ -68,6 +69,9 @@ public class Demo extends UserGuiController {
     public void initialize(){
         initializeData();
         System.out.println(utenteBean);
+
+        AnnuncioDAO dao = new AnnuncioDAO();
+        dao.getMyAnnunci(2);
 
     }
 
@@ -91,35 +95,6 @@ public class Demo extends UserGuiController {
             Scene scene = new Scene(root);
             Stage stage = (Stage) loginHomePage.getScene().getWindow();
             stage.setScene(scene);
-
-            DatiUtenteBean bean = new DatiUtenteBean();
-            bean.setIndirizzo("via volo");
-            bean.setCap("0912");
-            bean.setCivico("233");
-            bean.setIdInformazioniUtente(4);
-
-            DatiUtenteDao dao = new DatiUtenteDao();
-            dao.modificaDatiUser(bean);
-
-            /*
-            OffertaRicevuta offerta = new OffertaRicevuta();
-            offerta.setIdOfferta(3);
-            offerta.setAnnuncioID(1);
-
-            OffertaDAO prova = new OffertaDAO();
-
-            prova.accettaOfferta(offerta);
-
-            OffertaModel offerta = new OffertaModel();
-            offerta.setAnnuncioID(1);
-            offerta.setOffertaPrezzo(4.2);
-            offerta.setUtenteOfferenteID(1);
-
-            Date dataCorrente = new Date();
-            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dataFormattata = formatoData.format(dataCorrente);
-            offerta.setDataOfferta(dataFormattata);
-            prova.insertOfferta(offerta);*/
 
         }
 

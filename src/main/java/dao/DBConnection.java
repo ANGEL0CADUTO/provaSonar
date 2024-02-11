@@ -27,7 +27,6 @@ public class DBConnection {
     public static synchronized DBConnection getIstance(){
         if(instance == null) {
             instance = new DBConnection();
-            System.out.println("DBconnection getIstance sta creando nuova connessione!! " +DBConnection.getIstance());
         }
         return instance;
     }
@@ -44,11 +43,7 @@ public class DBConnection {
                 logger.severe("Errore in DBConnection nella connection() : " + e.getMessage());
             }
         }
-        try {
-            System.out.println("spero sia tu: "+ this.conn.isClosed());
-        } catch (SQLException e) {
-            logger.severe("errore nella this.conn.isClosed() " + e.getMessage());
-        }
+
         return this.conn;
     }
 
@@ -61,7 +56,7 @@ public class DBConnection {
             jdbcUrl = properties.getProperty("CONNECTION_URL");
             username = properties.getProperty("LOGIN_USER");
             password = properties.getProperty("LOGIN_PASSWORD");
-            System.out.println("GetInfo è stata chiamata");
+
 
         } catch (IOException e) {
             logger.severe("Errore nella getInfo  " + e.getMessage());
