@@ -7,9 +7,19 @@ public class AnnuncioModel {
     private int idAnnuncio;
     private String nomeUtente;
     private String nomeManga;
-
+    private int volume;
     private BigDecimal prezzo;
     private LocalDateTime dataAnnuncio;
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+
 
     public LocalDateTime getDataAnnuncio() {
         return dataAnnuncio;

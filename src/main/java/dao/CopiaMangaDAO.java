@@ -3,10 +3,9 @@ import model.CopiaMangaCollectionModel;
 import model.CopiaMangaModel;
 import model.UtenteModel;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class CopiaMangaDAO {
@@ -15,13 +14,13 @@ public class CopiaMangaDAO {
 
 
     //PRENDE L'INTERA LISTA DI MANGA DI UNO SPECIFICO UTENTE//
-    public CopiaMangaCollectionModel getCopieMangaListByUserID(UtenteModel model) {
+    public ArrayList<CopiaMangaModel> getCopieMangaListByUserID(UtenteModel model) {
 
 
         boolean b = false;
-        String query = "SELECT * from mangaink.copiamanga WHERE utenteID = ? AND statoCopiaManga = ?";
+        String query = "SELECT * from copiamanga WHERE utenteID = ? AND statoCopiaManga = ?";
 
-        CopiaMangaCollectionModel collezione = new CopiaMangaCollectionModel();
+        ArrayList<CopiaMangaModel> collezione = new ArrayList<>();
 
         Connection conn = DBConnection.getIstance().connection();
 
@@ -38,13 +37,11 @@ public class CopiaMangaDAO {
                     MangaDAO dao = new MangaDAO();
 
                     copiaManga.setIdCopiaManga(rs.getInt("idCopiaManga"));
-
-                    copiaManga.setIdManga(rs.getInt("mangaID"));
+                    copiaManga.setTitolo(rs.getString("titolo"));
                     copiaManga.setDataAcquisto(rs.getDate("dataAcquisto"));
+                    copiaManga.setVolume(rs.getInt("volume"));
 
-                    copiaManga.setNome(dao.getMangaByIDManga(copiaManga.getIdManga()).getNome());
-
-                    collezione.getListaManga().addLast(copiaManga);
+                    collezione.add(copiaManga);
 
                 }
 
@@ -56,37 +53,4 @@ public class CopiaMangaDAO {
         }
         return collezione;
     }
-
-/*    //SELECT mangaink.copiamanga WHERE idCopiaManga = ?"
-public CopiaMangaModel getCopiaManga (int id){
-    DBConnection connection = new DBConnection();
-    //boolean b = false;
-    String query = "SELECT mangaink.copiamanga WHERE idCopiaManga = ?";
-    Connection conn = connection.connection();
-
-    try ( PreparedStatement st = conn.prepareStatement(query)) {
-
-        st.setString(1, String.valueOf(copiaMangaModel.getIdCopiaManga()));
-
-        try(ResultSet rs = st.executeQuery()){
-         CopiaMangaModel mangaModel= new CopiaMangaModel();
-            while(rs.next()){
-
-            }
-
-        }
-
-    } catch (SQLException e) {
-        logger.severe("E' stata lanciata eccezione in CopieMangaDAO" + " " + e.getMessage());
-
-    }
-
-
-}*/
-
-
-
-
-
-
 }

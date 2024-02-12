@@ -10,11 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.AnnunciModel;
+import model.AnnuncioModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CompraMangaControllerGrafico extends UserGuiController{
 
@@ -54,12 +56,12 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     public void InizializzaDati(){
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
-        AnnunciModel annunciModel = controller.showAnnunce();
+        ArrayList<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente());
 
 
-        utenteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeUtente())));
-        nomeMangaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeManga())));
-        prezzoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(annunciModel.getListaDiAnnunci().get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getPrezzo())));
+        utenteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeUtente())));
+        nomeMangaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeManga())));
+        prezzoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getPrezzo())));
 
         compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
             private int index;
@@ -73,7 +75,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
 
                     try {
-                        goToOfferta(annunciModel.getListaDiAnnunci().get(index).getIdAnnuncio());
+                        goToOfferta(arrayAnnunci.get(index).getIdAnnuncio());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -94,17 +96,10 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         });
 
 
-                tableCompra.getItems().addAll(annunciModel.getListaDiAnnunci());
+                tableCompra.getItems().addAll(arrayAnnunci);
     }
 
 
-
-
-
-
-
-
-
-
-
+    public void doOfferta(ActionEvent actionEvent) {
+    }
 }

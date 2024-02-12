@@ -8,22 +8,38 @@ public class CopiaMangaModel {
 
 
     //FK da passare a MANGADAO
-    private int idManga;
+    private int idUtente;
 
-    private String nome;
+    private String titolo;
+    private int volume;
     private Date dataAcquisto;
     private Date dataVendita;
 
-    //FK da passare al **futuro** statoCopiaMangaDAO
     private int statoCopiaManga;
 
 
-    public String getNome() {
-        return nome;
+    public int getIdUtente() {
+        return idUtente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdUtente(int idUtente) {
+        this.idUtente = idUtente;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
     public int getIdCopiaManga() {
@@ -34,13 +50,6 @@ public class CopiaMangaModel {
         this.idCopiaManga = idCopiaManga;
     }
 
-    public int getIdManga() {
-        return idManga;
-    }
-
-    public void setIdManga(int idManga) {
-        this.idManga = idManga;
-    }
 
     public Date getDataAcquisto() {
         return dataAcquisto;

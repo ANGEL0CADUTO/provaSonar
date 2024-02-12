@@ -19,12 +19,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AnnuncioControllerGrafico {
+public class AnnuncioControllerGrafico extends UserGuiController{
 
 
 
-    @FXML
-    private Button homePageButton;
 
     @FXML
     private Button inserisciAnnuncio;//LO USO PER CONTROLLARE GLI ANNUNCI
@@ -35,73 +33,57 @@ public class AnnuncioControllerGrafico {
     @FXML
     private Label wrongPrice;
 
-    BigDecimal prezzo;
-    private UtenteBean utenteBean;
 
     private CopiaMangaBean copiaMangaBean;
 
-
-
-    public void setUtenteBean(UtenteBean utenteBean) {
-        this.utenteBean = utenteBean;
+    protected AnnuncioControllerGrafico(UtenteBean bean,CopiaMangaBean copiaMangaBean) {
+        super(bean);
+        this.copiaMangaBean = copiaMangaBean;
     }
-    public void setCopiaMangaBean(CopiaMangaBean copiamangaBean) {this.copiaMangaBean = copiamangaBean;}
 
-public void userAnnunce(){
 
-    if(inserisciPrezzo.getText().isEmpty()){wrongPrice.setText("Inserisci un prezzo");}
-    else {
-        try {
-            prezzo = BigDecimal.valueOf(Integer.parseInt(String.valueOf(inserisciPrezzo.getText())));
-        } catch (NumberFormatException ex) {
-            wrongPrice.setText("Inserisci un prezzo valido");
+    public void userAnnunce() {
+        BigDecimal prezzo = null;
+
+        if (inserisciPrezzo.getText().isEmpty()) {
+            wrongPrice.setText("Inserisci un prezzo");
+        } else {
+            try {
+                prezzo = BigDecimal.valueOf(Integer.parseInt(String.valueOf(inserisciPrezzo.getText())));
+            } catch (NumberFormatException ex) {
+                wrongPrice.setText("Inserisci un prezzo valido");
+            }
+        }
+        Date dataCorrente = new Date();
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dataFormattata = formatoData.format(dataCorrente);
+        AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
+
+        //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
+
+        /*CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
+
+
+        UtenteModel utenteModel = new UtenteModel();
+        utenteModel.setIdUtente(utenteBean.getIdUtente());*/
+
+
+        boolean esitoRicercaAnuncio = an.cercaAnnuncio(copiaMangaBean);
+
+
+        if (esitoRicercaAnuncio) {
+            System.out.println("ESISTE GIA' UN ANNUNCIO PER QUESTO MANGA");
+        } else {
+            boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata,utenteBean.getUsername());
+            if (esitoAnnuncio) {
+                System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
+            } else {
+                System.out.println("L'ANNUNCIO TE LO TIRI IN FACCIA");
+            }
         }
     }
 
 
-
-
-    Date dataCorrente = new Date();
-    SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String dataFormattata = formatoData.format(dataCorrente);
-    AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
-
-  //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
-
-    /*CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
-
-
-    UtenteModel utenteModel = new UtenteModel();
-    utenteModel.setIdUtente(utenteBean.getIdUtente());*/
-
-
-    boolean esitoRicercaAnuncio= an.cercaAnnuncio(copiaMangaBean);
-
-
-    if(esitoRicercaAnuncio){
-        System.out.println("ESISTE GIA' UN ANNUNCIO PER QUESTO MANGA");
-    }else{boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
-    if (esitoAnnuncio) {
-        System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
-    } else {
-        System.out.println("L'ANNUNCIO TE LO TIRI IN FACCIA");
-    }
-    }
-}
-
-
-
-
-
-
-
-
-    public void goToHomePage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) homePageButton.getScene().getWindow();
-        stage.setScene(scene);
-    }
 
 
 

@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
 import java.nio.Buffer;
+import java.time.LocalDateTime;
 
 
 public class OffertaControllerGrafico extends UserGuiController{
@@ -25,16 +26,17 @@ public class OffertaControllerGrafico extends UserGuiController{
 
     private int idAnnuncio;
 
-    public void setNum(int id){this.idAnnuncio=id;
-        System.out.printf("id ANNUNCIO "+ idAnnuncio);}
 
 
-    protected OffertaControllerGrafico(UtenteBean utente){
+    protected OffertaControllerGrafico(UtenteBean utente,int idAnnuncio){
+
         super(utente);
+        this.idAnnuncio = idAnnuncio;
     }
-//NEL DAO CI STA INSERISCI OFFERTA(OffertaModel offerta)
 
-    private void userOffert() {
+
+    @FXML
+    private void doOfferta() {
 
         BigDecimal prezzoOfferta = null;
         if (offertaTextField.getText().isEmpty()) {
@@ -47,8 +49,11 @@ public class OffertaControllerGrafico extends UserGuiController{
             }
         }
         OffertaBean offertaBean = new OffertaBean();
+        offertaBean.setAnnuncioID(idAnnuncio);
+        offertaBean.setUsernameOfferente(utenteBean.getUsername());
         offertaBean.setOffertaPrezzo(prezzoOfferta);
-        offertaBean.setUtenteOfferenteID(this.utenteBean.getIdUtente());
+        offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());
+        offertaBean.setDataOfferta(LocalDateTime.now());
 
 
 

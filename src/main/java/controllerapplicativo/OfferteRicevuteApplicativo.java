@@ -1,5 +1,6 @@
 package controllerapplicativo;
 
+import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import model.OffertaRicevuta;
 
@@ -14,6 +15,10 @@ public class OfferteRicevuteApplicativo {
     }
     public boolean accettaOffertaByOffertaID(int idOfferta, int idAnnuncio){
         OffertaDAO dao = new OffertaDAO();
-        return dao.accettaOfferta(idOfferta,idAnnuncio);
+        if(dao.accettaOfferta(idOfferta,idAnnuncio)){
+            AnnuncioDAO dao2 = new AnnuncioDAO();
+            return dao2.setStatoAccettatoByAnnuncioID(idAnnuncio);
+        }
+        return false;
     }
 }

@@ -7,14 +7,14 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CompraMangaControllerGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OffertaControllerGrafico">
     <children>
         <Accordion fx:id="accordion" layoutX="14.0" layoutY="76.0" prefHeight="53.0" prefWidth="280.0" />
         <Button fx:id="homePageButton" layoutX="531.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
         <ToolBar layoutX="20.0" layoutY="57.0" prefHeight="38.0" prefWidth="268.0">
             <items>
                 <TextField fx:id="offertaTextField" prefHeight="26.0" prefWidth="184.0" promptText="Fai la tua offerta..." />
-                <Button fx:id="offerta" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
+                <Button fx:id="offertaButton" mnemonicParsing="false" onAction="#doOfferta" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
             </items>
         </ToolBar>
         <Button layoutX="252.0" layoutY="308.0" mnemonicParsing="false" text="Compra subito" />

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
@@ -73,10 +74,10 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
     public void initializeData() {
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
-        CopiaMangaCollectionModel collezione = controller.showUserManga(utenteBean);
+        ArrayList<CopiaMangaModel> collezione = controller.showUserManga(utenteBean);
         SimpleDateFormat myDateFormat = new SimpleDateFormat();
-        idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdManga())));
-        nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCopiaManga())));
+        nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitolo()));
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(myDateFormat.format(cellData.getValue().getDataAcquisto())));
        //COLONNA AZIONI CON BOTTONE
 
@@ -89,35 +90,33 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
                 // Gestisci l'evento di clic del bottone
                 bottone.setOnAction(event -> {
                   CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
-                  CopiaMangaBean copiaMangaBean1 = new CopiaMangaBean();
-                  copiaMangaBean1.setIdManga(copiaMangaModel.getIdManga());
 
-                    System.out.println("METTI IN VENDITA " +copiaMangaBean1.getIdManga());
+                  //DA QUI IN GIU STO CORREGENDO(quello sopra da controllare)
+                  CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
+                  copiaMangaBean.setIdCopiaManga(copiaMangaModel.getIdCopiaManga());
+                  copiaMangaBean.setTitolo(copiaMangaModel.getTitolo());
+                  copiaMangaBean.setVolume(copiaMangaModel.getVolume());
+                  copiaMangaBean.setIdUtente(utenteBean.getIdUtente());
+
+                    System.out.println("METTI IN VENDITA " + copiaMangaBean.getTitolo() + " " + copiaMangaBean.getIdUtente());
 
 
 
                     try {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
+                        loader.setControllerFactory(c -> new AnnuncioControllerGrafico(utenteBean,copiaMangaBean));
+
                         Parent root = loader.load();
 
-                        view.AnnuncioControllerGrafico controller = loader.getController();
-                        controller.setUtenteBean(utenteBean);
-                        controller.setCopiaMangaBean(copiaMangaBean1);
-
-
-
                         Scene scene = new Scene(root);
-                        Stage stage = (Stage) bottone.getScene().getWindow();
+                        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
                         stage.setScene(scene);
 
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
 
-
-                   /* AnnuncioControllerGrafico an = new AnnuncioControllerGrafico();
-                    an.userAnnunce();//copiaMangaBean1 lo dovrò passare qua*/
                 });
             }
 
@@ -135,7 +134,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         });
 
 
-        table.getItems().addAll(collezione.getListaManga());
+        table.getItems().addAll(collezione);
     }
 
 /*
