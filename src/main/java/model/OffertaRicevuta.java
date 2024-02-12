@@ -16,7 +16,7 @@ public class OffertaRicevuta {
         this.idOfferta = idOfferta;
     }
 
-    private int annuncioID;
+        private int annuncioID;
         private String usernameOfferente;
         private BigDecimal offertaPrezzo;
         private double votoRecensioni;

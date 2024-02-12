@@ -98,12 +98,13 @@
       </VBox>
       <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <TableView fx:id="tableCompra" prefHeight="403.0" prefWidth="431.0">
+            <TableView fx:id="offerteTable" prefHeight="403.0" prefWidth="431.0">
                <columns>
                   <TableColumn fx:id="utenteColumn" prefWidth="95.20001220703125" text="Utente" />
-                  <TableColumn fx:id="nomeMangaColumn" prefWidth="112.79998779296875" text="Voto Utente" />
-                  <TableColumn fx:id="prezzoColumn" prefWidth="95.20001220703125" text="Offerta" />
-                  <TableColumn fx:id="compraColumn" prefWidth="102.39996337890625" text="(QUI BOTTONI)" />
+                  <TableColumn fx:id="votoUtenteColumn" prefWidth="47.19995880126953" text="Voto Utente" />
+                  <TableColumn fx:id="prezzoColumn" prefWidth="62.4000244140625" text="Offerta" />
+                  <TableColumn fx:id="dataOffertaColumn" prefWidth="76.800048828125" text="Data" />
+                  <TableColumn fx:id="buttonColumn" prefWidth="125.60001220703123" text="Button" />
                </columns>
                <VBox.margin>
                   <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />

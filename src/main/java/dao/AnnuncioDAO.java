@@ -132,6 +132,7 @@ public class AnnuncioDAO {
         Connection conn = DBConnection.getIstance().connection();
 
         try ( PreparedStatement st = conn.prepareStatement(query)) {
+
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
 

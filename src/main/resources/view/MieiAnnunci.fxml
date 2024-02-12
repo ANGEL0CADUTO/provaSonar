@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfiloUtenteGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="418.0" prefWidth="170.0">
          <children>
@@ -98,13 +98,13 @@
       </VBox>
       <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <TableView fx:id="tableCompra" prefHeight="403.0" prefWidth="431.0">
+            <TableView fx:id="mieiAnnunciTable" prefHeight="403.0" prefWidth="431.0">
                <columns>
-                  <TableColumn fx:id="utenteColumn" prefWidth="95.20001220703125" text="Nome Manga" />
-                  <TableColumn fx:id="nomeMangaColumn" prefWidth="49.59998321533203" text="Prezzo" />
-                  <TableColumn fx:id="prezzoColumn" prefWidth="96.79998779296875" text="Data" />
-                  <TableColumn fx:id="compraColumn" prefWidth="64.79986572265625" text="n Offerte" />
-                  <TableColumn fx:id="utenteColumn1" prefWidth="102.39999999999998" text="(Bottoni)" />
+                  <TableColumn fx:id="nomeMangaColumn" prefWidth="95.20001220703125" text="Nome Manga" />
+                  <TableColumn fx:id="prezzoColumn" prefWidth="49.59998321533203" text="Prezzo" />
+                  <TableColumn fx:id="dataColumn" prefWidth="96.79998779296875" text="Data" />
+                  <TableColumn fx:id="nOfferteColumn" prefWidth="64.79986572265625" text="n Offerte" />
+                  <TableColumn fx:id="offerteButtonColumn" prefWidth="102.39999999999998" text="(Bottoni)" />
                </columns>
                <VBox.margin>
                   <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />
