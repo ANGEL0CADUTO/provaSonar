@@ -143,7 +143,8 @@ public class OffertaDAO {
             while(rs.next()){
                 OffertaModel offerta = new OffertaModel();
                 offerta.setIdOfferta(rs.getInt("idOfferta"));
-                offerta.setStatoOfferta(rs.getInt("annuncioID"));
+                offerta.setAnnuncioID(rs.getInt("annuncioID"));
+
                 offerta.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
                 offerta.setDataOfferta(rs.getTimestamp("dataVendita").toLocalDateTime());
                 offerta.setRecensito(rs.getInt("recensioneFatta"));

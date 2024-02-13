@@ -3,8 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,25 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAcquistiGrafico">
+
+<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InviaRecensioneGrafico">
    <children>
-      <VBox layoutX="162.0" layoutY="-5.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
-         <children>
-            <TableView fx:id="mieiAcquistiTable" prefHeight="330.0" prefWidth="410.0">
-               <columns>
-                  <TableColumn fx:id="mangaColumn" prefWidth="95.20001220703125" text="Manga" />
-                  <TableColumn fx:id="prezzoColumn" prefWidth="60.79999542236328" text="Prezzo" />
-                  <TableColumn fx:id="dataColumn" prefWidth="85.60003662109375" text="Data acquisto" />
-                  <TableColumn prefWidth="64.79986572265625" />
-                  <TableColumn fx:id="recensisciColumn" prefWidth="102.39999999999998" text="(Bottoni)" />
-               </columns>
-               <VBox.margin>
-                  <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />
-               </VBox.margin>
-            </TableView>
-         </children>
-      </VBox>
-      <VBox alignment="TOP_CENTER" prefHeight="428.0" prefWidth="167.0">
+      <VBox alignment="TOP_CENTER" prefHeight="426.0" prefWidth="167.0">
          <children>
             <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
                <children>
@@ -116,6 +100,32 @@
                   </HBox>
                </children>
             </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="167.0" layoutY="-4.0" prefHeight="430.0" prefWidth="431.0" style="-fx-background-color: #242222;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="210.0" text="BENVENUTO qui fai la recensione " textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" top="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <TextArea fx:id="descrizioneTextArea" prefHeight="200.0" prefWidth="390.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </TextArea>
+            <Button fx:id="inviaRecensione" mnemonicParsing="false" onAction="#inviaRecensione" text="Invia Recensione">
+               <VBox.margin>
+                  <Insets left="153.0" top="30.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

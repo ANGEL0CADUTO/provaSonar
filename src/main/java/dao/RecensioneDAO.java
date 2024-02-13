@@ -65,4 +65,25 @@ public class RecensioneDAO {
         }
         return array;
     }
+
+
+    public boolean inviaRecensione(Recensione recensione){
+
+        String query = "INSERT INTO recensione(offertaID,recensitoID,voto,testo,usernameRecensore) VALUES (?,?,?,?,?)";
+
+        Connection conn = DBConnection.getIstance().connection();
+
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,recensione.getOffertaID());
+            st.setInt(2,recensione.getRecensitoID());
+            //st.setDouble(3,recensione.get);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            logger.severe("Errore nel RecensioneDAO in inviaRecensione :"+ e.getMessage());
+        }
+        return true;
+    }
+
+
+
 }

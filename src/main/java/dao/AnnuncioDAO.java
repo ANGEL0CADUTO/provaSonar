@@ -159,12 +159,13 @@ public class AnnuncioDAO {
     }
 
     public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID) {
-        String query = "SELECT titoloManga, volume, prezzoDiVendita,dataAnnuncio FROM " +
-                "annuncio WHERE idAnnuncio = ?";
+        String query = "SELECT titoloManga, utenteVenditore, volume, prezzoDiVendita,dataAnnuncio FROM " +
+                "annuncio WHERE idAnnuncio = ?;";
         Connection conn = DBConnection.getIstance().connection();
         AnnuncioModel annuncio = null;
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
+            System.out.println("il valore dell'annuncio che gli abbiamo passato è :"+ annuncioID);
             st.setInt(1, annuncioID);
             ResultSet rs = st.executeQuery();
 
@@ -172,9 +173,10 @@ public class AnnuncioDAO {
                 annuncio = new AnnuncioModel();
                 annuncio.setNomeManga(rs.getString("titoloManga"));
                 annuncio.setVolume(rs.getInt("volume"));
+                annuncio.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
                 annuncio.setPrezzo(rs.getBigDecimal("prezzoDiVendita"));
                 annuncio.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
-                System.out.println(annuncio.getNomeManga());
+
             }
         } catch (SQLException e) {
             logger.severe("Errore nel AnnuncioDAO in getDatiAnnuncioByAnnuncioID : " + e.getMessage());

@@ -5,6 +5,16 @@ import java.time.LocalDateTime;
 
 public class AnnuncioModel {
     private int idAnnuncio;
+
+    public int getUtenteVenditoreID() {
+        return utenteVenditoreID;
+    }
+
+    public void setUtenteVenditoreID(int utenteVenditoreID) {
+        this.utenteVenditoreID = utenteVenditoreID;
+    }
+
+    private int utenteVenditoreID;
     private String nomeUtente;
     private String nomeManga;
     private int volume;

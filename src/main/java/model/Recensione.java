@@ -7,7 +7,21 @@ public class Recensione {
 
     private int idRecensioni;
 
+    private int offertaID;
+
+
+
     private double voto;
+    private int RecensitoID;
+
+    public int getRecensitoID() {
+        return RecensitoID;
+    }
+
+    public void setRecensitoID(int recensitoID) {
+        RecensitoID = recensitoID;
+    }
+
     private String testo;
     private String titoloRecensito;
     private int volumeRecensito;
@@ -16,6 +30,13 @@ public class Recensione {
     private BigDecimal prezzoIniziale;
     private BigDecimal prezzoFinale;
 
+    public int getOffertaID() {
+        return offertaID;
+    }
+
+    public void setOffertaID(int offertaID) {
+        this.offertaID = offertaID;
+    }
     public String getTitoloRecensito() {
         return titoloRecensito;
     }
