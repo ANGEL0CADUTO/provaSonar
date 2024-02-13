@@ -241,7 +241,53 @@ public class UtenteDAO {
 
     }
 
+    public double getVotoByUtenteID(int id) {
+        String query = "SELECT votoRecensioni FROM utente WHERE idUtente = ?";
+
+        double voto = 0;
+        Connection conn = DBConnection.getIstance().connection();
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+
+            st.setInt(1, id);
+
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                voto = rs.getDouble(1);
+
+            }
+        } catch (SQLException e) {
+            logger.severe("Errore in UtenteDAO in getVotoByUtenteID: " + e.getMessage());
+        }
+
+        return voto;
 }
+
+    public boolean aggiornaVotoByUtenteID(int id, double votoNuovo) {
+        String query = "UPDATE utente SET votoRecensioni = ? WHERE idUtente = ?";
+        Connection conn = DBConnection.getIstance().connection();
+        boolean b = false;
+
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+            st.setDouble(1, votoNuovo);
+            st.setInt(2, id);
+
+            int righeModificate = st.executeUpdate();  // Cambiato qui
+
+            if (righeModificate > 0) {
+                b = true;
+            }
+
+        } catch (SQLException e) {
+            logger.severe("Errore in UtenteDAO in aggiornaVotoByUtenteID: " + e.getMessage());
+        }
+        return b;
+    }
+
+
+
+}
+
+
 
 
 
