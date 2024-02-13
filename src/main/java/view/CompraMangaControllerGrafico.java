@@ -30,6 +30,9 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     private TableColumn<Object[], String> nomeMangaColumn;
     @FXML
     private TableColumn<Object[], String> prezzoColumn;
+    @FXML
+    private TableColumn<Object[], String> volumeColumn;
+
 
     //COLONNA PER IL TASTO AUTOCREATO
     @FXML
@@ -54,15 +57,22 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         InizializzaDati();
     }
 
+    public void cercaPerNome(ActionEvent event) {
+        // Richiama il metodo per inizializzare i dati
+        InizializzaDati();
+    }
+
     public void InizializzaDati(){
+
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
-        ArrayList<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente());
+        ArrayList<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente(),searchTextField.getText());
+        tableCompra.getItems().clear();
 
 
         utenteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeUtente())));
         nomeMangaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeManga())));
         prezzoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getPrezzo())));
-
+        volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVolume())));
         compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
             private int index;
             private final Button bottone = new Button("Compra");
@@ -94,6 +104,8 @@ public class CompraMangaControllerGrafico extends UserGuiController{
                 }
             }
         });
+
+
 
 
                 tableCompra.getItems().addAll(arrayAnnunci);

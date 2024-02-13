@@ -24,7 +24,7 @@
                   <ToolBar prefHeight="40.0" prefWidth="363.0">
                      <items>
                         <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="294.0" promptText="Cerca il tuo Manga per nome..." />
-                        <Button fx:id="searchButton" mnemonicParsing="false" text="Cerca" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#cercaPerNome" text="Cerca" />
                      </items>
                   </ToolBar>
                </children>
@@ -39,10 +39,11 @@
                <children>
                   <TableView fx:id="tableCompra" prefHeight="218.0" prefWidth="412.0">
                      <columns>
-                        <TableColumn fx:id="utenteColumn" prefWidth="95.20001220703125" text="Utente" />
-                        <TableColumn fx:id="nomeMangaColumn" prefWidth="104.800048828125" text="Nome Manga" />
-                        <TableColumn fx:id="prezzoColumn" prefWidth="102.39996337890625" text="Prezzo" />
-                        <TableColumn fx:id="compraColumn" prefWidth="102.39996337890625" text="Compra" />
+                        <TableColumn fx:id="utenteColumn" prefWidth="81.60005950927734" text="Utente" />
+                        <TableColumn fx:id="nomeMangaColumn" prefWidth="81.60005950927734" text="Nome Manga" />
+                        <TableColumn fx:id="volumeColumn" prefWidth="80.79998779296875" text="Volume" />
+                        <TableColumn fx:id="prezzoColumn" prefWidth="73.60003662109375" text="Prezzo" />
+                        <TableColumn fx:id="compraColumn" prefWidth="88.79998779296875" text="Compra" />
                      </columns>
                   </TableView>
                </children>

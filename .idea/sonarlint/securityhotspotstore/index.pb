@@ -29,3 +29,11 @@ j
 :.idea/dataSources/27ec4b51-dd7c-4369-88f8-77814604899d.xml,e\d\ed1e912f0a59376269a63744a97d4115ab04f16b
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+Q
+!src/main/java/dao/OffertaDAO.java,1\1\11030da5cd055881ccf3e51a510e84671d0d4038
+T
+$src/main/java/dao/RecensioneDAO.java,9\0\9040a533e69b458dedc3acbb3ccd4fc03e63059f
+y
+Isrc/main/java/controllerapplicativo/CompraMangaControllerApplicativo.java,6\3\63332355cfc76df7b710b8a2b66f289c2cd3833e
+d
+4src/main/java/view/CompraMangaControllerGrafico.java,7\3\739699b4b0508cc6078a4d9d410d37320dca530e

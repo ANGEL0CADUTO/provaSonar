@@ -8,8 +8,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CompraMangaControllerApplicativo {
-    public ArrayList<AnnuncioModel> showAnnunce(int id) {
+    public ArrayList<AnnuncioModel> showAnnunce(int id,String name) {
      AnnuncioDAO dao = new AnnuncioDAO();
-     return dao.getAnnunci(id);
+     return dao.getAnnunci(id,name);
     }
 }
