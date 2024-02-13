@@ -72,9 +72,6 @@ public class Demo extends UserGuiController {
         initializeData();
         System.out.println(utenteBean);
 
-        AnnuncioDAO dao = new AnnuncioDAO();
-        dao.getMyAnnunci(2);
-
     }
 
     public void setUtenteBean(UtenteBean bean){
@@ -83,10 +80,9 @@ public class Demo extends UserGuiController {
 
     public void changeScene() throws IOException {
 
-        if(utenteBean.isLogged()){
+        if (utenteBean.isLogged()) {
             System.out.println("sei già loggato");
-        }
-        else{
+        } else {
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
@@ -99,13 +95,23 @@ public class Demo extends UserGuiController {
             stage.setScene(scene);
 
         }
+    }
+        public void goToRecensioni() throws IOException{
+
+            if(utenteBean.isLogged()){
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensioni.fxml"));
+                loader.setControllerFactory(c -> new RecensioniGrafico(utenteBean));
 
 
-
-        //StupidTesting
-        //CopiaMangaDAO cm = new CopiaMangaDAO();
-        //cm.getCopieMangaListByUserID();
-
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+                stage.setScene(scene);
+            }
+            else{
+                goToLogin();
+            }
     }
 
     public void registrazione() throws IOException {

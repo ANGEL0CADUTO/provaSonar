@@ -8,13 +8,6 @@ public class OffertaRicevuta {
 
         private int idOfferta;
 
-    public int getIdOfferta() {
-        return idOfferta;
-    }
-
-    public void setIdOfferta(int idOfferta) {
-        this.idOfferta = idOfferta;
-    }
 
         private int annuncioID;
         private String usernameOfferente;
@@ -22,7 +15,23 @@ public class OffertaRicevuta {
         private double votoRecensioni;
 
         private LocalDateTime dataOfferta;
+        private LocalDateTime dataVendita;
 
+    public LocalDateTime getDataVendita() {
+        return dataVendita;
+    }
+
+    public void setDataVendita(LocalDateTime dataVendita) {
+        this.dataVendita = dataVendita;
+    }
+
+    public int getIdOfferta() {
+        return idOfferta;
+    }
+
+    public void setIdOfferta(int idOfferta) {
+        this.idOfferta = idOfferta;
+    }
 
 
     public double getVotoRecensioni() {

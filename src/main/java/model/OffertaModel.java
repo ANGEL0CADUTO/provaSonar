@@ -1,15 +1,27 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 public class OffertaModel {
 
     private int annuncioID;
     private int utenteOfferenteID;
+    private String usernameOfferente;
+
+    public String getUsernameOfferente() {
+        return usernameOfferente;
+    }
+
+    public void setUsernameOfferente(String usernameOfferente) {
+        this.usernameOfferente = usernameOfferente;
+    }
+
     private BigDecimal offertaPrezzo;
 
-    private String dataOfferta;
+    private LocalDateTime dataOfferta;
+
     private int statoOfferta;
 
     public int getAnnuncioID() {
@@ -36,11 +48,11 @@ public class OffertaModel {
         this.offertaPrezzo = offertaPrezzo;
     }
 
-    public String getDataOfferta() {
+    public LocalDateTime getDataOfferta() {
         return dataOfferta;
     }
 
-    public void setDataOfferta(String dataOfferta) {
+    public void setDataOfferta(LocalDateTime dataOfferta) {
         this.dataOfferta = dataOfferta;
     }
 

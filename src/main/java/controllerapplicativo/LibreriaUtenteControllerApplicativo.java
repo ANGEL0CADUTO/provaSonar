@@ -3,13 +3,16 @@ package controllerapplicativo;
 import model.CopiaMangaCollectionModel;
 import dao.CopiaMangaDAO;
 import bean.UtenteBean;
+import model.CopiaMangaModel;
 import model.UtenteModel;
+
+import java.util.ArrayList;
 
 public class LibreriaUtenteControllerApplicativo {
 
 
 
-    public CopiaMangaCollectionModel showUserManga(UtenteBean bean){
+    public ArrayList<CopiaMangaModel> showUserManga(UtenteBean bean){
 
         CopiaMangaDAO dao = new CopiaMangaDAO();
 
