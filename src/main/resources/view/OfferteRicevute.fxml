@@ -12,13 +12,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfiloUtenteGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="418.0" prefWidth="170.0">
+      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="414.0" prefWidth="431.0">
                <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
+                  <TableView fx:id="offerteTable" prefHeight="403.0" prefWidth="431.0">
+                     <columns>
+                        <TableColumn fx:id="utenteColumn" prefWidth="95.20001220703125" text="Utente" />
+                        <TableColumn fx:id="votoUtenteColumn" prefWidth="47.19995880126953" text="Voto Utente" />
+                        <TableColumn fx:id="prezzoColumn" prefWidth="62.4000244140625" text="Offerta" />
+                        <TableColumn fx:id="dataOffertaColumn" prefWidth="76.800048828125" text="Data" />
+                        <TableColumn fx:id="buttonColumn" prefWidth="125.60001220703123" text="Button" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
                   <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
                </children>
             </VBox>
@@ -29,7 +50,7 @@
                         <Image url="@../photo/user.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="profiloButton" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
+                  <Button fx:id="profiloButton1" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -39,11 +60,7 @@
                         <Image url="@../photo/notification.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Notifiche" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="notificheButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Notifiche" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -53,7 +70,7 @@
                         <Image url="@../photo/book.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="libreriaButton" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -63,7 +80,7 @@
                         <Image url="@../photo/sales.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="compraButton" mnemonicParsing="false" onAction="#goToCompra" text="Miei Annunci" />
+                  <Button fx:id="compraButton1" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -73,10 +90,20 @@
                         <Image url="@../photo/euro.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="depositaEPrelevaButton" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
+                  <Button fx:id="depositaEPrelevaButton1" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
                </children>
             </HBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="123.0" prefWidth="175.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../photo/handshake%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton2" mnemonicParsing="false" onAction="#goToCompra" prefHeight="40.0" prefWidth="87.0" text="Compra" />
+               </children>
+            </HBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="112.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
                <children>
                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #020203;">
                      <children>
@@ -94,22 +121,6 @@
                   </HBox>
                </children>
             </VBox>
-         </children>
-      </VBox>
-      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
-         <children>
-            <TableView fx:id="offerteTable" prefHeight="403.0" prefWidth="431.0">
-               <columns>
-                  <TableColumn fx:id="utenteColumn" prefWidth="95.20001220703125" text="Utente" />
-                  <TableColumn fx:id="votoUtenteColumn" prefWidth="47.19995880126953" text="Voto Utente" />
-                  <TableColumn fx:id="prezzoColumn" prefWidth="62.4000244140625" text="Offerta" />
-                  <TableColumn fx:id="dataOffertaColumn" prefWidth="76.800048828125" text="Data" />
-                  <TableColumn fx:id="buttonColumn" prefWidth="125.60001220703123" text="Button" />
-               </columns>
-               <VBox.margin>
-                  <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />
-               </VBox.margin>
-            </TableView>
          </children>
       </VBox>
    </children>

@@ -1,31 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DepositaEPrelevaGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
-      <Button fx:id="homeButton" layoutX="531.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
-      <TextField fx:id="deposita" layoutX="135.0" layoutY="107.0" promptText="Inserisci quanto prelevare" />
-      <TextField fx:id="preleva" layoutX="135.0" layoutY="174.0" promptText="Inserisci quanto depositare" />
-      <Label layoutX="71.0" layoutY="110.0" text="Deposita">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="81.0" layoutY="177.0" text="Preleva">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="depositaCredito" layoutX="479.0" layoutY="334.0" mnemonicParsing="false" onAction="#userDeposita" text="Deposita" />
-      <Button fx:id="prelevaCredito" layoutX="378.0" layoutY="334.0" mnemonicParsing="false" onAction="#userPreleva" text="Preleva" />
-      <Button fx:id="compraButton" layoutX="536.0" layoutY="113.0" mnemonicParsing="false" onAction="#goToCompra" text="Compra" />
-      <Button fx:id="profiloButton" layoutX="541.0" layoutY="140.0" mnemonicParsing="false" onAction="#goToProfilo" text="Profilo" />
-      <Button fx:id="depositaEPrelevaButton" layoutX="513.0" layoutY="166.0" mnemonicParsing="false" onAction="#goToDepositaEPreleva" text="Deposita/Preleva" />
-      <Button fx:id="libreriaButton" layoutX="537.0" layoutY="192.0" mnemonicParsing="false" onAction="#goToLibreria" text="Libreria" />
+      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="95.0" prefWidth="431.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="68.0" text="Deposita" textFill="#fffcfc">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox prefHeight="95.0" prefWidth="162.0">
+                     <children>
+                        <TextField fx:id="deposita" prefHeight="26.0" prefWidth="154.0" promptText="Inserisci quanto depositare" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="95.0" prefWidth="26.0" />
+                  <Button fx:id="depositaCredito" mnemonicParsing="false" onAction="#userDeposita" text="Deposita" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="70.0">
+                     <children>
+                        <Label text="Preleva" textFill="#fcf3f3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="6.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="166.0">
+                     <children>
+                        <TextField fx:id="preleva" prefHeight="26.0" prefWidth="114.0" promptText="Inserisci quanto prelevare" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="28.0" />
+                  <Button fx:id="prelevaCredito" mnemonicParsing="false" onAction="#userPreleva" prefHeight="26.0" prefWidth="62.0" text="Preleva" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
+                  <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fx:id="profiloImage" fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/user.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="profiloButton1" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/notification.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="notificheButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Notifiche" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/book.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/sales.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton1" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/euro.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="depositaEPrelevaButton1" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../photo/handshake%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton2" mnemonicParsing="false" onAction="#goToCompra" prefHeight="40.0" prefWidth="87.0" text="Compra" />
+               </children>
+            </HBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="112.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #020203;">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photo/logout.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="18.0" prefWidth="82.0" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

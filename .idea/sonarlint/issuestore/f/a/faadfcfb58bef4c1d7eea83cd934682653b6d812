@@ -1,9 +1,15 @@
 
-t
-java:S1450'"YRemove the "utenteBean" field and declare it as a local variable in the relevant methods.(¥²µ ÿÿÿÿÿ
-Q	java:S125G"<This block of commented-out lines of code should be removed.(Â‡ÿ™
-E	java:S106R"+Replace this use of System.out by a logger.(ý¥æúÿÿÿÿ
-@	java:S106U"+Replace this use of System.out by a logger.(—˜–³
-E	java:S106W"+Replace this use of System.out by a logger.(Ï¾Æùûÿÿÿÿ
-I
-java:S1068'".Remove this unused "utenteBean" private field.(¥²µ ÿÿÿÿÿ
+Z
+java:S2387!"8"utenteBean" is the name of a field in "BaseController".(¥²µ ÿÿÿÿÿ8˜ª¢íÙ1
+z
+java:S1450$"]Remove the "copiaMangaBean" field and declare it as a local variable in the relevant methods.(©¥‰â8™ª¢íÙ1
+X	java:S125-"<This block of commented-out lines of code should be removed.(úùÆ¼8•Ë¢íÙ1
+d
+java:S1117I"BRename "copiaMangaBean" which hides the field declared at line 36.(“Ôõ™üÿÿÿÿ8¨ª¢íÙ1
+L	java:S106M"+Replace this use of System.out by a logger.(¾Ñ“çùÿÿÿÿ8¨ª¢íÙ1
+L	java:S106T"+Replace this use of System.out by a logger.(ý¥æúÿÿÿÿ8©ª¢íÙ1
+G	java:S106W"+Replace this use of System.out by a logger.(—˜–³8ªª¢íÙ1
+L	java:S106Y"+Replace this use of System.out by a logger.(Ï¾Æùûÿÿÿÿ8ªª¢íÙ1
+]	java:S125e"<This block of commented-out lines of code should be removed.(Ÿù•Óøÿÿÿÿ8ªª¢íÙ1
+O
+java:S1068$"2Remove this unused "copiaMangaBean" private field.(©¥‰â8ªª¢íÙ1

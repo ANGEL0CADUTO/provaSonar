@@ -4,6 +4,7 @@ package dao;
 import model.AnnunciModel;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
+import model.UtenteModel;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -84,20 +85,22 @@ public class AnnuncioDAO {
         return annuncio ;
     }
 
-    public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata) {//DA MIGLIORARE
+    public boolean addAnnuncio(UtenteModel utenteModel, CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata) {//DA MIGLIORARE
 
         boolean b = false;
-        String query = "INSERT INTO mangaink.annuncio (copiaMangaID, prezzoDiVendita ,statoAnnuncio,dataAnnuncio ) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO mangaink.annuncio (utenteVenditoreID, copiaMangaID, prezzoDiVendita ,statoAnnuncio,dataAnnuncio ) VALUES (?, ?, ?, ?, ?)";
         Connection conn = DBConnection.getIstance().connection();
 
 
 
-        try (PreparedStatement st = conn.prepareStatement(query)) {
 
-            st.setString(1,String.valueOf(copiaMangaModel.getIdCopiaManga()));
-            st.setString(2,String.valueOf(prezzo));//
-            st.setString(3, "1");
-            st.setString(4,String.valueOf(dataFormattata));
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+            st.setString(1,String.valueOf(utenteModel.getIdUtente()));
+            st.setString(2,String.valueOf(copiaMangaModel.getIdCopiaManga()));
+            st.setString(3,String.valueOf(prezzo));//
+            st.setString(4, "1");
+            st.setString(5,String.valueOf(dataFormattata));
+
 
             int righeScritte = st.executeUpdate();
 

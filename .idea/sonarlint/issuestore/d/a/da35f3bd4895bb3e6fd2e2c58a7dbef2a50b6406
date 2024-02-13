@@ -1,27 +1,29 @@
 
 \
-java:S2387":"myAnchorPane" is the name of a field in "BaseController".(»²¡¶üÿÿÿÿ8õÃ×Ù1
+java:S2387":"myAnchorPane" is the name of a field in "BaseController".(»²¡¶üÿÿÿÿ8õÃ×Ù1
 i
-java:S2387$"G"depositaEPrelevaButton" is the name of a field in "UserGuiController".(ù¨‹“ıÿÿÿÿ8öÃ×Ù1
+java:S2387%"G"depositaEPrelevaButton" is the name of a field in "UserGuiController".(ù¨‹“ıÿÿÿÿ8öÃ×Ù1
 Z
-java:S2387'">"profiloButton" is the name of a field in "UserGuiController".(ÜøÁm8öÃ×Ù1
+java:S2387(">"profiloButton" is the name of a field in "UserGuiController".(ÜøÁm8öÃ×Ù1
 a
-java:S2387)"?"libreriaButton" is the name of a field in "UserGuiController".(ÌŸÄ–üÿÿÿÿ8öÃ×Ù1
+java:S2387*"?"libreriaButton" is the name of a field in "UserGuiController".(ÌŸÄ–üÿÿÿÿ8öÃ×Ù1
 _
-java:S2387+"="compraButton" is the name of a field in "UserGuiController".(èºá¥úÿÿÿÿ8öÃ×Ù1
-L	java:S1067"+Replace this use of System.out by a logger.(ÁÚıüÿÿÿÿ8ûÃ×Ù1
-L	java:S106>"+Replace this use of System.out by a logger.(£—Æùÿÿÿÿ8üÃ×Ù1
-L	java:S106F"+Replace this use of System.out by a logger.(˜öç­ıÿÿÿÿ8ÿÃ×Ù1
-L	java:S106Q"+Replace this use of System.out by a logger.(î©‘ıÿÿÿÿ8Ä×Ù1
-]	java:S125i"<This block of commented-out lines of code should be removed.(¹äôÿÿÿÿÿ8®Ä×Ù1
-X	java:S125"<This block of commented-out lines of code should be removed.(“Ãây8®Ä×Ù1
+java:S2387,"="compraButton" is the name of a field in "UserGuiController".(èºá¥úÿÿÿÿ8öÃ×Ù1
+L	java:S106:"+Replace this use of System.out by a logger.(ÁÚıüÿÿÿÿ8ûçşíÙ1
+L	java:S106I"+Replace this use of System.out by a logger.(˜öç­ıÿÿÿÿ8èşíÙ1
+L	java:S106W"+Replace this use of System.out by a logger.(î©‘ıÿÿÿÿ8ˆèşíÙ1
+W	java:S125j"<This block of commented-out lines of code should be removed.(“Ãây8ÿèşíÙ1
+M
+java:S1128"0Remove this unused import 'bean.DatiUtenteBean'.(­È …8İùËĞÙ1
+P
+java:S1128".Remove this unused import 'dao.DatiUtenteDao'.(Õ¬æ®ûÿÿÿÿ8àùËĞÙ1
 G
-java:S1128"+Remove this unused import 'dao.OffertaDAO'.(”»³|8çœà£Ù1
+java:S1128"+Remove this unused import 'dao.OffertaDAO'.(”»³|8çœà£Ù1
 Q
-java:S1128"/Remove this unused import 'model.OffertaModel'.(À¥¹Õıÿÿÿÿ8çœà£Ù1
+java:S1128"/Remove this unused import 'model.OffertaModel'.(À¥¹Õıÿÿÿÿ8çœà£Ù1
 O
-java:S1128"2Remove this unused import 'model.OffertaRicevuta'.(Û§½ì8èœà£Ù1
+java:S1128"2Remove this unused import 'model.OffertaRicevuta'.(Û§½ì8èœà£Ù1
 T
-java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8èœà£Ù1
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8èœà£Ù1
 H
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8èœà£Ù1
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8èœà£Ù1

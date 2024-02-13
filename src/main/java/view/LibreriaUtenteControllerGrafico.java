@@ -88,27 +88,17 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
             {
                 // Gestisci l'evento di clic del bottone
                 bottone.setOnAction(event -> {
-                  CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
-                  CopiaMangaBean copiaMangaBean1 = new CopiaMangaBean();
-                  copiaMangaBean1.setIdManga(copiaMangaModel.getIdManga());
 
-                    System.out.println("METTI IN VENDITA " +copiaMangaBean1.getIdManga());
+                    System.out.println("METTI IN VENDITA " +getTableView().getItems().get(getIndex()).getIdCopiaManga());
 
 
 
                     try {
-
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
+                        loader.setControllerFactory(c -> new AnnuncioControllerGrafico(utenteBean,getTableView().getItems().get(getIndex()).getIdCopiaManga()));
                         Parent root = loader.load();
-
-                        view.AnnuncioControllerGrafico controller = loader.getController();
-                        controller.setUtenteBean(utenteBean);
-                        controller.setCopiaMangaBean(copiaMangaBean1);
-
-
-
+                        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
                         Scene scene = new Scene(root);
-                        Stage stage = (Stage) bottone.getScene().getWindow();
                         stage.setScene(scene);
 
                     } catch (IOException e) {

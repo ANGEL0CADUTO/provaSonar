@@ -9,17 +9,11 @@ import bean.UtenteBean;
 import controllerapplicativo.AnnuncioControllerApplicativo;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class AnnuncioControllerGrafico {
+public class AnnuncioControllerGrafico extends UserGuiController{
 
 
 
@@ -37,17 +31,25 @@ public class AnnuncioControllerGrafico {
 
     BigDecimal prezzo;
     private UtenteBean utenteBean;
+    private int idCopiaManga;
 
     private CopiaMangaBean copiaMangaBean;
 
-
-
-    public void setUtenteBean(UtenteBean utenteBean) {
-        this.utenteBean = utenteBean;
+    protected AnnuncioControllerGrafico(UtenteBean bean, int idCopiaManga) {
+        super(bean);
+        this.idCopiaManga = idCopiaManga;
+        this.utenteBean=bean;
     }
-    public void setCopiaMangaBean(CopiaMangaBean copiamangaBean) {this.copiaMangaBean = copiamangaBean;}
 
+
+   /* public void setUtenteBean(UtenteBean utenteBean) {
+        this.utenteBean = utenteBean;
+    }*/
+    public void setCopiaMangaBean(CopiaMangaBean copiamangaBean) {this.copiaMangaBean = copiamangaBean;}
+  
+    @FXML
 public void userAnnunce(){
+
 
     if(inserisciPrezzo.getText().isEmpty()){wrongPrice.setText("Inserisci un prezzo");}
     else {
@@ -68,11 +70,11 @@ public void userAnnunce(){
 
   //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
 
-    /*CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
+  CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
+        copiaMangaBean.setIdManga(idCopiaManga);
 
 
-    UtenteModel utenteModel = new UtenteModel();
-    utenteModel.setIdUtente(utenteBean.getIdUtente());*/
+        System.out.println("INSERISCI ANNUNCIO UTENTE BEAN "+  utenteBean.getIdUtente());
 
 
     boolean esitoRicercaAnuncio= an.cercaAnnuncio(copiaMangaBean);
@@ -80,7 +82,7 @@ public void userAnnunce(){
 
     if(esitoRicercaAnuncio){
         System.out.println("ESISTE GIA' UN ANNUNCIO PER QUESTO MANGA");
-    }else{boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean,prezzo,dataFormattata);
+    }else{boolean esitoAnnuncio = an.inserisciAnnuncio(utenteBean,copiaMangaBean,prezzo,dataFormattata);
     if (esitoAnnuncio) {
         System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
     } else {
@@ -96,12 +98,12 @@ public void userAnnunce(){
 
 
 
-    public void goToHomePage() throws IOException {
+ /*   public void goToHomePage() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) homePageButton.getScene().getWindow();
         stage.setScene(scene);
-    }
+    }*/
 
 
 

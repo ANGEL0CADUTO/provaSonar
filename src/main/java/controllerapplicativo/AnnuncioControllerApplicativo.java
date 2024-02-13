@@ -1,22 +1,26 @@
 package controllerapplicativo;
 
+import bean.UtenteBean;
 import dao.AnnuncioDAO;
 import bean.CopiaMangaBean;
 import model.CopiaMangaModel;
+import model.UtenteModel;
 
 import java.math.BigDecimal;
 
 public class AnnuncioControllerApplicativo {
-    public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean, BigDecimal prezzo, String dataFormattata) {
+    public boolean inserisciAnnuncio(UtenteBean utenteBean, CopiaMangaBean copiaMangaBean, BigDecimal prezzo, String dataFormattata) {
         AnnuncioDAO creaAnnuncio = new AnnuncioDAO();
 
 
       //POPOLA IL MODEL DAL BEAN CopiaMANGA E LO PASSO AL DAO
         CopiaMangaModel copiaMangaModel = new CopiaMangaModel();
         copiaMangaModel.setIdCopiaManga(copiaMangaBean.getIdManga());
+        UtenteModel utenteModel = new UtenteModel();
+        utenteModel.setIdUtente(utenteBean.getIdUtente());
 
 
-        return creaAnnuncio.addAnnuncio(copiaMangaModel,prezzo,dataFormattata);
+        return creaAnnuncio.addAnnuncio( utenteModel,copiaMangaModel,prezzo,dataFormattata);
     }
 
     public boolean cercaAnnuncio(CopiaMangaBean copiaMangaBean){

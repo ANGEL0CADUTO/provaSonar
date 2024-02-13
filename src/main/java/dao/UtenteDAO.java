@@ -1,6 +1,7 @@
 package dao;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
+import model.UtenteModel;
 
 
 import java.math.BigDecimal;
@@ -165,22 +166,22 @@ public class UtenteDAO {
     }
 
 
-    public boolean userDeposit(UtenteBean bean){ //DEPOSITA IL TUO CREDITO
+    public boolean userDeposit(UtenteModel utenteModel){ //DEPOSITA IL TUO CREDITO
         Boolean b= false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE mangaink.utente SET credito= credito + ?  \n" +
                 "WHERE email =? ";
 
-        System.out.println(bean.getEmail());
+        System.out.println(utenteModel.getEmail());
         try(PreparedStatement st = conn.prepareStatement(query)){
 
-            if (bean.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE DEPOSITATA UNA CIFRA POSITIVA
+            if (utenteModel.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE DEPOSITATA UNA CIFRA POSITIVA
                 logger.info("Non puoi depositare cifre negative");
                 return false;
             }
 
-            st.setBigDecimal(1,bean.getCredito());//SONO LEGATI ALLA QUERY
-            st.setString(2,bean.getEmail());
+            st.setBigDecimal(1,utenteModel.getCredito());//SONO LEGATI ALLA QUERY
+            st.setString(2,utenteModel.getEmail());
 
 
             int righeScritte = st.executeUpdate();

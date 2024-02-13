@@ -12,13 +12,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="418.0" prefWidth="170.0">
+      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <TableView fx:id="mieiAnnunciTable" prefHeight="330.0" prefWidth="410.0">
+               <columns>
+                  <TableColumn fx:id="nomeMangaColumn" prefWidth="95.20001220703125" text="Nome Manga" />
+                  <TableColumn fx:id="prezzoColumn" prefWidth="49.59998321533203" text="Prezzo" />
+                  <TableColumn fx:id="dataColumn" prefWidth="96.79998779296875" text="Data" />
+                  <TableColumn fx:id="nOfferteColumn" prefWidth="64.79986572265625" text="n Offerte" />
+                  <TableColumn fx:id="offerteButtonColumn" prefWidth="102.39999999999998" text="(Bottoni)" />
+               </columns>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
                <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
+                  <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
                   <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
                </children>
             </VBox>
@@ -29,7 +45,7 @@
                         <Image url="@../photo/user.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="profiloButton" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
+                  <Button fx:id="profiloButton1" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -39,11 +55,7 @@
                         <Image url="@../photo/notification.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="82.0" text="Notifiche" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="16.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="notificheButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Notifiche" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -53,7 +65,7 @@
                         <Image url="@../photo/book.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="libreriaButton" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -63,7 +75,7 @@
                         <Image url="@../photo/sales.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="compraButton" mnemonicParsing="false" onAction="#goToCompra" text="Miei Annunci" />
+                  <Button fx:id="compraButton1" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
@@ -73,10 +85,20 @@
                         <Image url="@../photo/euro.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="depositaEPrelevaButton" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
+                  <Button fx:id="depositaEPrelevaButton1" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
                </children>
             </HBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="123.0" prefWidth="175.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../photo/handshake%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton2" mnemonicParsing="false" onAction="#goToCompra" prefHeight="40.0" prefWidth="87.0" text="Compra" />
+               </children>
+            </HBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="112.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
                <children>
                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #020203;">
                      <children>
@@ -94,22 +116,6 @@
                   </HBox>
                </children>
             </VBox>
-         </children>
-      </VBox>
-      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
-         <children>
-            <TableView fx:id="mieiAnnunciTable" prefHeight="403.0" prefWidth="431.0">
-               <columns>
-                  <TableColumn fx:id="nomeMangaColumn" prefWidth="95.20001220703125" text="Nome Manga" />
-                  <TableColumn fx:id="prezzoColumn" prefWidth="49.59998321533203" text="Prezzo" />
-                  <TableColumn fx:id="dataColumn" prefWidth="96.79998779296875" text="Data" />
-                  <TableColumn fx:id="nOfferteColumn" prefWidth="64.79986572265625" text="n Offerte" />
-                  <TableColumn fx:id="offerteButtonColumn" prefWidth="102.39999999999998" text="(Bottoni)" />
-               </columns>
-               <VBox.margin>
-                  <Insets bottom="50.0" left="10.0" right="10.0" top="50.0" />
-               </VBox.margin>
-            </TableView>
          </children>
       </VBox>
    </children>

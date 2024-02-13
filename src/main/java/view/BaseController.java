@@ -28,6 +28,7 @@ public class BaseController {
     }
 
 
+
     @FXML
       void goToHomePage(ActionEvent event) throws IOException {
          //The Home Page button onAction method

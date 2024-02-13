@@ -1,28 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LibreriaUtenteControllerGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
-      <Accordion fx:id="accordion" layoutX="14.0" layoutY="67.0" prefHeight="53.0" prefWidth="280.0" />
-      <TableView fx:id="table" layoutX="52.0" layoutY="67.0" prefHeight="200.0" prefWidth="478.0">
-        <columns>
-          <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome" />
-          <TableColumn fx:id="provaColumn" prefWidth="104.0" text="Data Acquisto" />
-            <TableColumn fx:id="annuncioColumn" prefWidth="75.0" text="Annuncio" />
-        </columns>
-      </TableView>
-      <Button fx:id="homeButton" layoutX="531.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
-      <Button fx:id="depositaPreleva" layoutX="477.0" layoutY="345.0" mnemonicParsing="false" onAction="#goToDepositaEPreleva" text="Deposita/Preleva" />
-      <Label layoutX="192.0" layoutY="42.0" text="BENVENUTO! Questa è la tua libreria. " />
-      <Button fx:id="compraButton" layoutX="131.0" layoutY="281.0" mnemonicParsing="false" onAction="#goToCompra" text="Compra" />
-      <Button fx:id="profiloButton" layoutX="136.0" layoutY="308.0" mnemonicParsing="false" onAction="#goToProfilo" text="Profilo" />
-      <Button fx:id="libreriaButton" layoutX="132.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToLibreria" text="Libreria" />
+      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="BENVENUTO! Questa è la tua libreria. " textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" top="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="478.0">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome" />
+                  <TableColumn fx:id="provaColumn" prefWidth="104.0" text="Data Acquisto" />
+                  <TableColumn fx:id="annuncioColumn" prefWidth="75.0" text="Annuncio" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
+                  <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fx:id="profiloImage" fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/user.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="profiloButton1" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/notification.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="notificheButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Notifiche" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/book.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/sales.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton1" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/euro.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="depositaEPrelevaButton1" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../photo/handshake%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="compraButton2" mnemonicParsing="false" onAction="#goToCompra" prefHeight="40.0" prefWidth="87.0" text="Compra" />
+               </children>
+            </HBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="112.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #020203;">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photo/logout.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="18.0" prefWidth="82.0" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
