@@ -1,12 +1,36 @@
 package model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
 public class OffertaModel {
 
     private int idOfferta;
+    private int annuncioID;
+    private int utenteOfferenteID;
+    private String usernameOfferente;
+    private BigDecimal offertaPrezzo;
+
+    private String titoloManga;
+
+    private int volumeManga;
+
+    private LocalDateTime dataOfferta;
+
+    private int recensito;
+    private int statoOfferta;
+
+    private int utenteVenditoreID;
+
+    public int getUtenteVenditoreID() {
+        return utenteVenditoreID;
+    }
+
+    public void setUtenteVenditoreID(int utenteVenditoreID) {
+        this.utenteVenditoreID = utenteVenditoreID;
+    }
 
     public int getIdOfferta() {
         return idOfferta;
@@ -16,13 +40,24 @@ public class OffertaModel {
         this.idOfferta = idOfferta;
     }
 
-    private int annuncioID;
-    private int utenteOfferenteID;
-    private String usernameOfferente;
-    private BigDecimal offertaPrezzo;
 
-    private LocalDateTime dataOfferta;
-    private int recensito;
+    public String getTitoloManga() {
+        return titoloManga;
+    }
+
+    public void setTitoloManga(String titoloManga) {
+        this.titoloManga = titoloManga;
+    }
+
+    public int getVolumeManga() {
+        return volumeManga;
+    }
+
+    public void setVolumeManga(int volumeManga) {
+        this.volumeManga = volumeManga;
+    }
+
+
 
     public int getRecensito() {
         return recensito;
@@ -32,7 +67,7 @@ public class OffertaModel {
         this.recensito = recensito;
     }
 
-    private int statoOfferta;
+
     public String getUsernameOfferente() {
         return usernameOfferente;
     }
