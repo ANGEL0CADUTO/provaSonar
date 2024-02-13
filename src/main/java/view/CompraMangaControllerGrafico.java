@@ -99,7 +99,4 @@ public class CompraMangaControllerGrafico extends UserGuiController{
                 tableCompra.getItems().addAll(arrayAnnunci);
     }
 
-
-    public void doOfferta(ActionEvent actionEvent) {
-    }
 }

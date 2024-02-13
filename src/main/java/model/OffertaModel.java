@@ -6,10 +6,33 @@ import java.time.LocalDateTime;
 
 public class OffertaModel {
 
+    private int idOfferta;
+
+    public int getIdOfferta() {
+        return idOfferta;
+    }
+
+    public void setIdOfferta(int idOfferta) {
+        this.idOfferta = idOfferta;
+    }
+
     private int annuncioID;
     private int utenteOfferenteID;
     private String usernameOfferente;
+    private BigDecimal offertaPrezzo;
 
+    private LocalDateTime dataOfferta;
+    private int recensito;
+
+    public int getRecensito() {
+        return recensito;
+    }
+
+    public void setRecensito(int recensito) {
+        this.recensito = recensito;
+    }
+
+    private int statoOfferta;
     public String getUsernameOfferente() {
         return usernameOfferente;
     }
@@ -18,11 +41,7 @@ public class OffertaModel {
         this.usernameOfferente = usernameOfferente;
     }
 
-    private BigDecimal offertaPrezzo;
 
-    private LocalDateTime dataOfferta;
-
-    private int statoOfferta;
 
     public int getAnnuncioID() {
         return annuncioID;

@@ -166,22 +166,16 @@ public class UtenteDAO {
     }
 
 
-    public boolean userDeposit(UtenteModel utenteModel){ //DEPOSITA IL TUO CREDITO
+    public boolean userDeposit(UtenteModel utenteModel,String cifraString){ //DEPOSITA IL TUO CREDITO
         Boolean b= false;
         Connection conn = DBConnection.getIstance().connection();
-        String query = "UPDATE mangaink.utente SET credito= credito + ?  \n" +
-                "WHERE email =? ";
+        String query = "UPDATE mangaink.utente SET credito= credito +  ? " +
+                "WHERE idUtente =? ";
 
-        System.out.println(utenteModel.getEmail());
         try(PreparedStatement st = conn.prepareStatement(query)){
-
-            if (utenteModel.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE DEPOSITATA UNA CIFRA POSITIVA
-                logger.info("Non puoi depositare cifre negative");
-                return false;
-            }
-
-            st.setBigDecimal(1,utenteModel.getCredito());//SONO LEGATI ALLA QUERY
-            st.setString(2,utenteModel.getEmail());
+            BigDecimal cifra = new BigDecimal(cifraString);
+            st.setBigDecimal(1,cifra);
+            st.setInt(2,utenteModel.getIdUtente());
 
 
             int righeScritte = st.executeUpdate();
@@ -210,28 +204,21 @@ public class UtenteDAO {
 
     }
 
-    public boolean userPreliev(UtenteBean bean){ //PRELEVAA IL TUO CREDITO
+    public boolean userPreliev(UtenteModel model,String cifraString){ //PRELEVAA IL TUO CREDITO
         //DepositaEPrelevaGrafico pr = new DepositaEPrelevaGrafico();
         Boolean b= false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE mangaink.utente SET credito= credito - ?  \n" +
-                "WHERE email =? ";
+                "WHERE idUtente = ? ";
 
-        System.out.println(bean.getEmail());
+
         try(PreparedStatement st = conn.prepareStatement(query)){
 
-            if (bean.getCredito().compareTo(BigDecimal.ZERO)< 0){//CONTROLLO SE VIENE PRELEVATA UNA CIFRA POSITIVA
-                logger.info("Non puoi prelevare cifre negative");
-                return false;
-            }
-
-            st.setBigDecimal(1,bean.getCredito());//SONO LEGATI ALLA QUERY
-            st.setString(2,bean.getEmail());
-
+            BigDecimal cifra = new BigDecimal(cifraString);
+            st.setBigDecimal(1,cifra);//SONO LEGATI ALLA QUERY
+            st.setInt(2,model.getIdUtente());
 
             int righeScritte = st.executeUpdate();
-
-
 
             if (righeScritte > 0) {
                 b = true;

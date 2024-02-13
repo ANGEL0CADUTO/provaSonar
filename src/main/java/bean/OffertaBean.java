@@ -5,6 +5,16 @@ import java.time.LocalDateTime;
 
 public class OffertaBean {
 
+    private int idOfferta;
+
+    public int getIdOfferta() {
+        return idOfferta;
+    }
+
+    public void setIdOfferta(int idOfferta) {
+        this.idOfferta = idOfferta;
+    }
+
     private int idAnnuncio;
     private int utenteOfferenteID;
     private String usernameOfferente;

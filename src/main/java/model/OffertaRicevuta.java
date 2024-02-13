@@ -6,16 +6,25 @@ import java.util.Date;
 
 public class OffertaRicevuta {
 
-        private int idOfferta;
+    private int idOfferta;
+    private int annuncioID;
+    private int utenteOfferenteID;
+    private String usernameOfferente;
+    private BigDecimal offertaPrezzo;
+    private double votoRecensioni;
+
+    private LocalDateTime dataOfferta;
+    private LocalDateTime dataVendita;
+
+    public int getUtenteOfferenteID() {
+        return utenteOfferenteID;
+    }
+
+    public void setUtenteOfferenteID(int utenteOfferenteID) {
+        this.utenteOfferenteID = utenteOfferenteID;
+    }
 
 
-        private int annuncioID;
-        private String usernameOfferente;
-        private BigDecimal offertaPrezzo;
-        private double votoRecensioni;
-
-        private LocalDateTime dataOfferta;
-        private LocalDateTime dataVendita;
 
     public LocalDateTime getDataVendita() {
         return dataVendita;
@@ -43,38 +52,38 @@ public class OffertaRicevuta {
     }
 
 
-        public int getAnnuncioID() {
-            return annuncioID;
-        }
+    public int getAnnuncioID() {
+        return annuncioID;
+    }
 
-        public void setAnnuncioID(int annuncioID) {
-            this.annuncioID = annuncioID;
-        }
+    public void setAnnuncioID(int annuncioID) {
+        this.annuncioID = annuncioID;
+    }
 
-        public String getUsernameOfferente() {
-            return usernameOfferente;
-        }
+    public String getUsernameOfferente() {
+        return usernameOfferente;
+    }
 
-        public void setUsernameOfferente(String usernameOfferente) {
+    public void setUsernameOfferente(String usernameOfferente) {
 
-            this.usernameOfferente = usernameOfferente;
-        }
+        this.usernameOfferente = usernameOfferente;
+    }
 
-        public BigDecimal getOffertaPrezzo() {
-            return offertaPrezzo;
-        }
+    public BigDecimal getOffertaPrezzo() {
+        return offertaPrezzo;
+    }
 
-        public void setOffertaPrezzo(BigDecimal offertaPrezzo) {
-            this.offertaPrezzo = offertaPrezzo;
-        }
+    public void setOffertaPrezzo(BigDecimal offertaPrezzo) {
+        this.offertaPrezzo = offertaPrezzo;
+    }
 
-        public LocalDateTime getDataOfferta() {
-            return dataOfferta;
-        }
+    public LocalDateTime getDataOfferta() {
+        return dataOfferta;
+    }
 
-        public void setDataOfferta(LocalDateTime dataOfferta) {
-            this.dataOfferta = dataOfferta;
-        }
+    public void setDataOfferta(LocalDateTime dataOfferta) {
+        this.dataOfferta = dataOfferta;
+    }
 
 
 }

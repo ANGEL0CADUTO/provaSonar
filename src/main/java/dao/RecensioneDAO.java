@@ -47,6 +47,8 @@ public class RecensioneDAO {
                 recensione.setDataAcquisto(offerta.getDataVendita());
 
 
+                //CORREGGERE
+
                 AnnuncioDAO dao3 = new AnnuncioDAO();
                 AnnuncioModel annuncio = dao3.getDatiAnnuncioByAnnuncioID(offerta.getAnnuncioID());
                 recensione.setTitoloRecensito(annuncio.getNomeManga());

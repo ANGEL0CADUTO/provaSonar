@@ -1,5 +1,6 @@
 package view;
 
+import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.MieiAnnunciApplicativo;
 import controllerapplicativo.OfferteRicevuteApplicativo;
@@ -84,7 +85,15 @@ public class OfferteRicevuteGrafico extends UserGuiController{
 
                     // Ora puoi eseguire un'azione basata su questo elemento
                     try {
-                        boolean b = controller.accettaOffertaByOffertaID(array.get(index).getIdOfferta(),idAnnuncio);
+                        System.out.println("LOGGATO :" +utenteBean.getEmail() + " Offerente"+ array.get(index).getUsernameOfferente());
+                        OffertaBean offertaBean = new OffertaBean();
+                        offertaBean.setAnnuncioID(array.get(index).getAnnuncioID());
+                        offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
+                        offertaBean.setIdOfferta(array.get(index).getIdOfferta());
+                        offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
+                        System.out.println("IL PREZZO è :" + array.get(index).getOffertaPrezzo());
+                        boolean b = controller.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
+
                         if(b){
                             System.out.println("ACCETTATA CON SUCCESSO!");
                         }
