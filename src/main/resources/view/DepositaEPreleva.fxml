@@ -17,21 +17,12 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <HBox prefHeight="12.0" prefWidth="163.0">
-                     <children>
-                        <Label fx:id="depositaLabel" textFill="#f70000">
-                           <HBox.margin>
-                              <Insets right="50.0" top="80.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
+                  <HBox prefHeight="100.0" prefWidth="71.0" />
+                  <Label fx:id="depositaLabel" prefHeight="18.0" prefWidth="198.0" textFill="#f70000">
                      <HBox.margin>
-                        <Insets left="75.0" />
+                        <Insets right="50.0" top="80.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </HBox>
+                  </Label>
                </children></HBox>
             <HBox prefHeight="95.0" prefWidth="431.0">
                <children>
