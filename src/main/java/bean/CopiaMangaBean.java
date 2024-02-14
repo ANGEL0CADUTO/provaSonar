@@ -1,5 +1,7 @@
 package bean;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 //DA UTILIZZARE QUANDO UTENTE CLICCA SU UNA COPIAMANGA SPECIFICA X FARE QUALCOSA(COMPRARE,VENDERE)//
@@ -20,7 +22,7 @@ public class CopiaMangaBean {
     private String titolo;
     private int volume;
 
-    private Date dataAcquisto;
+    private LocalDateTime dataAcquisto;
 
     private Date dataVendita;
 
@@ -48,11 +50,11 @@ public class CopiaMangaBean {
         this.volume = volume;
     }
 
-    public Date getDataAcquisto() {
+    public LocalDateTime getDataAcquisto() {
         return dataAcquisto;
     }
 
-    public void setDataAcquisto(Date dataAcquisto) {
+    public void setDataAcquisto(LocalDateTime dataAcquisto) {
         this.dataAcquisto = dataAcquisto;
     }
 

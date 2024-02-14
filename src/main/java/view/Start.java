@@ -19,10 +19,7 @@ public class Start extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
 
-
-        UtenteBean utente = new UtenteBean(); //
-
-
+        UtenteBean utente = new UtenteBean();
         loader.setControllerFactory(c-> new Demo(utente));
 
         Parent root = loader.load();
@@ -33,9 +30,20 @@ public class Start extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        FXMLLoader loader2= new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        UtenteBean utente2 = new UtenteBean();
+        loader2.setControllerFactory(c-> new Demo(utente2));
+        Stage primaryStage2 = new Stage();
+        Parent root2 = loader2.load();
+        Scene scene2 = new Scene(root2);
 
+        primaryStage2.setResizable(false);
+        primaryStage2.setTitle("MangaInk");
+        primaryStage2.setScene(scene2);
+        primaryStage2.show();
 
     }
+
 
     public static void main(String[] args) {
         launch(args);

@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CopiaMangaModel {
@@ -10,10 +11,26 @@ public class CopiaMangaModel {
     //FK da passare a MANGADAO
     private int idUtente;
 
+    public LocalDateTime getDataAcquisto() {
+        return dataAcquisto;
+    }
+
+    public void setDataAcquisto(LocalDateTime dataAcquisto) {
+        this.dataAcquisto = dataAcquisto;
+    }
+
+    public LocalDateTime getDataVendita() {
+        return dataVendita;
+    }
+
+    public void setDataVendita(LocalDateTime dataVendita) {
+        this.dataVendita = dataVendita;
+    }
+
     private String titolo;
     private int volume;
-    private Date dataAcquisto;
-    private Date dataVendita;
+    private LocalDateTime dataAcquisto;
+    private LocalDateTime dataVendita;
 
     private int statoCopiaManga;
 
@@ -51,21 +68,7 @@ public class CopiaMangaModel {
     }
 
 
-    public Date getDataAcquisto() {
-        return dataAcquisto;
-    }
 
-    public void setDataAcquisto(Date dataAcquisto) {
-        this.dataAcquisto = dataAcquisto;
-    }
-
-    public Date getDataVendita() {
-        return dataVendita;
-    }
-
-    public void setDataVendita(Date dataVendita) {
-        this.dataVendita = dataVendita;
-    }
 
     public int getStatoCopiaManga() {
         return statoCopiaManga;

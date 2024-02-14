@@ -109,6 +109,25 @@ public class RecensioneDAO {
         return risultato;
     }
 
+    public boolean updateRecensito(int id){
+        String query = "UPDATE offerta SET recensioneFatta = 1 WHERE idOfferta = ?";
+        Connection conn = DBConnection.getIstance().connection();
+
+        boolean b = false;
+
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,id);
+            int righe = st.executeUpdate();
+            if(righe > 0){
+                b = true;
+            }
+        } catch (SQLException e) {
+            logger.severe("Errore in updateRecensito in RecensioneDAO : " + e.getMessage());
+        }
+        return b;
+
+    }
+
 
 
 

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OffertaControllerGrafico">
    <children>
       <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
@@ -34,7 +34,7 @@
                   <ToolBar prefHeight="38.0" prefWidth="268.0">
                      <items>
                         <TextField fx:id="offertaTextField" prefHeight="26.0" prefWidth="184.0" promptText="Fai la tua offerta..." />
-                        <Button fx:id="offerta" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
+                        <Button fx:id="offerta" mnemonicParsing="false" onAction="#doOfferta" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
                      </items>
                   </ToolBar>
                </children>

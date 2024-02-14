@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,11 +15,16 @@
 
 <AnchorPane fx:id="myAnchorPane" prefHeight="418.0" prefWidth="597.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MieiAnnunciGrafico">
    <children>
-      <VBox layoutX="167.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
+      <VBox layoutX="167.0" layoutY="-1.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="431.0">
                <children>
-                  <Label text="BENVENUTO! Questa è la tua libreria. " textFill="WHITE">
+                  <Label fx:id="wrongLabel" prefHeight="10.0" prefWidth="70.0" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="160.0" top="17.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="108.0" prefWidth="234.0" text="BENVENUTO! Questa è la tua libreria. " textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -28,14 +34,64 @@
                   </Label>
                </children>
             </HBox>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="478.0">
+            <TableView fx:id="table" prefHeight="414.0" prefWidth="431.0">
                <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome" />
-                  <TableColumn fx:id="provaColumn" prefWidth="104.0" text="Data Acquisto" />
+                  <TableColumn fx:id="idColumn" prefWidth="44.800048828125" text="ID" />
+                  <TableColumn fx:id="nomeColumn" prefWidth="105.5999755859375" text="Manga" />
+                  <TableColumn fx:id="volumeColumn" prefWidth="52.79998779296875" text="Volume" />
+                  <TableColumn fx:id="provaColumn" prefWidth="126.4000244140625" text="Data Acquisto" />
                   <TableColumn fx:id="annuncioColumn" prefWidth="75.0" text="Annuncio" />
                </columns>
             </TableView>
+            <Button fx:id="aggiungiButton" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#setVisible" prefHeight="10.0" prefWidth="65.0" text="Aggiungi">
+               <VBox.margin>
+                  <Insets left="360.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <HBox prefHeight="0.0" prefWidth="431.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="titoloLabel" text="Titolo" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="50.0" top="4.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="titoloTextField" prefHeight="26.0" prefWidth="271.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="volumeLabel" text="Volume" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="50.0" top="4.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="volumeTextField" prefHeight="14.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="confermaButton" mnemonicParsing="false" onAction="#aggiungiManga" text="Conferma">
+                     <HBox.margin>
+                        <Insets left="105.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">

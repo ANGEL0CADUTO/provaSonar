@@ -66,11 +66,13 @@ public class MieiAcquistiGrafico extends UserGuiController{
                     // Ora puoi eseguire un'azione basata su questo elemento
                     try {
 
+                        int index = getIndex();  // Ottieni l'indice della riga cliccata
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensione.fxml"));
 
                         RecensioneBean dati = new RecensioneBean();
                         dati.setIdOfferta(array.get(index).getIdOfferta());
                         dati.setRecensitoID(array.get(index).getUtenteVenditoreID());
+
 
                         loader.setControllerFactory(c -> new InviaRecensioneGrafico(utenteBean,dati));
                         Parent root = loader.load();
@@ -105,12 +107,9 @@ public class MieiAcquistiGrafico extends UserGuiController{
             }
         });
 
-
-
                 mieiAcquistiTable.setItems(data);
-
             }
-            }
+}
 
 
 

@@ -1,6 +1,7 @@
 package controllerapplicativo;
 
 import bean.RecensioneBean;
+import dao.OffertaDAO;
 import dao.RecensioneDAO;
 import dao.UtenteDAO;
 import model.Recensione;
@@ -10,6 +11,7 @@ public class InviaRecensioneApplicativo {
     public boolean inviaRecensione(RecensioneBean recensioneBean,String usernameRecensore){
         boolean b = false;
         RecensioneDAO dao = new RecensioneDAO();
+
         Recensione recensioneModel = new Recensione();
         recensioneModel.setOffertaID(recensioneBean.getIdOfferta());
         recensioneModel.setRecensitoID(recensioneBean.getRecensitoID());
@@ -18,17 +20,18 @@ public class InviaRecensioneApplicativo {
         recensioneModel.setTesto(recensioneBean.getTesto());
 
         if(dao.inviaRecensione(recensioneModel)){
-            System.out.println("DOVREBBE ESSERE 1 L'ID :" + recensioneModel.getRecensitoID());
+            dao.updateRecensito(recensioneModel.getOffertaID());
+
             int numRecensioni = dao.getNumeroRecensioniByRecensitoID(recensioneModel.getRecensitoID());
 
-            System.out.println("Dovrebbe ridare 2: " + numRecensioni);
             UtenteDAO dao2 = new UtenteDAO();
 
             double voto = dao2.getVotoByUtenteID(recensioneModel.getRecensitoID());
-            System.out.println("Dovrebbe ridare 4: " + voto);
+
             double nuovoVoto = (voto*(numRecensioni-1) + recensioneModel.getVoto())/(numRecensioni );
-            System.out.println("Dovrebbe essere 4.5 : " + nuovoVoto);
+
             if(dao2.aggiornaVotoByUtenteID(recensioneModel.getRecensitoID(),nuovoVoto)){
+
                 b = true;
             }
 

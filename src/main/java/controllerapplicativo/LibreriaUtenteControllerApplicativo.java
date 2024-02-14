@@ -1,12 +1,15 @@
 package controllerapplicativo;
 
+import bean.CopiaMangaBean;
 import model.CopiaMangaCollectionModel;
 import dao.CopiaMangaDAO;
 import bean.UtenteBean;
 import model.CopiaMangaModel;
 import model.UtenteModel;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class LibreriaUtenteControllerApplicativo {
 
@@ -26,6 +29,19 @@ public class LibreriaUtenteControllerApplicativo {
         utente.setCredito(bean.getCredito());
 
         return dao.getCopieMangaListByUserID(utente);
+
+    }
+    public boolean aggiungiManga(CopiaMangaBean copiaBean){
+        CopiaMangaModel copiaModel = new CopiaMangaModel();
+
+        copiaModel.setIdUtente(copiaBean.getIdUtente());
+        copiaModel.setTitolo(copiaBean.getTitolo());
+        copiaModel.setVolume(copiaBean.getVolume());
+        copiaModel.setDataAcquisto(copiaBean.getDataAcquisto());
+
+        CopiaMangaDAO dao = new CopiaMangaDAO();
+
+        return dao.aggiungiManga(copiaModel);
 
     }
 }
