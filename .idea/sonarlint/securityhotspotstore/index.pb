@@ -49,3 +49,7 @@ Csrc/main/java/controllerapplicativo/OfferteRicevuteApplicativo.java,2\a\2a1c4c
 +src/main/java/Observer/OffertaObserver.java,f\4\f4f5e800b7bb479a7a395b17fde1e8dde1e519fd
 Z
 *src/main/java/Observer/OffertaSubject.java,c\c\cc6dae4e2e56b336728dfa94fe311ee39d978605
+Z
+*src/main/java/view/MieiAnnunciGrafico.java,8\c\8ce6d05953f6fad28657ceb4fc5e5ed0a8fe1c4d
+M
+src/main/java/view/Start.java,e\d\ed274ceaa460bbbcabac65429253c5f49c2debe9

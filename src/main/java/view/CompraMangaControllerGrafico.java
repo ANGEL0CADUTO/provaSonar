@@ -1,8 +1,10 @@
 package view;
 
 import bean.CopiaMangaBean;
+import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
+import controllerapplicativo.OffertaControllerApplicativo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +18,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class CompraMangaControllerGrafico extends UserGuiController{
@@ -44,8 +48,19 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     @FXML
     private TextField searchTextField;
 
+
+    @FXML
+    private Button offerta1;
+
     @FXML
     private Button searchButton;
+    @FXML
+    private ToolBar toolbar;
+
+    @FXML
+    private TextField offertaTextField;
+
+    private OffertaBean offertaBean;
 
     protected CompraMangaControllerGrafico(UtenteBean bean) {
         super(bean);
@@ -83,12 +98,13 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
                     // Ora puoi eseguire un'azione basata su questo elemento
 
+                    toolbar.setVisible(true);
+                    offertaBean = new OffertaBean();
+                    offertaBean.setAnnuncioID(arrayAnnunci.get(index).getIdAnnuncio());
 
-                    try {
-                        goToOfferta(arrayAnnunci.get(index).getIdAnnuncio());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+
+                        //goToOfferta();
+
                 });
             }
 
@@ -110,5 +126,35 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
                 tableCompra.getItems().addAll(arrayAnnunci);
     }
+
+    @FXML
+    private void doOfferta(ActionEvent event) {
+
+
+        /*if (offertaBean.getOffertaPrezzo()getText().isEmpty()) {
+            wrongOfferta.setText("Fai un offerta");
+        } else {
+            try {
+                prezzoOfferta = BigDecimal.valueOf(Integer.parseInt(String.valueOf(offertaTextField.getText())));
+            } catch (NumberFormatException ex) {
+                wrongOfferta.setText("Inserisci un offerta Valida");
+            }*/
+
+
+
+        BigDecimal prezzo = new BigDecimal(offertaTextField.getText());
+        offertaBean.setOffertaPrezzo(prezzo);
+        offertaBean.setUsernameOfferente(utenteBean.getUsername());
+
+        offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());
+        offertaBean.setDataOfferta(LocalDateTime.now());
+
+
+
+        OffertaControllerApplicativo of = new OffertaControllerApplicativo();
+        boolean esitoOfferta = of.doOfferta(offertaBean);
+        toolbar.setVisible(false);
+    }
+
 
 }

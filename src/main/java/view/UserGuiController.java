@@ -107,19 +107,7 @@ public class UserGuiController extends BaseController{
     }
 
 
-    @FXML
-    void goToOfferta(int id) throws IOException {
-        if(utenteBean.getUsername() != null) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Offerta.fxml"));
-        loader.setControllerFactory(c -> new OffertaControllerGrafico(utenteBean,id));
-        Parent root = loader.load();
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);}
-        else{
-            goToLogin();
-        }
-    }
+
 
 
     @FXML
