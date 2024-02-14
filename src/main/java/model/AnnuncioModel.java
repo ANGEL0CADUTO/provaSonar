@@ -5,13 +5,14 @@ import java.time.LocalDateTime;
 
 public class AnnuncioModel {
     private int idAnnuncio;
+    private int copiaMangaID;
 
-    public int getUtenteVenditoreID() {
-        return utenteVenditoreID;
+    public int getCopiaMangaID() {
+        return copiaMangaID;
     }
 
-    public void setUtenteVenditoreID(int utenteVenditoreID) {
-        this.utenteVenditoreID = utenteVenditoreID;
+    public void setCopiaMangaID(int copiaMangaID) {
+        this.copiaMangaID = copiaMangaID;
     }
 
     private int utenteVenditoreID;
@@ -20,6 +21,15 @@ public class AnnuncioModel {
     private int volume;
     private BigDecimal prezzo;
     private LocalDateTime dataAnnuncio;
+    public int getUtenteVenditoreID() {
+        return utenteVenditoreID;
+    }
+
+    public void setUtenteVenditoreID(int utenteVenditoreID) {
+        this.utenteVenditoreID = utenteVenditoreID;
+    }
+
+
 
     public int getVolume() {
         return volume;

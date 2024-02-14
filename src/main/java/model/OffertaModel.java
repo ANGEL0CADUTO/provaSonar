@@ -9,6 +9,9 @@ public class OffertaModel {
 
     private int idOfferta;
     private int annuncioID;
+    private int copiaMangaID;
+
+
     private int utenteOfferenteID;
     private String usernameOfferente;
     private BigDecimal offertaPrezzo;
@@ -23,6 +26,13 @@ public class OffertaModel {
     private int statoOfferta;
 
     private int utenteVenditoreID;
+    public int getCopiaMangaID() {
+        return copiaMangaID;
+    }
+
+    public void setCopiaMangaID(int copiaMangaID) {
+        this.copiaMangaID = copiaMangaID;
+    }
 
     public int getUtenteVenditoreID() {
         return utenteVenditoreID;

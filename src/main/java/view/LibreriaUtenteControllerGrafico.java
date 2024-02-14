@@ -246,9 +246,9 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
 
         LibreriaUtenteControllerApplicativo controllerApp = new LibreriaUtenteControllerApplicativo();
-        controllerApp.aggiungiManga(copiaBean);
+        int chiave = controllerApp.aggiungiManga(copiaBean);
         CopiaMangaModel model = new CopiaMangaModel();
-
+        model.setIdCopiaManga(chiave);
         model.setIdUtente(copiaBean.getIdUtente());
         model.setTitolo(copiaBean.getTitolo());
         model.setVolume(copiaBean.getVolume());
@@ -256,6 +256,8 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         model.setStatoCopiaManga(1);
 
         observableList.add(model);
+
+
         titoloTextField.setVisible(false);
         volumeTextField.setVisible(false);
         volumeLabel.setVisible(false);

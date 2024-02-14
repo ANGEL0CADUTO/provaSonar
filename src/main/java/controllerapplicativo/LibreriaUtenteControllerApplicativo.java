@@ -31,7 +31,7 @@ public class LibreriaUtenteControllerApplicativo {
         return dao.getCopieMangaListByUserID(utente);
 
     }
-    public boolean aggiungiManga(CopiaMangaBean copiaBean){
+    public int aggiungiManga(CopiaMangaBean copiaBean){
         CopiaMangaModel copiaModel = new CopiaMangaModel();
 
         copiaModel.setIdUtente(copiaBean.getIdUtente());

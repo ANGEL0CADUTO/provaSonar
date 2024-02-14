@@ -41,7 +41,7 @@ public class AnnuncioDAO {
 
     public ArrayList<AnnuncioModel> getAnnunci(int id,String name) {
 
-        String query = "SELECT usernameVenditore, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
+        String query = "SELECT usernameVenditore, copiaMangaID, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
                 "WHERE statoAnnuncio = 1 AND utenteVenditoreID != ? AND titoloManga  LIKE '%' ? '%' ";
         ArrayList<AnnuncioModel> array = new ArrayList<>();
         Connection conn = DBConnection.getIstance().connection();
@@ -56,7 +56,7 @@ public class AnnuncioDAO {
                     annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
                     annuncioModel.setVolume(rs.getInt("volume"));
                     annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
-
+                    annuncioModel.setCopiaMangaID(rs.getInt("copiaMangaID"));
                     array.add(annuncioModel);
                 }
             }

@@ -12,28 +12,33 @@ public class CopiaMangaDAO {
 
     private static final Logger logger = Logger.getLogger(CopiaMangaDAO.class.getName());
 
-    public boolean aggiungiManga(CopiaMangaModel copia){
+    public int aggiungiManga(CopiaMangaModel copia) {
         String query = "INSERT INTO copiamanga(utenteID,titolo,volume,dataAcquisto) VALUES(?,?,?,?);";
         Connection conn = DBConnection.getIstance().connection();
 
-        boolean b = false;
+        int chiaveGenerata = -1; // Valore predefinito nel caso in cui non venga generata alcuna chiave
 
-        try(PreparedStatement st = conn.prepareStatement(query)){
-            st.setInt(1,copia.getIdUtente());
-            st.setString(2,copia.getTitolo());
-            st.setInt(3,copia.getVolume());
-            st.setTimestamp(4,Timestamp.valueOf(copia.getDataAcquisto()));
+        try (PreparedStatement st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            st.setInt(1, copia.getIdUtente());
+            st.setString(2, copia.getTitolo());
+            st.setInt(3, copia.getVolume());
+            st.setTimestamp(4, Timestamp.valueOf(copia.getDataAcquisto()));
 
             int righe = st.executeUpdate();
 
-            if(righe>0){
-                b = true;
+            if (righe > 0) {
+                // Ottieni le chiavi generate
+                ResultSet rs = st.getGeneratedKeys();
+                if (rs.next()) {
+                    chiaveGenerata = rs.getInt(1);
+                }
             }
 
         } catch (SQLException e) {
             logger.severe("Errore in CopiaMangaDAO in aggiungiManga : " + e.getMessage());
         }
-        return b;
+
+        return chiaveGenerata;
     }
 
 
@@ -78,5 +83,25 @@ public class CopiaMangaDAO {
 
         }
         return collezione;
+    }
+
+    public boolean setStatoInVenditaByCopiaMangaID(int id) {
+        boolean b = false;
+        String query = "UPDATE copiamanga SET statoCopiaManga = 2 WHERE idCopiaManga = ?";
+        Connection conn = DBConnection.getIstance().connection();
+
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+            st.setInt(1, id);
+
+            int righe = st.executeUpdate();
+            if (righe > 0) {
+                b = true;
+            }
+
+        } catch (SQLException e) {
+            logger.severe("Errore nel CopiaMangaDAO in setStatoInVenditaByCopiaMangaID :" + e.getMessage());
+        }
+
+        return b;
     }
 }

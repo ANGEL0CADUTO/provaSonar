@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegistraGrafico  extends BaseController{
+public class RegistraGrafico extends BaseController{
 
     @FXML
     private Button registra;
@@ -58,7 +58,6 @@ public class RegistraGrafico  extends BaseController{
         bean.setEmail(enteredEmail.getText());
         bean.setPassword(enteredPassword.getText());
         bean.setUsername(enteredUsername.getText());
-
         bean1.setIndirizzo(enteredIndirizzo.getText());
         bean1.setCap(enteredCivico.getText());
         bean1.setCivico(enteredCap.getText());

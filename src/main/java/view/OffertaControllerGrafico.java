@@ -24,14 +24,14 @@ public class OffertaControllerGrafico extends UserGuiController{
     @FXML
     private Button offerta;
 
-    private int idAnnuncio;
+    private OffertaBean offertaBean;
 
 
 
-    protected OffertaControllerGrafico(UtenteBean utente,int idAnnuncio){
+    protected OffertaControllerGrafico(UtenteBean utente,OffertaBean offertaBean){
 
         super(utente);
-        this.idAnnuncio = idAnnuncio;
+        this.offertaBean = offertaBean;
     }
 
 
@@ -48,8 +48,7 @@ public class OffertaControllerGrafico extends UserGuiController{
                 wrongOffert.setText("Inserisci un offerta Valida");
             }
         }
-        OffertaBean offertaBean = new OffertaBean();
-        offertaBean.setAnnuncioID(idAnnuncio);
+
         offertaBean.setUsernameOfferente(utenteBean.getUsername());
         offertaBean.setOffertaPrezzo(prezzoOfferta);
         offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());

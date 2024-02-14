@@ -8,9 +8,11 @@ import java.time.LocalDateTime;
 
 public class OffertaControllerApplicativo {
     public boolean doOfferta(OffertaBean offertaBean) {
+        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getAnnuncioID());
         OffertaModel offertaModel  = new OffertaModel();
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setAnnuncioID(offertaBean.getAnnuncioID());
+        offertaModel.setCopiaMangaID(offertaBean.getCopiaMangaID());
         offertaModel.setUsernameOfferente(offertaBean.getUsernameOfferente());
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());

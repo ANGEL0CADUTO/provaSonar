@@ -19,16 +19,18 @@ public class OffertaDAO {
 
     public boolean insertOfferta(OffertaModel offerta) {
         boolean b = false;
-        String query = "INSERT INTO offerta (annuncioID, utenteOfferenteID,usernameOfferente, offertaPrezzo, dataOfferta) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO offerta (annuncioID, copiaMangaID, utenteOfferenteID,usernameOfferente, offertaPrezzo, dataOfferta) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = DBConnection.getIstance().connection();
         try (PreparedStatement st = conn.prepareStatement(query)) {
+            System.out.println("QUI: " + offerta.getAnnuncioID());
             st.setInt(1, offerta.getAnnuncioID());
-            st.setInt(2, offerta.getUtenteOfferenteID());
-            st.setString(3,offerta.getUsernameOfferente());
-            st.setBigDecimal(4, (offerta.getOffertaPrezzo()).setScale(2, RoundingMode.HALF_UP));
-            st.setTimestamp(5,Timestamp.valueOf(offerta.getDataOfferta()));
+            st.setInt(2,offerta.getCopiaMangaID());
+            st.setInt(3, offerta.getUtenteOfferenteID());
+            st.setString(4,offerta.getUsernameOfferente());
+            st.setBigDecimal(5, (offerta.getOffertaPrezzo()).setScale(2, RoundingMode.HALF_UP));
+            st.setTimestamp(6,Timestamp.valueOf(offerta.getDataOfferta()));
 
 
             int rowsAffected = st.executeUpdate();

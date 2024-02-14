@@ -17,6 +17,16 @@ public class OffertaBean {
 
     private int idAnnuncio;
     private int utenteOfferenteID;
+    private int copiaMangaID;
+
+    public int getCopiaMangaID() {
+        return copiaMangaID;
+    }
+
+    public void setCopiaMangaID(int copiaMangaID) {
+        this.copiaMangaID = copiaMangaID;
+    }
+
     private String usernameOfferente;
     private LocalDateTime dataOfferta;
 
