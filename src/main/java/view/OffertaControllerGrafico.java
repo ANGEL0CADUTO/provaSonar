@@ -59,8 +59,6 @@ public class OffertaControllerGrafico extends UserGuiController{
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
         boolean esitoOfferta = of.doOfferta(offertaBean);
-
-
     }
 
 

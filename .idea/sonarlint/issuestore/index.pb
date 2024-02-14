@@ -37,3 +37,15 @@ y
 Isrc/main/java/controllerapplicativo/CompraMangaControllerApplicativo.java,6\3\63332355cfc76df7b710b8a2b66f289c2cd3833e
 d
 4src/main/java/view/CompraMangaControllerGrafico.java,7\3\739699b4b0508cc6078a4d9d410d37320dca530e
+Y
+)src/main/java/view/RecensioniGrafico.java,f\7\f7a06e5224c5b7ff7fe4f03efcddc280dae2def5
+`
+0src/main/java/view/OffertaControllerGrafico.java,a\3\a33d4204a3ecc22eb7ce68789fa0f6e79247bfb9
+u
+Esrc/main/java/controllerapplicativo/OffertaControllerApplicativo.java,c\4\c4d4a58e414d543581756acfdca25352cc84baf1
+s
+Csrc/main/java/controllerapplicativo/OfferteRicevuteApplicativo.java,2\a\2a1c4c9262e11f605d8c624e34ad28c93b3d9605
+[
++src/main/java/Observer/OffertaObserver.java,f\4\f4f5e800b7bb479a7a395b17fde1e8dde1e519fd
+Z
+*src/main/java/Observer/OffertaSubject.java,c\c\cc6dae4e2e56b336728dfa94fe311ee39d978605

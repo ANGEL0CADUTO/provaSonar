@@ -34,7 +34,7 @@
                   <ToolBar prefHeight="38.0" prefWidth="268.0">
                      <items>
                         <TextField fx:id="offertaTextField" prefHeight="26.0" prefWidth="184.0" promptText="Fai la tua offerta..." />
-                        <Button fx:id="offerta" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
+                        <Button fx:id="offerta" mnemonicParsing="false" onAction="#doOfferta" prefHeight="26.0" prefWidth="67.0" text="Offerta" />
                      </items>
                   </ToolBar>
                </children>
