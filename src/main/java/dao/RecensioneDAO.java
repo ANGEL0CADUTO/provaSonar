@@ -76,13 +76,40 @@ public class RecensioneDAO {
         try(PreparedStatement st = conn.prepareStatement(query)){
             st.setInt(1,recensione.getOffertaID());
             st.setInt(2,recensione.getRecensitoID());
-            //st.setDouble(3,recensione.get);
+            st.setDouble(3,recensione.getVoto());
+            st.setString(4,recensione.getTesto());
+            st.setString(5, recensione.getUsernameRecensore());
             st.executeUpdate();
         } catch (SQLException e) {
             logger.severe("Errore nel RecensioneDAO in inviaRecensione :"+ e.getMessage());
         }
         return true;
     }
+
+    public int getNumeroRecensioniByRecensitoID(int id) {
+        String query = "SELECT count(*) FROM recensione WHERE recensitoID = ?";
+        int risultato = 0;
+        Connection conn = DBConnection.getIstance().connection();
+
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+            st.setInt(1, id);
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+
+                    risultato = rs.getInt(1);
+                    System.out.println("dobrenne ridare 1 : risultato");
+                }
+            }
+
+        } catch (SQLException e) {
+            // Gestisci l'eccezione in modo appropriato
+            logger.severe("Errore in RecensioneDAO: " + e.getMessage());
+        }
+        return risultato;
+    }
+
+
 
 
 
