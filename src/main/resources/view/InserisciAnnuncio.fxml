@@ -56,92 +56,70 @@
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">
-         <children>
-            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" text="Home" />
-                  <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
-               </children>
-            </VBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fx:id="profiloImage" fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photo/user.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="profiloButton1" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="88.0" text="Profilo" />
-               </children>
+         <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+            <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0"/>
+            <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="167.0">
+               <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" prefWidth="90.0"
+                       text="Home"/>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photo/notification.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="notificheButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Notifiche" />
-               </children>
+         </VBox>
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <ImageView fx:id="profiloImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <image>
+                  <Image url="@../photo/user.png"/>
+               </image>
+            </ImageView>
+            <Button fx:id="profiloButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                    onAction="#goToProfilo" prefWidth="90.0" text="Profilo"/>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photo/book.png"/>
+               </image>
+            </ImageView>
+            <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0"
+                    text="Libreria"/>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photo/sales.png"/>
+               </image>
+            </ImageView>
+            <Button fx:id="compraButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                    onAction="#goToMieiAnnunci" prefWidth="90.0" text="Miei Annunci"/>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photo/euro.png"/>
+               </image>
+            </ImageView>
+            <Button fx:id="depositaEPrelevaButton1" minHeight="-Infinity" minWidth="-Infinity"
+                    mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefWidth="90.0" text="Conto"/>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../photo/handshake.png"/>
+               </image>
+            </ImageView>
+            <Button fx:id="compraButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                    onAction="#goToCompra" prefWidth="90.0" text="Compra"/>
+         </HBox>
+         <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="167.0" style="-fx-background-color: #020203;">
+               <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../photo/logout.png"/>
+                  </image>
+               </ImageView>
+               <Button fx:id="logout" mnemonicParsing="false" prefWidth="90.0"
+                       style="-fx-background-color: #d1440d;" text="Logout"/>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photo/book.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefHeight="26.0" prefWidth="88.0" text="Libreria" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photo/sales.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="compraButton1" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photo/euro.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="depositaEPrelevaButton1" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefHeight="26.0" prefWidth="84.0" text="Conto" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="30.0">
-                     <image>
-                        <Image url="@../photo/handshake%20(1).png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="compraButton2" mnemonicParsing="false" onAction="#goToCompra" prefHeight="40.0" prefWidth="87.0" text="Compra" />
-               </children>
-            </HBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="112.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #020203;">
-                     <children>
-                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../photo/logout.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="18.0" prefWidth="82.0" text="Logout" textFill="WHITE">
-                           <font>
-                              <Font name="Calibri" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
+         </VBox>
       </VBox>
    </children>
 </AnchorPane>

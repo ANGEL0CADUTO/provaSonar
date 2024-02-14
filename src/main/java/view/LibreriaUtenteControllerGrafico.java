@@ -62,6 +62,12 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     @FXML
     private TextField volumeTextField;
 
+    @FXML
+    private Button acquistiButton;
+    @FXML
+    private Button vendutiButton;
+
+
 
 
 

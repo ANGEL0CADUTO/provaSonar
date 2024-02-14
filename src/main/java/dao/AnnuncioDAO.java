@@ -67,33 +67,7 @@ public class AnnuncioDAO {
         return array;
     }
 
-    public ArrayList<AnnuncioModel> getAnnunciByName(int id,String name) {
 
-        String query = "SELECT usernameVenditore,titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
-                "WHERE statoAnnuncio = 1  AND titoloManga  LIKE '%' ? '%' ";
-        ArrayList<AnnuncioModel> array = new ArrayList<>();
-        Connection conn = DBConnection.getIstance().connection();
-        try (PreparedStatement st = conn.prepareStatement(query)) {
-            st.setInt(1,id);
-            st.setString(2,name);
-            try (ResultSet rs = st.executeQuery()) {
-                while (rs.next()) {
-                    AnnuncioModel annuncioModel = new AnnuncioModel();
-                    annuncioModel.setNomeUtente(rs.getString("usernameVenditore"));
-                    annuncioModel.setNomeManga(rs.getString("titoloManga"));
-                    annuncioModel.setVolume(rs.getInt("volume"));
-                    annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
-                    annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
-
-                    array.add(annuncioModel);
-                }
-            }
-        } catch (SQLException e) {
-            logger.severe("E' stata lanciata eccezione in getAnnunciByName in AnnuncioDao" + " " + e.getMessage());
-        }
-        //  System.out.println("BECCA STO ANNUNCIO " +  annuncio);
-        return array;
-    }
 
 
 
