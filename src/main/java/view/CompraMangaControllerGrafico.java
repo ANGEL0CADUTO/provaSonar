@@ -101,6 +101,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
                     toolbar.setVisible(true);
                     offertaBean = new OffertaBean();
                     offertaBean.setAnnuncioID(arrayAnnunci.get(index).getIdAnnuncio());
+                    offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
 
 
                         //goToOfferta();

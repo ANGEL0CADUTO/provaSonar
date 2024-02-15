@@ -14,6 +14,5 @@
       <Button fx:id="libreriaButton" layoutX="345.0" layoutY="27.0" mnemonicParsing="false" onAction="#goToLibreria" text="Libreria" />
       <Button fx:id="mieiAnnunciButton" layoutX="39.0" layoutY="138.0" mnemonicParsing="false" onAction="#goToMieiAnnunci" text="Miei Annunci" />
       <Button fx:id="recensioniButton" layoutX="164.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToRecensioni" text="Recensioni" />
-      <Button fx:id="mieiAcquistiButton" layoutX="207.0" layoutY="151.0" mnemonicParsing="false" onAction="#goToMieiAcquisti" text="Miei Acquisti" />
    </children>
 </AnchorPane>

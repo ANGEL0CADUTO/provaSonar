@@ -53,7 +53,7 @@
                <children>
                   <VBox prefHeight="28.0" prefWidth="84.0">
                      <children>
-                        <Button fx:id="acquistiButton" mnemonicParsing="false" text="Acquisti">
+                        <Button fx:id="acquistiButton" mnemonicParsing="false" onAction="#goToMieiAcquisti" text="Acquisti">
                            <VBox.margin>
                               <Insets top="2.0" />
                            </VBox.margin>
@@ -65,7 +65,7 @@
                   </VBox>
                   <VBox prefHeight="28.0" prefWidth="64.0">
                      <children>
-                        <Button fx:id="vendutiButton" mnemonicParsing="false" text="Vendite">
+                        <Button fx:id="vendutiButton" mnemonicParsing="false" onAction="#goToMieVendite" text="Vendite">
                            <VBox.margin>
                               <Insets left="2.0" top="2.0" />
                            </VBox.margin>

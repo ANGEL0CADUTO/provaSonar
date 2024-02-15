@@ -96,6 +96,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 */
 
 
+
     @FXML
     private void initialize() {
         System.out.println(utenteBean);
@@ -103,6 +104,21 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         initializeData();
     }
 
+    public void goToMieVendite() {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MieVendite.fxml"));
+        loader.setControllerFactory(c -> new MieVenditeControllerGrafico(utenteBean));
+
+        Parent root = null;
+
+            root = loader.load();
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+        stage.setScene(scene);}
+        catch (IOException e) {
+            throw new RuntimeException(e);}
+    }
 
     //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
     public void initializeData() {
@@ -265,6 +281,13 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         confermaButton.setVisible(false);
 
         
+
+    }
+
+    public void mostraAcquisti(){
+
+
+
 
     }
 

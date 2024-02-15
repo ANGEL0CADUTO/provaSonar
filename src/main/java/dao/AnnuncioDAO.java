@@ -131,6 +131,39 @@ public class AnnuncioDAO {
         }
         return array;
     }
+    public ArrayList<AnnuncioModel> getMyAnnunciVendutiByUtenteID(int id) {
+        String query = "SELECT utenteVenditoreID, titoloManga, volume, idAnnuncio " +
+                "FROM annuncio " +
+                "WHERE statoAnnuncio = 2 AND utenteVenditoreID = ?; ";
+
+        ArrayList<AnnuncioModel> array = new ArrayList<>();
+        Connection conn = DBConnection.getIstance().connection();
+
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+
+            st.setInt(1, id);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                AnnuncioModel annuncioModel = new AnnuncioModel();
+                annuncioModel.setNomeManga(rs.getString("titoloManga"));
+                annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
+                annuncioModel.setVolume(rs.getInt("volume"));
+
+                array.add(annuncioModel);
+            }
+        } catch (SQLException e) {
+            logger.severe("errore in AnnuncioDAO nella getMyAnnunciVendutiByUtenteID : " + e.getMessage());
+        }
+        for (AnnuncioModel a : array) {
+            System.out.println("PORCONE IN ANNUNCIODAO :" + a.getIdAnnuncio() + a.getNomeManga() );
+        }
+        return array;
+    }
+
+
+
 
     public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID) {
         String query = "SELECT titoloManga, utenteVenditoreID, volume, prezzoDiVendita,dataAnnuncio FROM " +
