@@ -41,7 +41,7 @@ public class AnnuncioDAO {
 
     public ArrayList<AnnuncioModel> getAnnunci(int id,String name) {
 
-        String query = "SELECT usernameVenditore, copiaMangaID, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
+        String query = "SELECT usernameVenditore, utenteVenditoreID, copiaMangaID, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
                 "WHERE statoAnnuncio = 1 AND utenteVenditoreID != ? AND titoloManga  LIKE '%' ? '%' ";
         ArrayList<AnnuncioModel> array = new ArrayList<>();
         Connection conn = DBConnection.getIstance().connection();
@@ -52,6 +52,7 @@ public class AnnuncioDAO {
                 while (rs.next()) {
                     AnnuncioModel annuncioModel = new AnnuncioModel();
                     annuncioModel.setNomeUtente(rs.getString("usernameVenditore"));
+                    annuncioModel.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
                     annuncioModel.setNomeManga(rs.getString("titoloManga"));
                     annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
                     annuncioModel.setVolume(rs.getInt("volume"));
@@ -63,7 +64,7 @@ public class AnnuncioDAO {
         } catch (SQLException e) {
             logger.severe("E' stata lanciata eccezione in getAnnunci in AnnuncioDao" + " " + e.getMessage());
         }
-        //  System.out.println("BECCA STO ANNUNCIO " +  annuncio);
+
         return array;
     }
 
@@ -105,7 +106,7 @@ public class AnnuncioDAO {
 
 
     public ArrayList<AnnuncioModel> getMyAnnunci(int id) {
-        String query = "SELECT titoloManga, prezzoDiVendita, dataAnnuncio, idAnnuncio " +
+        String query = "SELECT titoloManga, volume, prezzoDiVendita, dataAnnuncio, idAnnuncio " +
                 "FROM annuncio " +
                 "WHERE annuncio.statoAnnuncio = '1' AND annuncio.utenteVenditoreID = ?; ";
 
@@ -117,6 +118,7 @@ public class AnnuncioDAO {
             while (rs.next()) {
                 AnnuncioModel annuncioModel = new AnnuncioModel();
                 annuncioModel.setNomeManga(rs.getString("titoloManga"));
+                annuncioModel.setVolume(rs.getInt("volume"));
                 annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
                 annuncioModel.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
                 annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));

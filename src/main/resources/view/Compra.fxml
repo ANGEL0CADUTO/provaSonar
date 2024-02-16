@@ -36,15 +36,16 @@
             </HBox>
             <HBox prefHeight="326.0" prefWidth="431.0">
                <children>
-                  <HBox prefHeight="245.0" prefWidth="418.0">
+                  <HBox prefHeight="286.0" prefWidth="418.0">
                      <children>
-                        <TableView fx:id="tableCompra" prefHeight="248.0" prefWidth="412.0">
+                        <TableView fx:id="tableCompra" prefHeight="279.0" prefWidth="412.0">
                            <columns>
-                              <TableColumn fx:id="utenteColumn" prefWidth="81.60005950927734" text="Utente" />
-                              <TableColumn fx:id="nomeMangaColumn" prefWidth="81.60005950927734" text="Nome Manga" />
-                              <TableColumn fx:id="volumeColumn" prefWidth="80.79998779296875" text="Volume" />
-                              <TableColumn fx:id="prezzoColumn" prefWidth="73.60003662109375" text="Prezzo" />
-                              <TableColumn fx:id="compraColumn" prefWidth="88.79998779296875" text="Compra" />
+                              <TableColumn fx:id="utenteColumn" prefWidth="81.60005033016205" text="Utente" />
+                              <TableColumn fx:id="votoColumn" prefWidth="46.39997100830078" text="Voto" />
+                              <TableColumn fx:id="nomeMangaColumn" prefWidth="94.4000244140625" text="Nome Manga" />
+                              <TableColumn fx:id="volumeColumn" prefWidth="53.5999755859375" text="Volume" />
+                              <TableColumn fx:id="prezzoColumn" minWidth="6.39996337890625" prefWidth="56.79998779296875" text="Prezzo" />
+                              <TableColumn fx:id="compraColumn" prefWidth="76.79995727539062" text="Compra" />
                            </columns>
                         </TableView>
                      </children>
@@ -73,6 +74,11 @@
                   <Insets left="70.0" />
                </VBox.margin>
             </HBox>
+            <Label fx:id="wrongOfferta" prefHeight="18.0" prefWidth="561.0" textFill="RED">
+               <padding>
+                  <Insets left="155.0" />
+               </padding>
+            </Label>
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" layoutY="-3.0" prefHeight="423.0" prefWidth="167.0">

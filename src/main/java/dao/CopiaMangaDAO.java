@@ -104,4 +104,22 @@ public class CopiaMangaDAO {
 
         return b;
     }
+
+    public boolean setStatoVendutoByCopiaMangaID(int copiaMangaID) {
+
+        String query = "UPDATE statoCopiaManga FROM copiaManga WHERE idCopiaManga = ?";
+        Connection conn = DBConnection.getIstance().connection();
+        boolean b = false;
+
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,copiaMangaID);
+            int righe = st.executeUpdate();
+            if(righe>0){
+                b = true;
+            }
+        }catch(SQLException e){
+            logger.severe("Errore in CopiaMangaDao in setStatoVendutoByCopiaMangaID " + e.getMessage());
+        }
+        return b;
+    }
 }

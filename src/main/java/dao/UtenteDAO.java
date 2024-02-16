@@ -246,6 +246,7 @@ public class UtenteDAO {
 
         double voto = 0;
         Connection conn = DBConnection.getIstance().connection();
+
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
             st.setInt(1, id);
@@ -281,6 +282,36 @@ public class UtenteDAO {
             logger.severe("Errore in UtenteDAO in aggiornaVotoByUtenteID: " + e.getMessage());
         }
         return b;
+    }
+
+    public boolean checkCreditoSufficienteByUtenteID(int id,BigDecimal cifra){
+        String query = "SELECT credito FROM utente WHERE idUtente = ?";
+
+        System.out.println("L'id che arriva è " + id);
+        Connection conn = DBConnection.getIstance().connection();
+
+        boolean b  = false;
+        System.out.println("La cifra che arriva è " + cifra);
+
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,id);
+
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                b = true;
+                BigDecimal cifra1 = rs.getBigDecimal("credito");
+                System.out.println("credito è " + cifra1);
+                if (rs.getBigDecimal("credito").compareTo(cifra) < 0){
+                    System.out.println("ci troviamo sotto zero");
+
+                    b=false;
+
+                }
+            }
+        }catch(SQLException e){
+            logger.severe("Errore in UtenteDAO in checkCreditoSufficienteByUtenteID : "+ e.getMessage());
+        }
+        return  b;
     }
 
 

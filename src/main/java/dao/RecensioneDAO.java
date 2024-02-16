@@ -31,7 +31,7 @@ public class RecensioneDAO {
 
         try ( PreparedStatement st = conn.prepareStatement(query)) {
             System.out.println("mi trovo al try di getRecensioniRicevuteByUtenteID");
-            st.setInt(1,1);
+            st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 System.out.println("mi trovo nel while di getRecensioniRicevuteByUtenteID");

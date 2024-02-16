@@ -4,6 +4,8 @@ import bean.UtenteBean;
 import dao.UtenteDAO;
 import model.UtenteModel;
 
+import java.math.BigDecimal;
+
 public class DepositaEPrelevaApplicativo {
 
     public boolean Deposita(UtenteBean bean,String cifra ){
@@ -18,7 +20,12 @@ public class DepositaEPrelevaApplicativo {
         UtenteDAO prelevaCredito = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
-        return prelevaCredito.userPreliev(model,cifraString);
+
+        BigDecimal cifra = new BigDecimal(cifraString);
+        if(prelevaCredito.checkCreditoSufficienteByUtenteID(model.getIdUtente(),cifra)){
+            return prelevaCredito.userPreliev(model,cifraString);
+        }
+        return false;
     }
 
 

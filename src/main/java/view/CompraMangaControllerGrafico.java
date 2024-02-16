@@ -41,6 +41,8 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     //COLONNA PER IL TASTO AUTOCREATO
     @FXML
     private TableColumn<CopiaMangaModel, String> compraColumn;
+    @FXML
+    private TableColumn<CopiaMangaModel, String> votoColumn;
 
 
 
@@ -59,6 +61,8 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     @FXML
     private TextField offertaTextField;
+    @FXML
+    private Label wrongOfferta;
 
     private OffertaBean offertaBean;
 
@@ -87,6 +91,11 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         utenteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeUtente())));
         nomeMangaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getNomeManga())));
         prezzoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getPrezzo())));
+        votoColumn.setCellValueFactory(cellData -> {
+            double voto = arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVotoUtente();
+            double votoTroncato = Math.floor(voto) + Math.ceil((voto - Math.floor(voto)) * 10) / 10;
+            return new SimpleStringProperty(String.valueOf(votoTroncato));
+        });
         volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVolume())));
         compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
             private int index;
@@ -101,6 +110,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
                     toolbar.setVisible(true);
                     offertaBean = new OffertaBean();
                     offertaBean.setAnnuncioID(arrayAnnunci.get(index).getIdAnnuncio());
+                    offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
 
 
                         //goToOfferta();
@@ -129,6 +139,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     @FXML
     private void doOfferta(ActionEvent event) {
+        wrongOfferta.setText("");
 
 
         /*if (offertaBean.getOffertaPrezzo()getText().isEmpty()) {
@@ -153,6 +164,9 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
         boolean esitoOfferta = of.doOfferta(offertaBean);
+        if(!esitoOfferta){
+            wrongOfferta.setText("Credito insufficiente");
+        }
         toolbar.setVisible(false);
     }
 

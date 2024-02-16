@@ -7,20 +7,25 @@ public class AnnuncioModel {
     private int idAnnuncio;
     private int copiaMangaID;
 
-    public int getCopiaMangaID() {
-        return copiaMangaID;
-    }
-
-    public void setCopiaMangaID(int copiaMangaID) {
-        this.copiaMangaID = copiaMangaID;
-    }
 
     private int utenteVenditoreID;
     private String nomeUtente;
     private String nomeManga;
     private int volume;
+    private double votoUtente;
+
     private BigDecimal prezzo;
+
+    public double getVotoUtente() {
+        return votoUtente;
+    }
+
+    public void setVotoUtente(double votoUtente) {
+        this.votoUtente = votoUtente;
+    }
+
     private LocalDateTime dataAnnuncio;
+
     public int getUtenteVenditoreID() {
         return utenteVenditoreID;
     }
@@ -30,6 +35,13 @@ public class AnnuncioModel {
     }
 
 
+    public int getCopiaMangaID() {
+        return copiaMangaID;
+    }
+
+    public void setCopiaMangaID(int copiaMangaID) {
+        this.copiaMangaID = copiaMangaID;
+    }
 
     public int getVolume() {
         return volume;

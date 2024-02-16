@@ -43,6 +43,9 @@ import java.util.ArrayList;
 
         @FXML
         private TableColumn<AnnuncioModel, String> offerteButtonColumn;
+        @FXML
+        private TableColumn<AnnuncioModel, String> volumeColumn;
+
 
         protected MieiAnnunciGrafico(UtenteBean bean) {
             super(bean);
@@ -67,6 +70,8 @@ import java.util.ArrayList;
             nomeMangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getNomeManga()));
             prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getPrezzo())));
             dataColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataAnnuncio())));
+            volumeColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getVolume())));
+
             //nOfferteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getNOfferte())));
             offerteButtonColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
 

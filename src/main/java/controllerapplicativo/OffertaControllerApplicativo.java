@@ -2,6 +2,7 @@ package controllerapplicativo;
 
 import bean.OffertaBean;
 import dao.OffertaDAO;
+import dao.UtenteDAO;
 import model.OffertaModel;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,17 @@ public class OffertaControllerApplicativo {
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
         offertaModel.setDataOfferta(LocalDateTime.now());
-        OffertaDAO dao = new OffertaDAO();
-        return dao.insertOfferta(offertaModel);
+        System.out.println("Controllo " + offertaBean.getCopiaMangaID());
+
+        UtenteDAO dao = new UtenteDAO();
+        if(dao.checkCreditoSufficienteByUtenteID(offertaModel.getUtenteOfferenteID(),offertaModel.getOffertaPrezzo()))
+        {
+            OffertaDAO dao2 = new OffertaDAO();
+            return dao2.insertOfferta(offertaModel);
+        }
+
+        return false;
+
     }
+
 }

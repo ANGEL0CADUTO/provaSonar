@@ -1,9 +1,11 @@
 package view;
 
+import Pattern.OffertaFacade;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.MieiAnnunciApplicativo;
 import controllerapplicativo.OfferteRicevuteApplicativo;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -69,7 +71,11 @@ public class OfferteRicevuteGrafico extends UserGuiController{
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         utenteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getUsernameOfferente()));
-        votoUtenteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(Double.toString(cellData.getValue().getVotoRecensioni())));
+        votoUtenteColumn.setCellValueFactory(cellData -> {
+            double voto = data.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVotoRecensioni();
+            double votoTroncato = Math.floor(voto) + Math.ceil((voto - Math.floor(voto)) * 10) / 10;
+            return new SimpleStringProperty(String.valueOf(votoTroncato));
+        });
         prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getOffertaPrezzo())));
         dataOffertaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataOfferta())));
         buttonColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
@@ -92,7 +98,9 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                         offertaBean.setIdOfferta(array.get(index).getIdOfferta());
                         offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
                         System.out.println("IL PREZZO è :" + array.get(index).getOffertaPrezzo());
-                        boolean b = controller.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
+
+                        OffertaFacade facade = new OffertaFacade();
+                        boolean b = facade.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
 
                         if(b){
                             System.out.println("ACCETTATA CON SUCCESSO!");
