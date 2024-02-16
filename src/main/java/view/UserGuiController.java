@@ -124,6 +124,25 @@ public class UserGuiController extends BaseController{
         }
     }
 
+    @FXML
+    void goToMieiAcquisti() throws IOException{
+
+        if(utenteBean.isLogged()){
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MieiAcquisti.fxml"));
+            loader.setControllerFactory(c -> new MieiAcquistiGrafico(utenteBean));
+
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+            stage.setScene(scene);
+        }
+        else{
+            goToLogin();
+        }
+    }
+
 
 
 

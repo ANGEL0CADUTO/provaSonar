@@ -53,3 +53,23 @@ Z
 *src/main/java/view/MieiAnnunciGrafico.java,8\c\8ce6d05953f6fad28657ceb4fc5e5ed0a8fe1c4d
 M
 src/main/java/view/Start.java,e\d\ed274ceaa460bbbcabac65429253c5f49c2debe9
+T
+$src/main/java/view2/HomePageCLI.java,9\d\9dad73c3977d1cc8de31e18ed0d496de5739867e
+i
+9src/main/java/controllerapplicativo/LoginApplicativo.java,1\e\1e15af6f53661b3d6fd27f2f917dfcc3732df598
+|
+Lsrc/main/java/controllerapplicativo/LibreriaUtenteControllerApplicativo.java,9\4\944ff81d5ec8440b7203b46dc11aa186138212d7
+[
++src/main/java/view/MieiAcquistiGrafico.java,a\2\a209696e690aa00937cfbedebdbd8a256a4dadc2
+c
+3src/main/java/view/MieVenditeControllerGrafico.java,1\d\1db1518aaceac9da43a23724c4d34ba55da33975
+x
+Hsrc/main/java/controllerapplicativo/MieVenditeControllerApplicativo.java,7\3\73da25f975e348262575b61eeaa2fc9d0deddb8b
+p
+@src/main/java/controllerapplicativo/MieiAcquistiApplicativo.java,f\b\fbb960352ebc15e6c359d1fd982f6499be9be888
+^
+.src/main/java/view/OfferteRicevuteGrafico.java,9\4\94b35243c15c8f3fa9708aa88716c3ad6f3fe2a7
+U
+%src/main/java/model/OffertaModel.java,c\e\ceb15c894c3fbd929fa5e83a37851cf7432d7256
+X
+(src/main/java/model/OffertaRicevuta.java,0\c\0cf3577f121256218c7c5c274e6f3b757e83f386

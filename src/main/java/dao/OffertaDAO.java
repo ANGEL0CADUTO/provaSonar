@@ -99,6 +99,40 @@ public class OffertaDAO {
 
     }
 
+//select idOfferta, annuncioID,usernameOfferente,offertaPrezzo,dataVendita,copiaMangaID FROM offerta WHERE idUtente =? AND statoOfferta=3
+
+   public OffertaModel getDatiOffertaAccettataByAnnuncioID(int idAnnuncio){
+
+       String query = "SELECT idOfferta, annuncioID,usernameOfferente,offertaPrezzo,dataVendita,copiaMangaID" +
+               " FROM offerta WHERE annuncioID =? AND statoOfferta=3";
+       Connection conn = DBConnection.getIstance().connection();
+       OffertaModel offertaModel = null;
+        try(PreparedStatement st = conn.prepareStatement(query)){
+
+            st.setInt(1,idAnnuncio);
+
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                System.out.println("PORCONE IN OFFERTADAO getDatiOffertaAccettataByAnnuncioID");
+                offertaModel= new OffertaModel();
+                offertaModel.setIdOfferta(rs.getInt("idOfferta"));
+                offertaModel.setAnnuncioID(rs.getInt("annuncioID"));
+                offertaModel.setUsernameOfferente(rs.getString("usernameOfferente"));
+                offertaModel.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
+                offertaModel.setDataOfferta(rs.getTimestamp("dataVendita").toLocalDateTime());
+                offertaModel.setCopiaMangaID(rs.getInt("copiaMangaID"));
+            }
+
+        } catch (SQLException e) {
+            logger.severe("ERRORE IN OFFERTADAO IN getMangaVendutiByUtenteID " + e.getMessage() );}
+
+
+
+        return offertaModel;
+   }
+
+
+
 
     public OffertaRicevuta getDatiOffertaByOffertaID(int id){
 
