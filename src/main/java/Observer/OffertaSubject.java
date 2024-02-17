@@ -7,23 +7,24 @@ import java.util.List;
 
 public class OffertaSubject {//AGGIUNGE, RIMUOVE E NOTIFICA GLI OSSERVATORI
 
-    private List<OffertaObserver> observers;
+    private List<OffertaObserver> observersArrayList;
 
     public OffertaSubject() {
-        observers = new ArrayList<>();
+        observersArrayList = new ArrayList<>();
     }
 
     public void aggiungiObserver(OffertaObserver observer) {
-        observers.add(observer);
+        observersArrayList.add(observer);
     }
 
     public void rimuoviObserver(OffertaObserver observer) {
-        observers.remove(observer);
+        observersArrayList.remove(observer);
     }
 
-    public void notificaObservers(OffertaBean offerta) {
-        for (OffertaObserver observer : observers) {
-            System.out.println("non so che metterci");
+    public void notificaObservers() {
+        for (OffertaObserver observer : observersArrayList) {
+            System.out.println("Stai aggiornando gli Observer");
+            observer.update();
         }
     }
 

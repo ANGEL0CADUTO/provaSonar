@@ -168,7 +168,7 @@ public class AnnuncioDAO {
 
 
     public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID) {
-        String query = "SELECT titoloManga, utenteVenditoreID, volume, prezzoDiVendita,dataAnnuncio FROM " +
+        String query = "SELECT titoloManga, utenteVenditoreID,usernameVenditore, volume, prezzoDiVendita,dataAnnuncio FROM " +
                 "annuncio WHERE idAnnuncio = ?;";
         Connection conn = DBConnection.getIstance().connection();
         AnnuncioModel annuncio = null;
@@ -184,6 +184,7 @@ public class AnnuncioDAO {
                 annuncio.setNomeManga(rs.getString("titoloManga"));
                 annuncio.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
                 annuncio.setVolume(rs.getInt("volume"));
+                annuncio.setNomeUtente(rs.getString("usernameVenditore"));
 
                 annuncio.setPrezzo(rs.getBigDecimal("prezzoDiVendita"));
                 annuncio.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());

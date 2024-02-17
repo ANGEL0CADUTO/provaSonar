@@ -25,6 +25,8 @@ public class OffertaFacade {
     public boolean accettaOffertaByOffertaID(OffertaModel offerta, int idUtenteVenditore) {
 
 
+        System.out.println("ID IN ACCETTA OFFERTA IN OFFERTA FACADE :" + offerta.getCopiaMangaID());
+
         if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(offerta.getCopiaMangaID())&& userPreliev(offerta.getUtenteOfferenteID(), offerta.getOffertaPrezzo().toString()) &&
                 offertaDAO.accettaOfferta(offerta) &&
                 userDeposit(idUtenteVenditore, offerta.getOffertaPrezzo().toString())) {

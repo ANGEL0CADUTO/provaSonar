@@ -25,8 +25,6 @@ P
  src/main/java/dao/UtenteDAO.java,e\e\ee40ba8ee421bd18e93480eafe660fa236680651
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-j
-:.idea/dataSources/27ec4b51-dd7c-4369-88f8-77814604899d.xml,e\d\ed1e912f0a59376269a63744a97d4115ab04f16b
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Q
@@ -73,3 +71,9 @@ U
 %src/main/java/model/OffertaModel.java,c\e\ceb15c894c3fbd929fa5e83a37851cf7432d7256
 X
 (src/main/java/model/OffertaRicevuta.java,0\c\0cf3577f121256218c7c5c274e6f3b757e83f386
+\
+,src/main/java/Observer/ConcreteObserver.java,d\1\d106a53bb6d7f090fc450d6db41083d9f8a26863
+D
+src/NotificaFile.txt,d\2\d28421b333be060417941e700d6f538dcc1a892d
+X
+(src/main/java/Pattern/OffertaFacade.java,b\4\b498e4e0edbf4c3ea47d372f68e80e570ddcbd19
