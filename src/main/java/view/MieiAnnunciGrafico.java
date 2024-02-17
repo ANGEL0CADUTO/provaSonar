@@ -118,6 +118,6 @@ import java.util.ArrayList;
             mieiAnnunciTable.setItems(data);
         }
 
-        // ...
+
     }
 

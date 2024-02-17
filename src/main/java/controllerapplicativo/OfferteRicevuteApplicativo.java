@@ -1,5 +1,6 @@
 package controllerapplicativo;
 
+import Pattern.OffertaFacade;
 import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.OffertaDAO;
@@ -22,27 +23,17 @@ public class OfferteRicevuteApplicativo {
         return array;
     }
 
-    public boolean accettaOffertaByOffertaID(OffertaBean offerta, int idUtenteVenditore){
-        OffertaModel offertaModel = new OffertaModel();
-        offertaModel.setIdOfferta(offerta.getIdOfferta());
-        offertaModel.setAnnuncioID(offerta.getAnnuncioID());
-        offertaModel.setUtenteOfferenteID(offerta.getUtenteOfferenteID());
-        offertaModel.setOffertaPrezzo(offerta.getOffertaPrezzo());
-        OffertaDAO dao = new OffertaDAO();
+    public boolean accettaOffertaByOffertaID(OffertaBean bean, int idUtenteVenditore) {
 
-        if(dao.accettaOfferta(offertaModel)){
-            UtenteDAO dao2 = new UtenteDAO();
-            UtenteModel utenteModel = new UtenteModel();
-            utenteModel.setIdUtente(idUtenteVenditore);
+        OffertaFacade facade = new OffertaFacade();
+        OffertaModel model =  new OffertaModel();
 
-            if(dao2.userDeposit(utenteModel,offerta.getOffertaPrezzo().toString())){
-                utenteModel.setIdUtente(offerta.getUtenteOfferenteID());
-                if(dao2.userPreliev(utenteModel,offerta.getOffertaPrezzo().toString())){
-                    AnnuncioDAO dao3 = new AnnuncioDAO();
-                    return dao3.setStatoAccettatoByAnnuncioID(offertaModel.getAnnuncioID());
-                }
-            }
-        }
-        return false;
+        model.setAnnuncioID(bean.getAnnuncioID());
+        model.setCopiaMangaID(bean.getCopiaMangaID());
+        model.setUtenteOfferenteID(bean.getUtenteOfferenteID());
+        model.setIdOfferta(bean.getIdOfferta());
+        model.setOffertaPrezzo(bean.getOffertaPrezzo());
+
+        return facade.accettaOffertaByOffertaID(model, idUtenteVenditore);
     }
 }

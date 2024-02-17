@@ -262,6 +262,30 @@ public class UtenteDAO {
 
         return voto;
 }
+    public UtenteModel getVotoAndCreditoByUtenteID(int id) {
+        String query = "SELECT votoRecensioni,credito FROM utente WHERE idUtente = ?";
+
+
+        Connection conn = DBConnection.getIstance().connection();
+        UtenteModel model = null;
+
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+
+            st.setInt(1, id);
+
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                model = new UtenteModel();
+                model.setVotoRecensioni(rs.getDouble(1));
+                model.setCredito(rs.getBigDecimal("credito"));
+
+            }
+        } catch (SQLException e) {
+            logger.severe("Errore in UtenteDAO in getVotoByUtenteID: " + e.getMessage());
+        }
+
+        return model;
+    }
 
     public boolean aggiornaVotoByUtenteID(int id, double votoNuovo) {
         String query = "UPDATE utente SET votoRecensioni = ? WHERE idUtente = ?";

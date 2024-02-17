@@ -4,6 +4,7 @@ import Pattern.OffertaFacade;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.MieiAnnunciApplicativo;
+import controllerapplicativo.OffertaControllerApplicativo;
 import controllerapplicativo.OfferteRicevuteApplicativo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.AnnuncioModel;
 import model.OffertaRicevuta;
@@ -94,13 +92,14 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                         System.out.println("LOGGATO :" +utenteBean.getEmail() + " Offerente"+ array.get(index).getUsernameOfferente());
                         OffertaBean offertaBean = new OffertaBean();
                         offertaBean.setAnnuncioID(array.get(index).getAnnuncioID());
+                        offertaBean.setCopiaMangaID(array.get(index).getCopiaMangaID());
                         offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
                         offertaBean.setIdOfferta(array.get(index).getIdOfferta());
                         offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
-                        System.out.println("IL PREZZO è :" + array.get(index).getOffertaPrezzo());
 
-                        OffertaFacade facade = new OffertaFacade();
-                        boolean b = facade.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
+                        OfferteRicevuteApplicativo controllerApp = new OfferteRicevuteApplicativo();
+                        boolean b = controllerApp.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
+
 
                         if(b){
                             System.out.println("ACCETTATA CON SUCCESSO!");

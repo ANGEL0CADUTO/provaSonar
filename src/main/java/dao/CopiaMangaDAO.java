@@ -107,7 +107,7 @@ public class CopiaMangaDAO {
 
     public boolean setStatoVendutoByCopiaMangaID(int copiaMangaID) {
 
-        String query = "UPDATE statoCopiaManga FROM copiaManga WHERE idCopiaManga = ?";
+        String query = "UPDATE copiamanga SET statoCopiaManga = 3 WHERE idCopiaManga = ?;";
         Connection conn = DBConnection.getIstance().connection();
         boolean b = false;
 

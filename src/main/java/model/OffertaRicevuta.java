@@ -9,6 +9,9 @@ public class OffertaRicevuta {
     private int idOfferta;
     private int annuncioID;
     private int utenteOfferenteID;
+    private int copiaMangaID;
+
+
     private String usernameOfferente;
     private BigDecimal offertaPrezzo;
     private double votoRecensioni;
@@ -24,6 +27,13 @@ public class OffertaRicevuta {
         this.utenteOfferenteID = utenteOfferenteID;
     }
 
+    public int getCopiaMangaID() {
+        return copiaMangaID;
+    }
+
+    public void setCopiaMangaID(int copiaMangaID) {
+        this.copiaMangaID = copiaMangaID;
+    }
 
 
     public LocalDateTime getDataVendita() {

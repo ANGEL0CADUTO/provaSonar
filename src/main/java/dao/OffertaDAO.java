@@ -47,7 +47,7 @@ public class OffertaDAO {
 
     public ArrayList<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
         ArrayList<OffertaRicevuta> array = new ArrayList<>();
-        String query = "SELECT idOfferta,utenteOfferenteID,usernameOfferente,offertaPrezzo, dataOfferta " +
+        String query = "SELECT idOfferta,utenteOfferenteID,usernameOfferente,offertaPrezzo, dataOfferta,copiaMangaID " +
                 "FROM offerta " +
                 "WHERE annuncioID = ? AND statoOfferta = 1 ;";
         Connection conn = DBConnection.getIstance().connection();
@@ -66,7 +66,7 @@ public class OffertaDAO {
                 offerta.setAnnuncioID(id);
                 offerta.setUtenteOfferenteID(rs.getInt("utenteOfferenteID"));
                 offerta.setUsernameOfferente(rs.getString("usernameOfferente"));
-                //offerta.setVotoRecensioni(rs.getDouble("votoRecensioni"));
+                offerta.setCopiaMangaID(rs.getInt("copiaMangaID"));
                 offerta.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
                 offerta.setDataOfferta(rs.getTimestamp("dataOfferta").toLocalDateTime());
                 array.add(offerta);

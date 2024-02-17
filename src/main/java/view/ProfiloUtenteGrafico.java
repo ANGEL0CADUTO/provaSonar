@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.UtenteModel;
+
+import java.text.DecimalFormat;
 
 public class ProfiloUtenteGrafico extends UserGuiController {
 
@@ -43,15 +46,24 @@ public class ProfiloUtenteGrafico extends UserGuiController {
 
     @FXML
     private void initialize(){
-        inviaButton.setVisible(false);
+        ProfiloUtenteApplicativo controllerApp = new ProfiloUtenteApplicativo();
+        UtenteBean bean2 = controllerApp.updateVotoAndCreditoByUtenteID(utenteBean.getIdUtente());
+        utenteBean.setVotoRecensione(bean2.getVotoRecensione());
+        utenteBean.setCredito(bean2.getCredito());
 
+        inviaButton.setVisible(false);
         emailTextField.setText(utenteBean.getEmail());
         emailTextField.setEditable(false);
         usernameTextField.setText(utenteBean.getUsername());
         usernameTextField.setEditable(false);
         creditoTextField.setText(utenteBean.getCredito().toString());
         creditoTextField.setEditable(false);
-        votoTextField.setText(Double.toString(utenteBean.getVotoRecensione()));
+
+        double votoRecensione = utenteBean.getVotoRecensione();
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        String votoArrotondatoString = decimalFormat.format(votoRecensione);
+        votoTextField.setText(votoArrotondatoString);
+
         votoTextField.setEditable(false);
 
         if (utenteBean.getDatiUtente() != null) {
@@ -131,6 +143,8 @@ public class ProfiloUtenteGrafico extends UserGuiController {
             civicoTextField.setEditable(false);
             capTextField.setEditable(false);
             inviaButton.setVisible(false);
+
+
         }
 
 

@@ -22,26 +22,15 @@ public class OffertaFacade {
         this.copiaMangaDAO = new CopiaMangaDAO();
     }
 
-    public boolean accettaOffertaByOffertaID(OffertaBean offerta, int idUtenteVenditore) {
-        OffertaModel offertaModel = createOffertaModel(offerta);
+    public boolean accettaOffertaByOffertaID(OffertaModel offerta, int idUtenteVenditore) {
+
 
         if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(offerta.getCopiaMangaID())&& userPreliev(offerta.getUtenteOfferenteID(), offerta.getOffertaPrezzo().toString()) &&
-                offertaDAO.accettaOfferta(offertaModel) &&
+                offertaDAO.accettaOfferta(offerta) &&
                 userDeposit(idUtenteVenditore, offerta.getOffertaPrezzo().toString())) {
-            return annuncioDAO.setStatoAccettatoByAnnuncioID(offertaModel.getAnnuncioID());
-
+            return annuncioDAO.setStatoAccettatoByAnnuncioID(offerta.getAnnuncioID());
         }
-
         return false;
-    }
-
-    private OffertaModel createOffertaModel(OffertaBean offerta) {
-        OffertaModel offertaModel = new OffertaModel();
-        offertaModel.setIdOfferta(offerta.getIdOfferta());
-        offertaModel.setAnnuncioID(offerta.getAnnuncioID());
-        offertaModel.setUtenteOfferenteID(offerta.getUtenteOfferenteID());
-        offertaModel.setOffertaPrezzo(offerta.getOffertaPrezzo());
-        return offertaModel;
     }
 
     private boolean userDeposit(int idUtente, String amount) {

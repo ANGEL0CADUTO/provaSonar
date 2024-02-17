@@ -88,12 +88,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
        super(utente);
    }
 
-/*
-    public void setUtenteBean(UtenteBean bean) {
-        this.utenteBean = bean;
-        initializeData(); //Devo istanziarne subito la tabella per evitare problemi di sincronizzazione
-    }
-*/
+
 
 
 
