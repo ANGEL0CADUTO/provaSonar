@@ -99,18 +99,19 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
     public void goToMieVendite() {
         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MieVendite.fxml"));
-        loader.setControllerFactory(c -> new MieVenditeControllerGrafico(utenteBean));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MieVendite.fxml"));
+            loader.setControllerFactory(c -> new MieVenditeControllerGrafico(utenteBean));
 
-        Parent root = null;
+            Parent root = null;
 
             root = loader.load();
 
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-        stage.setScene(scene);}
-        catch (IOException e) {
-            throw new RuntimeException(e);}
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("Errore nel cambio pagina in LibreriaUtenteControllerGrafico " + e.getMessage());
+        }
     }
 
     //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
@@ -212,7 +213,6 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         });
 
 
-        //table.getItems().addAll(collezione);
     }
 
 
@@ -232,7 +232,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
         // Controllo che il campo titolo non sia vuoto
         if (titoloTextField.getText().isEmpty() || volumeTextField.getText().isEmpty()) {
-            System.out.println("Il campo titolo non può essere vuoto.");
+            logger.info("Il campo titolo non può essere vuoto.");
             return;
         }
 

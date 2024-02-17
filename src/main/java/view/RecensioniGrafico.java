@@ -46,12 +46,6 @@ public class RecensioniGrafico extends UserGuiController {
 
         for (int i = startIndex; i < endIndex; i++) {
             Recensione recensione = recensioni.get(i);
-
-
-            String titoloRecensione = recensione.getUsernameRecensore();
-            String contenutoRecensione = recensione.getTesto();
-
-
             TitledPane titledPane = createTitledPane(recensione);
             accordion.getPanes().add(titledPane);
         }

@@ -13,8 +13,10 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class InviaRecensioneGrafico extends UserGuiController {
+    private static final Logger logger= Logger.getLogger(InviaRecensioneGrafico.class.getName());
 
     @FXML
     private Button inviaRecensione;
@@ -38,7 +40,6 @@ public class InviaRecensioneGrafico extends UserGuiController {
         votoComboBox.getItems().addAll(1, 2, 3, 4, 5);
         // Puoi impostare un valore predefinito se necessario
         votoComboBox.setValue(1);
-        System.out.println("RecensioneBean contiene idOfferta,utenteVenditoreID: " + datiRecensione.getIdOfferta()+ "," + datiRecensione.getRecensitoID() );
     }
 
     @FXML
@@ -57,7 +58,7 @@ public class InviaRecensioneGrafico extends UserGuiController {
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            logger.severe("Errore in InviaRecensione nel ritorno alla home: " + e.getMessage());
         }
     }
 }

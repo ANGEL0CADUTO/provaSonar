@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class OfferteRicevuteGrafico extends UserGuiController{
-    private static final Logger logger = Logger.getLogger(OfferteRicevuteGrafico.class.getName());
+    private static final Logger logger= Logger.getLogger(OfferteRicevuteGrafico.class.getName());
 
 
     private int idAnnuncio;
@@ -53,14 +53,6 @@ public class OfferteRicevuteGrafico extends UserGuiController{
     public void initialize() {
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();
         ArrayList<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
-           /*
-            for(AnnuncioModel a : array){
-                NON SO SE IMPLEMENTARE QUESTA COSA DEL NUMERO DI OFFERTE RICEVUTE
-            }
-
-            */
-
-        // Popola la tabella con i dati dall'array
         ObservableList<OffertaRicevuta> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 

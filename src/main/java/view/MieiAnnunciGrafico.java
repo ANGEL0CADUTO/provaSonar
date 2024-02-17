@@ -18,12 +18,14 @@ import model.AnnuncioModel;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 
+public class MieiAnnunciGrafico extends UserGuiController {
+    private static final Logger logger= Logger.getLogger(MieiAnnunciGrafico.class.getName());
 
-    public class MieiAnnunciGrafico extends UserGuiController {
 
-        @FXML
+    @FXML
         private TableView<AnnuncioModel> mieiAnnunciTable;
 
         @FXML
@@ -53,12 +55,7 @@ import java.util.ArrayList;
             MieiAnnunciApplicativo controller = new MieiAnnunciApplicativo();
             ArrayList<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
 
-           /*
-            for(AnnuncioModel a : array){
-                NON SO SE IMPLEMENTARE QUESTA COSA DEL NUMERO DI OFFERTE RICEVUTE
-            }
 
-            */
 
             // Popola la tabella con i dati dall'array
             ObservableList<AnnuncioModel> data = FXCollections.observableArrayList(array);
@@ -69,7 +66,6 @@ import java.util.ArrayList;
             dataColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataAnnuncio())));
             volumeColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getVolume())));
 
-            //nOfferteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getNOfferte())));
             offerteButtonColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
 
             //DEVO CAPIRE BENE COME PASSARE I DATI
@@ -84,17 +80,15 @@ import java.util.ArrayList;
                         // Ora puoi eseguire un'azione basata su questo elemento
                         try {
 
-
-                            //goToOfferta(array.get(index).getIdAnnuncio());
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("OfferteRicevute.fxml"));
                             loader.setControllerFactory(c -> new OfferteRicevuteGrafico(utenteBean,array.get(index).getIdAnnuncio()));
                             Parent root = loader.load();
-                            OfferteRicevuteGrafico controller = loader.getController();
+                            loader.getController();
                             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                         } catch (IOException e) {
-                            throw new RuntimeException(e);
+                            logger.severe("Errore in MieiAnnunciGrafico nel cambio pagina " +e.getMessage());
                         }
                     });
                 }

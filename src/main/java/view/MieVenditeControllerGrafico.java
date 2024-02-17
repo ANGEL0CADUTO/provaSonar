@@ -39,10 +39,7 @@ public class MieVenditeControllerGrafico extends UserGuiController {
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
         ArrayList<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
 
-        for(OffertaModel o : arrayList){
 
-            System.out.printf("YAO " +o.getTitoloManga());
-        }
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() + " " + cellData.getValue().getVolumeManga()));

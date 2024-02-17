@@ -8,8 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
+import java.util.logging.Logger;
 
 public class DepositaEPrelevaGrafico extends UserGuiController {
+    private static final Logger logger= Logger.getLogger(DepositaEPrelevaGrafico.class.getName());
+
 
     @FXML
     private TextField deposita;
@@ -31,17 +34,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
 
     protected DepositaEPrelevaGrafico(UtenteBean bean) {
         super(bean);
-        System.out.println("Istanziato correttamente il bean N: " + utenteBean);
     }
-
-
-//  QUESTO MI SERVE PIU AVANTI PER CAMBIARE VIEW
-//    public void goToHomePage(){
-//    FXMLLoader loader = new FXMLLoader(getClass().getResources(nome.f.xml));
-//    Parent root = loader.load();
-//    NOmeCOntroller N= Loader. get controller();
-//    N.setUtenteBean(utenteBean);
-//    }
 
 
     @FXML
@@ -64,7 +57,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
                 if (esitoDeposito) {
                     BigDecimal cifra = new BigDecimal(cifraString);
                     utenteBean.setCredito(utenteBean.getCredito().add(cifra));
-                    System.out.println(utenteBean.getCredito());
+
                     depositaLabel.setText("Deposito andato a buon fine ");
 
                 } else {
@@ -87,8 +80,6 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
         } else if (preleva.getText().compareTo(String.valueOf(BigDecimal.ZERO)) < 0) {
             prelevaLabel.setText("Devi depositare cifre positive");
             return;
-        } else {
-
         }
         String cifraString = preleva.getText();
 
@@ -98,7 +89,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
         if (esitoPrelievo) {
             BigDecimal cifra = new BigDecimal(cifraString);
             utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));
-            System.out.println(utenteBean.getCredito());
+
             prelevaLabel.setText("Prelievo andato a buon fine");
 
         } else {
