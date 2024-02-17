@@ -3,24 +3,20 @@ package view;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import bean.CopiaMangaBean;
 import bean.UtenteBean;
 import controllerapplicativo.AnnuncioControllerApplicativo;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class AnnuncioControllerGrafico extends UserGuiController{
 
+    private static final Logger LOGGER = Logger.getLogger(AnnuncioControllerGrafico.class.getName());
 
 
 
@@ -59,26 +55,19 @@ public class AnnuncioControllerGrafico extends UserGuiController{
         String dataFormattata = formatoData.format(dataCorrente);
         AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
-        //POPOLA BEAN MANGA CHE POI PASSO ALL'APPLICATIVO
-
-        /*CopiaMangaDAO copiaMangaDAO = new CopiaMangaDAO();
-
-
-        UtenteModel utenteModel = new UtenteModel();
-        utenteModel.setIdUtente(utenteBean.getIdUtente());*/
 
 
         boolean esitoRicercaAnuncio = an.cercaAnnuncio(copiaMangaBean);
 
 
         if (esitoRicercaAnuncio) {
-            System.out.println("ESISTE GIA' UN ANNUNCIO PER QUESTO MANGA");
+            LOGGER.info("Esiste gia un annuncio per questa copia");
         } else {
             boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata,utenteBean.getUsername());
             if (esitoAnnuncio) {
-                System.out.println("INSERIMENTO ANNUNCIO ANDATO A BUON FINE");
+                LOGGER.info("Inserimento annuncio andato a buon fine");
             } else {
-                System.out.println("L'ANNUNCIO TE LO TIRI IN FACCIA");
+                LOGGER.info("Inserimento annuncio fallito");
             }
         }
     }

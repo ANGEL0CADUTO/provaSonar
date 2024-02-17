@@ -1,7 +1,6 @@
 package dao;
 
 import bean.DatiUtenteBean;
-import bean.UtenteBean;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -31,10 +30,9 @@ public class DatiUtenteDao {
             if (righeScritte > 0) {
                 ResultSet generatedKeys = st.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    System.out.println("SONO STATE GENERATE DELLE CHIAVI");
+
                     generatedKey = generatedKeys.getInt(1);
                     bean1.setIdInformazioniUtente(generatedKey);
-                    System.out.println("eccola : " + bean1.getIdInformazioniUtente());
 
                     logger.info("Inserimento dati dell'utente riuscito, chiave generata: " + generatedKey);
                 } else {

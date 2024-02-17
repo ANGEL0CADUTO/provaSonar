@@ -17,22 +17,31 @@ public class OfferteRicevuteCLI {
     }
 
     public void initialize() {
+        System.out.println("*************************************");
+        System.out.println("Ci troviamo in HomePage/Miei Annunci/OFFERTE RICEVUTE:");
+
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();
         ArrayList<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
 
-        // Iterate over the array and print the details of each received offer
+        if(array.isEmpty()){
+            System.out.println("///////////////////////////////////////");
+            System.out.println("NON CI SONO OFFERTE PER QUESTO ANNUNCIO");
+            System.out.println("///////////////////////////////////////");
+            return;
+        }
         for (OffertaRicevuta offerta : array) {
+
             System.out.println("Username Offerente: " + offerta.getUsernameOfferente());
             System.out.println("Voto Offerente: " + offerta.getVotoRecensioni());
             System.out.println("Prezzo Offerta: " + offerta.getOffertaPrezzo());
             System.out.println("Data Offerta: " + offerta.getDataOfferta());
 
             // Chiedi all'utente se desidera accettare l'offerta
-            System.out.println("Vuoi accettare questa offerta? (Sì/No): ");
+            System.out.println("Vuoi accettare questa offerta? (y/n): ");
             Scanner scanner = new Scanner(System.in);
             String risposta = scanner.nextLine().toLowerCase();
 
-            if (risposta.equals("sì")) {
+            if (risposta.equals("y")) {
                 OffertaBean offertaBean = new OffertaBean();
                 offertaBean.setAnnuncioID(offerta.getAnnuncioID());
                 offertaBean.setCopiaMangaID(offerta.getCopiaMangaID());
@@ -41,11 +50,14 @@ public class OfferteRicevuteCLI {
                 offertaBean.setOffertaPrezzo(offerta.getOffertaPrezzo());
                 controller.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
                 System.out.println("Offerta accettata con successo!");
+                return;
             } else {
                 System.out.println("Azione annullata.");
             }
 
             System.out.println("------------------------------");
+            System.out.println("------------------------------");
+
         }
         System.out.println("*************************************");
         System.out.println("OFFERTE PER QUESTO ANNUNCIO TERMINATE");

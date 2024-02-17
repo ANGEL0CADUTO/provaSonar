@@ -1,10 +1,7 @@
 package view;
 
-import Pattern.OffertaFacade;
 import bean.OffertaBean;
 import bean.UtenteBean;
-import controllerapplicativo.MieiAnnunciApplicativo;
-import controllerapplicativo.OffertaControllerApplicativo;
 import controllerapplicativo.OfferteRicevuteApplicativo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.AnnuncioModel;
 import model.OffertaRicevuta;
 
 import java.io.IOException;

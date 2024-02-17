@@ -15,8 +15,16 @@ public class RecensioneCLI {
         this.utenteBean = utenteBean;
     }
     public void initialize() {
+        System.out.println("*************************************");
+        System.out.println("Ci troviamo in HomePage/Libreria/Miei Acquisti/RECENSIONE");
+
         RecensioniApplicativo controller = new RecensioniApplicativo();
         ArrayList<Recensione> array = controller.getMyRecensioniRicevute(utenteBean.getIdUtente());
+        if(array.isEmpty()){
+            System.out.println("////////////////////////");
+            System.out.println("NON CI SONO RECENSIONI!");
+            System.out.println("////////////////////////");
+        }
 
         for (Recensione recensione : array) {
             System.out.println("Recensione per " + recensione.getTitoloRecensito() + " volume " + recensione.getVolumeRecensito() +

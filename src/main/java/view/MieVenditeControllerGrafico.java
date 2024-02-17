@@ -2,14 +2,10 @@ package view;
 
 import bean.UtenteBean;
 import controllerapplicativo.MieVenditeControllerApplicativo;
-import controllerapplicativo.MieiAcquistiApplicativo;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.OffertaModel;
-import model.OffertaRicevuta;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

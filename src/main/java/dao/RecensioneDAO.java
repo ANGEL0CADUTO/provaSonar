@@ -19,7 +19,7 @@ public class RecensioneDAO {
 
     public ArrayList<Recensione> getRecensioniRicevuteByUtenteID(int id) {
 
-        System.out.println("mi trovo all'inizio di getRecensioniRicevuteByUtenteID");
+
         String query = "SELECT usernameRecensore, voto,testo,offertaID FROM recensione " +
                 "WHERE statoRecensione = 1 AND recensitoID = ?;";
 
@@ -30,11 +30,11 @@ public class RecensioneDAO {
 
 
         try ( PreparedStatement st = conn.prepareStatement(query)) {
-            System.out.println("mi trovo al try di getRecensioniRicevuteByUtenteID");
+
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                System.out.println("mi trovo nel while di getRecensioniRicevuteByUtenteID");
+
                 Recensione recensione = new Recensione();
                 recensione.setUsernameRecensore(rs.getString("usernameRecensore"));
                 recensione.setVoto(rs.getDouble("voto"));
@@ -98,7 +98,7 @@ public class RecensioneDAO {
                 if (rs.next()) {
 
                     risultato = rs.getInt(1);
-                    System.out.println("dobrenne ridare 1 : risultato");
+
                 }
             }
 

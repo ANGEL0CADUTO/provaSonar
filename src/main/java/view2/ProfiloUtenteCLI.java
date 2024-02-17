@@ -19,14 +19,16 @@ public class ProfiloUtenteCLI {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+
         do {
-            if (!utenteBean.isLogged()) {
-                System.out.println("Scegli un'opzione:");
-                System.out.println("0. Quit");
-                System.out.println("1. Visualizza Dati");
-                System.out.println("2. Visualizza Recensioni");
-                System.out.println("3. Modifica dati consegna");
-            }
+
+            System.out.println("*************************************");
+            System.out.println("Ci troviamo in Homepage/PROFILO UTENTE:");
+            System.out.println("0. Torna indietro");
+            System.out.println("1. Visualizza Dati");
+            System.out.println("2. Visualizza Recensioni");
+            System.out.println("3. Modifica dati consegna");
+
 
             choice = scanner.nextInt();
 
@@ -41,7 +43,7 @@ public class ProfiloUtenteCLI {
                     modificaDatiConsegna();
                     break;
                 case 0:
-                    System.out.println("Uscita dal programma.");
+                    System.out.println("Tornando indietro.");
                     break;
                 default:
                     System.out.println("Scelta non valida. Riprova.");
@@ -77,6 +79,7 @@ public class ProfiloUtenteCLI {
 
     public void visualizzaRecensioni() {
         RecensioneCLI recensioneCLI = new RecensioneCLI(utenteBean);
+        recensioneCLI.initialize();
     }
 
     public void modificaDatiConsegna() {
@@ -87,6 +90,8 @@ public class ProfiloUtenteCLI {
 
         System.out.print("Nuovo civico: ");
         String nuovoCivico = scanner.nextLine();
+
+
 
         System.out.print("Nuovo CAP: ");
         String nuovoCap = scanner.nextLine();

@@ -3,8 +3,6 @@ package view;
 import bean.CopiaMangaBean;
 import bean.UtenteBean;
 import controllerapplicativo.LibreriaUtenteControllerApplicativo;
-import dao.AnnuncioDAO;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.CopiaMangaModel;

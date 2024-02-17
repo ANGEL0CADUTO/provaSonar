@@ -19,6 +19,7 @@ import model.OffertaModel;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MieiAcquistiGrafico extends UserGuiController{
 
@@ -43,7 +44,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
 
     public void initialize(){
         MieiAcquistiApplicativo controller = new MieiAcquistiApplicativo();
-        ArrayList<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
+        List<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
 
         ObservableList<OffertaModel> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
