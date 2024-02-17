@@ -77,3 +77,5 @@ D
 src/NotificaFile.txt,d\2\d28421b333be060417941e700d6f538dcc1a892d
 X
 (src/main/java/Pattern/OffertaFacade.java,b\4\b498e4e0edbf4c3ea47d372f68e80e570ddcbd19
+@
+NotificaFile.txt,8\2\82db976dd6c07ec772977e9bb7430d5a60abc852

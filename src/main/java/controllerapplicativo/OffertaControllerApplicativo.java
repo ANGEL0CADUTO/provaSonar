@@ -33,9 +33,11 @@ public class OffertaControllerApplicativo {
         AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
 
         String nomeVenditore = annuncioModel.getNomeUtente();
+        String nomeManga = annuncioModel.getNomeManga();
+        int volume = annuncioModel.getVolume();
 
 
-        ConcreteObserver aggiungiOffertaModelMandaNotifica = new ConcreteObserver(offertaModel,nomeVenditore);
+        ConcreteObserver aggiungiOffertaModelMandaNotifica = new ConcreteObserver(offertaModel,nomeVenditore,nomeManga,volume);
 
 
         UtenteDAO dao = new UtenteDAO();
@@ -49,6 +51,8 @@ public class OffertaControllerApplicativo {
              if(b){
                  offertaModel.notificaCambiamentiAObservers();
                  aggiungiOffertaModelMandaNotifica.update();
+
+                 offertaModel.rimuoviObserver(aggiungiOffertaModelMandaNotifica);
              }
              return b;
 
