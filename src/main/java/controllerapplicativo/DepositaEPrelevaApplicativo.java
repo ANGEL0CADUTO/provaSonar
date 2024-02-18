@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class DepositaEPrelevaApplicativo {
 
-    public boolean Deposita(UtenteBean bean,String cifra ){
+    public boolean deposita(UtenteBean bean, String cifra ){
         UtenteDAO depositaCredito = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
@@ -16,7 +16,7 @@ public class DepositaEPrelevaApplicativo {
         return depositaCredito.userDeposit(model,cifra);
     }
 
-    public boolean Preleva(UtenteBean bean,String cifraString){
+    public boolean preleva(UtenteBean bean, String cifraString){
         UtenteDAO prelevaCredito = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());

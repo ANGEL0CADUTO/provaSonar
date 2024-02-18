@@ -1,6 +1,6 @@
 package dao;
 
-import controllerapplicativo.AnnuncioControllerApplicativo;
+
 import model.*;
 
 import java.sql.Connection;
@@ -8,16 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class RecensioneDAO {
     private static final Logger logger = Logger.getLogger(RecensioneDAO.class.getName());
-    public ArrayList<Recensione> getCopieMangaListByUserID(UtenteModel model) {
-        ArrayList<Recensione> array = new ArrayList<>();
-        return array;
-    }
 
-    public ArrayList<Recensione> getRecensioniRicevuteByUtenteID(int id) {
+
+    public List<Recensione> getRecensioniRicevuteByUtenteID(int id) {
 
 
         String query = "SELECT usernameRecensore, voto,testo,offertaID FROM recensione " +

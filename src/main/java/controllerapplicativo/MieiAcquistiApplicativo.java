@@ -5,7 +5,7 @@ import dao.OffertaDAO;
 import model.AnnuncioModel;
 import model.OffertaModel;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class MieiAcquistiApplicativo {

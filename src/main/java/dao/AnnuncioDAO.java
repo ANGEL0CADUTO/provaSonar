@@ -1,18 +1,24 @@
 package dao;
 
 
-import model.AnnunciModel;
+
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 
 public class AnnuncioDAO {
     private static final Logger logger = Logger.getLogger(AnnuncioDAO.class.getName());
+    private static final String USERNAME_VENDITORE = "usernameVenditore";
+    private static final String TITOLO_MANGA = "titoloManga";
+    private static final String IDANNUNCIO = "idAnnuncio";
+    private static final String PREZZO_DI_VENDITA= "prezzoDiVendita";
+    private static final String VOLUME = "volume";
 
     public boolean isAnnuncioPresente(CopiaMangaModel copiaMangaModel1) {//GLI ARRIVA  ID 0
 
@@ -39,7 +45,7 @@ public class AnnuncioDAO {
     }
 
 
-    public ArrayList<AnnuncioModel> getAnnunci(int id,String name) {
+    public List<AnnuncioModel> getAnnunci(int id,String name) {
 
         String query = "SELECT usernameVenditore, utenteVenditoreID, copiaMangaID, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
                 "WHERE statoAnnuncio = 1 AND utenteVenditoreID != ? AND titoloManga  LIKE '%' ? '%' ";
@@ -51,14 +57,16 @@ public class AnnuncioDAO {
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
                     AnnuncioModel annuncioModel = new AnnuncioModel();
-                    annuncioModel.setNomeUtente(rs.getString("usernameVenditore"));
+                    annuncioModel.setNomeUtente(rs.getString(USERNAME_VENDITORE));
                     annuncioModel.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
-                    annuncioModel.setNomeManga(rs.getString("titoloManga"));
-                    annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
-                    annuncioModel.setVolume(rs.getInt("volume"));
-                    annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
+                    annuncioModel.setNomeManga(rs.getString(TITOLO_MANGA));
+                    annuncioModel.setIdAnnuncio(rs.getInt(IDANNUNCIO));
+                    annuncioModel.setVolume(rs.getInt(VOLUME));
+                    annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt(PREZZO_DI_VENDITA)));
                     annuncioModel.setCopiaMangaID(rs.getInt("copiaMangaID"));
                     array.add(annuncioModel);
+
+
                 }
             }
         } catch (SQLException e) {
@@ -105,7 +113,7 @@ public class AnnuncioDAO {
     }
 
 
-    public ArrayList<AnnuncioModel> getMyAnnunci(int id) {
+    public List<AnnuncioModel> getMyAnnunci(int id) {
         String query = "SELECT titoloManga, volume, prezzoDiVendita, dataAnnuncio, idAnnuncio " +
                 "FROM annuncio " +
                 "WHERE annuncio.statoAnnuncio = '1' AND annuncio.utenteVenditoreID = ?; ";
@@ -117,23 +125,21 @@ public class AnnuncioDAO {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 AnnuncioModel annuncioModel = new AnnuncioModel();
-                annuncioModel.setNomeManga(rs.getString("titoloManga"));
-                annuncioModel.setVolume(rs.getInt("volume"));
-                annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
+                annuncioModel.setNomeManga(rs.getString(TITOLO_MANGA));
+                annuncioModel.setVolume(rs.getInt(VOLUME));
+                annuncioModel.setIdAnnuncio(rs.getInt(IDANNUNCIO));
                 annuncioModel.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
-                annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt("prezzoDiVendita")));
+                annuncioModel.setPrezzo(BigDecimal.valueOf(rs.getInt(PREZZO_DI_VENDITA)));
 
                 array.add(annuncioModel);
             }
         } catch (SQLException e) {
             logger.severe("errore in AnnuncioDAO nella getMyAnnunci : " + e.getMessage());
         }
-        for (AnnuncioModel a : array) {
-            System.out.println(a.getIdAnnuncio() + a.getNomeManga() + a.getDataAnnuncio() + a.getPrezzo());
-        }
+
         return array;
     }
-    public ArrayList<AnnuncioModel> getMyAnnunciVendutiByUtenteID(int id) {
+    public List<AnnuncioModel> getMyAnnunciVendutiByUtenteID(int id) {
         String query = "SELECT utenteVenditoreID, titoloManga, volume, idAnnuncio " +
                 "FROM annuncio " +
                 "WHERE statoAnnuncio = 2 AND utenteVenditoreID = ?; ";
@@ -149,18 +155,16 @@ public class AnnuncioDAO {
 
             while (rs.next()) {
                 AnnuncioModel annuncioModel = new AnnuncioModel();
-                annuncioModel.setNomeManga(rs.getString("titoloManga"));
-                annuncioModel.setIdAnnuncio(rs.getInt("idAnnuncio"));
-                annuncioModel.setVolume(rs.getInt("volume"));
+                annuncioModel.setNomeManga(rs.getString(TITOLO_MANGA));
+                annuncioModel.setIdAnnuncio(rs.getInt(IDANNUNCIO));
+                annuncioModel.setVolume(rs.getInt(VOLUME));
 
                 array.add(annuncioModel);
             }
         } catch (SQLException e) {
             logger.severe("errore in AnnuncioDAO nella getMyAnnunciVendutiByUtenteID : " + e.getMessage());
         }
-        for (AnnuncioModel a : array) {
-            System.out.println("PORCONE IN ANNUNCIODAO :" + a.getIdAnnuncio() + a.getNomeManga() );
-        }
+
         return array;
     }
 
@@ -181,11 +185,11 @@ public class AnnuncioDAO {
                 annuncio = new AnnuncioModel();
                 annuncio.setIdAnnuncio(annuncioID);
                 annuncio.setCopiaMangaID(rs.getInt("copiaMangaID"));
-                annuncio.setNomeManga(rs.getString("titoloManga"));
+                annuncio.setNomeManga(rs.getString(TITOLO_MANGA));
                 annuncio.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
-                annuncio.setVolume(rs.getInt("volume"));
-                annuncio.setNomeUtente(rs.getString("usernameVenditore"));
-                annuncio.setPrezzo(rs.getBigDecimal("prezzoDiVendita"));
+                annuncio.setVolume(rs.getInt(VOLUME));
+                annuncio.setNomeUtente(rs.getString(USERNAME_VENDITORE));
+                annuncio.setPrezzo(rs.getBigDecimal(PREZZO_DI_VENDITA));
                 annuncio.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
 
             }

@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CompraMangaControllerGrafico extends UserGuiController{
 
@@ -77,7 +78,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     public void inizializzaDati(){
 
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
-        ArrayList<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente(),searchTextField.getText());
+        List<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente(),searchTextField.getText());
         tableCompra.getItems().clear();
 
 

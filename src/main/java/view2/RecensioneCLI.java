@@ -5,7 +5,8 @@ import controllerapplicativo.RecensioniApplicativo;
 import model.Recensione;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class RecensioneCLI {
 
@@ -19,7 +20,7 @@ public class RecensioneCLI {
         System.out.println("Ci troviamo in HomePage/Libreria/Miei Acquisti/RECENSIONE");
 
         RecensioniApplicativo controller = new RecensioniApplicativo();
-        ArrayList<Recensione> array = controller.getMyRecensioniRicevute(utenteBean.getIdUtente());
+        List<Recensione> array = controller.getMyRecensioniRicevute(utenteBean.getIdUtente());
         if(array.isEmpty()){
             System.out.println("////////////////////////");
             System.out.println("NON CI SONO RECENSIONI!");

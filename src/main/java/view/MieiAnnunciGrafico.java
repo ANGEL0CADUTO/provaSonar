@@ -17,7 +17,8 @@ import model.AnnuncioModel;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -53,7 +54,7 @@ public class MieiAnnunciGrafico extends UserGuiController {
 
         public void initialize() {
             MieiAnnunciApplicativo controller = new MieiAnnunciApplicativo();
-            ArrayList<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
+            List<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
 
 
 

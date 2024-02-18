@@ -53,7 +53,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
 
                 DepositaEPrelevaApplicativo dp = new DepositaEPrelevaApplicativo();
 
-                boolean esitoDeposito = dp.Deposita(utenteBean, cifraString);
+                boolean esitoDeposito = dp.deposita(utenteBean, cifraString);
                 if (esitoDeposito) {
                     BigDecimal cifra = new BigDecimal(cifraString);
                     utenteBean.setCredito(utenteBean.getCredito().add(cifra));
@@ -85,7 +85,7 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
 
         DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
 
-        boolean esitoPrelievo = pr.Preleva(utenteBean, cifraString);
+        boolean esitoPrelievo = pr.preleva(utenteBean, cifraString);
         if (esitoPrelievo) {
             BigDecimal cifra = new BigDecimal(cifraString);
             utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));

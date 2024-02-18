@@ -7,11 +7,13 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import model.Recensione;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecensioniGrafico extends UserGuiController {
 
@@ -27,12 +29,13 @@ public class RecensioniGrafico extends UserGuiController {
         // Simula il caricamento delle recensioni
         // Qui dovresti ottenere le recensioni dal tuo sistema o database
         RecensioniApplicativo controller = new RecensioniApplicativo();
-        ArrayList<Recensione> array = controller.getMyRecensioniRicevute(utenteBean.getIdUtente());
+        List<Recensione> array = controller.getMyRecensioniRicevute(utenteBean.getIdUtente());
+        ArrayList<Recensione> arrayList = new ArrayList<>(array);
         int numeroRecensioni = array.size();
 
         int recensioniPerPage = 3;
         pagination.setPageCount((int) Math.ceil((double) numeroRecensioni / recensioniPerPage));
-        pagination.setPageFactory(pageIndex -> createPage(pageIndex, array));
+        pagination.setPageFactory(pageIndex -> createPage(pageIndex, arrayList));
     }
 
     private AnchorPane createPage(int pageIndex, ArrayList<Recensione> recensioni) {
@@ -55,6 +58,11 @@ public class RecensioniGrafico extends UserGuiController {
         AnchorPane.setBottomAnchor(accordion, 10.0);
         AnchorPane.setLeftAnchor(accordion, 10.0);
         AnchorPane.setRightAnchor(accordion, 10.0);
+
+        // Imposta l'AnchorPane per espandersi in modo appropriato nel Pagination
+        anchorPane.setMinHeight(Region.USE_PREF_SIZE);
+        anchorPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        anchorPane.setMaxHeight(Region.USE_PREF_SIZE);
 
         return anchorPane;
     }

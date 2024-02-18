@@ -6,6 +6,7 @@ import model.OffertaModel;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MieVenditeCLI {
     private UtenteBean utenteBean;
@@ -18,7 +19,7 @@ public class MieVenditeCLI {
         System.out.println("*************************************");
         System.out.println("Ci troviamo in HomePage/Libreria/MIE VENDITE");
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
-        ArrayList<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
+        List<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
 
         for (OffertaModel o : arrayList) {
             System.out.println("Titolo Manga: " + o.getTitoloManga() + " Volume Manga: " + o.getVolumeManga());

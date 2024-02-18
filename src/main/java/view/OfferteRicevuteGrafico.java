@@ -16,7 +16,8 @@ import model.OffertaRicevuta;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 public class OfferteRicevuteGrafico extends UserGuiController{
@@ -52,7 +53,7 @@ public class OfferteRicevuteGrafico extends UserGuiController{
 
     public void initialize() {
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();
-        ArrayList<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
+        List<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
         ObservableList<OffertaRicevuta> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 

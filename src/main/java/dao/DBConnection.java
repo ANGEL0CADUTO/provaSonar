@@ -1,9 +1,9 @@
 package dao;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.sql.Connection; //ho aggiunto nei moduli x farlo funzionare
+import java.sql.Connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

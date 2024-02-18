@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +10,7 @@ import bean.CopiaMangaBean;
 import bean.UtenteBean;
 import controllerapplicativo.AnnuncioControllerApplicativo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -37,8 +39,9 @@ public class AnnuncioControllerGrafico extends UserGuiController{
         this.copiaMangaBean = copiaMangaBean;
     }
 
+    @FXML
 
-    public void userAnnunce() {
+    public void userAnnunce(ActionEvent event) {
         BigDecimal prezzo = null;
 
         if (inserisciPrezzo.getText().isEmpty()) {
@@ -65,6 +68,11 @@ public class AnnuncioControllerGrafico extends UserGuiController{
         } else {
             boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata,utenteBean.getUsername());
             if (esitoAnnuncio) {
+                try {
+                    goToLibreria(event);
+                } catch (IOException e) {
+                    LOGGER.severe("Errore cambioPagina AnnuncioControllerGrafico in UserAnnounce :" + e.getMessage());
+                }
                 LOGGER.info("Inserimento annuncio andato a buon fine");
             } else {
                 LOGGER.info("Inserimento annuncio fallito");

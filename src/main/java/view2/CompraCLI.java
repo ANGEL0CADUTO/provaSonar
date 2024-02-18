@@ -8,7 +8,8 @@ import controllerapplicativo.OffertaControllerApplicativo;
 import model.AnnuncioModel;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class CompraCLI {
@@ -55,7 +56,7 @@ public class CompraCLI {
         String nomeManga = scanner.nextLine();
 
         CompraMangaControllerApplicativo controllerApp = new CompraMangaControllerApplicativo();
-        ArrayList<AnnuncioModel> annunci = controllerApp.showAnnunce(utenteBean.getIdUtente(),nomeManga);
+        List<AnnuncioModel> annunci = controllerApp.showAnnunce(utenteBean.getIdUtente(),nomeManga);
 
         System.out.println("Elenco degli annunci per il manga " + nomeManga + ":");
 

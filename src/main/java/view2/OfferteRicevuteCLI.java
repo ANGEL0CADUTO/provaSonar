@@ -6,6 +6,7 @@ import controllerapplicativo.OfferteRicevuteApplicativo;
 import model.OffertaRicevuta;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class OfferteRicevuteCLI {
@@ -21,7 +22,7 @@ public class OfferteRicevuteCLI {
         System.out.println("Ci troviamo in HomePage/Miei Annunci/OFFERTE RICEVUTE:");
 
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();
-        ArrayList<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
+        List<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
 
         if(array.isEmpty()){
             System.out.println("///////////////////////////////////////");

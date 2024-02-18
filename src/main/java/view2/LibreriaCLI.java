@@ -7,6 +7,7 @@ import model.CopiaMangaModel;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LibreriaCLI {
@@ -56,7 +57,7 @@ public class LibreriaCLI {
 
     public void visualizzaManga() {
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
-        ArrayList<CopiaMangaModel> risultati = controller.showUserManga(utenteBean);
+        List<CopiaMangaModel> risultati = controller.showUserManga(utenteBean);
 
         for (CopiaMangaModel risultato : risultati) {
             System.out.println("ID: " + risultato.getIdCopiaManga());

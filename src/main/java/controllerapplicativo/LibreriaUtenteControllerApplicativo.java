@@ -6,13 +6,14 @@ import bean.UtenteBean;
 import model.CopiaMangaModel;
 import model.UtenteModel;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class LibreriaUtenteControllerApplicativo {
 
 
 
-    public ArrayList<CopiaMangaModel> showUserManga(UtenteBean bean){
+    public List<CopiaMangaModel> showUserManga(UtenteBean bean){
 
         CopiaMangaDAO dao = new CopiaMangaDAO();
 

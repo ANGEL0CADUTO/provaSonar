@@ -6,6 +6,7 @@ import model.AnnuncioModel;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MieiAnnunciCLI {
@@ -20,7 +21,7 @@ public class MieiAnnunciCLI {
         System.out.println("*************************************");
         System.out.println("Ci troviamo in HomePage/MIEI ANNUNCI:");
         MieiAnnunciApplicativo controller = new MieiAnnunciApplicativo();
-        ArrayList<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
+        List<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
 
         for (AnnuncioModel annuncio : array) {
 

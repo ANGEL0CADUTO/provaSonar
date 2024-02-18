@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class LibreriaUtenteControllerGrafico extends UserGuiController  {
@@ -103,7 +104,6 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
             loader.setControllerFactory(c -> new MieVenditeControllerGrafico(utenteBean));
 
             Parent root = null;
-
             root = loader.load();
 
             Scene scene = new Scene(root);
@@ -126,7 +126,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
 
-        ArrayList<CopiaMangaModel> collezione = controller.showUserManga(utenteBean);
+        List<CopiaMangaModel> collezione = controller.showUserManga(utenteBean);
         observableList = FXCollections.observableList(collezione);
         table.setItems(observableList);
 

@@ -7,13 +7,13 @@ import dao.UtenteDAO;
 import model.OffertaModel;
 import model.OffertaRicevuta;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class OfferteRicevuteApplicativo {
 
-    public ArrayList<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
+    public List<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
         OffertaDAO dao = new OffertaDAO();
-        ArrayList<OffertaRicevuta> array = dao.getOfferteRicevuteByAnnuncioID(id);
+        List<OffertaRicevuta> array = dao.getOfferteRicevuteByAnnuncioID(id);
         UtenteDAO dao2 = new UtenteDAO();
         for(OffertaRicevuta o : array ){
             o.setVotoRecensioni(dao2.getVotoByUtenteID(o.getUtenteOfferenteID()));

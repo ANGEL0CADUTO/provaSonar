@@ -27,6 +27,8 @@ public class UserGuiController extends BaseController{
     protected Button libreriaButton;
     @FXML
     protected Button depositaEPrelevaButton;
+    @FXML
+    protected Button logout;
 
     protected UserGuiController(UtenteBean bean) {
         super(bean);
@@ -112,7 +114,7 @@ public class UserGuiController extends BaseController{
 
     @FXML
     void goToMieiAnnunci() throws IOException {
-        if(utenteBean.getUsername() != null) {
+        if(utenteBean.isLogged()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MieiAnnunci.fxml"));
             loader.setControllerFactory(c -> new MieiAnnunciGrafico(utenteBean));
             Parent root = loader.load();
@@ -141,6 +143,12 @@ public class UserGuiController extends BaseController{
         else{
             goToLogin();
         }
+    }
+    public void logout(ActionEvent e) throws IOException {
+        utenteBean = new UtenteBean();
+
+        goToHomePage(e);
+
     }
 
 

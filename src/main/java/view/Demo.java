@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.layout.AnchorPane;
 
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,10 +37,11 @@ public class Demo extends UserGuiController {
     private Button compraButton;
     @FXML
     private Button mieiAnnunci;
-
-
     @FXML
-    private Button logoutHomePage;
+    private HBox logoutBox;
+
+
+
 
 
 
@@ -54,15 +56,18 @@ public class Demo extends UserGuiController {
 
     public void initializeData(){
         if(utenteBean == null){
-
             utenteBean = new UtenteBean();
+
         }
 
     }
 
     public void initialize(){
         initializeData();
-        System.out.println(utenteBean);
+        if(!utenteBean.isLogged()){
+            logoutBox.setVisible(false);
+
+        }
 
     }
 
@@ -112,16 +117,6 @@ public class Demo extends UserGuiController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Registra.fxml"));
         loader.setControllerFactory(c -> new RegistraGrafico(utenteBean));
-        Parent root = loader.load();
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    }
-    public void goToMieiAnnunci ()throws IOException {
-
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MieiAnnunci.fxml"));
-        loader.setControllerFactory(c -> new MieiAnnunciGrafico(utenteBean));
         Parent root = loader.load();
         Stage stage = (Stage) myAnchorPane.getScene().getWindow();
         Scene scene = new Scene(root);

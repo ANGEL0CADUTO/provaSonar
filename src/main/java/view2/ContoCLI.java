@@ -60,7 +60,7 @@ public class ContoCLI {
             }
 
             DepositaEPrelevaApplicativo dp = new DepositaEPrelevaApplicativo();
-            boolean esitoDeposito = dp.Deposita(utenteBean, cifra.toString());
+            boolean esitoDeposito = dp.deposita(utenteBean, cifra.toString());
 
             if (esitoDeposito) {
                 utenteBean.setCredito(utenteBean.getCredito().add(cifra));
@@ -87,7 +87,7 @@ public class ContoCLI {
             }
 
             DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
-            boolean esitoPrelievo = pr.Preleva(utenteBean, cifra.toString());
+            boolean esitoPrelievo = pr.preleva(utenteBean, cifra.toString());
 
             if (esitoPrelievo) {
                 utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));

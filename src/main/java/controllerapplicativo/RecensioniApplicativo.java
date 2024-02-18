@@ -3,11 +3,11 @@ package controllerapplicativo;
 import dao.RecensioneDAO;
 import model.Recensione;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RecensioniApplicativo {
 
-    public ArrayList<Recensione> getMyRecensioniRicevute(int id){
+    public List<Recensione> getMyRecensioniRicevute(int id){
         RecensioneDAO dao = new RecensioneDAO();
 
 

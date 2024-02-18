@@ -8,7 +8,8 @@ import javafx.scene.control.TableView;
 import model.OffertaModel;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class MieVenditeControllerGrafico extends UserGuiController {
 
@@ -37,7 +38,7 @@ public class MieVenditeControllerGrafico extends UserGuiController {
 @FXML
     public void initialize() {
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
-        ArrayList<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
+        List<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
 
 
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");

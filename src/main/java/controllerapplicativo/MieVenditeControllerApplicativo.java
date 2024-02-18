@@ -4,18 +4,19 @@ import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import model.AnnuncioModel;
 import model.OffertaModel;
-import model.OffertaRicevuta;
+
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MieVenditeControllerApplicativo {
 
-    public ArrayList<OffertaModel> getMyVendite(int id) {
+    public List<OffertaModel> getMyVendite(int id) {
         AnnuncioDAO annuncioDAO = new AnnuncioDAO();
-        ArrayList<AnnuncioModel> array = annuncioDAO.getMyAnnunciVendutiByUtenteID(id);
+        List<AnnuncioModel> array = annuncioDAO.getMyAnnunciVendutiByUtenteID(id);
 
 
-        ArrayList<OffertaModel> arrayList = new ArrayList<>();
+        List<OffertaModel> arrayList = new ArrayList<>();
         OffertaDAO dao = new OffertaDAO();
 
         for (AnnuncioModel a: array ){

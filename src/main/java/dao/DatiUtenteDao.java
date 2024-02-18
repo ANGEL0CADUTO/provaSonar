@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.logging.Logger;
 
 public class DatiUtenteDao {
-    private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
+    private static final Logger logger = Logger.getLogger(DatiUtenteDao.class.getName());
 
     public int addDatiUser(DatiUtenteBean bean1) {
         int generatedKey = -1;
@@ -34,7 +34,6 @@ public class DatiUtenteDao {
                     generatedKey = generatedKeys.getInt(1);
                     bean1.setIdInformazioniUtente(generatedKey);
 
-                    logger.info("Inserimento dati dell'utente riuscito, chiave generata: " + generatedKey);
                 } else {
                     logger.info("Inserimento dati dell'utente riuscito, ma impossibile ottenere la chiave generata.");
                 }
@@ -56,7 +55,6 @@ public class DatiUtenteDao {
         String query = "SELECT indirizzo,civico,cap FROM informazioniutente WHERE idInformazioniUtente = ?";
         DatiUtenteBean bean = null;
 
-        System.out.println(id);
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
@@ -78,7 +76,6 @@ public class DatiUtenteDao {
         boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE informazioniutente SET indirizzo = ?, civico = ?, cap = ? WHERE idInformazioniUtente = ?";
-        System.out.println("DATIUTENTEDAO modificaDatiUser riceve indirizzo =" + bean.getIndirizzo() + " idInformazioniUtente = "+ bean.getIdInformazioniUtente());
         try(PreparedStatement st = conn.prepareStatement(query)){
             st.setString(1,bean.getIndirizzo());
             st.setString(2,bean.getCivico());

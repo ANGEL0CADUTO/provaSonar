@@ -26,7 +26,7 @@ public class OffertaDAO {
 
         Connection conn = DBConnection.getIstance().connection();
         try (PreparedStatement st = conn.prepareStatement(query)) {
-            System.out.println("QUI: " + offerta.getAnnuncioID());
+
             st.setInt(1, offerta.getAnnuncioID());
             st.setInt(2,offerta.getCopiaMangaID());
             st.setInt(3, offerta.getUtenteOfferenteID());
@@ -47,7 +47,7 @@ public class OffertaDAO {
     }
 
 
-    public ArrayList<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
+    public List<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
         ArrayList<OffertaRicevuta> array = new ArrayList<>();
         String query = "SELECT idOfferta,utenteOfferenteID,usernameOfferente,offertaPrezzo, dataOfferta,copiaMangaID " +
                 "FROM offerta " +
@@ -55,7 +55,7 @@ public class OffertaDAO {
         Connection conn = DBConnection.getIstance().connection();
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
-            System.out.println(id);
+
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
 
