@@ -5,6 +5,7 @@ import bean.UtenteBean;
 import controllerapplicativo.OfferteRicevuteApplicativo;
 import model.OffertaRicevuta;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,9 +47,12 @@ public class OfferteRicevuteCLI {
                 OffertaBean offertaBean = new OffertaBean();
                 offertaBean.setAnnuncioID(offerta.getAnnuncioID());
                 offertaBean.setCopiaMangaID(offerta.getCopiaMangaID());
+                offertaBean.setTitoloManga(offerta.getTitoloManga());
+                offertaBean.setVolumeManga(offerta.getVolumeManga());
                 offertaBean.setUtenteOfferenteID(offerta.getUtenteOfferenteID());
                 offertaBean.setIdOfferta(offerta.getIdOfferta());
                 offertaBean.setOffertaPrezzo(offerta.getOffertaPrezzo());
+                offertaBean.setDataOfferta(LocalDateTime.now());
                 controller.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
                 System.out.println("Offerta accettata con successo!");
                 return;

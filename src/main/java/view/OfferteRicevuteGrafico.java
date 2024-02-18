@@ -84,9 +84,11 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                         offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
                         offertaBean.setIdOfferta(array.get(index).getIdOfferta());
                         offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
+                        offertaBean.setTitoloManga(array.get(index).getTitoloManga());
+                        offertaBean.setVolumeManga(array.get(index).getVolumeManga());
 
                         OfferteRicevuteApplicativo controllerApp = new OfferteRicevuteApplicativo();
-                        boolean b = controllerApp.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
+                        controllerApp.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
 
                         goToMieiAnnunci();
                     } catch (IOException e) {

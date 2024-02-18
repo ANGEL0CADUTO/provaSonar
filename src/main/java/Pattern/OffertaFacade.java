@@ -4,15 +4,15 @@ import dao.AnnuncioDAO;
 import dao.CopiaMangaDAO;
 import dao.OffertaDAO;
 import dao.UtenteDAO;
+import model.CopiaMangaModel;
 import model.OffertaModel;
 import model.UtenteModel;
 
 public class OffertaFacade {
-    private OffertaDAO offertaDAO;
-    private UtenteDAO utenteDAO;
-    private AnnuncioDAO annuncioDAO;
-
-    private CopiaMangaDAO copiaMangaDAO;
+    private final OffertaDAO offertaDAO;
+    private final UtenteDAO utenteDAO;
+    private final AnnuncioDAO annuncioDAO;
+    private final CopiaMangaDAO copiaMangaDAO;
 
     public OffertaFacade() {
         this.offertaDAO = new OffertaDAO();
@@ -22,13 +22,13 @@ public class OffertaFacade {
     }
 
     public boolean accettaOffertaByOffertaID(OffertaModel offerta, int idUtenteVenditore) {
-
-
-        System.out.println("ID IN ACCETTA OFFERTA IN OFFERTA FACADE :" + offerta.getCopiaMangaID());
-
-        if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(offerta.getCopiaMangaID())&& userPreliev(offerta.getUtenteOfferenteID(), offerta.getOffertaPrezzo().toString()) &&
+        if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(offerta.getCopiaMangaID()) &&
+                userPreliev(offerta.getUtenteOfferenteID(), offerta.getOffertaPrezzo().toString()) &&
                 offertaDAO.accettaOfferta(offerta) &&
                 userDeposit(idUtenteVenditore, offerta.getOffertaPrezzo().toString())) {
+
+            CopiaMangaModel copia = createCopia(offerta);
+            copiaMangaDAO.aggiungiManga(copia);
             return annuncioDAO.setStatoAccettatoByAnnuncioID(offerta.getAnnuncioID());
         }
         return false;
@@ -44,5 +44,14 @@ public class OffertaFacade {
         UtenteModel utenteModel = new UtenteModel();
         utenteModel.setIdUtente(idUtente);
         return utenteDAO.userPreliev(utenteModel, amount);
+    }
+
+    private CopiaMangaModel createCopia(OffertaModel offerta) {
+        CopiaMangaModel copia = new CopiaMangaModel();
+        copia.setIdUtente(offerta.getUtenteOfferenteID());
+        copia.setTitolo(offerta.getTitoloManga());
+        copia.setVolume(offerta.getVolumeManga());
+        copia.setDataAcquisto(offerta.getDataOfferta());
+        return copia;
     }
 }

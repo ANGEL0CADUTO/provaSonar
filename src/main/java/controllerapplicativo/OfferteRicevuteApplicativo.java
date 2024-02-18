@@ -2,11 +2,14 @@ package controllerapplicativo;
 
 import Pattern.OffertaFacade;
 import bean.OffertaBean;
+import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import dao.UtenteDAO;
+import model.AnnuncioModel;
 import model.OffertaModel;
 import model.OffertaRicevuta;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class OfferteRicevuteApplicativo {
@@ -15,8 +18,13 @@ public class OfferteRicevuteApplicativo {
         OffertaDAO dao = new OffertaDAO();
         List<OffertaRicevuta> array = dao.getOfferteRicevuteByAnnuncioID(id);
         UtenteDAO dao2 = new UtenteDAO();
+        AnnuncioDAO dao3 = new AnnuncioDAO();
         for(OffertaRicevuta o : array ){
             o.setVotoRecensioni(dao2.getVotoByUtenteID(o.getUtenteOfferenteID()));
+            AnnuncioModel annuncio = dao3.getDatiAnnuncioByAnnuncioID(o.getAnnuncioID());
+            o.setVolumeManga(annuncio.getVolume());
+            o.setTitoloManga(annuncio.getNomeManga());
+
         }
         return array;
     }
@@ -28,9 +36,12 @@ public class OfferteRicevuteApplicativo {
 
         model.setAnnuncioID(bean.getAnnuncioID());
         model.setCopiaMangaID(bean.getCopiaMangaID());
+        model.setTitoloManga(bean.getTitoloManga());
+        model.setVolumeManga(bean.getVolumeManga());
         model.setUtenteOfferenteID(bean.getUtenteOfferenteID());
         model.setIdOfferta(bean.getIdOfferta());
         model.setOffertaPrezzo(bean.getOffertaPrezzo());
+        model.setDataOfferta(LocalDateTime.now());
 
         return facade.accettaOffertaByOffertaID(model, idUtenteVenditore);
     }

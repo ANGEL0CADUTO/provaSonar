@@ -11,6 +11,24 @@ public class OffertaRicevuta {
     private int utenteOfferenteID;
     private int copiaMangaID;
 
+    private String titoloManga;
+    private int volumeManga;
+
+    public String getTitoloManga() {
+        return titoloManga;
+    }
+
+    public void setTitoloManga(String titoloManga) {
+        this.titoloManga = titoloManga;
+    }
+
+    public int getVolumeManga() {
+        return volumeManga;
+    }
+
+    public void setVolumeManga(int volumeManga) {
+        this.volumeManga = volumeManga;
+    }
 
     private String usernameOfferente;
     private BigDecimal offertaPrezzo;

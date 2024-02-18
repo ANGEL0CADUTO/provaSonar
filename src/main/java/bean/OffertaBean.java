@@ -15,9 +15,28 @@ public class OffertaBean {
         this.idOfferta = idOfferta;
     }
 
+
     private int idAnnuncio;
     private int utenteOfferenteID;
     private int copiaMangaID;
+    private String titoloManga;
+    private int volumeManga;
+
+    public String getTitoloManga() {
+        return titoloManga;
+    }
+
+    public void setTitoloManga(String titoloManga) {
+        this.titoloManga = titoloManga;
+    }
+
+    public int getVolumeManga() {
+        return volumeManga;
+    }
+
+    public void setVolumeManga(int volumeManga) {
+        this.volumeManga = volumeManga;
+    }
 
     public int getCopiaMangaID() {
         return copiaMangaID;

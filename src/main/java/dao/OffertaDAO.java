@@ -121,11 +121,12 @@ public class OffertaDAO {
                 offertaModel.setUsernameOfferente(rs.getString(USERNAME_OFFERENTE));
                 offertaModel.setOffertaPrezzo(rs.getBigDecimal(OFFERTA_PREZZO));
                 offertaModel.setDataOfferta(rs.getTimestamp(DATA_VENDITA).toLocalDateTime());
+
                 offertaModel.setCopiaMangaID(rs.getInt("copiaMangaID"));
             }
 
         } catch (SQLException e) {
-            logger.severe("ERRORE IN OFFERTADAO IN getMangaVendutiByUtenteID " + e.getMessage() );}
+            logger.severe("ERRORE IN OFFERTADAO IN getDatiOffertaAccettataByAnnuncioID " + e.getMessage() );}
 
 
 
