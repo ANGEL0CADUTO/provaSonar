@@ -75,7 +75,7 @@ public class RegistraGrafico extends BaseController{
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            loader.setControllerFactory(c-> new Demo(utenteBean));
+            loader.setControllerFactory(c-> new HomePage(utenteBean));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) registra.getScene().getWindow();

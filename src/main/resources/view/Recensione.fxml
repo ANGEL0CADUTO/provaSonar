@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="412.0" prefWidth="600.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InviaRecensioneGrafico">
+<AnchorPane fx:id="myAnchorPane" prefHeight="412.0" prefWidth="600.0" style="-fx-background-color: #242222;" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InviaRecensioneGrafico">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="420.0" prefWidth="167.0">
-         <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+         <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
             <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
             <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="167.0">
                <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" prefWidth="90.0" text="Home" />
             </HBox>
          </VBox>
-         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <ImageView fx:id="profiloImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../photo/user.png" />
@@ -29,7 +29,7 @@
             </ImageView>
             <Button fx:id="profiloButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="90.0" text="Profilo" />
          </HBox>
-         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../photo/book.png" />
@@ -37,7 +37,7 @@
             </ImageView>
             <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" text="Libreria" />
          </HBox>
-         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../photo/sales.png" />
@@ -45,7 +45,7 @@
             </ImageView>
             <Button fx:id="compraButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToMieiAnnunci" prefWidth="90.0" text="Miei Annunci" />
          </HBox>
-         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../photo/euro.png" />
@@ -53,7 +53,7 @@
             </ImageView>
             <Button fx:id="depositaEPrelevaButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefWidth="90.0" text="Conto" />
          </HBox>
-         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../photo/handshake.png" />
@@ -61,14 +61,14 @@
             </ImageView>
             <Button fx:id="compraButton2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToCompra" prefWidth="90.0" text="Compra" />
          </HBox>
-         <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+         <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="167.0" style="-fx-background-color: #020203;">
                <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../photo/logout.png" />
                   </image>
                </ImageView>
-               <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefWidth="90.0" style="-fx-background-color: #d1440d;" text="Logout" />
+               <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefWidth="90.0" text="Logout" />
             </HBox>
          </VBox>
       </VBox>
@@ -98,7 +98,7 @@
             </TextArea>
             <Button fx:id="inviaRecensione" mnemonicParsing="false" onAction="#inviaRecensione" text="Invia Recensione">
                <VBox.margin>
-                  <Insets left="153.0" top="30.0" />
+                  <Insets left="148.0" top="30.0" />
                </VBox.margin>
             </Button>
          </children>

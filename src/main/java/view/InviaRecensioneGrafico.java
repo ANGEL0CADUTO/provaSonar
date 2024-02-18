@@ -52,7 +52,7 @@ public class InviaRecensioneGrafico extends UserGuiController {
         try{
             controllerApp.inviaRecensione(datiRecensione, utenteBean.getUsername());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            loader.setControllerFactory(c-> new Demo(utenteBean));
+            loader.setControllerFactory(c-> new HomePage(utenteBean));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();

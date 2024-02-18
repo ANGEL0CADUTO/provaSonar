@@ -49,7 +49,7 @@ public class UserGuiController extends BaseController{
 
     @FXML
     void goToProfilo(ActionEvent event) throws IOException {
-        //The Home Page button onAction method
+
         if(utenteBean.getUsername() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfiloUtenteProva.fxml"));
             loader.setControllerFactory(c -> new ProfiloUtenteGrafico(utenteBean));

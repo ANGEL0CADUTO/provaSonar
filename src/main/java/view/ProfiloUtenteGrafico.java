@@ -4,10 +4,15 @@ import bean.DatiUtenteBean;
 import bean.UtenteBean;
 import controllerapplicativo.ProfiloUtenteApplicativo;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class ProfiloUtenteGrafico extends UserGuiController {
@@ -35,6 +40,8 @@ public class ProfiloUtenteGrafico extends UserGuiController {
     private Button modificaButton;
     @FXML
     private Button inviaButton;
+    @FXML
+    private Button recensioniButton;
 
 
 
@@ -120,22 +127,13 @@ public class ProfiloUtenteGrafico extends UserGuiController {
                     utenteBean.getDatiUtente().setCap(capTextField.getText());
                     utenteBean.getDatiUtente().setCivico(civicoTextField.getText());
 
-                    System.out.println("complimenti è andato a buon fine");
                 }
                 if(a){
                     utenteBean.getDatiUtente().setIndirizzo(indirizzoTextField.getText());
                     utenteBean.getDatiUtente().setCap(capTextField.getText());
                     utenteBean.getDatiUtente().setCivico(civicoTextField.getText());
-                    System.out.println("Inserimento dati : andato a buon fine\n");
-                    System.out.println("Vediamo cosa c'è nel bean, ID: " + utenteBean.getDatiUtente().getIdInformazioniUtente() + " Civico : "+ utenteBean.getDatiUtente().getCivico());
-
-
-
                 }
 
-            }else{
-                //correggere creando una label che notifichi l'utente
-                System.out.println("I campi erano vuoti");
             }
 
             indirizzoTextField.setEditable(false);
@@ -145,6 +143,23 @@ public class ProfiloUtenteGrafico extends UserGuiController {
 
 
         }
+    public void goToRecensioni() throws IOException {
+
+        if(utenteBean.isLogged()){
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensioni.fxml"));
+            loader.setControllerFactory(c -> new RecensioniGrafico(utenteBean));
+
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+            stage.setScene(scene);
+        }
+        else{
+            goToLogin();
+        }
+    }
 
 
 

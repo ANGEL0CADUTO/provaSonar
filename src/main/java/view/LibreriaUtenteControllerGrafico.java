@@ -138,7 +138,6 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
                     isUpdatingTableView = false;
                     //table.getItems().addAll(change.getAddedSubList());
                     isUpdatingTableView = true;
-                    System.out.println("CIAOCIAOCIAO");
                 } else if (change.wasRemoved() && isUpdatingTableView) {
                     logger.info("Elementi rimossi: " +change.getRemoved());
                     isUpdatingTableView = false;
@@ -155,7 +154,6 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDataAcquisto().format(formatter)));
        //COLONNA AZIONI CON BOTTONE
 
-        System.out.println("LibreriaUtenteControllerGrafico : "+ utenteBean.getIdUtente() + " " + utenteBean.getUsername()+ " " + utenteBean.getPassword()+ " " + utenteBean.getEmail()+ " " + utenteBean.getCredito());
 
         annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
             private final Label label = new Label("In vendita");

@@ -78,7 +78,6 @@ public class OfferteRicevuteGrafico extends UserGuiController{
 
                     // Ora puoi eseguire un'azione basata su questo elemento
                     try {
-                        System.out.println("LOGGATO :" +utenteBean.getEmail() + " Offerente"+ array.get(index).getUsernameOfferente());
                         OffertaBean offertaBean = new OffertaBean();
                         offertaBean.setAnnuncioID(array.get(index).getAnnuncioID());
                         offertaBean.setCopiaMangaID(array.get(index).getCopiaMangaID());
@@ -87,21 +86,13 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                         offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
 
                         OfferteRicevuteApplicativo controllerApp = new OfferteRicevuteApplicativo();
-                        boolean b = controllerApp.accettaOffertaByOffertaID(offertaBean,utenteBean.getIdUtente());
+                        boolean b = controllerApp.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
 
-
-                        if(b){
-                            System.out.println("ACCETTATA CON SUCCESSO!");
-                        }
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("MieiAnnunci.fxml"));
-                        loader.setControllerFactory(c -> new Demo(utenteBean));
-                        Parent root = loader.load();
-                        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
+                        goToMieiAnnunci();
                     } catch (IOException e) {
-                        logger.severe("Errore nel cambio pagina");
+                        logger.severe("Errore nel cambio pagina " + e.getMessage());
                     }
+
                 });
             }
 

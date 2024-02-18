@@ -64,7 +64,7 @@ public class LoginGrafico extends BaseController {
             try{
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-                loader.setControllerFactory(c-> new Demo(utenteBean));
+                loader.setControllerFactory(c-> new HomePage(utenteBean));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) login.getScene().getWindow();

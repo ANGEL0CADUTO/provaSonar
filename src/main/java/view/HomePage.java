@@ -7,18 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
-import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 
-public class Demo extends UserGuiController {
-    @FXML
-    private AnchorPane myAnchorPane;
+public class HomePage extends UserGuiController {
 
     @FXML
     private Button loginHomePage;
@@ -27,60 +21,44 @@ public class Demo extends UserGuiController {
     private Button registratiHomePage;
 
     @FXML
-    private Button depositaEPrelevaButton;
-
-    @FXML
-    private Button profiloButton;
-    @FXML
-    private Button libreriaButton;
-    @FXML
-    private Button compraButton;
-    @FXML
     private Button mieiAnnunci;
     @FXML
     private HBox logoutBox;
 
 
-
-
-
-
-
-
-    protected Demo(UtenteBean bean) {
+    protected HomePage(UtenteBean bean) {
         super(bean);
-        System.out.println("Controller Demo istanziato con UtenteBean: " + bean);
 
     }
 
 
-    public void initializeData(){
-        if(utenteBean == null){
+    public void initializeData() {
+        if (utenteBean == null) {
             utenteBean = new UtenteBean();
 
         }
 
     }
 
-    public void initialize(){
+    public void initialize() {
         initializeData();
-        if(!utenteBean.isLogged()){
+        if (!utenteBean.isLogged()) {
             logoutBox.setVisible(false);
-
+        }
+        else{
+            registratiHomePage.setVisible(false);
+            loginHomePage.setVisible(false);
         }
 
     }
 
-    public void setUtenteBean(UtenteBean bean){
-        this.utenteBean= bean;
+    public void setUtenteBean(UtenteBean bean) {
+        this.utenteBean = bean;
     }
 
     public void changeScene() throws IOException {
 
-        if (utenteBean.isLogged()) {
-            System.out.println("sei già loggato");
-        } else {
-
+        if (!utenteBean.isLogged()) {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             loader.setControllerFactory(c -> new LoginGrafico(utenteBean));
@@ -93,22 +71,22 @@ public class Demo extends UserGuiController {
 
         }
     }
-        public void goToRecensioni() throws IOException{
 
-            if(utenteBean.isLogged()){
+    public void goToRecensioni() throws IOException {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensioni.fxml"));
-                loader.setControllerFactory(c -> new RecensioniGrafico(utenteBean));
+        if (utenteBean.isLogged()) {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensioni.fxml"));
+            loader.setControllerFactory(c -> new RecensioniGrafico(utenteBean));
 
 
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-                stage.setScene(scene);
-            }
-            else{
-                goToLogin();
-            }
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+            stage.setScene(scene);
+        } else {
+            goToLogin();
+        }
     }
 
 
@@ -124,11 +102,8 @@ public class Demo extends UserGuiController {
     }
 
 
-
-
-
     //da testare se funziona anche post login
-    public void logout(){
+    public void logout() {
         utenteBean = new UtenteBean();
     }
 

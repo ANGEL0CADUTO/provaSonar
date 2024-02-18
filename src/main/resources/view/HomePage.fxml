@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #242222;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Demo">
+<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #242222;" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HomePage">
    <children>
-      <Button fx:id="loginHomePage" layoutX="522.0" layoutY="26.0" mnemonicParsing="false" onAction="#changeScene" style="-fx-background-color: #fa8000;" text="Log In" />
-      <Button fx:id="registratiHomePage" layoutX="441.0" layoutY="26.0" mnemonicParsing="false" onAction="#registrazione" style="-fx-background-color: #de1429;" text="Registrati" />
-      <Button fx:id="recensioniButton" layoutX="283.0" layoutY="258.0" mnemonicParsing="false" onAction="#goToRecensioni" text="Recensioni" />
+      <Button fx:id="loginHomePage" layoutX="490.0" layoutY="26.0" mnemonicParsing="false" onAction="#changeScene" text="Log In" />
+      <Button fx:id="registratiHomePage" layoutX="375.0" layoutY="26.0" mnemonicParsing="false" onAction="#registrazione" text="Registrati" />
       <VBox alignment="TOP_CENTER" layoutY="1.0" prefHeight="400.0" prefWidth="167.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+            <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
                <children>
                   <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
                   <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="167.0">
@@ -25,7 +24,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
                <children>
                   <ImageView fx:id="profiloImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,7 +34,7 @@
                   <Button fx:id="profiloButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToProfilo" prefWidth="90.0" text="Profilo" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +44,7 @@
                   <Button fx:id="libreriaButton" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" text="Libreria" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +54,7 @@
                   <Button fx:id="compraButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToMieiAnnunci" prefWidth="90.0" text="Miei Annunci" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,7 +64,7 @@
                   <Button fx:id="depositaEPrelevaButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefWidth="90.0" text="Conto" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d1440d;">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -75,7 +74,7 @@
                   <Button fx:id="compraButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToCompra" prefWidth="90.0" text="Compra" />
                </children>
             </HBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d1440d;">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
                <children>
                   <HBox fx:id="logoutBox" alignment="CENTER" prefHeight="39.0" prefWidth="167.0" style="-fx-background-color: #020203;">
                      <children>
@@ -84,7 +83,7 @@
                               <Image url="@../photo/logout.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefWidth="90.0" style="-fx-background-color: #d1440d;" text="Logout" />
+                        <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefWidth="90.0" text="Logout" />
                      </children>
                   </HBox>
                </children>

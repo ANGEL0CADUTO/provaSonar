@@ -17,7 +17,7 @@ public class Start extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
 
         UtenteBean utente = new UtenteBean();
-        loader.setControllerFactory(c-> new Demo(utente));
+        loader.setControllerFactory(c-> new HomePage(utente));
 
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -29,7 +29,7 @@ public class Start extends Application {
 
         FXMLLoader loader2= new FXMLLoader(getClass().getResource("HomePage.fxml"));
         UtenteBean utente2 = new UtenteBean();
-        loader2.setControllerFactory(c-> new Demo(utente2));
+        loader2.setControllerFactory(c-> new HomePage(utente2));
         Stage primaryStage2 = new Stage();
         Parent root2 = loader2.load();
         Scene scene2 = new Scene(root2);

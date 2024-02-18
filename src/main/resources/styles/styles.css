@@ -1,3 +1,94 @@
-#logout{
-    -fx-font-weight: bold;
+#myAnchorPane{
+    -fx-background-color:  #242222;
 }
+
+#logout.button{
+    -fx-font-weight: bold;
+    -fx-background-color:  #d54806;
+}
+#logout.button:hover{
+    -fx-background-color: derive(#d54806, 20%);
+}
+#searchButton.button ,#depositaCredito.button,#prelevaCredito.button,#acquistiButton.button,#vendutiButton.button,#aggiungiButton,#confermaButton,#modificaButton.button,#inviaButton.button,#offerta1.button{
+    -fx-background-color: #FF7F00;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-height: 30px; /* Regola l'altezza desiderata del bottone */
+    -fx-pref-width: 70px; /* Imposta la larghezza desiderata del bottone a metà */
+}
+#searchButton.button:hover, #depositaCredito.button:hover, #prelevaCredito.button:hover, #acquistiButton.button:hover, #vendutiButton.button:hover, #aggiungiButton:hover, #confermaButton:hover, #modificaButton.button:hover, #inviaButton.button:hover,#offerta1.button:hover {
+    -fx-background-color: derive(#FF7F00, 20%);
+}
+
+
+#recensioniButton.button{
+    -fx-background-color: #FF7F00;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-height: 25px; /* Regola l'altezza desiderata del bottone */
+    -fx-pref-width: 95px; /* Imposta la larghezza desiderata del bottone a metà */
+
+}
+
+#recensioniButton.button:hover{
+    -fx-background-color: derive(#FF7F00, 20%);
+}
+
+
+
+#inserisciAnnuncio.button,#inviaRecensione.button{
+    -fx-background-color: #FF7F00;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-height: 25px; /* Regola l'altezza desiderata del bottone */
+    -fx-pref-width: 130px; /* Imposta la larghezza desiderata del bottone a metà */
+
+}
+#inserisciAnnuncio.button:hover,#inviaRecensione.button:hover{
+    -fx-background-color: derive(#FF7F00, 20%);
+}
+
+
+#registratiHomePage.button{
+    -fx-background-color: #de1429
+}
+#registratiHomePage.button:hover{
+    -fx-background-color: derive(#de1429, 20%);
+}
+
+
+
+#loginHomePage.button{
+    -fx-background-color: #d54806
+}
+
+#loginHomePage.button:hover{
+    -fx-background-color: derive(#d54806, 20%);
+}
+
+.button {
+    -fx-background-color: #333333; /* Grigio scuro */
+    -fx-text-fill: white; /* Colore del testo bianco */
+    -fx-alignment: center;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold; /* Imposta il grassetto per il testo del bottone */
+
+    -fx-focus-traversable: false;
+
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+
+    -fx-pref-height: 28px; /* Regola l'altezza desiderata del bottone */
+    -fx-pref-width: 95px; /* Imposta la larghezza desiderata del bottone a metà */
+
+    -fx-min-width: 75px; /* Imposta la larghezza minima a use_computed_size */
+    -fx-min-height: 28px; /* Imposta l'altezza a use_computed_size */
+
+
+}
+
+.button:hover {
+    -fx-background-color: derive(#333333, 20%);
+
+}
+

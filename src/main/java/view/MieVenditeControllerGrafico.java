@@ -18,24 +18,26 @@ public class MieVenditeControllerGrafico extends UserGuiController {
     private TableView<OffertaModel> mieVenditeTable;
 
     @FXML
-    private TableColumn<OffertaModel,String> mangaColumn;
+    private TableColumn<OffertaModel, String> mangaColumn;
 
     @FXML
-    private TableColumn<OffertaModel,String>  prezzoColumn;
+    private TableColumn<OffertaModel, String> prezzoColumn;
 
     @FXML
-    private TableColumn<OffertaModel,String>  dataVenditaColumn;
+    private TableColumn<OffertaModel, String> dataVenditaColumn;
 
     @FXML
-    private TableColumn<OffertaModel,String>  utenteColumn;
+    private TableColumn<OffertaModel, String> utenteColumn;
+    @FXML
+    private TableColumn<OffertaModel, String> volumeColumn;
 
 
-    protected MieVenditeControllerGrafico(UtenteBean bean) {super(bean);}
+    protected MieVenditeControllerGrafico(UtenteBean bean) {
+        super(bean);
+    }
 
 
-
-
-@FXML
+    @FXML
     public void initialize() {
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
         List<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
@@ -43,7 +45,9 @@ public class MieVenditeControllerGrafico extends UserGuiController {
 
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-        mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() + " " + cellData.getValue().getVolumeManga()));
+        mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() ));
+        prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getVolumeManga())));
+
         utenteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getUsernameOfferente()));
         prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getOffertaPrezzo())));
         dataVenditaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataOfferta())));
