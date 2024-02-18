@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 
 
 public class LoginGrafico extends BaseController {
+    private static final Logger logger= Logger.getLogger(LoginGrafico.class.getName());
+
 
     @FXML
     private Button login;
@@ -32,15 +34,11 @@ public class LoginGrafico extends BaseController {
     @FXML
     private Label wrongLogin;
 
-    private static final Logger logger = Logger.getLogger(LoginGrafico.class.getName());
-
-    //private UtenteBean utente;
 
     public LoginGrafico(UtenteBean utenteBean) {
         super(utenteBean);
     }
 
-    //public void setUtenteBean(UtenteBean bean){this.utente = bean;}
 
 
 
@@ -56,16 +54,13 @@ public class LoginGrafico extends BaseController {
             utenteBean.setEmail(enteredEmail.getText());
             utenteBean.setPassword(enteredPassword.getText());
         }
-       /* utente.setEmail("Angelo@gmail.com");
-        utente.setPassword("1234");*/
+
 
         boolean esitoLogin = lg.login(utenteBean);
 
         if(esitoLogin){
             wrongLogin.setText("Hai effettuato l'accesso!");
             utenteBean.setLogged(true);
-            System.out.println("LOGIN GRAFICO : " + utenteBean.getIdUtente() + " " + utenteBean.getUsername()+ " " + utenteBean.getPassword()+ " " + utenteBean.getEmail()+ " " + utenteBean.getCredito());
-            System.out.println("voto : " + utenteBean.getVotoRecensione()+ " bean : " + utenteBean.getDatiUtente());
             try{
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
@@ -76,8 +71,8 @@ public class LoginGrafico extends BaseController {
                 stage.setScene(scene);
 
             } catch(IOException e) {
-                logger.severe("BROOO QUA STANNO LANCIANDO EXCEPTION ((login grafico cambio view))");
-                logger.info("info");
+                logger.severe("errore in LoginGrafico in login "+ e.getMessage());
+
             }
 
         }

@@ -1,11 +1,13 @@
 package view2;
 
+import bean.RecensioneBean;
 import bean.UtenteBean;
 import controllerapplicativo.MieiAcquistiApplicativo;
 import model.OffertaModel;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MieiAcquistiCLI {
@@ -20,19 +22,18 @@ public class MieiAcquistiCLI {
         int choice;
 
         do {
+            System.out.println("*************************************");
+            System.out.println("Ci troviamo in HomePage/Libreria/MIEI ACQUISTI");
+
             System.out.println("Scegli un'opzione:");
             System.out.println("0. Torna indietro");
             System.out.println("1. Visualizza Acquisti");
-            System.out.println("2. Recensisci");
 
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
                     visualizzaAcquisti();
-                    break;
-                case 2:
-                    recensisci();
                     break;
                 case 0:
                     System.out.println("Tornando indietro...");
@@ -47,7 +48,7 @@ public class MieiAcquistiCLI {
 
     private void visualizzaAcquisti() {
         MieiAcquistiApplicativo controller = new MieiAcquistiApplicativo();
-        ArrayList<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
+        List<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
 
         for (OffertaModel offerta : array) {
             System.out.println("IdAcquisto : " + offerta.getIdOfferta());
@@ -57,7 +58,16 @@ public class MieiAcquistiCLI {
 
             // Aggiungi il bottone solo se l'offerta non è stata ancora recensita
             if (offerta.getRecensito() == 0) {
-                System.out.println("Recensisci: Disponibile");
+                System.out.println("Non hai ancora recensito questo acquisto, vuoi farlo? (y/n): ");
+                Scanner scanner = new Scanner(System.in);
+                String risposta = scanner.nextLine().toLowerCase();
+                if (risposta.equals("y")) {
+                    System.out.println("Navigazione alla pagina recensione...");
+                    RecensioneBean recensioneBean = new RecensioneBean();
+                    recensioneBean.setIdOfferta(offerta.getIdOfferta());
+                    recensioneBean.setRecensitoID(offerta.getUtenteVenditoreID());
+                    recensisci(utenteBean,recensioneBean);
+                }
             } else {
                 System.out.println("Recensisci: Già Recensito");
             }
@@ -66,8 +76,8 @@ public class MieiAcquistiCLI {
         }
     }
 
-    private void recensisci() {
-        // Implementa la logica per recensire un acquisto
-        System.out.println("Funzione di recensione non ancora implementata.");
+    private void recensisci(UtenteBean utenteBean, RecensioneBean recensioneBean) {
+        InviaRecensioneCLI inviaRecensioneCLI = new InviaRecensioneCLI(utenteBean,recensioneBean);
+        inviaRecensioneCLI.initialize();
     }
 }

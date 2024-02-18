@@ -3,8 +3,6 @@ package view2;
 import bean.UtenteBean;
 import controllerapplicativo.MieiAnnunciApplicativo;
 import model.AnnuncioModel;
-import model.OffertaRicevuta;
-import view.OfferteRicevuteGrafico;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,11 +17,12 @@ public class MieiAnnunciCLI {
     }
 
     public void initialize() {
+        System.out.println("*************************************");
+        System.out.println("Ci troviamo in HomePage/MIEI ANNUNCI:");
         MieiAnnunciApplicativo controller = new MieiAnnunciApplicativo();
         ArrayList<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
 
         for (AnnuncioModel annuncio : array) {
-
 
             System.out.println("Nome Manga: " + annuncio.getNomeManga());
             System.out.println("Prezzo: " + annuncio.getPrezzo());
@@ -38,17 +37,18 @@ public class MieiAnnunciCLI {
 
             if (risposta.equals("y")) {
                 System.out.println("Navigazione alle offerte ricevute per questo annuncio...");
-
-                OfferteRicevuteCLI offerteRicevuteCLI = new OfferteRicevuteCLI(utenteBean, annuncio.getIdAnnuncio());
-
-                // Implementa la navigazione alle offerte ricevute se necessario
-                // Esempio: goToOfferteRicevute(annuncio.getIdAnnuncio());
-
+                visualizzaOfferteRicevute(utenteBean, annuncio.getIdAnnuncio());
             } else {
                 System.out.println("Azione annullata.");
             }
 
             System.out.println("------------------------------");
         }
+    }
+
+    public void visualizzaOfferteRicevute(UtenteBean utenteBean, int id){
+        OfferteRicevuteCLI offerteRicevuteCLI = new OfferteRicevuteCLI(utenteBean,id);
+        offerteRicevuteCLI.initialize();
+
     }
 }

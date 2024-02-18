@@ -3,19 +3,21 @@ package dao;
 import model.OffertaModel;
 import model.OffertaRicevuta;
 
-import javax.xml.transform.Result;
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.*;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class OffertaDAO {
 
     private static final Logger logger = Logger.getLogger(OffertaDAO.class.getName());
+    private static final String USERNAME_OFFERENTE = "usernameOfferente";
+    private static final String ANNUNCIOID = "annuncioID";
+    private static final String DATA_VENDITA = "dataVendita";
+    private static final String ID_OFFERTA = "idOfferta";
+    private static final String OFFERTA_PREZZO = "offertaPrezzo";
 
     public boolean insertOfferta(OffertaModel offerta) {
         boolean b = false;
@@ -57,20 +59,19 @@ public class OffertaDAO {
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
 
-            System.out.println("prima del while");
 
             while(rs.next()){
-                System.out.println("siamo nel while");
+
                 OffertaRicevuta offerta = new OffertaRicevuta();
-                offerta.setIdOfferta(rs.getInt("idOfferta"));
+                offerta.setIdOfferta(rs.getInt(ID_OFFERTA));
                 offerta.setAnnuncioID(id);
                 offerta.setUtenteOfferenteID(rs.getInt("utenteOfferenteID"));
-                offerta.setUsernameOfferente(rs.getString("usernameOfferente"));
+                offerta.setUsernameOfferente(rs.getString(USERNAME_OFFERENTE));
                 offerta.setCopiaMangaID(rs.getInt("copiaMangaID"));
-                offerta.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
+                offerta.setOffertaPrezzo(rs.getBigDecimal(OFFERTA_PREZZO));
                 offerta.setDataOfferta(rs.getTimestamp("dataOfferta").toLocalDateTime());
                 array.add(offerta);
-                System.out.println("Ho riempito con :" + array.getLast().getUsernameOfferente());
+
             }
         } catch (SQLException e) {
             logger.severe("Errore in getOfferteRicevuteByAnnuncioID in OFFERTADAO: " + e.getMessage());
@@ -113,13 +114,13 @@ public class OffertaDAO {
 
             ResultSet rs = st.executeQuery();
             if(rs.next()){
-                System.out.println("PORCONE IN OFFERTADAO getDatiOffertaAccettataByAnnuncioID");
+
                 offertaModel= new OffertaModel();
-                offertaModel.setIdOfferta(rs.getInt("idOfferta"));
-                offertaModel.setAnnuncioID(rs.getInt("annuncioID"));
-                offertaModel.setUsernameOfferente(rs.getString("usernameOfferente"));
-                offertaModel.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
-                offertaModel.setDataOfferta(rs.getTimestamp("dataVendita").toLocalDateTime());
+                offertaModel.setIdOfferta(rs.getInt(ID_OFFERTA));
+                offertaModel.setAnnuncioID(rs.getInt(ANNUNCIOID));
+                offertaModel.setUsernameOfferente(rs.getString(USERNAME_OFFERENTE));
+                offertaModel.setOffertaPrezzo(rs.getBigDecimal(OFFERTA_PREZZO));
+                offertaModel.setDataOfferta(rs.getTimestamp(DATA_VENDITA).toLocalDateTime());
                 offertaModel.setCopiaMangaID(rs.getInt("copiaMangaID"));
             }
 
@@ -147,11 +148,11 @@ public class OffertaDAO {
 
             if(rs.next()){
                 offertaRicevuta = new OffertaRicevuta();
-                offertaRicevuta.setIdOfferta(rs.getInt("idOfferta"));
-                offertaRicevuta.setUsernameOfferente(rs.getString("usernameOfferente"));
-                offertaRicevuta.setAnnuncioID(rs.getInt("annuncioID"));
-                offertaRicevuta.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
-                offertaRicevuta.setDataVendita(rs.getTimestamp("dataVendita").toLocalDateTime());
+                offertaRicevuta.setIdOfferta(rs.getInt(ID_OFFERTA));
+                offertaRicevuta.setUsernameOfferente(rs.getString(USERNAME_OFFERENTE));
+                offertaRicevuta.setAnnuncioID(rs.getInt(ANNUNCIOID));
+                offertaRicevuta.setOffertaPrezzo(rs.getBigDecimal(OFFERTA_PREZZO));
+                offertaRicevuta.setDataVendita(rs.getTimestamp(DATA_VENDITA).toLocalDateTime());
             }
 
 
@@ -164,25 +165,25 @@ public class OffertaDAO {
 
 
 
-    public ArrayList<OffertaModel> getDatiOffertaAccettataByUtenteID(int id){
+    public List<OffertaModel> getDatiOffertaAccettataByUtenteID(int id){
 
         String query = "SELECT idOfferta, annuncioID, offertaPrezzo, dataVendita, recensioneFatta " +
         "FROM offerta " +
         "WHERE utenteOfferenteID = ? AND statoOfferta = 3";
 
         Connection  conn = DBConnection.getIstance().connection();
-        ArrayList<OffertaModel> array = new ArrayList<>();
+        List<OffertaModel> array = new ArrayList<>();
 
         try(PreparedStatement st = (conn.prepareStatement(query))){
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 OffertaModel offerta = new OffertaModel();
-                offerta.setIdOfferta(rs.getInt("idOfferta"));
-                offerta.setAnnuncioID(rs.getInt("annuncioID"));
+                offerta.setIdOfferta(rs.getInt(ID_OFFERTA));
+                offerta.setAnnuncioID(rs.getInt(ANNUNCIOID));
 
-                offerta.setOffertaPrezzo(rs.getBigDecimal("offertaPrezzo"));
-                offerta.setDataOfferta(rs.getTimestamp("dataVendita").toLocalDateTime());
+                offerta.setOffertaPrezzo(rs.getBigDecimal(OFFERTA_PREZZO));
+                offerta.setDataOfferta(rs.getTimestamp(DATA_VENDITA).toLocalDateTime());
                 offerta.setRecensito(rs.getInt("recensioneFatta"));
 
 

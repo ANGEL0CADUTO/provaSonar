@@ -1,6 +1,5 @@
 package Pattern;
 
-import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.CopiaMangaDAO;
 import dao.OffertaDAO;

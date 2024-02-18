@@ -1,16 +1,13 @@
 package view;
 
 import bean.UtenteBean;
-import controllerapplicativo.MieiAnnunciApplicativo;
 import controllerapplicativo.RecensioniApplicativo;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import model.AnnuncioModel;
 import model.Recensione;
 
 import java.time.format.DateTimeFormatter;
@@ -49,12 +46,6 @@ public class RecensioniGrafico extends UserGuiController {
 
         for (int i = startIndex; i < endIndex; i++) {
             Recensione recensione = recensioni.get(i);
-
-
-            String titoloRecensione = recensione.getUsernameRecensore();
-            String contenutoRecensione = recensione.getTesto();
-
-
             TitledPane titledPane = createTitledPane(recensione);
             accordion.getPanes().add(titledPane);
         }

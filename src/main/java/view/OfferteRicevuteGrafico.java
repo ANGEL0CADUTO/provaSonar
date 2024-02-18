@@ -1,10 +1,7 @@
 package view;
 
-import Pattern.OffertaFacade;
 import bean.OffertaBean;
 import bean.UtenteBean;
-import controllerapplicativo.MieiAnnunciApplicativo;
-import controllerapplicativo.OffertaControllerApplicativo;
 import controllerapplicativo.OfferteRicevuteApplicativo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.AnnuncioModel;
 import model.OffertaRicevuta;
 
 import java.io.IOException;
@@ -24,7 +20,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class OfferteRicevuteGrafico extends UserGuiController{
-    private static final Logger logger = Logger.getLogger(OfferteRicevuteGrafico.class.getName());
+    private static final Logger logger= Logger.getLogger(OfferteRicevuteGrafico.class.getName());
 
 
     private int idAnnuncio;
@@ -57,14 +53,6 @@ public class OfferteRicevuteGrafico extends UserGuiController{
     public void initialize() {
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();
         ArrayList<OffertaRicevuta> array = controller.getOfferteRicevuteByAnnuncioID(this.idAnnuncio);
-           /*
-            for(AnnuncioModel a : array){
-                NON SO SE IMPLEMENTARE QUESTA COSA DEL NUMERO DI OFFERTE RICEVUTE
-            }
-
-            */
-
-        // Popola la tabella con i dati dall'array
         ObservableList<OffertaRicevuta> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 

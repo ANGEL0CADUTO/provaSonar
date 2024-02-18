@@ -2,14 +2,10 @@ package view;
 
 import bean.UtenteBean;
 import controllerapplicativo.MieVenditeControllerApplicativo;
-import controllerapplicativo.MieiAcquistiApplicativo;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.OffertaModel;
-import model.OffertaRicevuta;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -43,10 +39,7 @@ public class MieVenditeControllerGrafico extends UserGuiController {
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
         ArrayList<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
 
-        for(OffertaModel o : arrayList){
 
-            System.out.printf("YAO " +o.getTitoloManga());
-        }
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() + " " + cellData.getValue().getVolumeManga()));

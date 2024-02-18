@@ -1,23 +1,16 @@
 package view;
 
-import bean.CopiaMangaBean;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import model.AnnunciModel;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -73,15 +66,15 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     @FXML
     private void initialize() {
-        InizializzaDati();
+        inizializzaDati();
     }
 
     public void cercaPerNome(ActionEvent event) {
         // Richiama il metodo per inizializzare i dati
-        InizializzaDati();
+        inizializzaDati();
     }
 
-    public void InizializzaDati(){
+    public void inizializzaDati(){
 
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
         ArrayList<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente(),searchTextField.getText());
@@ -113,8 +106,6 @@ public class CompraMangaControllerGrafico extends UserGuiController{
                     offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
 
 
-                        //goToOfferta();
-
                 });
             }
 
@@ -140,19 +131,6 @@ public class CompraMangaControllerGrafico extends UserGuiController{
     @FXML
     private void doOfferta(ActionEvent event) {
         wrongOfferta.setText("");
-
-
-        /*if (offertaBean.getOffertaPrezzo()getText().isEmpty()) {
-            wrongOfferta.setText("Fai un offerta");
-        } else {
-            try {
-                prezzoOfferta = BigDecimal.valueOf(Integer.parseInt(String.valueOf(offertaTextField.getText())));
-            } catch (NumberFormatException ex) {
-                wrongOfferta.setText("Inserisci un offerta Valida");
-            }*/
-
-
-
         BigDecimal prezzo = new BigDecimal(offertaTextField.getText());
         offertaBean.setOffertaPrezzo(prezzo);
         offertaBean.setUsernameOfferente(utenteBean.getUsername());

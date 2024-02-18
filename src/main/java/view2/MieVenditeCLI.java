@@ -15,6 +15,8 @@ public class MieVenditeCLI {
 
 
     public void initialize() {
+        System.out.println("*************************************");
+        System.out.println("Ci troviamo in HomePage/Libreria/MIE VENDITE");
         MieVenditeControllerApplicativo controller = new MieVenditeControllerApplicativo();
         ArrayList<OffertaModel> arrayList = controller.getMyVendite(utenteBean.getIdUtente());
 

@@ -1,7 +1,5 @@
 package Observer;
 
-import bean.OffertaBean;
-
 import java.util.ArrayList;
 import java.util.List;
 

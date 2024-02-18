@@ -6,12 +6,13 @@ import model.AnnuncioModel;
 import model.OffertaModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MieiAcquistiApplicativo {
 
-    public ArrayList<OffertaModel> getMyOfferteAccettate(int id){
+    public List<OffertaModel> getMyOfferteAccettate(int id){
 
-        ArrayList<OffertaModel> array;
+        List<OffertaModel> array;
         OffertaDAO dao = new OffertaDAO();
         array = dao.getDatiOffertaAccettataByUtenteID(id);
 

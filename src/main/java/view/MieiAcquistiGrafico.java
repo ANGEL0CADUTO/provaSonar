@@ -18,9 +18,13 @@ import model.OffertaModel;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 public class MieiAcquistiGrafico extends UserGuiController{
+
+    private static final Logger logger= Logger.getLogger(MieiAcquistiGrafico.class.getName());
+
 
     @FXML
     private TableView<OffertaModel> mieiAcquistiTable;
@@ -43,7 +47,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
 
     public void initialize(){
         MieiAcquistiApplicativo controller = new MieiAcquistiApplicativo();
-        ArrayList<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
+        List<OffertaModel> array = controller.getMyOfferteAccettate(utenteBean.getIdUtente());
 
         ObservableList<OffertaModel> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -57,7 +61,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
 
         //DEVO CAPIRE BENE COME PASSARE I DATI
         recensisciColumn.setCellFactory(cellData -> new TableCell<OffertaModel, String>() {
-            private int index;
+
             private final Button bottone = new Button("Recensisci");
 
             {
@@ -81,7 +85,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        logger.severe("Errore in MieiAcquistiGrafico nel cambio pagina : " +e.getMessage());
                     }
                 });
             }

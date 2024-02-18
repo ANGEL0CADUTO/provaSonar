@@ -1,7 +1,6 @@
 package controllerapplicativo;
 
 import bean.RecensioneBean;
-import dao.OffertaDAO;
 import dao.RecensioneDAO;
 import dao.UtenteDAO;
 import model.Recensione;

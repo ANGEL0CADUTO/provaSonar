@@ -2,12 +2,10 @@ package controllerapplicativo;
 
 import Pattern.OffertaFacade;
 import bean.OffertaBean;
-import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import dao.UtenteDAO;
 import model.OffertaModel;
 import model.OffertaRicevuta;
-import model.UtenteModel;
 
 import java.util.ArrayList;
 

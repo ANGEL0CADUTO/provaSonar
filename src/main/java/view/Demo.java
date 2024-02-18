@@ -1,11 +1,7 @@
 package view;
 
-import bean.DatiUtenteBean;
 import bean.UtenteBean;
 
-import dao.AnnuncioDAO;
-import dao.DatiUtenteDao;
-import dao.OffertaDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,12 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
-import model.OffertaModel;
-import model.OffertaRicevuta;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Demo extends UserGuiController {

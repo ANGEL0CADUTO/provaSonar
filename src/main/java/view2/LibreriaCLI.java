@@ -20,7 +20,8 @@ public class LibreriaCLI {
         int choice;
 
         do {
-            System.out.println("Scegli un'opzione:");
+            System.out.println("*************************************");
+            System.out.println("Ci troviamo in HomePage/LIBRERIA");
             System.out.println("0. Torna indietro");
             System.out.println("1. Visualizza Manga");
             System.out.println("2. Aggiungi Manga");
@@ -106,9 +107,11 @@ public class LibreriaCLI {
 
     public void mieVendite() {
         MieVenditeCLI mieVenditeCLI = new MieVenditeCLI(utenteBean);
+        mieVenditeCLI.initialize();
     }
 
     public void mieiAcquisti() {
         MieiAcquistiCLI mieiAcquistiCLI = new MieiAcquistiCLI(utenteBean);
+        mieiAcquistiCLI.initialize();
     }
 }
