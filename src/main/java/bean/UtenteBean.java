@@ -1,6 +1,5 @@
 package bean;
 
-import adapter.ValutaAdapter;
 
 import java.math.BigDecimal;
 
@@ -25,12 +24,12 @@ public class UtenteBean {
         this.datiUtente = datiUtente;
     }
 
-    private ValutaAdapter adattatore;//IMPLEMENTAZIONE ADAPTER
+
     private boolean isLogged;
     public UtenteBean() {//DA USARE PER SESSIONE
         this.isLogged = false;    }
 
-    public UtenteBean(ValutaAdapter adattatore){this.adattatore=adattatore;}// PER ACCETTARE ADATTATORE
+
 
 
 

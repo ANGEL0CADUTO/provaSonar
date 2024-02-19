@@ -1,7 +1,6 @@
 package controllerapplicativo;
 
-import Observer.ConcreteObserver;
-import Observer.OffertaSubject;
+import observer.ConcreteObserver;
 import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.OffertaDAO;
@@ -17,20 +16,20 @@ public class OffertaControllerApplicativo {
         //istanzi il model dell'offerta
         //
 
-        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getAnnuncioID());
+        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getIdOfferta());
         OffertaModel offertaModel  = new OffertaModel();
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
-        offertaModel.setAnnuncioID(offertaBean.getAnnuncioID());
+        offertaModel.setAnnuncioID(offertaBean.getIdAnnuncio());
         offertaModel.setCopiaMangaID(offertaBean.getCopiaMangaID());
         offertaModel.setUsernameOfferente(offertaBean.getUsernameOfferente());
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
         offertaModel.setDataOfferta(LocalDateTime.now());
-        System.out.println("Controllo " + offertaBean.getCopiaMangaID());
+
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
 
         AnnuncioDAO annuncioDAO= new AnnuncioDAO();
-        AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
+        AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getIdAnnuncio());
 
         String nomeVenditore = annuncioModel.getNomeUtente();
         String nomeManga = annuncioModel.getNomeManga();

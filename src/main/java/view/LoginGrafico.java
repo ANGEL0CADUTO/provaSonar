@@ -43,7 +43,7 @@ public class LoginGrafico extends BaseController {
 
 
 
-    public void userLogin(ActionEvent event){
+    public void userLogin(){
         LoginApplicativo lg = new LoginApplicativo();
 
         if(enteredEmail.getText().isEmpty() && enteredPassword.getText().isEmpty()){

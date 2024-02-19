@@ -1,22 +1,23 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnnunciModel {
-    private ArrayList<AnnuncioModel> listaAnnunci;
+    private List<AnnuncioModel> listaAnnunci;
 
     public AnnunciModel() {
-        listaAnnunci = new ArrayList<AnnuncioModel>();
+        listaAnnunci = new ArrayList<>();
     }
 
-    public ArrayList<AnnuncioModel> getListaDiAnnunci() {
+    public List<AnnuncioModel> getListaDiAnnunci() {
         return listaAnnunci;
     }
 
 
     //NELLA SET L'OBIETTIVO E' AGGIUNGERE E RIMUOVERE MAGARI? (PER ORA NON CREDO LA USERò MAI QUESTA SET)
-    public void setListaManga(ArrayList<AnnuncioModel> listaAnnunci) {
+    public void setListaManga(List<AnnuncioModel> listaAnnunci) {
         this.listaAnnunci = listaAnnunci;
     }
 

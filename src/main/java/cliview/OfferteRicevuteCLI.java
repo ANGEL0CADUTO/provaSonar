@@ -1,4 +1,4 @@
-package view2;
+package cliview;
 
 import bean.OffertaBean;
 import bean.UtenteBean;
@@ -6,7 +6,6 @@ import controllerapplicativo.OfferteRicevuteApplicativo;
 import model.OffertaRicevuta;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,7 +44,7 @@ public class OfferteRicevuteCLI {
 
             if (risposta.equals("y")) {
                 OffertaBean offertaBean = new OffertaBean();
-                offertaBean.setAnnuncioID(offerta.getAnnuncioID());
+                offertaBean.setIdAnnuncio(offerta.getAnnuncioID());
                 offertaBean.setCopiaMangaID(offerta.getCopiaMangaID());
                 offertaBean.setTitoloManga(offerta.getTitoloManga());
                 offertaBean.setVolumeManga(offerta.getVolumeManga());

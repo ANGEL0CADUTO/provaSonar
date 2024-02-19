@@ -76,13 +76,7 @@ public class OffertaBean {
     private BigDecimal offertaPrezzo;
 
 
-    public int getAnnuncioID() {
-        return idAnnuncio;
-    }
 
-    public void setAnnuncioID(int annuncioID) {
-        this.idAnnuncio = annuncioID;
-    }
 
     public int getUtenteOfferenteID() {
         return utenteOfferenteID;

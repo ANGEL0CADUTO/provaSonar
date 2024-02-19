@@ -1,6 +1,5 @@
-package Observer;
+package observer;
 
-import model.AnnuncioModel;
 import model.OffertaModel;
 
 import java.io.BufferedWriter;

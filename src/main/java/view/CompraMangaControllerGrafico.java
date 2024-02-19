@@ -13,14 +13,14 @@ import javafx.fxml.FXML;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class CompraMangaControllerGrafico extends UserGuiController{
 
 
     @FXML
-    private TableView tableCompra;
+    private TableView<AnnuncioModel> tableCompra;
     @FXML
     private TableColumn<Object[], String> utenteColumn;
 
@@ -70,7 +70,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         inizializzaDati();
     }
 
-    public void cercaPerNome(ActionEvent event) {
+    public void cercaPerNome() {
         // Richiama il metodo per inizializzare i dati
         inizializzaDati();
     }
@@ -103,7 +103,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
                     toolbar.setVisible(true);
                     offertaBean = new OffertaBean();
-                    offertaBean.setAnnuncioID(arrayAnnunci.get(index).getIdAnnuncio());
+                    offertaBean.setIdAnnuncio(arrayAnnunci.get(index).getIdAnnuncio());
                     offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
 
 

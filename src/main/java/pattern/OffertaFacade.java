@@ -1,4 +1,4 @@
-package Pattern;
+package pattern;
 
 import dao.AnnuncioDAO;
 import dao.CopiaMangaDAO;
@@ -21,13 +21,13 @@ public class OffertaFacade {
         this.copiaMangaDAO = new CopiaMangaDAO();
     }
 
-    public boolean accettaOffertaByOffertaID(OffertaModel offerta, int idUtenteVenditore) {
-        if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(offerta.getCopiaMangaID()) &&
+    public boolean accettaOffertaByOffertaID(OffertaModel offerta, CopiaMangaModel copia) {
+        if (copiaMangaDAO.setStatoVendutoByCopiaMangaID(copia.getIdCopiaManga()) &&
                 userPreliev(offerta.getUtenteOfferenteID(), offerta.getOffertaPrezzo().toString()) &&
                 offertaDAO.accettaOfferta(offerta) &&
-                userDeposit(idUtenteVenditore, offerta.getOffertaPrezzo().toString())) {
+                userDeposit(offerta.getUtenteVenditoreID(), offerta.getOffertaPrezzo().toString())) {
 
-            CopiaMangaModel copia = createCopia(offerta);
+
             copiaMangaDAO.aggiungiManga(copia);
             return annuncioDAO.setStatoAccettatoByAnnuncioID(offerta.getAnnuncioID());
         }
@@ -46,12 +46,4 @@ public class OffertaFacade {
         return utenteDAO.userPreliev(utenteModel, amount);
     }
 
-    private CopiaMangaModel createCopia(OffertaModel offerta) {
-        CopiaMangaModel copia = new CopiaMangaModel();
-        copia.setIdUtente(offerta.getUtenteOfferenteID());
-        copia.setTitolo(offerta.getTitoloManga());
-        copia.setVolume(offerta.getVolumeManga());
-        copia.setDataAcquisto(offerta.getDataOfferta());
-        return copia;
-    }
 }

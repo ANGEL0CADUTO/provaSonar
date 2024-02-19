@@ -41,6 +41,9 @@ public class MieiAcquistiGrafico extends UserGuiController{
     @FXML
     private TableColumn<OffertaModel, String>  recensisciColumn;
 
+    @FXML
+    private TableColumn<OffertaModel,String> volumeColumn;
+
     protected MieiAcquistiGrafico(UtenteBean bean) {
         super(bean);
     }
@@ -52,7 +55,8 @@ public class MieiAcquistiGrafico extends UserGuiController{
         ObservableList<OffertaModel> data = FXCollections.observableArrayList(array);
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-        mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() + " " + cellData.getValue().getVolumeManga()));
+        mangaColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTitoloManga() ));
+        volumeColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getVolumeManga() )));
         prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getOffertaPrezzo())));
         dataColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataOfferta())));
 
@@ -97,7 +101,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
                 super.updateItem(item, empty);
 
                 if (!empty && getTableRow() != null && getTableRow().getItem() != null) {
-                    OffertaModel offerta = (OffertaModel) getTableRow().getItem();
+                    OffertaModel offerta =  getTableRow().getItem();
 
                     // Aggiungi il bottone solo se il valore di Recensito è 0
                     if (offerta.getRecensito() == 0) {

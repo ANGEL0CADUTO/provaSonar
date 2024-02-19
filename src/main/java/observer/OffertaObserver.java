@@ -1,4 +1,4 @@
-package Observer;
+package observer;
 
 public interface OffertaObserver {
     //RAPPRESENTA GLI OSSERVATORI (CONTRATTO CuHE GLI OSSERVATORI DEVONO SEGUIRE)

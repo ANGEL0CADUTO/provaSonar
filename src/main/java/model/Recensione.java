@@ -12,14 +12,14 @@ public class Recensione {
 
 
     private double voto;
-    private int RecensitoID;
+    private int recensitoID;
 
     public int getRecensitoID() {
-        return RecensitoID;
+        return recensitoID;
     }
 
     public void setRecensitoID(int recensitoID) {
-        RecensitoID = recensitoID;
+        this.recensitoID = recensitoID;
     }
 
     private String testo;

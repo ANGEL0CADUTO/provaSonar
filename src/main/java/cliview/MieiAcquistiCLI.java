@@ -1,4 +1,4 @@
-package view2;
+package cliview;
 
 import bean.RecensioneBean;
 import bean.UtenteBean;
@@ -6,7 +6,6 @@ import controllerapplicativo.MieiAcquistiApplicativo;
 import model.OffertaModel;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
