@@ -8,11 +8,11 @@ public class OffertaBean {
     private int idOfferta;
 
 
-
+    private int utenteOfferenteID;
     private int copiaMangaID;
     private String titoloManga;
     private int idAnnuncio;
-    private int utenteOfferenteID;
+
 
     private int volumeManga;
 
