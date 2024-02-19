@@ -89,15 +89,14 @@ public class MieiAnnunciGrafico extends UserGuiController {
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                         } catch (IOException e) {
-                            logger.severe("Errore in MieiAnnunciGrafico nel cambio pagina " +e.getMessage());
+                            logger.info("Errore in MieiAnnunciGrafico nel cambio pagina " +e.getMessage());
                         }
                     });
                 }
 
-                // Aggiungi un override per aggiornare il valore del pulsante quando la cella viene aggiornata
                 @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
+                protected void updateItem(String str, boolean empty) {
+                    super.updateItem(str, empty);
                     if (empty) {
                         setGraphic(null);
                     } else {
