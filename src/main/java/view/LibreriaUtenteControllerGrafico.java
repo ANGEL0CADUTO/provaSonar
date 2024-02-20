@@ -16,22 +16,19 @@ import javafx.stage.Stage;
 import javafx.collections.*;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.logging.Logger;
 
 public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
-
-
-    private CopiaMangaBean copiaMangaBean;//MANGA
-
+    private static final Logger logger= Logger.getLogger(LibreriaUtenteControllerGrafico.class.getName());
 
     @FXML
-    private TableView table;
+    private TableView<CopiaMangaModel> table;
     @FXML
     private TableColumn<CopiaMangaModel, String> idColumn;
 
@@ -76,13 +73,10 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     @FXML
     private Button depositaPreleva;
     private boolean isUpdatingTableView = true;
-    private static final Logger logger = Logger.getLogger(LibreriaUtenteControllerGrafico.class.getName());
+
 
     private ObservableList<CopiaMangaModel> observableList;
 
-    /* public void setCopiaMangaBean(CopiaMangaBean mangaBean) {
-        this.copiaMangaBean = mangaBean;
-    }*///NON CREDO MI SERVA
    protected LibreriaUtenteControllerGrafico(UtenteBean utente){
        super(utente);
    }
@@ -93,9 +87,8 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
     @FXML
     private void initialize() {
-        System.out.println(utenteBean);
-        //L'ho svuotato perchè ho avuto problemi di sincronizzazione(popolare tabella prima ancora di aver preso i dati)
-        initializeData();
+
+        inizializzaDati();
     }
 
     public void goToMieVendite() {
@@ -115,102 +108,113 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     }
 
     //Funzione per istanziare in anticipo le cose per evitare problemi di sincronizzazione(La chiamo nel grafico prima)
-    public void initializeData() {
+    public void inizializzaDati() {
+        nascondiElementiGrafici();
+        inizializzaTabella();
+        aggiungiListener();
+        inizializzaColonneTabella();
+        inizializzaColonnaAzioni();
+    }
+
+    private void nascondiElementiGrafici() {
         titoloTextField.setVisible(false);
         volumeTextField.setVisible(false);
         volumeLabel.setVisible(false);
         titoloLabel.setVisible(false);
         confermaButton.setVisible(false);
+    }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private void inizializzaTabella() {
 
         LibreriaUtenteControllerApplicativo controller = new LibreriaUtenteControllerApplicativo();
-
         List<CopiaMangaModel> collezione = controller.showUserManga(utenteBean);
         observableList = FXCollections.observableList(collezione);
         table.setItems(observableList);
+    }
 
-        // Aggiunta di un listener di modifica al ObservableList
+    private void aggiungiListener() {
         observableList.addListener((ListChangeListener<CopiaMangaModel>) change -> {
             while (change.next()) {
-                if (change.wasAdded() && isUpdatingTableView) { ///// non accade mai #########
-                    logger.info("Elementi aggiunti: "+ change.getAddedSubList());
+                if (change.wasAdded() && isUpdatingTableView) {
+                    logger.info("Elementi aggiunti: " + change.getAddedSubList());
                     isUpdatingTableView = false;
-                    //table.getItems().addAll(change.getAddedSubList());
                     isUpdatingTableView = true;
                 } else if (change.wasRemoved() && isUpdatingTableView) {
-                    logger.info("Elementi rimossi: " +change.getRemoved());
+                    logger.info("Elementi rimossi: " + change.getRemoved());
                     isUpdatingTableView = false;
                     table.getItems().removeAll(change.getRemoved());
                     isUpdatingTableView = true;
                 }
             }
         });
-        SimpleDateFormat myDateFormat = new SimpleDateFormat();
+    }
+
+    private void inizializzaColonneTabella() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCopiaManga())));
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitolo()));
         volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getVolume())));
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDataAcquisto().format(formatter)));
-       //COLONNA AZIONI CON BOTTONE
+    }
 
-
-        annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
+    private void inizializzaColonnaAzioni() {
+        annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel, String>() {
             private final Label label = new Label("In vendita");
-            private final Button bottone = new Button("Vendi");
+            private  final Button bottone = new Button("Vendi");
 
             {
-                // Gestisci l'evento di clic del bottone
-                bottone.setOnAction(event -> {
-                  CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
-
-                  //DA QUI IN GIU STO CORREGENDO(quello sopra da controllare)
-                  CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
-                  copiaMangaBean.setIdCopiaManga(copiaMangaModel.getIdCopiaManga());
-                  copiaMangaBean.setTitolo(copiaMangaModel.getTitolo());
-                  copiaMangaBean.setVolume(copiaMangaModel.getVolume());
-                  copiaMangaBean.setIdUtente(utenteBean.getIdUtente());
-
-                    System.out.println("METTI IN VENDITA " + copiaMangaBean.getTitolo() + " " + copiaMangaBean.getIdUtente());
-
-
-
-                    try {
-
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
-                        loader.setControllerFactory(c -> new AnnuncioControllerGrafico(utenteBean,copiaMangaBean));
-
-                        Parent root = loader.load();
-
-                        Scene scene = new Scene(root);
-                        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-                        stage.setScene(scene);
-
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                });
+                bottone.setOnAction(event -> gestisciClicBottone());
             }
 
-            @Override  //
+            @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    // Verifica se lo statoCopiaManga è 1, altrimenti non mostrare il bottone
-                    if (getTableView().getItems().get(getIndex()).getStatoCopiaManga() == 1) {
-                        setGraphic(bottone);
-                    } else {
-                        setGraphic(label);
-                    }
+                    visualizzaAzioneBottone();
+                }
+            }
+
+            private void gestisciClicBottone() {
+                CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
+                CopiaMangaBean copiaMangaBean = creaCopiaMangaBean(copiaMangaModel);
+                apriFinestraInserisciAnnuncio(copiaMangaBean);
+            }
+
+            private void visualizzaAzioneBottone() {
+                if (getTableView().getItems().get(getIndex()).getStatoCopiaManga() == 1) {
+                    setGraphic(bottone);
+                } else {
+                    setGraphic(label);
                 }
             }
         });
+    }
 
+    private CopiaMangaBean creaCopiaMangaBean(CopiaMangaModel copiaMangaModel) {
+        CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
+        copiaMangaBean.setIdCopiaManga(copiaMangaModel.getIdCopiaManga());
+        copiaMangaBean.setTitolo(copiaMangaModel.getTitolo());
+        copiaMangaBean.setVolume(copiaMangaModel.getVolume());
+        copiaMangaBean.setIdUtente(utenteBean.getIdUtente());
+        return copiaMangaBean;
+    }
 
+    private void apriFinestraInserisciAnnuncio(CopiaMangaBean copiaMangaBean) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
+            loader.setControllerFactory(c -> new AnnuncioControllerGrafico(utenteBean, copiaMangaBean));
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            logger.severe("Errore in LibreriaUtenteControllerGrafico in initializeData: " + e.getMessage());
+        }
     }
 
 
@@ -276,6 +280,7 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     }
 
     public void mostraAcquisti(){
+       //Da implementare
 
 
 

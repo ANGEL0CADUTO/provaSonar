@@ -1,4 +1,4 @@
-package view2;
+package cliview;
 
 import bean.CopiaMangaBean;
 import bean.UtenteBean;
@@ -6,7 +6,6 @@ import controllerapplicativo.LibreriaUtenteControllerApplicativo;
 import model.CopiaMangaModel;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

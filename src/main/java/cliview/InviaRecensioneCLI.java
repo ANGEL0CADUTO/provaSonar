@@ -1,4 +1,4 @@
-package view2;
+package cliview;
 
 import bean.RecensioneBean;
 import bean.UtenteBean;

@@ -8,10 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
-import java.util.logging.Logger;
+
 
 public class DepositaEPrelevaGrafico extends UserGuiController {
-    private static final Logger logger= Logger.getLogger(DepositaEPrelevaGrafico.class.getName());
+
 
 
     @FXML
@@ -44,10 +44,10 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
         try {
             if (deposita.getText().isEmpty()) {
                 depositaLabel.setText("Devi inserire una cifra");
-                return;
+
             } else if (deposita.getText().compareTo(String.valueOf(BigDecimal.ZERO)) < 0) {
                 depositaLabel.setText("Devi depositare cifre positive");
-                return;
+
             } else {
                 String cifraString = deposita.getText();
 

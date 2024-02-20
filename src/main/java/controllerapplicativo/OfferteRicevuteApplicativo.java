@@ -1,11 +1,12 @@
 package controllerapplicativo;
 
-import Pattern.OffertaFacade;
+import pattern.OffertaFacade;
 import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import dao.UtenteDAO;
 import model.AnnuncioModel;
+import model.CopiaMangaModel;
 import model.OffertaModel;
 import model.OffertaRicevuta;
 
@@ -34,7 +35,7 @@ public class OfferteRicevuteApplicativo {
         OffertaFacade facade = new OffertaFacade();
         OffertaModel model =  new OffertaModel();
 
-        model.setAnnuncioID(bean.getAnnuncioID());
+        model.setAnnuncioID(bean.getIdAnnuncio());
         model.setCopiaMangaID(bean.getCopiaMangaID());
         model.setTitoloManga(bean.getTitoloManga());
         model.setVolumeManga(bean.getVolumeManga());
@@ -42,7 +43,15 @@ public class OfferteRicevuteApplicativo {
         model.setIdOfferta(bean.getIdOfferta());
         model.setOffertaPrezzo(bean.getOffertaPrezzo());
         model.setDataOfferta(LocalDateTime.now());
+        model.setUtenteVenditoreID(idUtenteVenditore);
 
-        return facade.accettaOffertaByOffertaID(model, idUtenteVenditore);
+        CopiaMangaModel copia = new CopiaMangaModel();
+        copia.setIdUtente(bean.getUtenteOfferenteID());
+        copia.setTitolo(bean.getTitoloManga());
+        copia.setVolume(bean.getVolumeManga());
+        copia.setDataAcquisto(LocalDateTime.now());
+        copia.setIdCopiaManga(bean.getCopiaMangaID());
+
+        return facade.accettaOffertaByOffertaID(model, copia);
     }
 }

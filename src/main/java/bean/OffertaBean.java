@@ -7,19 +7,13 @@ public class OffertaBean {
 
     private int idOfferta;
 
-    public int getIdOfferta() {
-        return idOfferta;
-    }
 
-    public void setIdOfferta(int idOfferta) {
-        this.idOfferta = idOfferta;
-    }
-
-
-    private int idAnnuncio;
     private int utenteOfferenteID;
     private int copiaMangaID;
     private String titoloManga;
+    private int idAnnuncio;
+
+
     private int volumeManga;
 
     public String getTitoloManga() {
@@ -29,19 +23,25 @@ public class OffertaBean {
     public void setTitoloManga(String titoloManga) {
         this.titoloManga = titoloManga;
     }
+    public int getIdOfferta() {
+        return idOfferta;
+    }
 
+    public void setIdOfferta(int idOfferta) {
+        this.idOfferta = idOfferta;
+    }
     public int getVolumeManga() {
         return volumeManga;
     }
 
-    public void setVolumeManga(int volumeManga) {
-        this.volumeManga = volumeManga;
-    }
+
 
     public int getCopiaMangaID() {
         return copiaMangaID;
     }
-
+    public void setVolumeManga(int volumeManga) {
+        this.volumeManga = volumeManga;
+    }
     public void setCopiaMangaID(int copiaMangaID) {
         this.copiaMangaID = copiaMangaID;
     }
@@ -76,13 +76,7 @@ public class OffertaBean {
     private BigDecimal offertaPrezzo;
 
 
-    public int getAnnuncioID() {
-        return idAnnuncio;
-    }
 
-    public void setAnnuncioID(int annuncioID) {
-        this.idAnnuncio = annuncioID;
-    }
 
     public int getUtenteOfferenteID() {
         return utenteOfferenteID;

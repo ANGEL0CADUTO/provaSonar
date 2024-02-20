@@ -11,15 +11,15 @@ import java.util.logging.Logger;
 
 public class UtenteDAO {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
+    private static final String CREDITO = "credito";
 
     public boolean searchUser(UtenteBean bean) {
         boolean b = false;
         String query = "SELECT * FROM mangaink.utente WHERE email = ?";
-        Connection conn;
 
-        try {
-            conn = DBConnection.getIstance().connection();
-            PreparedStatement st = conn.prepareStatement(query);
+        Connection conn = DBConnection.getIstance().connection();
+        try(PreparedStatement st = conn.prepareStatement(query)) {
+
             st.setString(1, bean.getEmail()); // Aggiungi il parametro della email
             ResultSet rs = st.executeQuery();
 
@@ -29,7 +29,7 @@ public class UtenteDAO {
 
                 bean.setIdUtente(rs.getInt("idUtente"));
                 bean.setUsername(rs.getString("username"));
-                bean.setCredito(rs.getBigDecimal( "credito"));
+                bean.setCredito(rs.getBigDecimal( CREDITO));
                 bean.setVotoRecensione(rs.getDouble("votoRecensioni"));
 
                 int informazioniUtenteID = rs.getInt("informazioniUtenteID");

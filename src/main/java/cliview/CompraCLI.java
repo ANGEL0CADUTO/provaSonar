@@ -1,4 +1,4 @@
-package view2;
+package cliview;
 
 import bean.AnnuncioBean;
 import bean.OffertaBean;
@@ -65,7 +65,7 @@ public class CompraCLI {
             System.out.println("Nome Utente: " + annuncio.getNomeUtente() + " Voto : " + annuncio.getVotoUtente());
             System.out.println("Nome Manga: " + annuncio.getNomeManga() + " Volume : " + annuncio.getVolume());
             System.out.println("Prezzo: " + annuncio.getPrezzo());
-            System.out.println("------------------------------");
+            System.out.println("--------------------------------");
         }
 
     }
@@ -105,7 +105,7 @@ public class CompraCLI {
     private void faiOfferta(AnnuncioBean annuncio) {
         Scanner scanner = new Scanner(System.in);
         OffertaBean offertaBean = new OffertaBean();
-        offertaBean.setAnnuncioID(annuncio.getIdAnnuncio());
+        offertaBean.setIdAnnuncio(annuncio.getIdAnnuncio());
         offertaBean.setCopiaMangaID(annuncio.getCopiaMangaID());
         System.out.println("COMPRACLI ricevere da annuncio id copia pari a : "+ annuncio.getCopiaMangaID());
         offertaBean.setUsernameOfferente(annuncio.getNomeUtente());

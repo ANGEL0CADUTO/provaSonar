@@ -6,13 +6,14 @@ import java.time.LocalDateTime;
 public class AnnuncioBean {
 
         private int idAnnuncio;
-        private int copiaMangaID;
+
 
 
         private int utenteVenditoreID;
         private String nomeUtente;
         private String nomeManga;
         private int volume;
+        private int copiaMangaID;
         private double votoUtente;
 
         private BigDecimal prezzo;
@@ -54,14 +55,14 @@ public class AnnuncioBean {
 
 
 
-        public LocalDateTime getDataAnnuncio() {
-            return dataAnnuncio;
-        }
+
 
         public void setDataAnnuncio(LocalDateTime dataAnnuncio) {
             this.dataAnnuncio = dataAnnuncio;
         }
-
+        public LocalDateTime getDataAnnuncio() {
+        return dataAnnuncio;
+    }
         public String getNomeUtente() {
             return nomeUtente;
         }
@@ -89,13 +90,13 @@ public class AnnuncioBean {
 
 
 
-        public int getIdAnnuncio() {
-            return idAnnuncio;
-        }
+
 
         public void setIdAnnuncio(int idAnnuncio) {
             this.idAnnuncio = idAnnuncio;
         }
 
-
+        public int getIdAnnuncio() {
+        return idAnnuncio;
+    }
 }

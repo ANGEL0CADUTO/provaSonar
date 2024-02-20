@@ -72,22 +72,7 @@ public class HomePage extends UserGuiController {
         }
     }
 
-    public void goToRecensioni() throws IOException {
 
-        if (utenteBean.isLogged()) {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensioni.fxml"));
-            loader.setControllerFactory(c -> new RecensioniGrafico(utenteBean));
-
-
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-            stage.setScene(scene);
-        } else {
-            goToLogin();
-        }
-    }
 
 
     public void registrazione() throws IOException {

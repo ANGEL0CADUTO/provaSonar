@@ -7,11 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import model.OffertaRicevuta;
 
 import java.io.IOException;
@@ -27,7 +23,7 @@ public class OfferteRicevuteGrafico extends UserGuiController{
     private int idAnnuncio;
 
     @FXML
-    private TableView offerteTable;
+    private TableView<OffertaRicevuta> offerteTable;
     @FXML
     private TableColumn<OffertaRicevuta, String> utenteColumn;
     @FXML
@@ -79,7 +75,7 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                     // Ora puoi eseguire un'azione basata su questo elemento
                     try {
                         OffertaBean offertaBean = new OffertaBean();
-                        offertaBean.setAnnuncioID(array.get(index).getAnnuncioID());
+                        offertaBean.setIdOfferta(array.get(index).getAnnuncioID());
                         offertaBean.setCopiaMangaID(array.get(index).getCopiaMangaID());
                         offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
                         offertaBean.setIdOfferta(array.get(index).getIdOfferta());
