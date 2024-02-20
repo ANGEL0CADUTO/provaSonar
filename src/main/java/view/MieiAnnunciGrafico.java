@@ -5,25 +5,22 @@ import controllerapplicativo.MieiAnnunciApplicativo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
-import model.AnnuncioModel;
 
-import java.io.IOException;
+import model.AnnuncioModel;
+import utils.BottoneToOfferteRicevute;
+
 import java.time.format.DateTimeFormatter;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 
 public class MieiAnnunciGrafico extends UserGuiController {
-    private static final Logger logger= Logger.getLogger(MieiAnnunciGrafico.class.getName());
+
 
 
     @FXML
@@ -71,37 +68,20 @@ public class MieiAnnunciGrafico extends UserGuiController {
 
             //DEVO CAPIRE BENE COME PASSARE I DATI
             offerteButtonColumn.setCellFactory(cellData -> new TableCell<AnnuncioModel, String>() {
-                private int index;
-                private final Button bottone = new Button("Naviga ");
-
-                {
-                    // Gestisci l'evento di clic del bottone
-                    bottone.setOnAction(event -> {
-
-                        // Ora puoi eseguire un'azione basata su questo elemento
-                        try {
-
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("OfferteRicevute.fxml"));
-                            loader.setControllerFactory(c -> new OfferteRicevuteGrafico(utenteBean,array.get(index).getIdAnnuncio()));
-                            Parent root = loader.load();
-                            loader.getController();
-                            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-                            Scene scene = new Scene(root);
-                            stage.setScene(scene);
-                        } catch (IOException e) {
-                            logger.info("Errore in MieiAnnunciGrafico nel cambio pagina " +e.getMessage());
-                        }
-                    });
-                }
+                private BottoneToOfferteRicevute bottone;
 
                 @Override
                 protected void updateItem(String str, boolean empty) {
                     super.updateItem(str, empty);
-                    if (empty) {
+
+                    if (empty || str == null) {
                         setGraphic(null);
                     } else {
+                        if (bottone == null) {
+                            bottone = new BottoneToOfferteRicevute(array, getIndex(), myAnchorPane, utenteBean);
+                            bottone.setText("Naviga");
+                        }
                         setGraphic(bottone);
-                        index = getIndex();
                     }
                 }
             });

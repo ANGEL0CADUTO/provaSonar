@@ -2,6 +2,7 @@ package controllerapplicativo;
 
 import bean.UtenteBean;
 import dao.UtenteDAO;
+import exceptions.CreditoInsufficienteException;
 import model.UtenteModel;
 
 import java.math.BigDecimal;
@@ -16,14 +17,18 @@ public class DepositaEPrelevaApplicativo {
         return depositaCredito.userDeposit(model,cifra);
     }
 
-    public boolean preleva(UtenteBean bean, String cifraString){
+    public boolean preleva(UtenteBean bean, String cifraString) throws CreditoInsufficienteException {
         UtenteDAO prelevaCredito = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
 
         BigDecimal cifra = new BigDecimal(cifraString);
-        if(prelevaCredito.checkCreditoSufficienteByUtenteID(model.getIdUtente(),cifra)){
-            return prelevaCredito.userPreliev(model,cifraString);
+        try {
+            if(prelevaCredito.checkCreditoSufficienteByUtenteID(model.getIdUtente(),cifra)){
+                return prelevaCredito.userPreliev(model,cifraString);
+            }
+        } catch (CreditoInsufficienteException e) {
+            throw new CreditoInsufficienteException();
         }
         return false;
     }

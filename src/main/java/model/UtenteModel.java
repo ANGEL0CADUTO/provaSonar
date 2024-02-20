@@ -1,15 +1,48 @@
 package model;
 
+import bean.DatiUtenteBean;
+
 import java.math.BigDecimal;
 
 public class UtenteModel {
 
+    public int getInformazioniUtenteID() {
+        return informazioniUtenteID;
+    }
+
+    public void setInformazioniUtenteID(int informazioniUtenteID) {
+        this.informazioniUtenteID = informazioniUtenteID;
+    }
+
+    public UtenteModel(int idUtente, String email, String username, Double votoRecensioni, BigDecimal credito, int id) {
+        this.idUtente = idUtente;
+        this.email = email;
+        this.username = username;
+        this.votoRecensioni = votoRecensioni;
+        this.credito = credito;
+        this.informazioniUtenteID = id;
+    }
+    public UtenteModel() {
+
+    }
+
     private int idUtente;
     private String email;
     private String username;
-    private String password;
+
     private Double votoRecensioni;
     private BigDecimal credito;
+    private int informazioniUtenteID;
+
+    private DatiUtente datiUtente;
+
+    public DatiUtente getDatiUtente() {
+        return datiUtente;
+    }
+
+    public void setDatiUtente(DatiUtente datiUtente) {
+        this.datiUtente = datiUtente;
+    }
 
     public int getIdUtente() {
         return idUtente;
@@ -35,13 +68,6 @@ public class UtenteModel {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Double getVotoRecensioni() {
         return votoRecensioni;

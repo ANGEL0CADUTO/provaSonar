@@ -1,7 +1,6 @@
 package view;
 
 import bean.UtenteBean;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +29,7 @@ public class BaseController {
 
 
     @FXML
-      void goToHomePage(ActionEvent event) throws IOException {
+      void goToHomePage() throws IOException {
          //The Home Page button onAction method
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));

@@ -1,38 +1,39 @@
 package cliview;
 
+import bean.CredenzialiBean;
 import bean.UtenteBean;
 import controllerapplicativo.LoginApplicativo;
+import exceptions.CredenzialiSbagliateException;
+import utils.CLIPrinter;
 
 import java.util.Scanner;
 
 public class LoginCLI {
     private UtenteBean utenteBean;
     private HomePageCLI homePageCLI;
-    public LoginCLI(UtenteBean utente) {
-        this.utenteBean = utente;
 
+    public LoginCLI(HomePageCLI homePageCLI) {
+        this.homePageCLI = homePageCLI;
     }
 
-    public void initialize(){
+    public void initialize() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Inserisci l'email: ");
+        CredenzialiBean bean = new CredenzialiBean();
+
+        CLIPrinter.println("Inserisci l'email: ");
         String email = scanner.nextLine();
 
-        utenteBean.setEmail(email);
-        System.out.println("Inserisci la tua password: ");
+        bean.setEmail(email);
+        CLIPrinter.println("Inserisci la tua password: ");
         String password = scanner.nextLine();
-        utenteBean.setPassword(password);
+        bean.setPassword(password);
 
         LoginApplicativo controllerApp = new LoginApplicativo();
-        if (controllerApp.login(utenteBean)) {
-            System.out.println("Login effettuato con successo per l'utente: " + utenteBean.getEmail());
-            utenteBean.setLogged(true);
-
-
-        } else {
-            System.out.println("Login fallito. Controlla le credenziali e riprova.");
+        try {
+            UtenteBean nuovoUtenteBean = controllerApp.login(bean);
+            homePageCLI.setUtenteBean(nuovoUtenteBean);
+        } catch (CredenzialiSbagliateException e) {
+            CLIPrinter.println("Abbiamo ricevuto una exception personalizzata : " + e.getMessage());
         }
     }
-
-
 }

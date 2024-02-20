@@ -4,6 +4,7 @@ import bean.CopiaMangaBean;
 import bean.UtenteBean;
 import controllerapplicativo.LibreriaUtenteControllerApplicativo;
 import model.CopiaMangaModel;
+import utils.CLIPrinter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 public class LibreriaCLI {
     private UtenteBean utenteBean;
+
     public LibreriaCLI(UtenteBean utente) {
         this.utenteBean = utente;
     }
@@ -20,13 +22,13 @@ public class LibreriaCLI {
         int choice;
 
         do {
-            System.out.println("*************************************");
-            System.out.println("Ci troviamo in HomePage/LIBRERIA");
-            System.out.println("0. Torna indietro");
-            System.out.println("1. Visualizza Manga");
-            System.out.println("2. Aggiungi Manga");
-            System.out.println("3. Mie vendite");
-            System.out.println("4. Miei Acquisti");
+            CLIPrinter.println("*************************************");
+            CLIPrinter.println("Ci troviamo in HomePage/LIBRERIA");
+            CLIPrinter.println("0. Torna indietro");
+            CLIPrinter.println("1. Visualizza Manga");
+            CLIPrinter.println("2. Aggiungi Manga");
+            CLIPrinter.println("3. Mie vendite");
+            CLIPrinter.println("4. Miei Acquisti");
 
             choice = scanner.nextInt();
 
@@ -44,10 +46,10 @@ public class LibreriaCLI {
                     mieiAcquisti();
                     break;
                 case 0:
-                    System.out.println("Tornando indietro.");
+                    CLIPrinter.println("Tornando indietro.");
                     break;
                 default:
-                    System.out.println("Scelta non valida. Riprova.");
+                    CLIPrinter.println("Scelta non valida. Riprova.");
                     break;
             }
 
@@ -59,31 +61,31 @@ public class LibreriaCLI {
         List<CopiaMangaModel> risultati = controller.showUserManga(utenteBean);
 
         for (CopiaMangaModel risultato : risultati) {
-            System.out.println("ID: " + risultato.getIdCopiaManga());
-            System.out.println("Titolo: " + risultato.getTitolo());
-            System.out.println("Volume: " + risultato.getVolume());
-            System.out.println("Data Acquisto: " + risultato.getDataAcquisto());
-            System.out.println("Stato: " + risultato.getStatoCopiaManga());
-            System.out.println("--------------");
+            CLIPrinter.println("ID: " + risultato.getIdCopiaManga());
+            CLIPrinter.println("Titolo: " + risultato.getTitolo());
+            CLIPrinter.println("Volume: " + risultato.getVolume());
+            CLIPrinter.println("Data Acquisto: " + risultato.getDataAcquisto());
+            CLIPrinter.println("Stato: " + risultato.getStatoCopiaManga());
+            CLIPrinter.println("--------------");
         }
     }
 
     public void aggiungiManga() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Inserisci il titolo del manga:");
+        CLIPrinter.println("Inserisci il titolo del manga:");
         String titolo = scanner.nextLine();
 
-        System.out.println("Inserisci il volume del manga:");
+        CLIPrinter.println("Inserisci il volume del manga:");
         int volumeNumero = 0;
         try {
             volumeNumero = Integer.parseInt(scanner.nextLine());
             if (volumeNumero <= 0) {
-                System.out.println("Inserire un volume valido.");
+                CLIPrinter.println("Inserire un volume valido.");
                 return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Inserire un volume valido.");
+            CLIPrinter.println("Inserire un volume valido.");
             return;
         }
 
@@ -96,13 +98,11 @@ public class LibreriaCLI {
         copiaBean.setDataAcquisto(now);
 
         LibreriaUtenteControllerApplicativo controllerApp = new LibreriaUtenteControllerApplicativo();
-        if( controllerApp.aggiungiManga(copiaBean) != -1) {
-            System.out.println("Manga aggiunto con successo!");
+        if (controllerApp.aggiungiManga(copiaBean) != -1) {
+            CLIPrinter.println("Manga aggiunto con successo!");
+        } else {
+            CLIPrinter.println("C'è stato un errore");
         }
-        else{
-            System.out.println("C'è stato un errore");
-        }
-
     }
 
     public void mieVendite() {

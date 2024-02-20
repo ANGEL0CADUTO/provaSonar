@@ -1,5 +1,6 @@
 package controllerapplicativo;
 
+import model.DatiUtente;
 import bean.DatiUtenteBean;
 
 import bean.UtenteBean;
@@ -18,7 +19,13 @@ public class ProfiloUtenteApplicativo {
     public DatiUtenteBean getDatiUtente(int id) {
         DatiUtenteDao dao = new DatiUtenteDao();
 
-        return dao.getDatiUserByInformazioniUtenteID(id);
+        DatiUtente datiUtente = dao.getDatiUserByInformazioniUtenteID(id);
+        DatiUtenteBean datiUtenteBean = new DatiUtenteBean();
+        datiUtenteBean.setIdInformazioniUtente(datiUtente.getIdInformazioniUtente());
+        datiUtenteBean.setCivico(datiUtente.getCivico());
+        datiUtenteBean.setIndirizzo(datiUtente.getIndirizzo());
+        datiUtenteBean.setCap(datiUtente.getCap());
+        return datiUtenteBean;
     }
 
     public int insertDatiUtente(DatiUtenteBean bean) {

@@ -14,11 +14,12 @@ module logic {
     exports model;
     opens model to javafx.fxml;
 
-    exports bean;
-    opens bean to javafx.fxml;
+
 
     exports dao;
     opens dao to javafx.fxml;
+    exports bean;
+    opens bean to javafx.fxml;
 
 
 }

@@ -3,6 +3,7 @@ package view;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.OffertaControllerApplicativo;
+import exceptions.CreditoInsufficienteException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,9 +11,12 @@ import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
 
 public class OffertaControllerGrafico extends UserGuiController{
+
+    private static final Logger logger= Logger.getLogger(OffertaControllerGrafico.class.getName());
 
     @FXML
    private TextField offertaTextField;
@@ -56,8 +60,11 @@ public class OffertaControllerGrafico extends UserGuiController{
 
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
-        of.doOfferta(offertaBean);
-
+        try {
+            of.doOfferta(offertaBean);
+        } catch (CreditoInsufficienteException e) {
+            logger.info("Errore personalizzato : "+ e.getMessage());
+        }
 
 
     }

@@ -3,6 +3,7 @@ package cliview;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
 import controllerapplicativo.ProfiloUtenteApplicativo;
+import utils.CLIPrinter;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
@@ -19,16 +20,13 @@ public class ProfiloUtenteCLI {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-
         do {
-
-            System.out.println("*************************************");
-            System.out.println("Ci troviamo in Homepage/PROFILO UTENTE:");
-            System.out.println("0. Torna indietro");
-            System.out.println("1. Visualizza Dati");
-            System.out.println("2. Visualizza Recensioni");
-            System.out.println("3. Modifica dati consegna");
-
+            CLIPrinter.println("*************************************");
+            CLIPrinter.println("Ci troviamo in Homepage/PROFILO UTENTE:");
+            CLIPrinter.println("0. Torna indietro");
+            CLIPrinter.println("1. Visualizza Dati");
+            CLIPrinter.println("2. Visualizza Recensioni");
+            CLIPrinter.println("3. Modifica dati consegna");
 
             choice = scanner.nextInt();
 
@@ -43,10 +41,10 @@ public class ProfiloUtenteCLI {
                     modificaDatiConsegna();
                     break;
                 case 0:
-                    System.out.println("Tornando indietro.");
+                    CLIPrinter.println("Tornando indietro.");
                     break;
                 default:
-                    System.out.println("Scelta non valida. Riprova.");
+                    CLIPrinter.println("Scelta non valida. Riprova.");
                     break;
             }
 
@@ -59,22 +57,22 @@ public class ProfiloUtenteCLI {
         utenteBean.setVotoRecensione(bean2.getVotoRecensione());
         utenteBean.setCredito(bean2.getCredito());
 
-        System.out.println("Email: " + utenteBean.getEmail());
-        System.out.println("Username: " + utenteBean.getUsername());
-        System.out.println("Credito: " + utenteBean.getCredito());
+        CLIPrinter.println("Email: " + utenteBean.getEmail());
+        CLIPrinter.println("Username: " + utenteBean.getUsername());
+        CLIPrinter.println("Credito: " + utenteBean.getCredito());
 
         double votoRecensione = utenteBean.getVotoRecensione();
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
         String votoArrotondatoString = decimalFormat.format(votoRecensione);
-        System.out.println("Voto Recensione: " + votoArrotondatoString);
+        CLIPrinter.println("Voto Recensione: " + votoArrotondatoString);
 
         if (utenteBean.getDatiUtente() != null) {
-            System.out.println("Indirizzo: " + utenteBean.getDatiUtente().getIndirizzo());
-            System.out.println("Civico: " + utenteBean.getDatiUtente().getCivico());
-            System.out.println("CAP: " + utenteBean.getDatiUtente().getCap());
+            CLIPrinter.println("Indirizzo: " + utenteBean.getDatiUtente().getIndirizzo());
+            CLIPrinter.println("Civico: " + utenteBean.getDatiUtente().getCivico());
+            CLIPrinter.println("CAP: " + utenteBean.getDatiUtente().getCap());
         }
 
-        System.out.println("---------------");
+        CLIPrinter.println("---------------");
     }
 
     public void visualizzaRecensioni() {
@@ -85,15 +83,13 @@ public class ProfiloUtenteCLI {
     public void modificaDatiConsegna() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nuovo indirizzo: ");
+        CLIPrinter.print("Nuovo indirizzo: ");
         String nuovoIndirizzo = scanner.nextLine();
 
-        System.out.print("Nuovo civico: ");
+        CLIPrinter.print("Nuovo civico: ");
         String nuovoCivico = scanner.nextLine();
 
-
-
-        System.out.print("Nuovo CAP: ");
+        CLIPrinter.print("Nuovo CAP: ");
         String nuovoCap = scanner.nextLine();
 
         if (!nuovoIndirizzo.isEmpty() && !nuovoCivico.isEmpty() && !nuovoCap.isEmpty()) {
@@ -113,9 +109,9 @@ public class ProfiloUtenteCLI {
                     utenteBean.getDatiUtente().setCivico(nuovoCivico);
                     utenteBean.getDatiUtente().setCap(nuovoCap);
 
-                    System.out.println("Modifica dati avvenuta con successo.");
+                    CLIPrinter.println("Modifica dati avvenuta con successo.");
                 } else {
-                    System.out.println("Errore durante la modifica dei dati.");
+                    CLIPrinter.println("Errore durante la modifica dei dati.");
                 }
             } else {
                 int idNuoviDati = pu.insertDatiUtente(bean);
@@ -124,17 +120,13 @@ public class ProfiloUtenteCLI {
                 pu.updateInformazioniUtenteID(utenteBean);
 
                 if (idNuoviDati != -1) {
-                    System.out.println("Inserimento dati avvenuto con successo.");
+                    CLIPrinter.println("Inserimento dati avvenuto con successo.");
                 } else {
-                    System.out.println("Errore durante l'inserimento dei dati.");
+                    CLIPrinter.println("Errore durante l'inserimento dei dati.");
                 }
             }
         } else {
-            System.out.println("I campi erano vuoti. Nessuna modifica effettuata.");
+            CLIPrinter.println("I campi erano vuoti. Nessuna modifica effettuata.");
         }
-
-
     }
-
-
 }

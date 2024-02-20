@@ -2,6 +2,7 @@ package view;
 
 import controllerapplicativo.DepositaEPrelevaApplicativo;
 import bean.UtenteBean;
+import exceptions.CreditoInsufficienteException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -85,15 +86,18 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
 
         DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
 
-        boolean esitoPrelievo = pr.preleva(utenteBean, cifraString);
-        if (esitoPrelievo) {
+            boolean esitoPrelievo = false;
+            try {
+                esitoPrelievo = pr.preleva(utenteBean, cifraString);
+            } catch (CreditoInsufficienteException e) {
+                prelevaLabel.setText(e.getMessage());
+            }
+            if (esitoPrelievo) {
             BigDecimal cifra = new BigDecimal(cifraString);
             utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));
 
             prelevaLabel.setText("Prelievo andato a buon fine");
 
-        } else {
-            prelevaLabel.setText("Credito insufficiente");
         }
     }catch(NumberFormatException e){depositaLabel.setText("Devi inserire un valore valido");}
 

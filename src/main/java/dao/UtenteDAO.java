@@ -1,7 +1,9 @@
 package dao;
 
-import bean.DatiUtenteBean;
 import bean.UtenteBean;
+import exceptions.CredenzialiSbagliateException;
+import exceptions.CreditoInsufficienteException;
+import model.Credenziali;
 import model.UtenteModel;
 
 
@@ -13,47 +15,39 @@ public class UtenteDAO {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
     private static final String CREDITO = "credito";
 
-    public boolean searchUser(UtenteBean bean) {
+    public UtenteModel searchUser(Credenziali login) throws CredenzialiSbagliateException {
         boolean b = false;
         String query = "SELECT * FROM mangaink.utente WHERE email = ?";
 
+        int id = 0;
+        String username = "";
+        BigDecimal credito = new BigDecimal(0);
+        double voto = 0;
+        int informazioniUtenteID = 0;
+
+
         Connection conn = DBConnection.getIstance().connection();
-        try(PreparedStatement st = conn.prepareStatement(query)) {
+        try (PreparedStatement st = conn.prepareStatement(query)) {
+            st.setString(1, login.getEmail());
 
-            st.setString(1, bean.getEmail()); // Aggiungi il parametro della email
             ResultSet rs = st.executeQuery();
+            if (rs != null && rs.next() && rs.getString("password").equals(login.getPassword())) {
 
+                id = rs.getInt("idUtente");
+                username = rs.getString("username");
+                credito = rs.getBigDecimal(CREDITO);
+                voto = rs.getDouble("votoRecensioni");
+                informazioniUtenteID = rs.getInt("informazioniUtenteID");
 
-            if (rs != null && rs.next() && rs.getString("password").equals(bean.getPassword())) {
-
-
-                bean.setIdUtente(rs.getInt("idUtente"));
-                bean.setUsername(rs.getString("username"));
-                bean.setCredito(rs.getBigDecimal( CREDITO));
-                bean.setVotoRecensione(rs.getDouble("votoRecensioni"));
-
-                int informazioniUtenteID = rs.getInt("informazioniUtenteID");
-                if (!rs.wasNull()) {
-                    DatiUtenteDao dao = new DatiUtenteDao();
-                    DatiUtenteBean beanDati;
-
-                    beanDati = dao.getDatiUserByInformazioniUtenteID(rs.getInt("informazioniUtenteID"));
-                    beanDati.setIdInformazioniUtente(informazioniUtenteID);
-                    bean.setDatiUtente(beanDati);
-                }
-
-
-                logger.info("ha funzionato");
-                b = true;
             } else {
                 logger.info("fallito");
+                throw new CredenzialiSbagliateException();
             }
-
         } catch (SQLException e) {
             logger.severe("Errore nel tentativo di stabilire la connessione in searchUser: " + e.getMessage());
         }
 
-        return b;
+        return new UtenteModel(id, login.getEmail(), username, voto, credito, informazioniUtenteID);
     }
 
     public boolean addUser(UtenteBean bean) {
@@ -222,7 +216,7 @@ public class UtenteDAO {
             if (rs.next()) {
                 model = new UtenteModel();
                 model.setVotoRecensioni(rs.getDouble(1));
-                model.setCredito(rs.getBigDecimal("credito"));
+                model.setCredito(rs.getBigDecimal(CREDITO));
 
             }
         } catch (SQLException e) {
@@ -253,29 +247,27 @@ public class UtenteDAO {
         return b;
     }
 
-    public boolean checkCreditoSufficienteByUtenteID(int id, BigDecimal cifra) {
+    public boolean checkCreditoSufficienteByUtenteID(int id, BigDecimal cifra) throws CreditoInsufficienteException {
         String query = "SELECT credito FROM utente WHERE idUtente = ?";
 
         Connection conn = DBConnection.getIstance().connection();
 
-        boolean b = false;
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
             st.setInt(1, id);
 
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                b = true;
-                if (rs.getBigDecimal("credito").compareTo(cifra) < 0) {
-
-                    b = false;
-
+                BigDecimal creditoAttuale = rs.getBigDecimal(CREDITO);
+                if (creditoAttuale.compareTo(cifra) < 0) {
+                    throw new CreditoInsufficienteException();
                 }
+                return true;
             }
         } catch (SQLException e) {
-            logger.severe("Errore in UtenteDAO in checkCreditoSufficienteByUtenteID : " + e.getMessage());
+            logger.severe("Errore in UtenteDAO in checkCreditoSufficienteByUtenteID: " + e.getMessage());
         }
-        return b;
+        return false;
     }
 
 

@@ -2,16 +2,15 @@ package view;
 
 
 import controllerapplicativo.LoginApplicativo;
+import bean.CredenzialiBean;
 import bean.UtenteBean;
-import javafx.event.ActionEvent;
+
+import exceptions.CredenzialiSbagliateException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,22 +44,28 @@ public class LoginGrafico extends BaseController {
 
     public void userLogin(){
         LoginApplicativo lg = new LoginApplicativo();
+        CredenzialiBean credenzialiBean = new CredenzialiBean();
 
         if(enteredEmail.getText().isEmpty() && enteredPassword.getText().isEmpty()){
-            utenteBean.setEmail("Utente2");
-            utenteBean.setPassword("1234");
+            credenzialiBean.setEmail("Utente2");
+            credenzialiBean.setPassword("1234");
         }
         else{
-            utenteBean.setEmail(enteredEmail.getText());
-            utenteBean.setPassword(enteredPassword.getText());
+            credenzialiBean.setEmail(enteredEmail.getText());
+            credenzialiBean.setPassword(enteredPassword.getText());
         }
 
 
-        boolean esitoLogin = lg.login(utenteBean);
 
-        if(esitoLogin){
+        try {
+            utenteBean = lg.login(credenzialiBean);
+        } catch (CredenzialiSbagliateException e) {
+            wrongLogin.setText(e.getMessage());
+        }
+
+        if(utenteBean.isLogged()){
             wrongLogin.setText("Hai effettuato l'accesso!");
-            utenteBean.setLogged(true);
+
             try{
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
@@ -76,9 +81,7 @@ public class LoginGrafico extends BaseController {
             }
 
         }
-        else{
-            wrongLogin.setText("Credenziali sbagliate");
-        }
+
 
     }
 

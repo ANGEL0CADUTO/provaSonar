@@ -11,7 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -21,7 +23,7 @@ public class RegistraGrafico extends BaseController{
     private Button registra;
 
     @FXML
-    private Button home;
+    private Text home;
 
     @FXML
     private TextField enteredEmail;

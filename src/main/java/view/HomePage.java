@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -24,6 +25,9 @@ public class HomePage extends UserGuiController {
     private Button mieiAnnunci;
     @FXML
     private HBox logoutBox;
+
+    @FXML
+    private Text home;
 
 
     protected HomePage(UtenteBean bean) {
@@ -56,35 +60,11 @@ public class HomePage extends UserGuiController {
         this.utenteBean = bean;
     }
 
-    public void changeScene() throws IOException {
-
-        if (!utenteBean.isLogged()) {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            loader.setControllerFactory(c -> new LoginGrafico(utenteBean));
-
-
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) loginHomePage.getScene().getWindow();
-            stage.setScene(scene);
-
-        }
-    }
 
 
 
 
-    public void registrazione() throws IOException {
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Registra.fxml"));
-        loader.setControllerFactory(c -> new RegistraGrafico(utenteBean));
-        Parent root = loader.load();
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    }
 
 
     //da testare se funziona anche post login

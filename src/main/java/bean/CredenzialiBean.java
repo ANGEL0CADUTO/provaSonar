@@ -1,4 +1,4 @@
-package dati;
+package bean;
 
 public class CredenzialiBean {
 

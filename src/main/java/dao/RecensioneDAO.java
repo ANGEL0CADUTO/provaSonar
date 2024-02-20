@@ -37,21 +37,11 @@ public class RecensioneDAO {
                 recensione.setUsernameRecensore(rs.getString("usernameRecensore"));
                 recensione.setVoto(rs.getDouble("voto"));
                 recensione.setTesto(rs.getString("testo"));
-
-                int idOfferta = rs.getInt("offertaID");
-                OffertaDAO dao2 = new OffertaDAO();
-                OffertaRicevuta offerta = dao2.getDatiOffertaByOffertaID(idOfferta);
-                recensione.setPrezzoFinale(offerta.getOffertaPrezzo());
-                recensione.setDataAcquisto(offerta.getDataVendita());
+                recensione.setOffertaID(rs.getInt("offertaID"));
 
 
-                //CORREGGERE
 
-                AnnuncioDAO dao3 = new AnnuncioDAO();
-                AnnuncioModel annuncio = dao3.getDatiAnnuncioByAnnuncioID(offerta.getAnnuncioID());
-                recensione.setTitoloRecensito(annuncio.getNomeManga());
-                recensione.setPrezzoIniziale(annuncio.getPrezzo());
-                recensione.setVolumeRecensito(annuncio.getVolume());
+
 
                 array.add(recensione);
 

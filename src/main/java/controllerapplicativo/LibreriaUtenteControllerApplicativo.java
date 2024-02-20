@@ -21,7 +21,6 @@ public class LibreriaUtenteControllerApplicativo {
 
         utente.setIdUtente(bean.getIdUtente());
         utente.setEmail(bean.getEmail());
-        utente.setPassword(bean.getPassword());
         utente.setUsername(bean.getPassword());
         utente.setVotoRecensioni(bean.getVotoRecensione());
         utente.setCredito(bean.getCredito());

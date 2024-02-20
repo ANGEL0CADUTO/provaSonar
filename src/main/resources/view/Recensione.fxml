@@ -11,15 +11,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="myAnchorPane" prefHeight="412.0" prefWidth="600.0" style="-fx-background-color: #242222;" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InviaRecensioneGrafico">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="420.0" prefWidth="167.0">
          <VBox alignment="CENTER" prefHeight="119.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
             <Label fx:id="nomeUtente" prefHeight="18.0" prefWidth="0.0" />
-            <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="167.0">
-               <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#goToHomePage" prefWidth="90.0" text="Home" />
-            </HBox>
+            <Text fx:id="home" onMouseClicked="#goToHomePage" strokeType="OUTSIDE" strokeWidth="0.0" text="MangaInk">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="24.0" />
+               </font>
+            </Text>
+            <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="167.0" />
          </VBox>
          <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">
             <ImageView fx:id="profiloImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

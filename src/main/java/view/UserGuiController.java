@@ -45,6 +45,16 @@ public class UserGuiController extends BaseController{
 
 
     }
+    public void registrazione() throws IOException {
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Registra.fxml"));
+        loader.setControllerFactory(c -> new RegistraGrafico(utenteBean));
+        Parent root = loader.load();
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 
 
     @FXML
@@ -144,10 +154,10 @@ public class UserGuiController extends BaseController{
             goToLogin();
         }
     }
-    public void logout(ActionEvent e) throws IOException {
+    public void logout() throws IOException {
         utenteBean = new UtenteBean();
 
-        goToHomePage(e);
+        goToHomePage();
 
     }
 

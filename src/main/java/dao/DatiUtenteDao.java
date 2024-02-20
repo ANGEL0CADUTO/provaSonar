@@ -1,6 +1,7 @@
 package dao;
 
 import bean.DatiUtenteBean;
+import model.DatiUtente;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -49,11 +50,11 @@ public class DatiUtenteDao {
     }
 
     //DA CORREGGERE PERCHE USIAMO IL BEAN CHE IN RELTA DOVREBBE SPARIRE DALL'APPLICATIVO IN GIU
-    public DatiUtenteBean getDatiUserByInformazioniUtenteID(int id) {
+    public DatiUtente getDatiUserByInformazioniUtenteID(int id) {
 
         Connection conn = DBConnection.getIstance().connection();
         String query = "SELECT indirizzo,civico,cap FROM informazioniutente WHERE idInformazioniUtente = ?";
-        DatiUtenteBean bean = null;
+        DatiUtente dati = null;
 
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
@@ -61,16 +62,17 @@ public class DatiUtenteDao {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
-                bean = new DatiUtenteBean();
-                bean.setIndirizzo(rs.getString("indirizzo"));
-                bean.setCivico(rs.getString("civico"));
-                bean.setCap(rs.getString("cap"));
+                dati = new DatiUtente();
+
+                dati.setIndirizzo(rs.getString("indirizzo"));
+                dati.setCivico(rs.getString("civico"));
+                dati.setCap(rs.getString("cap"));
             }
 
         } catch (SQLException e) {
             logger.severe("errore in getDatiUserByInformazioniUtenteID in DatiUtenteDAO: " + e.getMessage());
         }
-        return bean;
+        return dati;
     }
     public boolean modificaDatiUser(DatiUtenteBean bean){
         boolean b = false;

@@ -5,6 +5,7 @@ import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
+import exceptions.CreditoInsufficienteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -170,11 +171,14 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         offerteList.aggiungiObserver(this);
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
-        boolean esitoOfferta = of.doOfferta(offertaBean);
-        if(!esitoOfferta){
-            wrongOfferta.setText("Credito insufficiente");
+        boolean esitoOfferta = false;
+        try {
+            esitoOfferta = of.doOfferta(offertaBean);
+        } catch (CreditoInsufficienteException e) {
+            wrongOfferta.setText(e.getMessage());
         }
-        else {
+        if(esitoOfferta){
+
 
                 try {
 

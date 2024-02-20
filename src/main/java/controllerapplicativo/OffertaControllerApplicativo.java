@@ -5,6 +5,7 @@ import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import dao.UtenteDAO;
+import exceptions.CreditoInsufficienteException;
 import model.AnnuncioModel;
 import model.OffertaModel;
 import model.OfferteModel;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OffertaControllerApplicativo {
-    public boolean doOfferta(OffertaBean offertaBean) {
+    public boolean doOfferta(OffertaBean offertaBean) throws CreditoInsufficienteException {
         //prendo il session bean dell'utente
         //istanzi il model dell'offerta
         //

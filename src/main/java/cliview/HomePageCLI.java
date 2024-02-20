@@ -1,10 +1,9 @@
 package cliview;
 
 import bean.UtenteBean;
+import utils.CLIPrinter;
 
 import java.util.Scanner;
-
-
 
 public class HomePageCLI {
     private UtenteBean utenteBean;
@@ -13,46 +12,44 @@ public class HomePageCLI {
         this.utenteBean = bean;
     }
 
-    public void setUtenteBean(UtenteBean bean){
+    public void setUtenteBean(UtenteBean bean) {
         this.utenteBean = bean;
     }
 
-
-
-    public void initialize()  {
+    public void initialize() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
 
         do {
             if (!utenteBean.isLogged()) {
-                System.out.println("*************************************");
-                System.out.println("Ci troviamo in HOMEPAGE:");
-                System.out.println("1. Login");
-                System.out.println("2. Registrazione");
+                CLIPrinter.println("*************************************");
+                CLIPrinter.println("Ci troviamo in HOMEPAGE:");
+                CLIPrinter.println("1. Login");
+                CLIPrinter.println("2. Registrazione");
             } else {
-                System.out.println("*************************************");
-                System.out.println("Ci troviamo in HOMEPAGE:");
-                System.out.println("0. Quit");
-                System.out.println("1. Profilo");
-                System.out.println("2. Libreria");
-                System.out.println("3. Miei Annunci");
-                System.out.println("4. Conto");
-                System.out.println("5. Compra");
-                System.out.println("6. Logout");
+                CLIPrinter.println("*************************************");
+                CLIPrinter.println("Ci troviamo in HOMEPAGE:");
+                CLIPrinter.println("0. Quit");
+                CLIPrinter.println("1. Profilo");
+                CLIPrinter.println("2. Libreria");
+                CLIPrinter.println("3. Miei Annunci");
+                CLIPrinter.println("4. Conto");
+                CLIPrinter.println("5. Compra");
+                CLIPrinter.println("6. Logout");
             }
 
             choice = scanner.nextInt();
             if (!utenteBean.isLogged()) {
                 switch (choice) {
                     case 1:
-                        login(utenteBean);
+                        login();
                         break;
                     case 2:
                         registrazione();
                         break;
                     default:
-                        System.out.println("Scelta non valida. Riprova.");
+                        CLIPrinter.println("Scelta non valida. Riprova.");
                         break;
                 }
             } else {
@@ -76,35 +73,34 @@ public class HomePageCLI {
                         logout(utenteBean);
                         break;
                     case 0:
-                        System.out.println("Uscita dal programma.");
+                        CLIPrinter.println("Uscita dal programma.");
                         break;
                     default:
-                        System.out.println("Scelta non valida. Riprova.");
+                        CLIPrinter.println("Scelta non valida. Riprova.");
                         break;
                 }
             }
 
-        }while (choice != 0) ;
+        } while (choice != 0);
 
     }
 
-
-    public void login(UtenteBean bean) {
-        LoginCLI loginCLI = new LoginCLI(utenteBean);
+    public void login() {
+        LoginCLI loginCLI = new LoginCLI(this);
         loginCLI.initialize();
     }
 
-    public void registrazione(){
+    public void registrazione() {
         RegistrazioneCLI registrazioneCLI = new RegistrazioneCLI();
         registrazioneCLI.initialize();
     }
 
     public void goToMieiAnnunci(UtenteBean utenteBean) {
         MieiAnnunciCLI mieiAnnunciCLI = new MieiAnnunciCLI(utenteBean);
-        System.out.println("Visualizzazione dei tuoi annunci...");
+        CLIPrinter.println("Visualizzazione dei tuoi annunci...");
         mieiAnnunciCLI.initialize();
-
     }
+
     public void goToProfiloUtente(UtenteBean utenteBean) {
         ProfiloUtenteCLI profiloUtenteCLI = new ProfiloUtenteCLI(utenteBean);
         profiloUtenteCLI.initialize();
@@ -125,12 +121,7 @@ public class HomePageCLI {
         compraCLI.initialize();
     }
 
-
     public void logout(UtenteBean utenteBean) {
         utenteBean.setLogged(false);
     }
-
-
 }
-
-
