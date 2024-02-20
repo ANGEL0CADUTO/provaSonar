@@ -1,0 +1,10 @@
+L'utente:    Angel
+
+Ha fatto un offerta per il manga:   Ghost in the shell
+
+Volume:   12
+
+l'offerta è di euro:1
+
+l'offerta è stata fatta a te utente:Utente
+
