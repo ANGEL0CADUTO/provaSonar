@@ -186,12 +186,12 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
 
     @Override
-    public void update(OffertaModel offertaModel) {
-        String notifica = creaNotifica(offertaModel);
+    public void update() {
+        String notifica = creaNotifica();
         saveToFile(notifica, "NotificaFile.txt");
     }
 
-    private String creaNotifica(OffertaModel offertaModel) {
+    private String creaNotifica() {
         offertaModel.getState();//recupero lo stato
 
         OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
