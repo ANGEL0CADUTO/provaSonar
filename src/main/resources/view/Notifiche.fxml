@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NotificheControllerGrafico">
+   <bottom>
+      <Label fx:id="notificationLabel" prefHeight="155.0" prefWidth="490.0" textFill="#7b6a6a" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <HBox prefHeight="91.0" prefWidth="491.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="91.0" prefWidth="163.0">
+               <children>
+                  <ImageView fitHeight="89.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photo/notification.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="91.0" prefWidth="223.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="189.0" text="HAI UNA NUOVA NOTIFICA!" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets top="35.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

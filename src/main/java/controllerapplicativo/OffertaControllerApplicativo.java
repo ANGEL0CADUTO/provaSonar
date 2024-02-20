@@ -7,8 +7,10 @@ import dao.OffertaDAO;
 import dao.UtenteDAO;
 import model.AnnuncioModel;
 import model.OffertaModel;
+import model.OfferteModel;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OffertaControllerApplicativo {
@@ -29,16 +31,12 @@ public class OffertaControllerApplicativo {
         System.out.println("Controllo " + offertaBean.getCopiaMangaID());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
 
-        AnnuncioDAO annuncioDAO= new AnnuncioDAO();
-        AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
-
-        List<AnnuncioModel> annunci = annuncioDAO.getMyAnnunci(annuncioModel.getUtenteVenditoreID());
-
-        //qua dovrei fare il setState
-
-        offertaModel.setState(offertaModel);
+        List<OffertaModel> offertaList = new ArrayList<>();
+        offertaList.add(offertaModel);
 
 
+        OfferteModel offerteModelList = OfferteModel.getInstance();
+        offerteModelList.setState(offertaList);
 
         UtenteDAO dao = new UtenteDAO();
         if(dao.checkCreditoSufficienteByUtenteID(offertaModel.getUtenteOfferenteID(),offertaModel.getOffertaPrezzo()))
@@ -49,7 +47,8 @@ public class OffertaControllerApplicativo {
           //  COME DEVO CAMBIARE PER FARE UPDATE DEL CAMBIAMENTO
              boolean b = dao2.insertOfferta(offertaModel);
              if(b){
-                 offertaModel.notificaCambiamentiAObservers();
+
+              offerteModelList.notificaCambiamentiAObservers();
 
 
              }

@@ -11,20 +11,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import com.google.gson.*;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import model.OffertaModel;
+import model.OfferteModel;
 import observer.OffertaObserver;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
 
@@ -70,11 +72,18 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
     private OffertaBean offertaBean;
 
-    private OffertaModel offertaModel;
+    private OffertaModel offertaModel ;
 
     private  String nomeManga;
     private  int volume;
     private String nomeVenditore;
+
+    private OfferteModel offerteList;
+    private List<OffertaModel> offertaList = new ArrayList<>();
+
+
+
+
 
     public CompraMangaControllerGrafico(UtenteBean bean) {
         super(bean);
@@ -156,8 +165,9 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());
         offertaBean.setDataOfferta(LocalDateTime.now());
 
-        offertaModel.aggiungiObserver(this);//aggiungo alla lista observer
-
+        /*OBSERVER*/
+        offerteList = OfferteModel.getInstance();
+        offerteList.aggiungiObserver(this);
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
         boolean esitoOfferta = of.doOfferta(offertaBean);
@@ -188,34 +198,84 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
     @Override
     public void update() {
         String notifica = creaNotifica();
-        saveToFile(notifica, "NotificaFile.txt");
+        saveToJsonFile(notifica, "NotificaFile.json");
     }
 
     private String creaNotifica() {
-        offertaModel.getState();//recupero lo stato
-
+        List<OffertaModel> offerteModelList = new ArrayList<>();
+        offerteModelList = offerteList.getState();
         OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
-       AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
-
-
+        AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
 
         StringBuilder notificaBuilder = new StringBuilder();
-        notificaBuilder.append("L'utente:    ").append(offertaModel.getUsernameOfferente()).append("\n\n");
-        notificaBuilder.append("Ha fatto un offerta per il manga:   ").append(annuncioBean.getNomeManga()).append("\n\n");
-        notificaBuilder.append("Volume:   ").append(annuncioBean.getVolume()).append("\n\n");
-        notificaBuilder.append("l'offerta è di euro:").append(offertaModel.getOffertaPrezzo()).append("\n\n");
-        notificaBuilder.append("l'offerta è stata fatta a te utente:").append(annuncioBean.getNomeUtente()).append("\n\n");
+        for (OffertaModel o :offerteModelList){
+
+            Map<String, Object> notificaMap = new HashMap<>();
+            Map<String, Object> notifica = new HashMap<>();
+            notifica.put("utente", o.getUsernameOfferente());
+            notifica.put("manga", annuncioBean.getNomeManga());
+            notifica.put("volume", annuncioBean.getVolume());
+            notifica.put("prezzo_offerta", o.getOffertaPrezzo());
+            notifica.put("venditore", annuncioBean.getNomeUtente());
+            notificaMap.put("notifica", notifica);
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(notificaMap);
+
+/*
+            notificaBuilder.append("Utente Venditore:    ").append(o.getUsernameOfferente());
+            notificaBuilder.append("Manga:   ").append(annuncioBean.getNomeManga());
+            notificaBuilder.append("Volume:   ").append(annuncioBean.getVolume());
+            notificaBuilder.append("Prezzo offerta:").append(o.getOffertaPrezzo());
+            notificaBuilder.append("Utente offerente:").append(annuncioBean.getNomeUtente());*/
+
+        }
+
+
+
         return notificaBuilder.toString();
+
     }
 
-    private void saveToFile(String notifica, String filePath) {
+    private void saveToJsonFile(String notifica, String filePath) {
+
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write(notifica);
+        } catch (IOException e) {
+            System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
+            e.printStackTrace();
+        }
+        /*try {
+            // Converti il StringBuilder in una stringa
+            String notificaString = notifica;
+
+            // Creazione di un oggetto Gson
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Serializzazione dell'oggetto Java in formato JSON
+            String json = gson.toJson(notificaString);
+
+            // Scrittura del JSON nel file
+            try (FileWriter writer = new FileWriter(filePath)) {
+                writer.write(json);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
+            e.printStackTrace();
+        }
+*/
+    }
+
+
+    }
+    /*private void saveToFile(String notifica, String filePath) {
         try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))) {
             printWriter.print(notifica);
         } catch (IOException e) {
             System.out.println("NON SEI RIUSCITO A NOTIFICARE");
             e.printStackTrace();
         }
-    }
+    }*/
 
 
-}
+
