@@ -1,6 +1,7 @@
 package model;
 
-import observer.OffertaSubject;
+import pattern.observer.OffertaSubject;
+import pattern.observer.OffertaSubject;
 
 import java.util.ArrayList;
 import java.util.List;

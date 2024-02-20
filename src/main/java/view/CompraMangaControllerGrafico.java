@@ -18,7 +18,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import model.OffertaModel;
 import model.OfferteModel;
-import observer.OffertaObserver;
+import pattern.observer.OffertaObserver;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -129,7 +129,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
                     toolbar.setVisible(true);
                     offertaBean = new OffertaBean();
-                    offertaBean.setAnnuncioID(arrayAnnunci.get(index).getIdAnnuncio());
+                    offertaBean.setIdAnnuncio(arrayAnnunci.get(index).getIdAnnuncio());
                     offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
 
 
@@ -207,11 +207,11 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
         AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
 
-        StringBuilder notificaBuilder = new StringBuilder();
+        Map<String, Object> notificaMap = new HashMap<>();
+        Map<String, Object> notifica = new HashMap<>();
         for (OffertaModel o :offerteModelList){
 
-            Map<String, Object> notificaMap = new HashMap<>();
-            Map<String, Object> notifica = new HashMap<>();
+
             notifica.put("utente", o.getUsernameOfferente());
             notifica.put("manga", annuncioBean.getNomeManga());
             notifica.put("volume", annuncioBean.getVolume());
@@ -219,21 +219,10 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
             notifica.put("venditore", annuncioBean.getNomeUtente());
             notificaMap.put("notifica", notifica);
 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            return gson.toJson(notificaMap);
-
-/*
-            notificaBuilder.append("Utente Venditore:    ").append(o.getUsernameOfferente());
-            notificaBuilder.append("Manga:   ").append(annuncioBean.getNomeManga());
-            notificaBuilder.append("Volume:   ").append(annuncioBean.getVolume());
-            notificaBuilder.append("Prezzo offerta:").append(o.getOffertaPrezzo());
-            notificaBuilder.append("Utente offerente:").append(annuncioBean.getNomeUtente());*/
-
         }
 
-
-
-        return notificaBuilder.toString();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(notificaMap);
 
     }
 
@@ -245,37 +234,12 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
             System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
             e.printStackTrace();
         }
-        /*try {
-            // Converti il StringBuilder in una stringa
-            String notificaString = notifica;
 
-            // Creazione di un oggetto Gson
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            // Serializzazione dell'oggetto Java in formato JSON
-            String json = gson.toJson(notificaString);
-
-            // Scrittura del JSON nel file
-            try (FileWriter writer = new FileWriter(filePath)) {
-                writer.write(json);
-            }
-        } catch (IOException e) {
-            System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
-            e.printStackTrace();
-        }
-*/
     }
 
 
     }
-    /*private void saveToFile(String notifica, String filePath) {
-        try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))) {
-            printWriter.print(notifica);
-        } catch (IOException e) {
-            System.out.println("NON SEI RIUSCITO A NOTIFICARE");
-            e.printStackTrace();
-        }
-    }*/
+
 
 
 

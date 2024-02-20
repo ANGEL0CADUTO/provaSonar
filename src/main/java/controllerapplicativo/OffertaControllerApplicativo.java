@@ -19,10 +19,10 @@ public class OffertaControllerApplicativo {
         //istanzi il model dell'offerta
         //
 
-        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getAnnuncioID());
+        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getIdAnnuncio());
         OffertaModel offertaModel  = new OffertaModel();
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
-        offertaModel.setAnnuncioID(offertaBean.getAnnuncioID());
+        offertaModel.setAnnuncioID(offertaBean.getIdAnnuncio());
         offertaModel.setCopiaMangaID(offertaBean.getCopiaMangaID());
         offertaModel.setUsernameOfferente(offertaBean.getUsernameOfferente());
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
@@ -64,7 +64,7 @@ public class OffertaControllerApplicativo {
     public AnnuncioBean annuncioByOffertaID(OffertaBean offertaBean) {
          AnnuncioBean annuncioBean = new AnnuncioBean();
          AnnuncioDAO annuncioDAO = new AnnuncioDAO();
-         AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
+         AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getIdAnnuncio());
 
         annuncioBean.setNomeManga(annuncioModel.getNomeManga());
         annuncioBean.setVolume(annuncioModel.getVolume());

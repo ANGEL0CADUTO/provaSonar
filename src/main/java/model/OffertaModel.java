@@ -1,6 +1,6 @@
 package model;
 
-import observer.OffertaSubject;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
