@@ -1,9 +1,7 @@
-package observer;
-
+package pattern.observer;
 import java.util.ArrayList;
 import java.util.List;
-
-public class OffertaSubject {//AGGIUNGE, RIMUOVE E NOTIFICA GLI OSSERVATORI
+public class OffertaSubject {
 
     private List<OffertaObserver> observersArrayList;
 
@@ -21,9 +19,10 @@ public class OffertaSubject {//AGGIUNGE, RIMUOVE E NOTIFICA GLI OSSERVATORI
 
     public void notificaObservers() {
         for (OffertaObserver observer : observersArrayList) {
-            System.out.println("Stai aggiornando gli Observer");
             observer.update();
         }
     }
+
+
 
 }

@@ -1,14 +1,13 @@
 package model;
 
-import observer.OffertaSubject;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
-public class OffertaModel extends OffertaSubject {//CONCRETE SUBJECT
-    /*mantiene lo stato del soggetto osservato e notifica gli observer in caso di un cambio di stato
- Invoca le operazioni di notifica ereditate dal Subject, quando devono essere informati i ConcreteObserver.*/
+public class OffertaModel  {
 
     private int idOfferta;
     private int annuncioID;
@@ -29,12 +28,12 @@ public class OffertaModel extends OffertaSubject {//CONCRETE SUBJECT
     private int statoOfferta;
 
     private int utenteVenditoreID;
+
+
     public int getCopiaMangaID() {
         return copiaMangaID;
     }
 
-    public void notificaCambiamentiAObservers(){
-        super.notificaObservers();}
 
     public void setCopiaMangaID(int copiaMangaID) {
         this.copiaMangaID = copiaMangaID;

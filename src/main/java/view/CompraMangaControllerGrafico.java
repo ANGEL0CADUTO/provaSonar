@@ -1,26 +1,38 @@
 package view;
 
+import bean.AnnuncioBean;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import com.google.gson.*;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import model.OffertaModel;
+import model.OfferteModel;
+import pattern.observer.OffertaObserver;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class CompraMangaControllerGrafico extends UserGuiController{
+public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
 
 
     @FXML
-    private TableView<AnnuncioModel> tableCompra;
+    private TableView tableCompra;
     @FXML
     private TableColumn<Object[], String> utenteColumn;
 
@@ -60,9 +72,23 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     private OffertaBean offertaBean;
 
-    protected CompraMangaControllerGrafico(UtenteBean bean) {
+    private OffertaModel offertaModel ;
+
+    private  String nomeManga;
+    private  int volume;
+    private String nomeVenditore;
+
+    private OfferteModel offerteList;
+    private List<OffertaModel> offertaList = new ArrayList<>();
+
+
+
+
+
+    public CompraMangaControllerGrafico(UtenteBean bean) {
         super(bean);
     }
+
 
 
     @FXML
@@ -70,7 +96,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         inizializzaDati();
     }
 
-    public void cercaPerNome() {
+    public void cercaPerNome(ActionEvent event) {
         // Richiama il metodo per inizializzare i dati
         inizializzaDati();
     }
@@ -139,15 +165,81 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());
         offertaBean.setDataOfferta(LocalDateTime.now());
 
-
+        /*OBSERVER*/
+        offerteList = OfferteModel.getInstance();
+        offerteList.aggiungiObserver(this);
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
         boolean esitoOfferta = of.doOfferta(offertaBean);
         if(!esitoOfferta){
             wrongOfferta.setText("Credito insufficiente");
         }
+        else {
+
+                try {
+
+                  //    update();
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notifiche.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+
+
+                } catch (IOException e) {
+                    System.out.print("NON HA FUNZIONATO NOTIFICA:::");
+                }
+        }
         toolbar.setVisible(false);
     }
 
 
-}
+    @Override
+    public void update() {
+        String notifica = creaNotifica();
+        saveToJsonFile(notifica, "NotificaFile.json");
+    }
+
+    private String creaNotifica() {
+        List<OffertaModel> offerteModelList = new ArrayList<>();
+        offerteModelList = offerteList.getState();
+        OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
+        AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
+
+        Map<String, Object> notificaMap = new HashMap<>();
+        Map<String, Object> notifica = new HashMap<>();
+        for (OffertaModel o :offerteModelList){
+
+
+            notifica.put("utente", o.getUsernameOfferente());
+            notifica.put("manga", annuncioBean.getNomeManga());
+            notifica.put("volume", annuncioBean.getVolume());
+            notifica.put("prezzo_offerta", o.getOffertaPrezzo());
+            notifica.put("venditore", annuncioBean.getNomeUtente());
+            notificaMap.put("notifica", notifica);
+
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(notificaMap);
+
+    }
+
+    private void saveToJsonFile(String notifica, String filePath) {
+
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write(notifica);
+        } catch (IOException e) {
+            System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+
+    }
+
+
+
+
