@@ -1,22 +1,32 @@
 package view;
 
+import bean.AnnuncioBean;
 import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import model.OffertaModel;
+import observer.OffertaObserver;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CompraMangaControllerGrafico extends UserGuiController{
+public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
 
 
     @FXML
@@ -60,9 +70,16 @@ public class CompraMangaControllerGrafico extends UserGuiController{
 
     private OffertaBean offertaBean;
 
-    protected CompraMangaControllerGrafico(UtenteBean bean) {
+    private OffertaModel offertaModel;
+
+    private  String nomeManga;
+    private  int volume;
+    private String nomeVenditore;
+
+    public CompraMangaControllerGrafico(UtenteBean bean) {
         super(bean);
     }
+
 
 
     @FXML
@@ -139,6 +156,7 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         offertaBean.setUtenteOfferenteID(utenteBean.getIdUtente());
         offertaBean.setDataOfferta(LocalDateTime.now());
 
+        offertaModel.aggiungiObserver(this);//aggiungo alla lista observer
 
 
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
@@ -146,7 +164,57 @@ public class CompraMangaControllerGrafico extends UserGuiController{
         if(!esitoOfferta){
             wrongOfferta.setText("Credito insufficiente");
         }
+        else {
+
+                try {
+
+                  //    update();
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notifiche.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+
+
+                } catch (IOException e) {
+                    System.out.print("NON HA FUNZIONATO NOTIFICA:::");
+                }
+        }
         toolbar.setVisible(false);
+    }
+
+
+    @Override
+    public void update(OffertaModel offertaModel) {
+        String notifica = creaNotifica(offertaModel);
+        saveToFile(notifica, "NotificaFile.txt");
+    }
+
+    private String creaNotifica(OffertaModel offertaModel) {
+        offertaModel.getState();//recupero lo stato
+
+        OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
+       AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
+
+
+
+        StringBuilder notificaBuilder = new StringBuilder();
+        notificaBuilder.append("L'utente:    ").append(offertaModel.getUsernameOfferente()).append("\n\n");
+        notificaBuilder.append("Ha fatto un offerta per il manga:   ").append(annuncioBean.getNomeManga()).append("\n\n");
+        notificaBuilder.append("Volume:   ").append(annuncioBean.getVolume()).append("\n\n");
+        notificaBuilder.append("l'offerta è di euro:").append(offertaModel.getOffertaPrezzo()).append("\n\n");
+        notificaBuilder.append("l'offerta è stata fatta a te utente:").append(annuncioBean.getNomeUtente()).append("\n\n");
+        return notificaBuilder.toString();
+    }
+
+    private void saveToFile(String notifica, String filePath) {
+        try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))) {
+            printWriter.print(notifica);
+        } catch (IOException e) {
+            System.out.println("NON SEI RIUSCITO A NOTIFICARE");
+            e.printStackTrace();
+        }
     }
 
 

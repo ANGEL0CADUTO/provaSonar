@@ -1,10 +1,11 @@
 package model;
 
-import Observer.OffertaSubject;
+import observer.OffertaSubject;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class OffertaModel extends OffertaSubject {//CONCRETE SUBJECT
@@ -30,12 +31,25 @@ public class OffertaModel extends OffertaSubject {//CONCRETE SUBJECT
     private int statoOfferta;
 
     private int utenteVenditoreID;
+
+    private OffertaModel offertaModel   ;//per mantenere lo stato
+
     public int getCopiaMangaID() {
         return copiaMangaID;
     }
 
     public void notificaCambiamentiAObservers(){
         super.notificaObservers();}
+
+    public void setState(OffertaModel offertaModel) {
+        this.offertaModel = offertaModel;
+        // Qui potresti anche chiamare il metodo notificaCambiamentiAObservers() se necessario
+    }
+
+    // Metodo per recuperare lo stato
+    public OffertaModel getState() {
+        return offertaModel;
+    }
 
     public void setCopiaMangaID(int copiaMangaID) {
         this.copiaMangaID = copiaMangaID;

@@ -1,7 +1,6 @@
 package controllerapplicativo;
 
-import Observer.ConcreteObserver;
-import Observer.OffertaSubject;
+import bean.AnnuncioBean;
 import bean.OffertaBean;
 import dao.AnnuncioDAO;
 import dao.OffertaDAO;
@@ -10,6 +9,7 @@ import model.AnnuncioModel;
 import model.OffertaModel;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class OffertaControllerApplicativo {
     public boolean doOfferta(OffertaBean offertaBean) {
@@ -32,12 +32,12 @@ public class OffertaControllerApplicativo {
         AnnuncioDAO annuncioDAO= new AnnuncioDAO();
         AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
 
-        String nomeVenditore = annuncioModel.getNomeUtente();
-        String nomeManga = annuncioModel.getNomeManga();
-        int volume = annuncioModel.getVolume();
+        List<AnnuncioModel> annunci = annuncioDAO.getMyAnnunci(annuncioModel.getUtenteVenditoreID());
 
+        //qua dovrei fare il setState
 
-        ConcreteObserver aggiungiOffertaModelMandaNotifica = new ConcreteObserver(offertaModel,nomeVenditore,nomeManga,volume);
+        offertaModel.setState(offertaModel);
+
 
 
         UtenteDAO dao = new UtenteDAO();
@@ -50,9 +50,8 @@ public class OffertaControllerApplicativo {
              boolean b = dao2.insertOfferta(offertaModel);
              if(b){
                  offertaModel.notificaCambiamentiAObservers();
-                 aggiungiOffertaModelMandaNotifica.update();
 
-                 offertaModel.rimuoviObserver(aggiungiOffertaModelMandaNotifica);
+
              }
              return b;
 
@@ -62,5 +61,22 @@ public class OffertaControllerApplicativo {
         return false;
 
     }
+
+    public AnnuncioBean annuncioByOffertaID(OffertaBean offertaBean) {
+         AnnuncioBean annuncioBean = new AnnuncioBean();
+         AnnuncioDAO annuncioDAO = new AnnuncioDAO();
+         AnnuncioModel annuncioModel= annuncioDAO.getDatiAnnuncioByAnnuncioID(offertaBean.getAnnuncioID());
+
+        annuncioBean.setNomeManga(annuncioModel.getNomeManga());
+        annuncioBean.setVolume(annuncioModel.getVolume());
+        annuncioBean.setNomeUtente(annuncioModel.getNomeUtente());
+
+        return annuncioBean;
+    }
+
+
+
+
+
 
 }
