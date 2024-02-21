@@ -5,6 +5,7 @@ import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
+import dao.NotificheDAO;
 import exceptions.CreditoInsufficienteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,8 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
+    private static final Logger logger = Logger.getLogger(CompraMangaControllerGrafico.class.getName());
+
 
 
     @FXML
@@ -237,7 +240,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
             writer.write(notifica);
         } catch (IOException e) {
             System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
-            e.printStackTrace();
+
         }
 
     }

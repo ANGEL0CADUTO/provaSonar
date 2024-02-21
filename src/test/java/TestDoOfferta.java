@@ -1,16 +1,17 @@
 
-import controllerapplicativo.AnnuncioControllerApplicativo;
+
 import controllerapplicativo.OffertaControllerApplicativo;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
 
-import bean.CopiaMangaBean;
+
 import static org.junit.jupiter.api.Assertions.*;
 import bean.OffertaBean;
 import exceptions.CreditoInsufficienteException;
-import view.AnnuncioControllerGrafico;
 
+
+//TEST FATTO DA ANGELO ROMANO
 class TestDoOfferta {
 
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());

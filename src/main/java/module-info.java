@@ -12,9 +12,7 @@ module logic {
     opens controllerapplicativo to javafx.fxml;
 
     exports model;
-    opens model to javafx.fxml;
-
-
+    opens model to com.google.gson;
 
     exports dao;
     opens dao to javafx.fxml;

@@ -1,9 +1,9 @@
 {
   "notifica": {
-    "utente": "Angel",
-    "volume": 12,
-    "venditore": "Utente",
+    "utente": "Utente",
+    "volume": 13,
+    "venditore": "Angel",
     "manga": "Ghost in the shell",
-    "prezzo_offerta": 12
+    "prezzo_offerta": 1
   }
 }
