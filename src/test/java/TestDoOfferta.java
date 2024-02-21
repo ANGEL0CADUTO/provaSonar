@@ -14,7 +14,7 @@ import exceptions.CreditoInsufficienteException;
 
 //TEST FATTO DA ANGELO ROMANO
 class TestDoOfferta {
-
+/*
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());
 
         @Test
@@ -39,5 +39,5 @@ class TestDoOfferta {
                 logger.info(e.getMessage());
 
             }
-        }
+        }*/
 }

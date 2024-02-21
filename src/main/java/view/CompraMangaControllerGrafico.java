@@ -5,7 +5,7 @@ import bean.OffertaBean;
 import bean.UtenteBean;
 import controllerapplicativo.CompraMangaControllerApplicativo;
 import controllerapplicativo.OffertaControllerApplicativo;
-import dao.NotificheDAO;
+
 import exceptions.CreditoInsufficienteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ import pattern.observer.OffertaObserver;
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,14 +77,10 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
     private OffertaBean offertaBean;
 
-    private OffertaModel offertaModel ;
 
-    private  String nomeManga;
-    private  int volume;
-    private String nomeVenditore;
 
     private OfferteModel offerteList;
-    private List<OffertaModel> offertaList = new ArrayList<>();
+
 
 
 
@@ -101,7 +97,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         inizializzaDati();
     }
 
-    public void cercaPerNome(ActionEvent event) {
+    public void cercaPerNome() {
         // Richiama il metodo per inizializzare i dati
         inizializzaDati();
     }
@@ -183,6 +179,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
             esitoOfferta = of.doOfferta(offertaBean);
         } catch (CreditoInsufficienteException e) {
             wrongOfferta.setText(e.getMessage());
+            logger.severe("Errore in CompraMangaControllerGrafico in doOfferta:"+ e.getMessage());
         }
         if(esitoOfferta){
 
@@ -210,7 +207,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
     }
 
     private String creaNotifica() {
-        List<OffertaModel> offerteModelList = new ArrayList<>();
+        List<OffertaModel> offerteModelList;
         offerteModelList = offerteList.getState();
         OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
         AnnuncioBean annuncioBean = offertaApplicativo.annuncioByOffertaID(offertaBean);
@@ -239,8 +236,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(notifica);
         } catch (IOException e) {
-            System.out.println("Errore durante il salvataggio del file JSON: " + e.getMessage());
-
+            logger.severe("Errore durante il salvataggio del file JSON: " + e.getMessage());
         }
 
     }
