@@ -33,6 +33,7 @@ public class NotificheControllerGrafico {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+
         }
         return jsonContent.toString();
     }

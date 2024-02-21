@@ -1,7 +1,7 @@
 package pattern.observer;
 import java.util.ArrayList;
 import java.util.List;
-public class OffertaSubject {
+public abstract class OffertaSubject {
 
     private List<OffertaObserver> observersArrayList;
 
@@ -17,7 +17,7 @@ public class OffertaSubject {
         observersArrayList.remove(observer);
     }
 
-    public void notificaObservers() {
+    protected void notificaObservers() {
         for (OffertaObserver observer : observersArrayList) {
             observer.update();
         }
