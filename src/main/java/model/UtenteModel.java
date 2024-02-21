@@ -30,6 +30,10 @@ public class UtenteModel {
     private String email;
     private String username;
 
+    private String password;
+
+
+
     private Double votoRecensioni;
     private BigDecimal credito;
     private int informazioniUtenteID;
@@ -84,4 +88,13 @@ public class UtenteModel {
     public void setCredito(BigDecimal credito) {
         this.credito = credito;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

@@ -28,6 +28,7 @@ public class OffertaFacade {
                 userDeposit(offerta.getUtenteVenditoreID(), offerta.getOffertaPrezzo().toString())) {
 
 
+
             copiaMangaDAO.aggiungiManga(copia);
             return annuncioDAO.setStatoAccettatoByAnnuncioID(offerta.getAnnuncioID());
         }

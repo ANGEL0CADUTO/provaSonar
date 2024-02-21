@@ -7,6 +7,7 @@ import exceptions.CredenzialiSbagliateException;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
+import javax.xml.transform.Result;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -78,6 +79,18 @@ public class AnnuncioDAO {
         return array;
     }
 
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,idCopia);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            logger.severe("Errore in AnnuncioDAO in checkEsistenzaAnnuncio: " + e.getMessage());
+        }
+        return false;
+    }
 
 
 
@@ -173,6 +186,9 @@ public class AnnuncioDAO {
     }
 
 
+    public boolean checkEsistenzaAnnuncio(int idCopia){
+        String query="SELECT COUNT(*) FROM annuncio where copiaMangaID = ? and statoAnnuncio = 1";
+        Connection conn = DBConnection.getIstance().connection();
 
 
     public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID) {

@@ -4,20 +4,26 @@ import bean.DatiUtenteBean;
 import dao.DatiUtenteDao;
 import bean.UtenteBean;
 import dao.UtenteDAO;
+import model.UtenteModel;
 
 public class RegistraApplicativo {
 
     public boolean registra(UtenteBean bean){
         UtenteDAO registraUtente = new UtenteDAO();
-         return registraUtente.addUser(bean);
+        UtenteModel model = new UtenteModel();
+        model.setEmail(bean.getEmail());
+        model.setUsername(bean.getUsername());
+        return registraUtente.addUser(model);
 
 
     }
 
     public boolean informazioniUtente(UtenteBean bean){
         UtenteDAO registraUtente = new UtenteDAO();
+        UtenteModel model = new UtenteModel();
+        model.setEmail(bean.getEmail());
 
-        return registraUtente.informazioniUtente(bean);
+        return registraUtente.informazioniUtente(model);
     }
 
     public int registraDati(DatiUtenteBean bean1){

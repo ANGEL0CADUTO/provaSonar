@@ -24,5 +24,6 @@ module logic {
     exports  exceptions;
 
 
+    exports exceptions;
 
 }

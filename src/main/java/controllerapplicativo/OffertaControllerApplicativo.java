@@ -10,15 +10,14 @@ import model.AnnuncioModel;
 import model.OffertaModel;
 import model.OfferteModel;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OffertaControllerApplicativo {
     public boolean doOfferta(OffertaBean offertaBean) throws CreditoInsufficienteException {
-        //prendo il session bean dell'utente
-        //istanzi il model dell'offerta
-        //
+
 
         System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getIdAnnuncio());
         OffertaModel offertaModel  = new OffertaModel();
@@ -40,12 +39,19 @@ public class OffertaControllerApplicativo {
         offerteModelList.setState(offertaList);
 
         UtenteDAO dao = new UtenteDAO();
+        BigDecimal credito = dao.getVotoAndCreditoByUtenteID(offertaModel.getUtenteOfferenteID()).getCredito();
+
         if(dao.checkCreditoSufficienteByUtenteID(offertaModel.getUtenteOfferenteID(),offertaModel.getOffertaPrezzo()))
         {
             OffertaDAO dao2 = new OffertaDAO();
-          //  return dao2.insertOfferta(offertaModel);
+            BigDecimal pendingMoney = dao2.getPendingMoneyUtenteByUtenteID(offertaModel.getUtenteOfferenteID());
 
-          //  COME DEVO CAMBIARE PER FARE UPDATE DEL CAMBIAMENTO
+            BigDecimal cifraTotale = offertaModel.getOffertaPrezzo().add(pendingMoney);
+
+            if(credito.compareTo(cifraTotale)<0){
+                return false;
+            }
+
              boolean b = dao2.insertOfferta(offertaModel);
              if(b){
 

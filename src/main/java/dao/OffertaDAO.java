@@ -3,6 +3,7 @@ package dao;
 import model.OffertaModel;
 import model.OffertaRicevuta;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.*;
 
@@ -198,6 +199,23 @@ public class OffertaDAO {
     }
 
 
+    public BigDecimal getPendingMoneyUtenteByUtenteID(int id) {
+        String query = "SELECT SUM(offertaPrezzo) FROM offerta WHERE utenteOfferenteID = ? AND statoOfferta = 1;";
+        Connection conn = DBConnection.getIstance().connection();
 
+        BigDecimal cifra = new BigDecimal("0");
 
+        try(PreparedStatement st = conn.prepareStatement(query)){
+            st.setInt(1,id);
+            ResultSet rs = st.executeQuery();
+
+            if(rs.next()){
+                cifra = rs.getBigDecimal(1);
+            }
+
+        } catch (SQLException e) {
+            logger.severe("Errore in OffertaDAO in getPendingMoneyUtenteByUtenteID: " + e.getMessage());
+        }
+        return cifra;
+    }
 }

@@ -75,7 +75,7 @@ public class OfferteRicevuteGrafico extends UserGuiController{
                     // Ora puoi eseguire un'azione basata su questo elemento
                     try {
                         OffertaBean offertaBean = new OffertaBean();
-                        offertaBean.setIdOfferta(array.get(index).getAnnuncioID());
+                        offertaBean.setIdAnnuncio(array.get(index).getAnnuncioID());
                         offertaBean.setCopiaMangaID(array.get(index).getCopiaMangaID());
                         offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
                         offertaBean.setIdOfferta(array.get(index).getIdOfferta());

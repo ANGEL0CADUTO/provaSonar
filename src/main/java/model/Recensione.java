@@ -9,8 +9,6 @@ public class Recensione {
 
     private int offertaID;
 
-
-
     private double voto;
     private int recensitoID;
 

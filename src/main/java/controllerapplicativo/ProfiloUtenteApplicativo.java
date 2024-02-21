@@ -35,7 +35,12 @@ public class ProfiloUtenteApplicativo {
 
     public boolean updateInformazioniUtenteID(UtenteBean bean) {
         UtenteDAO dao = new UtenteDAO();
-        return dao.informazioniUtente(bean);
+        UtenteModel model = new UtenteModel();
+        model.setEmail(bean.getEmail());
+        model.setPassword(bean.getPassword());
+        model.setUsername(bean.getUsername());
+
+        return dao.informazioniUtente(model);
     }
 
 

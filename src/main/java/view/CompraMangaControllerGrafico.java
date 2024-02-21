@@ -33,7 +33,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
 
     @FXML
-    private TableView tableCompra;
+    private TableView<AnnuncioModel> tableCompra;
     @FXML
     private TableColumn<Object[], String> utenteColumn;
 

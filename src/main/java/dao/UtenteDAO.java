@@ -50,21 +50,21 @@ public class UtenteDAO {
         return new UtenteModel(id, login.getEmail(), username, voto, credito, informazioniUtenteID);
     }
 
-    public boolean addUser(UtenteBean bean) {
+    public boolean addUser(UtenteModel model) {
         Connection conn = DBConnection.getIstance().connection();
 
         String query = "INSERT INTO mangaink.utente (email, username ,password ) VALUES (?, ?, ?)";
         boolean b = false;
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
-            if (bean.getEmail().isEmpty() || bean.getUsername().isEmpty() || bean.getPassword().isEmpty()) {
+            if (model.getEmail().isEmpty() || model.getUsername().isEmpty() || model.getPassword().isEmpty()) {
                 logger.warning("Uno o più campi sono vuoti. Inserimento utente fallito.");
                 return false;
             }
 
-            st.setString(1, bean.getEmail());
-            st.setString(2, bean.getUsername());
-            st.setString(3, bean.getPassword());
+            st.setString(1, model.getEmail());
+            st.setString(2, model.getUsername());
+            st.setString(3, model.getPassword());
 
             int righeScritte = st.executeUpdate();
 
@@ -82,7 +82,7 @@ public class UtenteDAO {
     }
 
 
-    public boolean informazioniUtente(UtenteBean bean) {
+    public boolean informazioniUtente(UtenteModel model) {
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE mangaink.utente " +
@@ -91,7 +91,7 @@ public class UtenteDAO {
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
 
-            st.setString(1, bean.getEmail());
+            st.setString(1, model.getEmail());
             int righeScritte = st.executeUpdate();
             if (righeScritte > 0) {
                 b = true;
@@ -119,19 +119,13 @@ public class UtenteDAO {
             st.setBigDecimal(1, cifra);
             st.setInt(2, utenteModel.getIdUtente());
 
-
             int righeScritte = st.executeUpdate();
-
 
             if (righeScritte > 0) {
                 b = true;
-
             } else {
                 logger.info("Deposito Credito Fallito");
-
-
             }
-
 
         } catch (SQLException e) {
             //  e.printStackTrace(); PER FARMI DIRE L'ERRORE COMPLETO
