@@ -30,7 +30,8 @@ public class DepositaEPrelevaApplicativo {
         } catch (CreditoInsufficienteException e) {
             throw new CreditoInsufficienteException();
         }
-        return false;
+        throw new CreditoInsufficienteException();
+
     }
 
 

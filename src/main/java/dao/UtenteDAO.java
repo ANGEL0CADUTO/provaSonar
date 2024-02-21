@@ -108,7 +108,7 @@ public class UtenteDAO {
     }
 
 
-    public boolean userDeposit(UtenteModel utenteModel, String cifraString) { //DEPOSITA IL TUO CREDITO
+    public boolean userDeposit(UtenteModel utenteModel, String cifraString) {
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE mangaink.utente SET credito= credito +  ? " +

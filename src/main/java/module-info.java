@@ -21,5 +21,8 @@ module logic {
     exports bean;
     opens bean to javafx.fxml;
 
+    exports  exceptions;
+
+
 
 }

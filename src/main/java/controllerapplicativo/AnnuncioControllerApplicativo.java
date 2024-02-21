@@ -3,12 +3,14 @@ package controllerapplicativo;
 import dao.AnnuncioDAO;
 import bean.CopiaMangaBean;
 import dao.CopiaMangaDAO;
+import exceptions.AnnuncioNonInseritoException;
+import exceptions.CredenzialiSbagliateException;
 import model.CopiaMangaModel;
 
 import java.math.BigDecimal;
 
 public class AnnuncioControllerApplicativo {
-    public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean, BigDecimal prezzo, String dataFormattata,String username) {
+    public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean, BigDecimal prezzo, String dataFormattata,String username) throws AnnuncioNonInseritoException {
         AnnuncioDAO dao= new AnnuncioDAO();
 
 
@@ -19,14 +21,23 @@ public class AnnuncioControllerApplicativo {
         copiaMangaModel.setVolume(copiaMangaBean.getVolume());
         copiaMangaModel.setIdUtente(copiaMangaBean.getIdUtente());
 
-        if(dao.addAnnuncio(copiaMangaModel,prezzo,dataFormattata,username)){
-            CopiaMangaDAO dao2 = new CopiaMangaDAO();
-            return dao2.setStatoInVenditaByCopiaMangaID(copiaMangaModel.getIdCopiaManga());
-        }
+          try{
+              if(dao.addAnnuncio(copiaMangaModel,prezzo,dataFormattata,username)){
+              CopiaMangaDAO dao2 = new CopiaMangaDAO();
+              return dao2.setStatoInVenditaByCopiaMangaID(copiaMangaModel.getIdCopiaManga());
+          }
+          }
+          catch (AnnuncioNonInseritoException e){
+              throw new AnnuncioNonInseritoException();
+          }
+
+
+
         return false;
     }
 
     public boolean cercaAnnuncio(CopiaMangaBean copiaMangaBean){
+
         AnnuncioDAO creaAnnuncio = new AnnuncioDAO();
 
         CopiaMangaModel copiaMangaModel1 = new CopiaMangaModel();

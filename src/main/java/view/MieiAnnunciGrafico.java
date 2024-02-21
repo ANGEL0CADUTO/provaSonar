@@ -2,6 +2,7 @@ package view;
 
 import bean.UtenteBean;
 import controllerapplicativo.MieiAnnunciApplicativo;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,6 +52,8 @@ public class MieiAnnunciGrafico extends UserGuiController {
 
         public void initialize() {
             MieiAnnunciApplicativo controller = new MieiAnnunciApplicativo();
+
+
             List<AnnuncioModel> array = controller.getMyAnnunci(utenteBean.getIdUtente());
 
 

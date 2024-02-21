@@ -9,10 +9,14 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DepositaEPrelevaTesting {
+public class DepositaEPrelevaTesting extends DepositaEPrelevaGrafico{
 
-   @Test
-   public void depositaWorkCorrectlyWhidValidValue(){
+    protected DepositaEPrelevaTesting(UtenteBean bean) {
+        super(bean);
+    }
+
+    @Test
+   public void depositaWorkCorrectlyWithValidValue(){
       int result = 0;
        UtenteBean utenteBean = new UtenteBean();
        utenteBean.setIdUtente(1);
@@ -37,21 +41,33 @@ public class DepositaEPrelevaTesting {
    }
 
     @Test
-    public void prelevaWorkCorrectlyWhidNoCredit() {
+    public void ExceptionprelevaWorkCorrectly() {
+        int result = -1;
         UtenteBean utenteBean = new UtenteBean();
-        utenteBean.setIdUtente(1);
-        utenteBean.setUsername("leo");
-        utenteBean.setCredito(BigDecimal.valueOf(0));
+        utenteBean.setIdUtente(2);
 
-        String cifraDaPrelevare = "7";
+
+        String cifraDaPrelevare ="12" ;
 
         DepositaEPrelevaApplicativo prelevaApplicativo = new DepositaEPrelevaApplicativo();
 
-        // Verifica che venga lanciata l'eccezione CreditoInsufficienteException
-        assertThrows(CreditoInsufficienteException.class, () -> {
-            prelevaApplicativo.preleva(utenteBean, cifraDaPrelevare);
-        });
+        try{
+           Boolean b= prelevaApplicativo.preleva(utenteBean,cifraDaPrelevare);
+            if(b){result =0;}
+
+        }catch (CreditoInsufficienteException e){result = 1;}
+
+        assertEquals(1, result);
+
     }
+
+    @Test
+    public void prelevaWorkCorrectly(){
+
+
+
+    }
+
 
 
 

@@ -2,6 +2,8 @@ package dao;
 
 
 
+import exceptions.AnnuncioNonInseritoException;
+import exceptions.CredenzialiSbagliateException;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
@@ -82,7 +84,7 @@ public class AnnuncioDAO {
 
 
 
-    public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata, String username) {//DA MIGLIORARE
+    public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata, String username) throws AnnuncioNonInseritoException {//DA MIGLIORARE
 
         boolean b = false;
         String query = "INSERT INTO mangaink.annuncio (utenteVenditoreID,usernameVenditore,copiaMangaID, " +
@@ -104,6 +106,8 @@ public class AnnuncioDAO {
                 logger.info("Inserimento Annuncio riuscito");
             } else {
                 logger.info("Inserimento Annuncio fallito");
+                throw new AnnuncioNonInseritoException();
+
             }
         } catch (SQLException e) {
             logger.severe("E' stata lanciata la exception nell'addAnnuncio in AnnuncioDao " + e.getMessage());
