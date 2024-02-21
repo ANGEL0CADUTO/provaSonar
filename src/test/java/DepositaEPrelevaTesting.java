@@ -44,7 +44,7 @@ public class DepositaEPrelevaTesting {
         utenteBean.setIdUtente(2);
 
 
-        String cifraDaPrelevare ="12" ;
+        String cifraDaPrelevare ="10000" ;
 
         DepositaEPrelevaApplicativo prelevaApplicativo = new DepositaEPrelevaApplicativo();
 

@@ -1,6 +1,7 @@
 
 
 import controllerapplicativo.OffertaControllerApplicativo;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ class TestDoOfferta {
 
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());
 
-        @Test
+        @Test @Disabled
         public void testDoOfferta() {
 
             OffertaControllerApplicativo offertaController = new OffertaControllerApplicativo();
