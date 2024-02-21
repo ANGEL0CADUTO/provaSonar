@@ -11,11 +11,10 @@ import java.util.List;
 
 public class CompraButtonTableCell extends TableCell<CopiaMangaModel, String> {
     private final Button bottone = new Button("Compra");
-    private final ToolBar toolbar;
+
 
 
     public CompraButtonTableCell(OffertaBean offertaBean, ToolBar toolbar, List<AnnuncioModel> arrayAnnunci) {
-        this.toolbar = toolbar;
 
         // Gestisci l'evento di clic del bottone
         bottone.setOnAction(event -> {
