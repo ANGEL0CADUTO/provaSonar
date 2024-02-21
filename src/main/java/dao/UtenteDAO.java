@@ -16,7 +16,7 @@ public class UtenteDAO {
     private static final String CREDITO = "credito";
 
     public UtenteModel searchUser(Credenziali login) throws CredenzialiSbagliateException {
-        boolean b = false;
+
         String query = "SELECT * FROM mangaink.utente WHERE email = ?";
 
         int id = 0;

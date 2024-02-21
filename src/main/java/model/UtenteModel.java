@@ -1,6 +1,6 @@
 package model;
 
-import bean.DatiUtenteBean;
+
 
 import java.math.BigDecimal;
 

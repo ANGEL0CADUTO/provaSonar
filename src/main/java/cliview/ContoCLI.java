@@ -86,13 +86,8 @@ public class ContoCLI {
                 return;
             }
 
-            DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
-            boolean esitoPrelievo = false;
-            try {
-                esitoPrelievo = pr.preleva(utenteBean, cifra.toString());
-            } catch (CreditoInsufficienteException e) {
-                CLIPrinter.println("Errore di exception personalizzata : " + e.getMessage());
-            }
+
+            boolean esitoPrelievo = esito(cifra);
 
             if (esitoPrelievo) {
                 utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));
@@ -103,5 +98,18 @@ public class ContoCLI {
         } catch (NumberFormatException e) {
             CLIPrinter.println("Inserire una cifra valida.");
         }
+    }
+
+
+
+    public boolean esito( BigDecimal cifra){
+        DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
+        boolean b = false;
+        try {
+             b = pr.preleva(utenteBean, cifra.toString());
+        } catch (CreditoInsufficienteException e) {
+            CLIPrinter.println("Errore di exception personalizzata : " + e.getMessage());
+        }
+        return b;
     }
 }

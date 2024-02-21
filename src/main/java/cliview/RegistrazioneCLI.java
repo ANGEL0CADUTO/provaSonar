@@ -9,95 +9,38 @@ import java.util.Scanner;
 
 public class RegistrazioneCLI {
 
-    public void initialize() {
+    private static String richiediInput(String messaggio, String messaggioErrore) {
         Scanner scanner = new Scanner(System.in);
+        String input;
+        do {
+            CLIPrinter.println(messaggio);
+            input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                CLIPrinter.println(messaggioErrore);
+            }
+        } while (input.isEmpty());
+        return input;
+    }
+
+    public void initialize() {
         UtenteBean utenteBean = new UtenteBean();
 
-        // Validazione email
-        String email;
-        do {
-            CLIPrinter.println("Inserisci la tua email: ");
-            email = scanner.nextLine().trim();
-            if (email.isEmpty()) {
-                CLIPrinter.println("Email non può essere vuota. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per l'email
-                utenteBean.setEmail(email);
-            }
-        } while (email.isEmpty());
-
-        // Validazione username
-        String username;
-        do {
-            CLIPrinter.println("Inserisci il tuo username: ");
-            username = scanner.nextLine().trim();
-            if (username.isEmpty()) {
-                CLIPrinter.println("Username non può essere vuoto. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per lo username
-                utenteBean.setUsername(username);
-            }
-        } while (username.isEmpty());
-
-        // Validazione password
-        String password;
-        do {
-            CLIPrinter.println("Inserisci la tua password: ");
-            password = scanner.nextLine().trim();
-            if (password.isEmpty()) {
-                CLIPrinter.println("Password non può essere vuota. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per la password
-                utenteBean.setPassword(password);
-            }
-        } while (password.isEmpty());
+        utenteBean.setEmail(richiediInput("Inserisci la tua email: ", "Email non può essere vuota. Riprova."));
+        utenteBean.setUsername(richiediInput("Inserisci il tuo username: ", "Username non può essere vuoto. Riprova."));
+        utenteBean.setPassword(richiediInput("Inserisci la tua password: ", "Password non può essere vuota. Riprova."));
 
         DatiUtenteBean datiUtente = new DatiUtenteBean();
 
-        // Validazione indirizzo
-        String indirizzo;
-        do {
-            CLIPrinter.println("Inserisci il tuo indirizzo: ");
-            indirizzo = scanner.nextLine().trim();
-            if (indirizzo.isEmpty()) {
-                CLIPrinter.println("Indirizzo non può essere vuoto. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per l'indirizzo
-                datiUtente.setIndirizzo(indirizzo);
-            }
-        } while (indirizzo.isEmpty());
-
-        // Validazione civico
-        String civico;
-        do {
-            CLIPrinter.println("Inserisci il tuo civico: ");
-            civico = scanner.nextLine().trim();
-            if (civico.isEmpty()) {
-                CLIPrinter.println("Civico non può essere vuoto. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per il civico
-                datiUtente.setCivico(civico);
-            }
-        } while (civico.isEmpty());
-
-        // Validazione CAP
-        String cap;
-        do {
-            CLIPrinter.println("Inserisci il tuo CAP: ");
-            cap = scanner.nextLine().trim();
-            if (cap.isEmpty()) {
-                CLIPrinter.println("CAP non può essere vuoto. Riprova.");
-            } else {
-                // Aggiungi eventuali altri controlli di formato per il CAP
-                datiUtente.setCap(cap);
-            }
-        } while (cap.isEmpty());
+        datiUtente.setIndirizzo(richiediInput("Inserisci il tuo indirizzo: ", "Indirizzo non può essere vuoto. Riprova."));
+        datiUtente.setCivico(richiediInput("Inserisci il tuo civico: ", "Civico non può essere vuoto. Riprova."));
+        datiUtente.setCap(richiediInput("Inserisci il tuo CAP: ", "CAP non può essere vuoto. Riprova."));
 
         RegistraApplicativo controllerApp = new RegistraApplicativo();
         int key = controllerApp.registraDati(datiUtente);
 
         utenteBean.setDatiUtente(datiUtente);
         utenteBean.getDatiUtente().setIdInformazioniUtente(key);
+
         if (key != -1 && controllerApp.registra(utenteBean) && controllerApp.informazioniUtente(utenteBean)) {
             CLIPrinter.println("Registrazione effettuata con successo per l'utente: " + utenteBean.getEmail());
         } else {

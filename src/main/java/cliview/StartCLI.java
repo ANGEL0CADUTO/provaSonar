@@ -1,7 +1,7 @@
 package cliview;
 
 import bean.UtenteBean;
-import utils.CLIPrinter;
+
 
 public class StartCLI {
 

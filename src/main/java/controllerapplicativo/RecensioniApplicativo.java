@@ -4,7 +4,7 @@ import dao.AnnuncioDAO;
 import dao.OffertaDAO;
 import dao.RecensioneDAO;
 import model.AnnuncioModel;
-import model.OffertaModel;
+
 import model.OffertaRicevuta;
 import model.Recensione;
 

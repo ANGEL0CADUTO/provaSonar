@@ -3,14 +3,11 @@ package view;
 import bean.UtenteBean;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import java.io.IOException;
+
 
 
 public class HomePage extends UserGuiController {
@@ -64,13 +61,6 @@ public class HomePage extends UserGuiController {
 
 
 
-
-
-
-    //da testare se funziona anche post login
-    public void logout() {
-        utenteBean = new UtenteBean();
-    }
 
 
 }

@@ -84,14 +84,8 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
         }
         String cifraString = preleva.getText();
 
-        DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
+            boolean esitoPrelievo = esito(cifraString);
 
-            boolean esitoPrelievo = false;
-            try {
-                esitoPrelievo = pr.preleva(utenteBean, cifraString);
-            } catch (CreditoInsufficienteException e) {
-                prelevaLabel.setText(e.getMessage());
-            }
             if (esitoPrelievo) {
             BigDecimal cifra = new BigDecimal(cifraString);
             utenteBean.setCredito(utenteBean.getCredito().subtract(cifra));
@@ -101,6 +95,17 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
         }
     }catch(NumberFormatException e){depositaLabel.setText("Devi inserire un valore valido");}
 
+    }
+
+    public boolean esito(String cifraString){
+        DepositaEPrelevaApplicativo pr = new DepositaEPrelevaApplicativo();
+        boolean b = false;
+        try {
+            b = pr.preleva(utenteBean, cifraString);
+        } catch (CreditoInsufficienteException e) {
+            prelevaLabel.setText(e.getMessage());
+        }
+        return b;
     }
 
 

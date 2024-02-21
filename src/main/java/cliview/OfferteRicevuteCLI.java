@@ -20,7 +20,7 @@ public class OfferteRicevuteCLI {
     }
 
     public void initialize() {
-        CLIPrinter.println("*************************************");
+        CLIPrinter.println("************************************");
         CLIPrinter.println("Ci troviamo in HomePage/Miei Annunci/OFFERTE RICEVUTE:");
 
         OfferteRicevuteApplicativo controller = new OfferteRicevuteApplicativo();

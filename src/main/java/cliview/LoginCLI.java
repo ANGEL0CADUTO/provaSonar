@@ -9,7 +9,7 @@ import utils.CLIPrinter;
 import java.util.Scanner;
 
 public class LoginCLI {
-    private UtenteBean utenteBean;
+
     private HomePageCLI homePageCLI;
 
     public LoginCLI(HomePageCLI homePageCLI) {
