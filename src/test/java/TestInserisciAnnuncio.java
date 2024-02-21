@@ -1,5 +1,6 @@
 
 import controllerapplicativo.AnnuncioControllerApplicativo;
+import exceptions.AnnuncioNonInseritoException;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import bean.CopiaMangaBean;
@@ -9,7 +10,7 @@ class TestInserisciAnnuncio {
 
     //TEST DI INSERIMENTO ANNUNCIO PER UN UTENTE CHE NE POSSIEDE LA COPIA
     @Test
-    public void testInserisciAnnuncio() {
+    public void testInserisciAnnuncio() throws AnnuncioNonInseritoException {
 
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
         copiaMangaBean.setIdCopiaManga(45);

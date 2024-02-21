@@ -23,10 +23,10 @@ public class AnnuncioDAO {
     private static final String PREZZO_DI_VENDITA= "prezzoDiVendita";
     private static final String VOLUME = "volume";
 
-    public boolean isAnnuncioPresente(CopiaMangaModel copiaMangaModel1) {//GLI ARRIVA  ID 0
+    public boolean isAnnuncioPresente(CopiaMangaModel copiaMangaModel1) {
 
         boolean b = false;
-        String query = "SELECT * FROM mangaink.annuncio WHERE copiaMangaID = ?";
+        String query = "SELECT * FROM mangaink.annuncio WHERE copiaMangaID = ? AND statoAnnuncio = 1";
         Connection conn = DBConnection.getIstance().connection();
 
         try (PreparedStatement st = conn.prepareStatement(query)) {
@@ -78,22 +78,6 @@ public class AnnuncioDAO {
 
         return array;
     }
-
-        try(PreparedStatement st = conn.prepareStatement(query)){
-            st.setInt(1,idCopia);
-            ResultSet rs = st.executeQuery();
-            if(rs.next()){
-                int count = rs.getInt(1);
-                return count > 0;
-            }
-        } catch (SQLException e) {
-            logger.severe("Errore in AnnuncioDAO in checkEsistenzaAnnuncio: " + e.getMessage());
-        }
-        return false;
-    }
-
-
-
 
 
 
@@ -186,38 +170,38 @@ public class AnnuncioDAO {
     }
 
 
-    public boolean checkEsistenzaAnnuncio(int idCopia){
-        String query="SELECT COUNT(*) FROM annuncio where copiaMangaID = ? and statoAnnuncio = 1";
-        Connection conn = DBConnection.getIstance().connection();
 
 
-    public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID) {
-        String query = "SELECT titoloManga, utenteVenditoreID, usernameVenditore, volume, prezzoDiVendita,dataAnnuncio,copiaMangaID FROM " +
-                "annuncio WHERE idAnnuncio = ?;";
-        Connection conn = DBConnection.getIstance().connection();
-        AnnuncioModel annuncio = null;
+    public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID){
+            String query = "SELECT titoloManga, utenteVenditoreID, usernameVenditore, volume, prezzoDiVendita,dataAnnuncio,copiaMangaID FROM " +
+                    "annuncio WHERE idAnnuncio = ?;";
+            Connection conn = DBConnection.getIstance().connection();
+            AnnuncioModel annuncio = null;
 
-        try (PreparedStatement st = conn.prepareStatement(query)) {
-            st.setInt(1, annuncioID);
-            ResultSet rs = st.executeQuery();
+            try (PreparedStatement st = conn.prepareStatement(query)) {
+                st.setInt(1, annuncioID);
+                ResultSet rs = st.executeQuery();
 
-            if (rs.next()) {
-                annuncio = new AnnuncioModel();
-                annuncio.setIdAnnuncio(annuncioID);
-                annuncio.setCopiaMangaID(rs.getInt("copiaMangaID"));
-                annuncio.setNomeManga(rs.getString(TITOLO_MANGA));
-                annuncio.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
-                annuncio.setVolume(rs.getInt(VOLUME));
-                annuncio.setNomeUtente(rs.getString(USERNAME_VENDITORE));
-                annuncio.setPrezzo(rs.getBigDecimal(PREZZO_DI_VENDITA));
-                annuncio.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
+                if (rs.next()) {
+                    annuncio = new AnnuncioModel();
+                    annuncio.setIdAnnuncio(annuncioID);
+                    annuncio.setCopiaMangaID(rs.getInt("copiaMangaID"));
+                    annuncio.setNomeManga(rs.getString(TITOLO_MANGA));
+                    annuncio.setUtenteVenditoreID(rs.getInt("utenteVenditoreID"));
+                    annuncio.setVolume(rs.getInt(VOLUME));
+                    annuncio.setNomeUtente(rs.getString(USERNAME_VENDITORE));
+                    annuncio.setPrezzo(rs.getBigDecimal(PREZZO_DI_VENDITA));
+                    annuncio.setDataAnnuncio(rs.getTimestamp("dataAnnuncio").toLocalDateTime());
 
+                }
+            } catch (SQLException e) {
+                logger.severe("Errore nel AnnuncioDAO in getDatiAnnuncioByAnnuncioID : " + e.getMessage());
             }
-        } catch (SQLException e) {
-            logger.severe("Errore nel AnnuncioDAO in getDatiAnnuncioByAnnuncioID : " + e.getMessage());
+            return annuncio;
+
         }
-        return annuncio;
-    }
+
+
 
     public boolean setStatoAccettatoByAnnuncioID(int idAnnuncio) {
         boolean b = false;
