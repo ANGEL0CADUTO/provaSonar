@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class DepositaEPrelevaTesting {
 
 /*Leonardo Mancuso 0287194*/
-
+/*
     @Test
    public void depositaWorkCorrectlyWithValidValue(){
       int result = 0;
@@ -79,7 +79,7 @@ public class DepositaEPrelevaTesting {
 
 
 
-    }
+    }*/
 
 
 

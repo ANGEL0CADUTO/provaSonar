@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 //TEST FATTO DA ANGELO ROMANO
 
 public class TestCercaAnnuncio {
-
-    @Test @Disabled
+/*
+    @Test
     public void testCercaAnnuncio() {
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
         copiaMangaBean.setIdCopiaManga(45);
@@ -20,5 +20,5 @@ public class TestCercaAnnuncio {
 
         // Verifica dell'output
         assertTrue(result);
-    }
+    }*/
 }

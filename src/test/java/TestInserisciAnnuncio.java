@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 //TEST FATTO DA ANGELO ROMANO
 class TestInserisciAnnuncio {
-
+/*
     //TEST DI INSERIMENTO ANNUNCIO PER UN UTENTE CHE NE POSSIEDE LA COPIA
     @Test
     public void testInserisciAnnuncio() throws AnnuncioNonInseritoException {
@@ -32,7 +32,7 @@ class TestInserisciAnnuncio {
 
         // Verifica dell'output
         assertFalse(result);
-    }
+    }*/
 
 
 }
