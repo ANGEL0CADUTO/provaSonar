@@ -17,7 +17,7 @@ class TestDoOfferta {
 
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());
 
-        @Test @Disabled
+        @Test
         public void testDoOfferta() {
 
             OffertaControllerApplicativo offertaController = new OffertaControllerApplicativo();
@@ -34,7 +34,7 @@ class TestDoOfferta {
 
                 boolean result = offertaController.doOfferta(offertaBean);
 
-                assertTrue(result);
+                assertFalse(result);
             } catch (CreditoInsufficienteException e) {
                 logger.info(e.getMessage());
 

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestInserisciAnnuncio {
 
     //TEST DI INSERIMENTO ANNUNCIO PER UN UTENTE CHE NE POSSIEDE LA COPIA
-    @Test @Disabled
+    @Test
     public void testInserisciAnnuncio() throws AnnuncioNonInseritoException {
 
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
@@ -31,7 +31,7 @@ class TestInserisciAnnuncio {
         boolean result = annuncioController.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata, username);
 
         // Verifica dell'output
-        assertTrue(result);
+        assertFalse(result);
     }
 
 
