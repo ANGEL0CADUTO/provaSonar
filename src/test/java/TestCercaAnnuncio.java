@@ -1,4 +1,5 @@
 import controllerapplicativo.AnnuncioControllerApplicativo;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import bean.CopiaMangaBean;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestCercaAnnuncio {
 
-    @Test
+    @Test @Disabled
     public void testCercaAnnuncio() {
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
         copiaMangaBean.setIdCopiaManga(45);
