@@ -3,6 +3,7 @@ package view;
 import bean.DatiUtenteBean;
 import controllerapplicativo.RegistraApplicativo;
 import bean.UtenteBean;
+import exceptions.UtenteNonRegistratoException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -66,7 +67,12 @@ public class RegistraGrafico extends BaseController{
 
 
     //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO (CREDO DI AVERLO GIA RIPARATO RICONTROLLARE)
-        boolean esitoRegistra = ra.registra(bean);
+        boolean esitoRegistra = false;
+        try {
+            esitoRegistra = ra.registra(bean);
+        } catch (UtenteNonRegistratoException e) {
+            wrongSignUp.setText(e.getMessage());
+        }
         int esitoRegistraDati= ra.registraDati(bean1);
         ra.informazioniUtente(bean);
         //CONTROLLO SU EMAIl-PASSWORS-USERNAME-INDIRIZZO-CAP-CIVICO HA INSERITO CAMPI NON VOUTI FUNGE

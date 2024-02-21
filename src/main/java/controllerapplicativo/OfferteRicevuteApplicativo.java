@@ -15,7 +15,7 @@ import java.util.List;
 
 public class OfferteRicevuteApplicativo {
 
-    public List<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
+    public List<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id)  {
         OffertaDAO dao = new OffertaDAO();
         List<OffertaRicevuta> array = dao.getOfferteRicevuteByAnnuncioID(id);
         UtenteDAO dao2 = new UtenteDAO();

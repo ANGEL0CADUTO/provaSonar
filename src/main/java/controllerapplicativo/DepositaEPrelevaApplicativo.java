@@ -9,12 +9,14 @@ import java.math.BigDecimal;
 
 public class DepositaEPrelevaApplicativo {
 
-    public boolean deposita(UtenteBean bean, String cifra ){
+    public boolean deposita(UtenteBean bean, String cifra ) {
+
         UtenteDAO depositaCredito = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
 
         return depositaCredito.userDeposit(model,cifra);
+
     }
 
     public boolean preleva(UtenteBean bean, String cifraString) throws CreditoInsufficienteException {

@@ -3,13 +3,14 @@ package controllerapplicativo;
 import bean.AnnuncioBean;
 import dao.AnnuncioDAO;
 import dao.UtenteDAO;
+
 import model.AnnuncioModel;
 
 
 import java.util.List;
 
 public class CompraMangaControllerApplicativo {
-    public List<AnnuncioModel> showAnnunce(int id, String name) {
+    public List<AnnuncioModel> showAnnunce(int id, String name)  {
      AnnuncioDAO dao = new AnnuncioDAO();
      List<AnnuncioModel> array = dao.getAnnunci(id,name);
      UtenteDAO dao2 = new UtenteDAO();
@@ -22,7 +23,7 @@ public class CompraMangaControllerApplicativo {
     }
 
 
-    public AnnuncioBean getAnnuncioById(int idAnnuncio) {
+    public AnnuncioBean getAnnuncioById(int idAnnuncio)  {
         AnnuncioDAO dao = new AnnuncioDAO();
         AnnuncioModel model = dao.getDatiAnnuncioByAnnuncioID(idAnnuncio);
 

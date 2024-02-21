@@ -1,8 +1,8 @@
 package dao;
 
-import bean.UtenteBean;
 import exceptions.CredenzialiSbagliateException;
 import exceptions.CreditoInsufficienteException;
+import exceptions.UtenteNonRegistratoException;
 import model.Credenziali;
 import model.UtenteModel;
 
@@ -50,7 +50,7 @@ public class UtenteDAO {
         return new UtenteModel(id, login.getEmail(), username, voto, credito, informazioniUtenteID);
     }
 
-    public boolean addUser(UtenteModel model) {
+    public boolean addUser(UtenteModel model) throws UtenteNonRegistratoException {
         Connection conn = DBConnection.getIstance().connection();
 
         String query = "INSERT INTO mangaink.utente (email, username ,password ) VALUES (?, ?, ?)";
@@ -73,6 +73,7 @@ public class UtenteDAO {
                 logger.info("Inserimento utente riuscito");
             } else {
                 logger.info("Inserimento utente fallito");
+                throw new UtenteNonRegistratoException();
             }
         } catch (SQLException e) {
             logger.severe("E' stata lanciata la exception nell'addUser in utenteDao " + e.getMessage());
@@ -94,6 +95,7 @@ public class UtenteDAO {
             st.setString(1, model.getEmail());
             int righeScritte = st.executeUpdate();
             if (righeScritte > 0) {
+
                 b = true;
             } else {
                 logger.info("Accoppiamente Fallito");
@@ -108,7 +110,7 @@ public class UtenteDAO {
     }
 
 
-    public boolean userDeposit(UtenteModel utenteModel, String cifraString) {
+    public boolean userDeposit(UtenteModel utenteModel, String cifraString){
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
         String query = "UPDATE mangaink.utente SET credito= credito +  ? " +
@@ -122,6 +124,7 @@ public class UtenteDAO {
             int righeScritte = st.executeUpdate();
 
             if (righeScritte > 0) {
+
                 b = true;
             } else {
                 logger.info("Deposito Credito Fallito");
@@ -137,7 +140,7 @@ public class UtenteDAO {
 
     }
 
-    public boolean userPreliev(UtenteModel model, String cifraString) { //PRELEVA IL TUO CREDITO
+    public boolean userPreliev(UtenteModel model, String cifraString) {
 
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();

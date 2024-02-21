@@ -36,9 +36,11 @@ public class OffertaFacade {
     }
 
     private boolean userDeposit(int idUtente, String amount) {
+
         UtenteModel utenteModel = new UtenteModel();
         utenteModel.setIdUtente(idUtente);
         return utenteDAO.userDeposit(utenteModel, amount);
+
     }
 
     private boolean userPreliev(int idUtente, String amount) {

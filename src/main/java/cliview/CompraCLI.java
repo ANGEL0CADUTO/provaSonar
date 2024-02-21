@@ -58,7 +58,9 @@ public class CompraCLI {
         String nomeManga = scanner.nextLine();
 
         CompraMangaControllerApplicativo controllerApp = new CompraMangaControllerApplicativo();
-        List<AnnuncioModel> annunci = controllerApp.showAnnunce(utenteBean.getIdUtente(), nomeManga);
+        List<AnnuncioModel> annunci = null;
+            annunci = controllerApp.showAnnunce(utenteBean.getIdUtente(), nomeManga);
+
 
         CLIPrinter.println("Elenco degli annunci per il manga " + nomeManga + ":");
 
@@ -77,7 +79,10 @@ public class CompraCLI {
         int idAnnuncio = scanner.nextInt();
 
         CompraMangaControllerApplicativo controllerApp = new CompraMangaControllerApplicativo();
-        AnnuncioBean annuncio = controllerApp.getAnnuncioById(idAnnuncio);
+        AnnuncioBean annuncio = null;
+
+            annuncio = controllerApp.getAnnuncioById(idAnnuncio);
+
 
         if (annuncio != null) {
             CLIPrinter.println("------------------------------");

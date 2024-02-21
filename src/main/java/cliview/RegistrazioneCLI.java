@@ -3,6 +3,7 @@ package cliview;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
 import controllerapplicativo.RegistraApplicativo;
+import exceptions.UtenteNonRegistratoException;
 import utils.CLIPrinter;
 
 import java.util.Scanner;
@@ -41,10 +42,14 @@ public class RegistrazioneCLI {
         utenteBean.setDatiUtente(datiUtente);
         utenteBean.getDatiUtente().setIdInformazioniUtente(key);
 
-        if (key != -1 && controllerApp.registra(utenteBean) && controllerApp.informazioniUtente(utenteBean)) {
-            CLIPrinter.println("Registrazione effettuata con successo per l'utente: " + utenteBean.getEmail());
-        } else {
-            CLIPrinter.println("Registrazione fallita. Controlla i dati inseriti e riprova.");
+        try {
+            if (key != -1 && controllerApp.registra(utenteBean) && controllerApp.informazioniUtente(utenteBean)) {
+                CLIPrinter.println("Registrazione effettuata con successo per l'utente: " + utenteBean.getEmail());
+            } else {
+                CLIPrinter.println("Registrazione fallita. Controlla i dati inseriti e riprova.");
+            }
+        } catch (UtenteNonRegistratoException e) {
+            CLIPrinter.println(e.getMessage());
         }
     }
 }

@@ -46,11 +46,11 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
             if (deposita.getText().isEmpty()) {
                 depositaLabel.setText("Devi inserire una cifra");
 
-            } /*else if (deposita.getText().compareTo(String.valueOf(BigDecimal.ZERO)) < 0) {
+            } else if (deposita.getText().compareTo(String.valueOf(BigDecimal.ZERO)) < 0) {
 
                 depositaLabel.setText("Devi depositare cifre positive");
 
-            }*/ else {
+            } else {
 
 
                 String cifraString = deposita.getText();
@@ -68,6 +68,8 @@ public class DepositaEPrelevaGrafico extends UserGuiController {
                     depositaLabel.setText("Errore");
 
                 }
+
+
             }
         } catch(NumberFormatException e){depositaLabel.setText("Devi inserire un valore valido");}
     }

@@ -4,16 +4,21 @@ import bean.DatiUtenteBean;
 import dao.DatiUtenteDao;
 import bean.UtenteBean;
 import dao.UtenteDAO;
+import exceptions.UtenteNonRegistratoException;
 import model.UtenteModel;
 
 public class RegistraApplicativo {
 
-    public boolean registra(UtenteBean bean){
+    public boolean registra(UtenteBean bean)throws UtenteNonRegistratoException{
         UtenteDAO registraUtente = new UtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setEmail(bean.getEmail());
         model.setUsername(bean.getUsername());
-        return registraUtente.addUser(model);
+        try {
+            return registraUtente.addUser(model);
+        } catch (UtenteNonRegistratoException e) {
+            throw new UtenteNonRegistratoException();
+        }
 
 
     }

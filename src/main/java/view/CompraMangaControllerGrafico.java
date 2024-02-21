@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
 
@@ -106,6 +107,9 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
         CompraMangaControllerApplicativo controller = new CompraMangaControllerApplicativo();
         List<AnnuncioModel> arrayAnnunci= controller.showAnnunce(utenteBean.getIdUtente(),searchTextField.getText());
+
+
+
         tableCompra.getItems().clear();
 
 
@@ -119,7 +123,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         });
         volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVolume())));
         compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
-            private int index;
+            private int index ;
             private final Button bottone = new Button("Compra");
 
             {
@@ -157,7 +161,7 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
     }
 
     @FXML
-    private void doOfferta(ActionEvent event) {
+    private void doOfferta(ActionEvent event) throws IOException {
         wrongOfferta.setText("");
         BigDecimal prezzo = new BigDecimal(offertaTextField.getText());
         offertaBean.setOffertaPrezzo(prezzo);
@@ -180,9 +184,9 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         if(esitoOfferta){
 
 
-                try {
 
-                  //    update();
+
+
 
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notifiche.fxml"));
                     Parent root = fxmlLoader.load();
@@ -191,9 +195,6 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
                     stage.show();
 
 
-                } catch (IOException e) {
-                    System.out.print("NON HA FUNZIONATO NOTIFICA:::");
-                }
         }
         toolbar.setVisible(false);
     }
