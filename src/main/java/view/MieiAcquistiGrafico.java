@@ -1,29 +1,24 @@
 package view;
 
-import bean.RecensioneBean;
+
 import bean.UtenteBean;
 import controllerapplicativo.MieiAcquistiApplicativo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
-import model.OffertaModel;
 
-import java.io.IOException;
+import model.OffertaModel;
+import utils.RecensioneButtonTableCell;
+
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class MieiAcquistiGrafico extends UserGuiController{
 
-    private static final Logger logger= Logger.getLogger(MieiAcquistiGrafico.class.getName());
+
 
 
     @FXML
@@ -39,7 +34,7 @@ public class MieiAcquistiGrafico extends UserGuiController{
     private TableColumn<OffertaModel, String>  dataColumn;
 
     @FXML
-    private TableColumn<OffertaModel, String>  recensisciColumn;
+    private TableColumn<OffertaModel, OffertaModel> recensisciColumn;
 
     @FXML
     private TableColumn<OffertaModel,String> volumeColumn;
@@ -61,59 +56,10 @@ public class MieiAcquistiGrafico extends UserGuiController{
         dataColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataOfferta())));
 
 
-        recensisciColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
+        recensisciColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue()));
 
         //DEVO CAPIRE BENE COME PASSARE I DATI
-        recensisciColumn.setCellFactory(cellData -> new TableCell<OffertaModel, String>() {
-
-            private final Button bottone = new Button("Recensisci");
-
-            {
-                // Gestisci l'evento di clic del bottone
-                bottone.setOnAction(event -> {
-                    // Ora puoi eseguire un'azione basata su questo elemento
-                    try {
-
-                        int index = getIndex();  // Ottieni l'indice della riga cliccata
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Recensione.fxml"));
-
-                        RecensioneBean dati = new RecensioneBean();
-                        dati.setIdOfferta(array.get(index).getIdOfferta());
-                        dati.setRecensitoID(array.get(index).getUtenteVenditoreID());
-
-
-                        loader.setControllerFactory(c -> new InviaRecensioneGrafico(utenteBean,dati));
-                        Parent root = loader.load();
-
-                        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                    } catch (IOException e) {
-                        logger.severe("Errore in MieiAcquistiGrafico nel cambio pagina : " +e.getMessage());
-                    }
-                });
-            }
-
-            // Implementazione del metodo updateItem
-
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (!empty && getTableRow() != null && getTableRow().getItem() != null) {
-                    OffertaModel offerta =  getTableRow().getItem();
-
-                    // Aggiungi il bottone solo se il valore di Recensito è 0
-                    if (offerta.getRecensito() == 0) {
-                        setGraphic(bottone);
-                    } else {
-                        setGraphic(null);
-                    }
-                } else {
-                    setGraphic(null);
-                }
-            }
-        });
+        recensisciColumn.setCellFactory(cellData -> new RecensioneButtonTableCell(data,utenteBean,myAnchorPane));
 
                 mieiAcquistiTable.setItems(data);
             }

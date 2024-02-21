@@ -19,7 +19,7 @@ public class NotificheControllerGrafico {
         // Aggiorna l'etichetta con la notifica
         if (notifica != null) {
             String testoNotifica = String.format(
-                    "Utente: %s\nVolume: %d\nVenditore: %s\nManga: %s\nPrezzo Offerta: %d",
+                    "Utente: %s%nVolume: %d%nVenditore: %s%nManga: %s%nPrezzo Offerta: %d",
                     notifica.getUtente(),
                     notifica.getVolume(),
                     notifica.getVenditore(),

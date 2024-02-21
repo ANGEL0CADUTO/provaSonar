@@ -3,11 +3,9 @@ package dao;
 
 
 import exceptions.AnnuncioNonInseritoException;
-import exceptions.CredenzialiSbagliateException;
 import model.AnnuncioModel;
 import model.CopiaMangaModel;
 
-import javax.xml.transform.Result;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;

@@ -16,10 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
-public class AnnuncioControllerGrafico extends UserGuiController{
+public class AnnuncioControllerGrafico extends UserGuiController {
 
-    private static final Logger LOGGER = Logger.getLogger(AnnuncioControllerGrafico.class.getName());
-
+    private static final Logger logger = Logger.getLogger(AnnuncioControllerGrafico.class.getName());
 
 
     @FXML
@@ -34,7 +33,7 @@ public class AnnuncioControllerGrafico extends UserGuiController{
 
     private CopiaMangaBean copiaMangaBean;
 
-    protected AnnuncioControllerGrafico(UtenteBean bean,CopiaMangaBean copiaMangaBean) {
+    protected AnnuncioControllerGrafico(UtenteBean bean, CopiaMangaBean copiaMangaBean) {
         super(bean);
         this.copiaMangaBean = copiaMangaBean;
     }
@@ -58,36 +57,24 @@ public class AnnuncioControllerGrafico extends UserGuiController{
         String dataFormattata = formatoData.format(dataCorrente);
         AnnuncioControllerApplicativo an = new AnnuncioControllerApplicativo();
 
-
-
-           boolean esitoRicercaAnuncio = an.cercaAnnuncio(copiaMangaBean);
-
-
-           if (esitoRicercaAnuncio) {
-               LOGGER.info("Esiste gia un annuncio per questa copia");
-           } else {
-               try{
-               boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata,utenteBean.getUsername());
-               if (esitoAnnuncio) {
-                   try {
-                       goToLibreria(event);
-                   } catch (IOException e) {
-                       LOGGER.severe("Errore cambioPagina AnnuncioControllerGrafico in UserAnnounce :" + e.getMessage());
-                   }
-                   LOGGER.info("Inserimento annuncio andato a buon fine");
-               } else {
-                   LOGGER.info("Inserimento annuncio fallito");
-               }
-               }catch (AnnuncioNonInseritoException e){e.getMessage();}
-           }
-
-
+        boolean esitoRicercaAnuncio = an.cercaAnnuncio(copiaMangaBean);
+        if (esitoRicercaAnuncio) {
+            logger.info("Esiste gia un annuncio per questa copia");
+        } else {
+            try {
+                boolean esitoAnnuncio = an.inserisciAnnuncio(copiaMangaBean, prezzo, dataFormattata, utenteBean.getUsername());
+                if (esitoAnnuncio) {
+                    goToLibreria(event);
+                } else {
+                    logger.info("Inserimento annuncio fallito");
+                }
+            } catch (AnnuncioNonInseritoException | IOException e) {
+                logger.severe(e.getMessage());
+            }
+        }
 
 
     }
-
-
-
 
 
 }

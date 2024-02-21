@@ -10,12 +10,10 @@ import model.AnnuncioModel;
 
 
 import java.util.List;
-import java.util.logging.Logger;
 
 public class BottoneToCompraManga extends Button {
 
 
-    private static final Logger logger = Logger.getLogger(BottoneToCompraManga.class.getName());
 
     public BottoneToCompraManga(List<AnnuncioModel> array, int index, AnchorPane myAnchorPane, ToolBar toolbar) {
 

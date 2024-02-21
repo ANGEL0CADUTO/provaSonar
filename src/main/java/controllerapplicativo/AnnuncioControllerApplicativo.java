@@ -4,7 +4,6 @@ import dao.AnnuncioDAO;
 import bean.CopiaMangaBean;
 import dao.CopiaMangaDAO;
 import exceptions.AnnuncioNonInseritoException;
-import exceptions.CredenzialiSbagliateException;
 import model.CopiaMangaModel;
 
 import java.math.BigDecimal;

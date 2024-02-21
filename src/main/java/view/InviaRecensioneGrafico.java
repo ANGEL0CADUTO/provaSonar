@@ -29,7 +29,7 @@ public class InviaRecensioneGrafico extends UserGuiController {
 
     private RecensioneBean datiRecensione;
 
-    protected InviaRecensioneGrafico(UtenteBean bean, RecensioneBean datiRecensione) {
+    public InviaRecensioneGrafico(UtenteBean bean, RecensioneBean datiRecensione) {
         super(bean);
         this.datiRecensione = datiRecensione;
     }

@@ -45,7 +45,7 @@ public class MieiAnnunciGrafico extends UserGuiController {
         private TableColumn<AnnuncioModel, String> volumeColumn;
 
 
-        protected MieiAnnunciGrafico(UtenteBean bean) {
+        public MieiAnnunciGrafico(UtenteBean bean) {
             super(bean);
         }
 

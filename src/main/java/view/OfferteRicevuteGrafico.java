@@ -1,6 +1,6 @@
 package view;
 
-import bean.OffertaBean;
+
 import bean.UtenteBean;
 import controllerapplicativo.OfferteRicevuteApplicativo;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,15 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.OffertaRicevuta;
+import utils.BottoneAccettaOfferta;
 
-import java.io.IOException;
+
 import java.time.format.DateTimeFormatter;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 public class OfferteRicevuteGrafico extends UserGuiController{
-    private static final Logger logger= Logger.getLogger(OfferteRicevuteGrafico.class.getName());
 
 
     private int idAnnuncio;
@@ -64,51 +63,11 @@ public class OfferteRicevuteGrafico extends UserGuiController{
         buttonColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
 
         //DEVO CAPIRE BENE COME PASSARE I DATI
-        buttonColumn.setCellFactory(cellData -> new TableCell<OffertaRicevuta, String>() {
-            private int index;
-            private final Button bottone = new Button("Accetta ");
+        buttonColumn.setCellFactory(cellData -> new BottoneAccettaOfferta(data, utenteBean, myAnchorPane));
 
-            {
-                // Gestisci l'evento di clic del bottone
-                bottone.setOnAction(event -> {
-
-                    // Ora puoi eseguire un'azione basata su questo elemento
-                    try {
-                        OffertaBean offertaBean = new OffertaBean();
-                        offertaBean.setIdAnnuncio(array.get(index).getAnnuncioID());
-                        offertaBean.setCopiaMangaID(array.get(index).getCopiaMangaID());
-                        offertaBean.setUtenteOfferenteID(array.get(index).getUtenteOfferenteID());
-                        offertaBean.setIdOfferta(array.get(index).getIdOfferta());
-                        offertaBean.setOffertaPrezzo(array.get(index).getOffertaPrezzo());
-                        offertaBean.setTitoloManga(array.get(index).getTitoloManga());
-                        offertaBean.setVolumeManga(array.get(index).getVolumeManga());
-
-                        OfferteRicevuteApplicativo controllerApp = new OfferteRicevuteApplicativo();
-                        controllerApp.accettaOffertaByOffertaID(offertaBean, utenteBean.getIdUtente());
-
-                        goToMieiAnnunci();
-                    } catch (IOException e) {
-                        logger.severe("Errore nel cambio pagina " + e.getMessage());
-                    }
-
-                });
-            }
-
-            // Aggiungi un override per aggiornare il valore del pulsante quando la cella viene aggiornata
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(bottone);
-                }
-            }
-        });
 
         offerteTable.setItems(data);
     }
 
-    // ...
 }
 

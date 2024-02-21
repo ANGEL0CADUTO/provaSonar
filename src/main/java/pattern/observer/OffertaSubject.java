@@ -5,7 +5,7 @@ public abstract class OffertaSubject {
 
     private List<OffertaObserver> observersArrayList;
 
-    public OffertaSubject() {
+    protected OffertaSubject() {
         observersArrayList = new ArrayList<>();
     }
 

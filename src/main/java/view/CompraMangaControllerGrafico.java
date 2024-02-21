@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import model.OffertaModel;
 import model.OfferteModel;
 import pattern.observer.OffertaObserver;
+import utils.CompraButtonTableCell;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -121,42 +122,12 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
             return new SimpleStringProperty(String.valueOf(votoTroncato));
         });
         volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(arrayAnnunci.get(cellData.getTableView().getItems().indexOf(cellData.getValue())).getVolume())));
-        compraColumn.setCellFactory(param -> new TableCell<CopiaMangaModel,String>() {
-            private int index ;
-            private final Button bottone = new Button("Compra");
-
-            {
-                // Gestisci l'evento di clic del bottone
-                bottone.setOnAction(event -> {
-
-                    // Ora puoi eseguire un'azione basata su questo elemento
-
-                    toolbar.setVisible(true);
-                    offertaBean = new OffertaBean();
-                    offertaBean.setIdAnnuncio(arrayAnnunci.get(index).getIdAnnuncio());
-                    offertaBean.setCopiaMangaID(arrayAnnunci.get(index).getCopiaMangaID());
-
-
-                });
-            }
-
-            @Override  //
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                // Verifica se la riga è vuota
-                if (empty) {
-                    setGraphic(null);
-                } else { index=getIndex();
-                    setGraphic(bottone);
-                }
-            }
-        });
+        offertaBean = new OffertaBean();
+        compraColumn.setCellFactory(param -> new CompraButtonTableCell(offertaBean,toolbar,arrayAnnunci));
 
 
 
-
-                tableCompra.getItems().addAll(arrayAnnunci);
+        tableCompra.getItems().addAll(arrayAnnunci);
     }
 
     @FXML
@@ -176,17 +147,13 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
         OffertaControllerApplicativo of = new OffertaControllerApplicativo();
         boolean esitoOfferta = false;
         try {
+
             esitoOfferta = of.doOfferta(offertaBean);
         } catch (CreditoInsufficienteException e) {
             wrongOfferta.setText(e.getMessage());
             logger.severe("Errore in CompraMangaControllerGrafico in doOfferta:"+ e.getMessage());
         }
         if(esitoOfferta){
-
-
-
-
-
 
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notifiche.fxml"));
                     Parent root = fxmlLoader.load();

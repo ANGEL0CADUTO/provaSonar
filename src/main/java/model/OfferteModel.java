@@ -11,11 +11,12 @@ public class OfferteModel extends OffertaSubject {
     /*mantiene lo stato del soggetto osservato e notifica gli observer in caso di un cambio di stato
  Invoca le operazioni di notifica ereditate dal Subject, quando devono essere informati i ConcreteObserver.*/
     private static OfferteModel offerteList = null;//per mantenere lo stato
-  private List<OffertaModel> offertaList = new ArrayList<>();
+    private List<OffertaModel> offertaList = new ArrayList<>();
 
 
-    public void notificaCambiamentiAObservers(){
-        super.notificaObservers();}
+    public void notificaCambiamentiAObservers() {
+        super.notificaObservers();
+    }
 
     public static OfferteModel getInstance() { //Pattern Singleton
         if (offerteList == null) {
@@ -25,17 +26,13 @@ public class OfferteModel extends OffertaSubject {
     }
 
     public void setState(List<OffertaModel> offertaList) {
-       this.offertaList = offertaList;
+        this.offertaList = offertaList;
         //in questo caso non viene fatto notifyObservers() volontariamente
     }
 
-    public List<OffertaModel> getState(){
+    public List<OffertaModel> getState() {
         return offertaList;
     }
 
-
-    /*public void addOfferta(OffertaModel offertaModel) {
-        offertaList.add(offertaModel);
-    }*/
 
 }

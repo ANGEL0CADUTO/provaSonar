@@ -19,7 +19,7 @@ public class OffertaControllerApplicativo {
     public boolean doOfferta(OffertaBean offertaBean) throws CreditoInsufficienteException {
 
 
-        System.out.println("Nell'offertaControllerApplicativo : " + offertaBean.getIdAnnuncio());
+
         OffertaModel offertaModel  = new OffertaModel();
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setAnnuncioID(offertaBean.getIdAnnuncio());
@@ -28,7 +28,6 @@ public class OffertaControllerApplicativo {
         offertaModel.setOffertaPrezzo(offertaBean.getOffertaPrezzo());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
         offertaModel.setDataOfferta(LocalDateTime.now());
-        System.out.println("Controllo " + offertaBean.getCopiaMangaID());
         offertaModel.setUtenteOfferenteID(offertaBean.getUtenteOfferenteID());
 
         List<OffertaModel> offertaList = new ArrayList<>();
@@ -45,6 +44,9 @@ public class OffertaControllerApplicativo {
         {
             OffertaDAO dao2 = new OffertaDAO();
             BigDecimal pendingMoney = dao2.getPendingMoneyUtenteByUtenteID(offertaModel.getUtenteOfferenteID());
+            if(pendingMoney == null){
+                pendingMoney = BigDecimal.ZERO;
+            }
 
             BigDecimal cifraTotale = offertaModel.getOffertaPrezzo().add(pendingMoney);
 
