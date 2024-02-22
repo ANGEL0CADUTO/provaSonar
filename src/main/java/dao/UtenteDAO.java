@@ -60,7 +60,7 @@ public class UtenteDAO {
         String query = "INSERT INTO mangaink.utente (email, username ,password ) VALUES (?, ?, ?)";
         boolean b = false;
         try (PreparedStatement st = conn.prepareStatement(query)) {
-            System.out.println("AIUTO" +model.getEmail());
+
 
             if (model.getEmail().isEmpty() || model.getUsername().isEmpty() || model.getPassword().isEmpty()) {
                 logger.warning("Uno o più campi sono vuoti. Inserimento utente fallito.");

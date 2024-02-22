@@ -14,10 +14,10 @@ import exceptions.CreditoInsufficienteException;
 
 //TEST FATTO DA ANGELO ROMANO
 class TestDoOfferta {
-/*
+
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());
 
-        @Test//Questo test serve a controllare che un offerta non inserita correttamente non verrà inserita.
+      /*  @Test//Questo test serve a controllare che un offerta non inserita correttamente non verrà inserita.
         public void testDoOfferta() {
 
             OffertaControllerApplicativo offertaController = new OffertaControllerApplicativo();

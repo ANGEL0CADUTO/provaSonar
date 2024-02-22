@@ -8,8 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //TEST FATTO DA ANGELO ROMANO
 
 public class TestCercaAnnuncio {
-/*
-    @Test//Questo test serve a controllare che la ricerca di un annuncio funzioni correttamente.
+ /*   @Test//Questo test serve a controllare che la ricerca di un annuncio funzioni correttamente.
     public void testCercaAnnuncio() {
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
         copiaMangaBean.setIdCopiaManga(45);
