@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
-
+//MODEL PER GESTIRE UNA OFFERTA PER UN ANNUNCIO
 public class OffertaModel  {
 
     private int idOfferta;

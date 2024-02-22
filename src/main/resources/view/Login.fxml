@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginGrafico">
+<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginGrafico">
    <children>
       <Pane layoutX="104.0" layoutY="51.0" prefHeight="284.0" prefWidth="390.0" style="-fx-background-color: #d54806; -fx-background-radius: 10;">
          <children>
@@ -31,7 +31,7 @@
                   <Font name="Yu Gothic UI Semibold" size="24.0" />
                </font>
             </Text>
-            <Label fx:id="wrongLogin" layoutX="140.0" layoutY="74.0" prefHeight="18.0" prefWidth="109.0" textFill="#0900ff" />
+            <Label fx:id="wrongLogin" layoutX="130.0" layoutY="74.0" prefHeight="18.0" prefWidth="130.0" textFill="#0900ff" />
          </children>
       </Pane>
    </children>

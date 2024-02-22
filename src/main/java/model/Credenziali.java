@@ -1,5 +1,7 @@
 package model;
 
+
+//MODEL PER LA GESTIONE DELLE CREDENZIALI INSERITE DALL'UTENTE
 public class Credenziali {
     private String password;
     private String email;

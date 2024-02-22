@@ -1,5 +1,7 @@
 package bean;
 
+
+//BEAN PER GESTIRE LA RECENSIONE AD UN UTENTE
 public class RecensioneBean {
     private int idOfferta;
     private int recensitoID;

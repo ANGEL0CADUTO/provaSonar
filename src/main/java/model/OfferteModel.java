@@ -6,6 +6,8 @@ import pattern.observer.OffertaSubject;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//CLASSE PER IMPLEMENTARE IL PATTER OBSERVER SULLE OFFERTE RICEVUTE
 public class OfferteModel extends OffertaSubject {
     //CONCRETE SUBJECT
     /*mantiene lo stato del soggetto osservato e notifica gli observer in caso di un cambio di stato

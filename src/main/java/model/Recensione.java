@@ -3,6 +3,8 @@ package model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+//MODEL PER GESTIRE LA RECENSIONE DI UN UTENTE
 public class Recensione {
 
     private int idRecensioni;

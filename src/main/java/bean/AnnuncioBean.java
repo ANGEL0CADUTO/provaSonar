@@ -3,6 +3,7 @@ package bean;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+//BEAN PER GESTIRE ANNUNCI DI VENDITA DI COPIAMANGA
 public class AnnuncioBean {
 
         private int idAnnuncio;

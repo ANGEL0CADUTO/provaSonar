@@ -21,6 +21,8 @@ public class AnnuncioDAO {
     private static final String PREZZO_DI_VENDITA= "prezzoDiVendita";
     private static final String VOLUME = "volume";
 
+
+    //CONTROLLA NEL DATABASE SE è PRESENTE UN ANNUNCIO CON L'ID CHE GLI PASSIAMO
     public boolean isAnnuncioPresente(CopiaMangaModel copiaMangaModel1) {
 
         boolean b = false;
@@ -46,6 +48,7 @@ public class AnnuncioDAO {
     }
 
 
+    //PRENDE TUTTI GLI ANNUNCI NON PUBBLICATI DALL'UTENTE CHE LI STA VISUALIZZANDO, FILTRANDO PER IL VALORE DI RICERCA INSERITO
     public List<AnnuncioModel> getAnnunci(int id,String name) {
 
         String query = "SELECT usernameVenditore, utenteVenditoreID, copiaMangaID, titoloManga, prezzoDiVendita,volume, idAnnuncio,dataAnnuncio FROM annuncio " +
@@ -78,7 +81,7 @@ public class AnnuncioDAO {
     }
 
 
-
+    //AGGIUNGE UN ANNUNCIO
     public boolean addAnnuncio(CopiaMangaModel copiaMangaModel, BigDecimal prezzo, String dataFormattata, String username) throws AnnuncioNonInseritoException {//DA MIGLIORARE
 
         boolean b = false;
@@ -111,7 +114,7 @@ public class AnnuncioDAO {
         return b;
     }
 
-
+    //PRENDE GLI ANNUNCI DI UN UTENTE
     public List<AnnuncioModel> getMyAnnunci(int id) {
         String query = "SELECT titoloManga, volume, prezzoDiVendita, dataAnnuncio, idAnnuncio " +
                 "FROM annuncio " +
@@ -138,6 +141,8 @@ public class AnnuncioDAO {
 
         return array;
     }
+
+    //PRENDE GLI ANNUNCI VECCHI, CIOE' QUELLI CHE SONO TERMINATI PER UNA VENDITA
     public List<AnnuncioModel> getMyAnnunciVendutiByUtenteID(int id) {
         String query = "SELECT utenteVenditoreID, titoloManga, volume, idAnnuncio " +
                 "FROM annuncio " +
@@ -169,7 +174,7 @@ public class AnnuncioDAO {
 
 
 
-
+    //RECUPERA INFORMAZIONI PER UN ANNUNCIO
     public AnnuncioModel getDatiAnnuncioByAnnuncioID(int annuncioID){
             String query = "SELECT titoloManga, utenteVenditoreID, usernameVenditore, volume, prezzoDiVendita,dataAnnuncio,copiaMangaID FROM " +
                     "annuncio WHERE idAnnuncio = ?;";
@@ -202,7 +207,7 @@ public class AnnuncioDAO {
 
 
 
-
+    //MODIFICA LO STATO DI UN ANNUNCIO PERCHE SIA CONTRASSEGNATO COME ACCETTATO
     public boolean setStatoAccettatoByAnnuncioID(int idAnnuncio) {
         boolean b = false;
         String query = "UPDATE annuncio SET statoAnnuncio = 2 WHERE idAnnuncio = ?";

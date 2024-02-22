@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+//CONTROLLORE GRAFICO RELATIVO ALL'INVIO DI UNA RECENSIONE PER UN MANGA ACQUISTATO
 public class InviaRecensioneGrafico extends UserGuiController {
     private static final Logger logger= Logger.getLogger(InviaRecensioneGrafico.class.getName());
 

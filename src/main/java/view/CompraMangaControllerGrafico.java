@@ -33,6 +33,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA CON TABELLA DI TUTTI GLI ANNUNCI, PER I QUALI E' POSSIBILE FARE UN'OFFERTA
 public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
     private static final Logger logger = Logger.getLogger(CompraMangaControllerGrafico.class.getName());
 

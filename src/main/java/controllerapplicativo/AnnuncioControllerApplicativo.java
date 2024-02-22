@@ -12,8 +12,6 @@ public class AnnuncioControllerApplicativo {
     public boolean inserisciAnnuncio(CopiaMangaBean copiaMangaBean, BigDecimal prezzo, String dataFormattata, String username) throws AnnuncioNonInseritoException {
         AnnuncioDAO dao = new AnnuncioDAO();
 
-
-        //POPOLA IL MODEL DAL BEAN CopiaMANGA E LO PASSO AL DAO
         CopiaMangaModel copiaMangaModel = new CopiaMangaModel();
         copiaMangaModel.setIdCopiaManga(copiaMangaBean.getIdCopiaManga());
         copiaMangaModel.setTitolo(copiaMangaBean.getTitolo());

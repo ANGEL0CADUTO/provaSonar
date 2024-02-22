@@ -1,6 +1,8 @@
 package model;
 import com.google.gson.annotations.SerializedName;
 
+
+//MODEL PER GESTIRE LA NOTIFICA
 public class NotificaModel {
     @SerializedName("utente")
     private String utente;

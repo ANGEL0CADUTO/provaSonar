@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA AL PROFILO UTENTE
 public class ProfiloUtenteGrafico extends UserGuiController {
 
     @FXML

@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.NotificaModel;
 
+
+//CONTROLLORE GRAFICO RELATIVO ALLA NOTIFICA RELATIVA ALL'INVIO DI UNA OFFERTA PER UN ANNUNCIO
 public class NotificheControllerGrafico {
 
     @FXML

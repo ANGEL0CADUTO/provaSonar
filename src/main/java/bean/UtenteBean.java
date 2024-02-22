@@ -3,9 +3,11 @@ package bean;
 
 import java.math.BigDecimal;
 
+
+//BEAN PER GESTIRE LE INFORMAZIONI RELATIVE ALL'UTENTE ALL'INTERNO DELL'APLICAZIONE
 public class UtenteBean {
 
-    private int idUtente;//NON VOGLIO CAMBIARE IL DB ADESSO, DA RIMUOVERE E METTERE COME CHIAVE PRIMARIA DIRETTAMENTE L'EMAIL RICORDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    private int idUtente;
     private String username;
     private String email;
     private String password;
@@ -26,7 +28,7 @@ public class UtenteBean {
 
 
     private boolean isLogged;
-    public UtenteBean() {//DA USARE PER SESSIONE
+    public UtenteBean() {
         this.isLogged = false;    }
 
 
@@ -85,7 +87,7 @@ public class UtenteBean {
 
     public BigDecimal getCredito() {
         return credito ;
-    }// ADAPTER CONVERTE adattatore.convertiCredito(credito)
+    }
 
     public void setCredito(BigDecimal credito) {
         this.credito = credito;

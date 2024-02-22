@@ -43,10 +43,10 @@
             </HBox>
             <TableView fx:id="table" prefHeight="414.0" prefWidth="431.0">
                <columns>
-                  <TableColumn fx:id="nomeColumn" prefWidth="105.5999755859375" text="Manga" />
-                  <TableColumn fx:id="volumeColumn" prefWidth="52.79998779296875" text="Volume" />
-                  <TableColumn fx:id="provaColumn" prefWidth="145.60003662109375" text="Data Acquisto" />
-                  <TableColumn fx:id="annuncioColumn" prefWidth="130.39999389648438" />
+                  <TableColumn fx:id="nomeColumn" prefWidth="85.5999755859375" text="Manga" />
+                  <TableColumn fx:id="volumeColumn" prefWidth="51.20001220703125" text="Volume" />
+                  <TableColumn fx:id="provaColumn" prefWidth="173.5999755859375" text="Data Acquisto" />
+                  <TableColumn fx:id="annuncioColumn" prefWidth="126.39999389648438" />
                </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">

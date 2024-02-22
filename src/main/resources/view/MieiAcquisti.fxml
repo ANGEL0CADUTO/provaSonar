@@ -17,7 +17,7 @@
    <children>
       <VBox layoutX="162.0" layoutY="-5.0" prefHeight="418.0" prefWidth="431.0" style="-fx-background-color: #242222;">
          <children>
-            <TableView fx:id="mieiAcquistiTable" prefHeight="330.0" prefWidth="410.0">
+            <TableView fx:id="mieiAcquistiTable" prefHeight="318.0" prefWidth="460.0">
                <columns>
                   <TableColumn fx:id="mangaColumn" prefWidth="90.40002286434174" text="Manga" />
                   <TableColumn fx:id="volumeColumn" prefWidth="52.00000762939453" text="Volume" />

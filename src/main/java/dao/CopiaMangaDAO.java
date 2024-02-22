@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class CopiaMangaDAO {
 
     private static final Logger logger = Logger.getLogger(CopiaMangaDAO.class.getName());
-
+    //AGGIUNGE MANGA
     public int aggiungiManga(CopiaMangaModel copia) {
         String query = "INSERT INTO copiamanga(utenteID,titolo,volume,dataAcquisto) VALUES(?,?,?,?);";
         Connection conn = DBConnection.getIstance().connection();
@@ -72,6 +72,7 @@ public class CopiaMangaDAO {
         return collezione;
     }
 
+    //MODIFICA LO STATO DI UNA COPIA COME IN VENDITA
     public boolean setStatoInVenditaByCopiaMangaID(int id) {
         boolean b = false;
         String query = "UPDATE copiamanga SET statoCopiaManga = 2 WHERE idCopiaManga = ?";
@@ -92,6 +93,7 @@ public class CopiaMangaDAO {
         return b;
     }
 
+    //MODIFICA LO STATO DI UNA COPIA COME VENDUTO
     public boolean setStatoVendutoByCopiaMangaID(int copiaMangaID) {
 
         String query = "UPDATE copiamanga SET statoCopiaManga = 3 WHERE idCopiaManga = ?;";

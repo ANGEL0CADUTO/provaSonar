@@ -11,6 +11,8 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 
+
+//CLASSE SINGLETON PER LA CONNESSIONE
 public class DBConnection {
     private static final Logger logger = Logger.getLogger(DBConnection.class.getName());
 

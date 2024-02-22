@@ -20,6 +20,8 @@ public class OffertaDAO {
     private static final String ID_OFFERTA = "idOfferta";
     private static final String OFFERTA_PREZZO = "offertaPrezzo";
 
+
+    //INSERISCE UNA NUOVA OFFERTA PER UN ANNUNCIO
     public boolean insertOfferta(OffertaModel offerta) {
         boolean b = false;
         String query = "INSERT INTO offerta (annuncioID, copiaMangaID, utenteOfferenteID,usernameOfferente, offertaPrezzo, dataOfferta) " +
@@ -48,6 +50,7 @@ public class OffertaDAO {
     }
 
 
+    //RICAVA TUTTE LE OFFERTE RICEVUTE PER UN ANNUNCIO
     public List<OffertaRicevuta> getOfferteRicevuteByAnnuncioID(int id){
         ArrayList<OffertaRicevuta> array = new ArrayList<>();
         String query = "SELECT idOfferta,utenteOfferenteID,usernameOfferente,offertaPrezzo, dataOfferta,copiaMangaID " +
@@ -81,6 +84,8 @@ public class OffertaDAO {
         return array;
     }
 
+
+    //RICAVA IL NUMERO TOTALE DI OFFERTE RICEVUTE PER UN ANNUNCIO
     public int getNumeroOfferteRicevuteByAnnuncioID(int idAnnuncio){
         String query = "SELECT COUNT(*) from offerta WHERE annuncioID = ? AND statoOfferta = 1";
         Connection conn = DBConnection.getIstance().connection();
@@ -100,6 +105,8 @@ public class OffertaDAO {
         return numero;
     }
 
+
+    //ACCETTA UNA OFFERTA SPECIFICA UTILIZZANDONE L ID
     public boolean accettaOfferta(OffertaModel offerta){
         boolean b = false;
         String query = "UPDATE offerta SET statoOfferta = CASE WHEN idOfferta != ? THEN 2 WHEN idOfferta = ? THEN 3 END, dataVendita = NOW() WHERE annuncioID = ?";
@@ -120,8 +127,7 @@ public class OffertaDAO {
 
     }
 
-//select idOfferta, annuncioID,usernameOfferente,offertaPrezzo,dataVendita,copiaMangaID FROM offerta WHERE idUtente =? AND statoOfferta=3
-
+    //RICAVA INFORMAZIONI PER UNA OFFERTA ACCETTATA
    public OffertaModel getDatiOffertaAccettataByAnnuncioID(int idAnnuncio){
 
        String query = "SELECT idOfferta, annuncioID,usernameOfferente,offertaPrezzo,dataVendita,copiaMangaID" +
@@ -155,7 +161,7 @@ public class OffertaDAO {
 
 
 
-
+    //RICAVA INFORMAZIONI PER UNA OFFERTA SPECIFICATA DAL SUO ID
     public OffertaRicevuta getDatiOffertaByOffertaID(int id){
 
         String query = "SELECT idOfferta, annuncioID,usernameOfferente,offertaPrezzo,dataVendita " +
@@ -185,7 +191,7 @@ public class OffertaDAO {
     }
 
 
-
+    //RICAVA INFORMAZIONI OFFERTA ACCETTATA DALL'IDUTENTE
     public List<OffertaModel> getDatiOffertaAccettataByUtenteID(int id){
 
         String query = "SELECT idOfferta, annuncioID, offertaPrezzo, dataVendita, recensioneFatta " +
@@ -217,7 +223,7 @@ public class OffertaDAO {
         return array;
     }
 
-
+    //RICAVA IL QUANTITATIVO DI DENARO CHE L'UTENTE HA ATTUALMENTE IN OFFERTE ANCORA IN CORSO
     public BigDecimal getPendingMoneyUtenteByUtenteID(int id) {
         String query = "SELECT SUM(offertaPrezzo) FROM offerta WHERE utenteOfferenteID = ? AND statoOfferta = 1;";
         Connection conn = DBConnection.getIstance().connection();

@@ -1,5 +1,6 @@
 package model;
 
+//MODEL PER GESTIRE I DATI DELL'UTENTE
 public class DatiUtente {
 
         private String cap;

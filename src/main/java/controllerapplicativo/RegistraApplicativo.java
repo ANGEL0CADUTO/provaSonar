@@ -14,6 +14,8 @@ public class RegistraApplicativo {
         UtenteModel model = new UtenteModel();
         model.setEmail(bean.getEmail());
         model.setUsername(bean.getUsername());
+        model.setPassword(bean.getPassword());
+
         try {
             return registraUtente.addUser(model);
         } catch (UtenteNonRegistratoException e) {

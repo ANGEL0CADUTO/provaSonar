@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//Tutte le classi al di fuori di login e resgistrati condividono una barra di ricerca che contiene i bottoni:
-//DEPOSITA/PRELEVA, PROFILO, COMPRA,LIBRERIA
+//CONTROLLORE GRAFICO PER IMPLEMENTARE UNA BARRA LATERALE CONDIVISA DA TUTTI I CONTROLLER GRAFICI
 public class UserGuiController extends BaseController{
 
     @FXML

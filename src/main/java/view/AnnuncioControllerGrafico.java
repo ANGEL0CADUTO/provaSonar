@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA RELATIVA ALLA PUBBLICAZIONE DI UN ANNUNCIO
 public class AnnuncioControllerGrafico extends UserGuiController {
 
     private static final Logger logger = Logger.getLogger(AnnuncioControllerGrafico.class.getName());

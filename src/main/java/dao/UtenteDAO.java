@@ -15,6 +15,8 @@ public class UtenteDAO {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
     private static final String CREDITO = "credito";
 
+
+    //LOGIN, VERIFICA DELLE CREDENZIALI INSERITE
     public UtenteModel searchUser(Credenziali login) throws CredenzialiSbagliateException {
 
         String query = "SELECT * FROM mangaink.utente WHERE email = ?";
@@ -50,12 +52,15 @@ public class UtenteDAO {
         return new UtenteModel(id, login.getEmail(), username, voto, credito, informazioniUtenteID);
     }
 
+
+    //REGISTRA, AGGIUNTA DEL NUOVO UTENTE UTILIZZANDO LE CREDENZIALI INSERITE
     public boolean addUser(UtenteModel model) throws UtenteNonRegistratoException {
         Connection conn = DBConnection.getIstance().connection();
 
         String query = "INSERT INTO mangaink.utente (email, username ,password ) VALUES (?, ?, ?)";
         boolean b = false;
         try (PreparedStatement st = conn.prepareStatement(query)) {
+            System.out.println("AIUTO" +model.getEmail());
 
             if (model.getEmail().isEmpty() || model.getUsername().isEmpty() || model.getPassword().isEmpty()) {
                 logger.warning("Uno o più campi sono vuoti. Inserimento utente fallito.");
@@ -83,6 +88,7 @@ public class UtenteDAO {
     }
 
 
+    //AGGIORNAMENTO DELL'UTENTE ASSEGNANDOGLI L'ID DELLE INFORMAZIONI DI CONSEGNA
     public boolean informazioniUtente(UtenteModel model) {
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
@@ -109,7 +115,7 @@ public class UtenteDAO {
 
     }
 
-
+    //DEPOSITA CIFRA NEL CREDITO DELL'UTENTE
     public boolean userDeposit(UtenteModel utenteModel, String cifraString){
         Boolean b = false;
         Connection conn = DBConnection.getIstance().connection();
@@ -140,6 +146,7 @@ public class UtenteDAO {
 
     }
 
+    //PRELIEVO DAL CREDITO DELL'UTENTE DELLA CIFRA INSERITA
     public boolean userPreliev(UtenteModel model, String cifraString) {
 
         Boolean b = false;
@@ -176,6 +183,7 @@ public class UtenteDAO {
 
     }
 
+    //RICAVA IL VOTO COMPLESSIVO DELL'UTENTE (ricavata come media di tutte le recensioni ricevute)
     public double getVotoByUtenteID(int id) {
         String query = "SELECT votoRecensioni FROM utente WHERE idUtente = ?";
 
@@ -198,6 +206,8 @@ public class UtenteDAO {
         return voto;
     }
 
+
+    //METODO AUSILIARIO PER RICAVARSI ANCHE CREDITO IN PIU AL VOTO
     public UtenteModel getVotoAndCreditoByUtenteID(int id) {
         String query = "SELECT votoRecensioni,credito FROM utente WHERE idUtente = ?";
 
@@ -223,6 +233,8 @@ public class UtenteDAO {
         return model;
     }
 
+
+    //AGGIORNA VOTO DELL'UTENTE DOPO UNA NUOVA RECENSIONE RICEVUTA
     public boolean aggiornaVotoByUtenteID(int id, double votoNuovo) {
         String query = "UPDATE utente SET votoRecensioni = ? WHERE idUtente = ?";
         Connection conn = DBConnection.getIstance().connection();

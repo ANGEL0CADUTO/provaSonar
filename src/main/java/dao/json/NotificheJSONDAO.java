@@ -9,13 +9,15 @@ import model.NotificaModel;
 import java.io.*;
 import java.util.logging.Logger;
 
+
+
 public class NotificheJSONDAO {
     private static final Logger logger = Logger.getLogger(NotificheJSONDAO.class.getName());
 
     // Modifica il tipo di ritorno da String a NotificheModel
 
 
-// ...
+
 
     public NotificaModel readNotificaFromFile(String filePath) {
         StringBuilder jsonContent = new StringBuilder();

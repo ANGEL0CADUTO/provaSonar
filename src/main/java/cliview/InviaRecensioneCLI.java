@@ -29,13 +29,13 @@ public class InviaRecensioneCLI {
                 CLIPrinter.println("Inserisci il voto (da 1 a 5): ");
                 voto = scanner.nextInt();
 
-                // Validazione del voto
+
                 if (voto < 1 || voto > 5) {
                     CLIPrinter.println("Il voto deve essere compreso tra 1 e 5. Riprova.");
                 }
             } while (voto < 1 || voto > 5);
 
-            scanner.nextLine(); // Consuma il newline lasciato dal precedente nextInt
+            scanner.nextLine();
 
             CLIPrinter.println("Inserisci una descrizione della recensione: ");
             String descrizione = scanner.nextLine();
@@ -43,7 +43,6 @@ public class InviaRecensioneCLI {
             datiRecensione.setVotoRecensione(voto);
             datiRecensione.setTesto(descrizione);
 
-            // Esempio di chiamata a InviaRecensioneApplicativo:
             InviaRecensioneApplicativo controllerApp = new InviaRecensioneApplicativo();
             invioRiuscito = controllerApp.inviaRecensione(datiRecensione, utenteBean.getUsername());
 

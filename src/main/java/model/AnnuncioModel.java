@@ -3,6 +3,7 @@ package model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+//MODEL PER GESTIRE ANNUNCI DI VENDITA DI COPIAMANGA
 public class AnnuncioModel {
     private int idAnnuncio;
     private String nomeUtente;

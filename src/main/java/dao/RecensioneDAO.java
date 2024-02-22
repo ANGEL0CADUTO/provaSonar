@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class RecensioneDAO {
     private static final Logger logger = Logger.getLogger(RecensioneDAO.class.getName());
 
-
+    //RICAVA LE RECENSIONI RICEVUTE PER UN UTENTE
     public List<Recensione> getRecensioniRicevuteByUtenteID(int id) {
 
 
@@ -54,7 +54,7 @@ public class RecensioneDAO {
         return array;
     }
 
-
+    //INVIA UNA RECENSIONE AD UN UTENTE PER IL QUALE SI E' COMPRATO UN MANGA
     public boolean inviaRecensione(Recensione recensione){
 
         String query = "INSERT INTO recensione(offertaID,recensitoID,voto,testo,usernameRecensore) VALUES (?,?,?,?,?)";
@@ -74,6 +74,7 @@ public class RecensioneDAO {
         return true;
     }
 
+    //RICAVA IL NUMERO DI RECENSIONI PER UN UTENTE
     public int getNumeroRecensioniByRecensitoID(int id) {
         String query = "SELECT count(*) FROM recensione WHERE recensitoID = ?";
         int risultato = 0;
@@ -97,6 +98,8 @@ public class RecensioneDAO {
         return risultato;
     }
 
+
+    //AGGIORNA IL VALORE DI UNA OFFERTA CONTRASSEGNANDOLA COME RECENSITA
     public boolean updateRecensito(int id){
         String query = "UPDATE offerta SET recensioneFatta = 1 WHERE idOfferta = ?";
         Connection conn = DBConnection.getIstance().connection();

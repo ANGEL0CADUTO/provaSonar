@@ -1,5 +1,6 @@
 package bean;
 
+//BEAN PER GESTIRE I DATI DI CONSEGNA DELL'UTENE
 public class DatiUtenteBean {
     // DOVE METTO TUTTI I DATI RELATIVI ALL'UTENTE.
 

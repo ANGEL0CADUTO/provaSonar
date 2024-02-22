@@ -1,5 +1,6 @@
 package bean;
 
+//BEAN PER GESTIRE LE CREDENZIALI INSERITE AL MOMENTO DEL LOGIN
 public class CredenzialiBean {
 
     private String email;

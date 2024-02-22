@@ -3,6 +3,8 @@ package model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+//MODEL PER UNA OFFERTA RICEVUTA PER UN ANNUNCIO
 public class OffertaRicevuta {
 
     private int idOfferta;

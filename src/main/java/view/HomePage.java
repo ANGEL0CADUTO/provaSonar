@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 
-
+//CONTROLLORE GRAFICO RELATIVO ALLA HOMEPAGE
 public class HomePage extends UserGuiController {
 
     @FXML

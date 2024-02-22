@@ -8,10 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+
+//DAO MYSQL PER LE NOTIFICHE
 public class NotificheDAO {
 
     private static final Logger logger = Logger.getLogger(NotificheDAO.class.getName());
 
+
+    //LEGGE UNA NUOVA NOTIFICA
     public NotificaModel readNotificaFromDatabase() {
         String query = "SELECT utente, volume, venditore, manga, prezzo_offerta FROM notifiche WHERE idnotifiche = (select max(idnotifiche) from notifiche)";
         Connection conn = DBConnection.getIstance().connection();
@@ -35,6 +39,8 @@ public class NotificheDAO {
         return null;
     }
 
+
+    //SALVA NOTIFICA
     public boolean saveNotificaInDatabase(NotificaModel notifica) {
         String query = "INSERT INTO notifiche (utente, volume, venditore, manga, prezzo_offerta) VALUES (?, ?, ?, ?, ?)";
         Connection conn = DBConnection.getIstance().connection();

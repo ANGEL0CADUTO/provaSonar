@@ -3,6 +3,7 @@ package bean;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+//BEAN PER GESTIRE UNA OFFERTA AD UN ANNUNCIO DI MANGA
 public class OffertaBean {
 
     private int idOfferta;

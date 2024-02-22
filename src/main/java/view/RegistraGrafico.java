@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA ALLA REGISTRAZIONE DELL'UTENTE
 public class RegistraGrafico extends BaseController{
 
     @FXML
@@ -52,6 +54,7 @@ public class RegistraGrafico extends BaseController{
     }
 
 
+    @FXML
     public void userRegistra() throws IOException {
         UtenteBean bean = new UtenteBean();
         DatiUtenteBean bean1 = new DatiUtenteBean();
@@ -66,7 +69,6 @@ public class RegistraGrafico extends BaseController{
 
 
 
-    //PROBEMA: SE INSERISCO I DATI E NON I DATIUTENTE UNO LO SALVA LO STESSO (CREDO DI AVERLO GIA RIPARATO RICONTROLLARE)
         boolean esitoRegistra = false;
         try {
             esitoRegistra = ra.registra(bean);

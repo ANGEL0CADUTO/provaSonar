@@ -24,6 +24,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Logger;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA ALLA LIBRERIA DELL'UTENTE, VISUALIZZATI IN UNA TABELLA
 public class LibreriaUtenteControllerGrafico extends UserGuiController  {
 
     private static final Logger logger= Logger.getLogger(LibreriaUtenteControllerGrafico.class.getName());

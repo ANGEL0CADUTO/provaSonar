@@ -92,13 +92,10 @@ public class CompraCLI {
             CLIPrinter.println("Nome Manga: " + annuncio.getNomeManga() + " Volume : " + annuncio.getVolume());
             CLIPrinter.println("Prezzo: " + annuncio.getPrezzo());
             CLIPrinter.println("------------------------------");
-
-            // Ora chiedi all'utente di fare un'offerta
             CLIPrinter.println("Vuoi fare un'offerta per questo annuncio? (y/n)");
             String risposta = scanner.next();
 
             if (risposta.equalsIgnoreCase("y")) {
-                // Richiama la funzione per fare un'offerta
                 try {
                     faiOfferta(annuncio);
                 } catch (CreditoInsufficienteException e) {
@@ -127,7 +124,6 @@ public class CompraCLI {
         BigDecimal importoOfferta = scanner.nextBigDecimal();
         offertaBean.setOffertaPrezzo(importoOfferta);
 
-        // Aggiungi ulteriori informazioni all'offerta se necessario
 
         var controllerOfferta = new OffertaControllerApplicativo();
         boolean esitoOfferta = controllerOfferta.doOfferta(offertaBean);

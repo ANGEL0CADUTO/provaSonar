@@ -15,6 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//CONTROLLORE GRAFICO PER LE RECENSIONI RICEVUTE DA UN UTENTE
 public class RecensioniGrafico extends UserGuiController {
 
     @FXML
@@ -33,7 +35,7 @@ public class RecensioniGrafico extends UserGuiController {
         ArrayList<Recensione> arrayList = new ArrayList<>(array);
         int numeroRecensioni = array.size();
 
-        int recensioniPerPage = 3;
+        int recensioniPerPage = 5;
         pagination.setPageCount((int) Math.ceil((double) numeroRecensioni / recensioniPerPage));
         pagination.setPageFactory(pageIndex -> createPage(pageIndex, arrayList));
     }

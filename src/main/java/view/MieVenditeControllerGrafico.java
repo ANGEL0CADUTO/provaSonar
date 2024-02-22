@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.List;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA AI MANGA VENDUTI DALL'UTENTE
 public class MieVenditeControllerGrafico extends UserGuiController {
 
 

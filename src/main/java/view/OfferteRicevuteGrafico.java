@@ -16,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.List;
 
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA DELLE OFFERTE RICEVUTE PER UN PROPRIO ANNUNCIO
 public class OfferteRicevuteGrafico extends UserGuiController{
 
 

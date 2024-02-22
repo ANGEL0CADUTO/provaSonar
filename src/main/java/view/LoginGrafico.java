@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 
+//CONTROLLORE GRAFICO PER IL LOGIN
 public class LoginGrafico extends BaseController {
     private static final Logger logger= Logger.getLogger(LoginGrafico.class.getName());
 
@@ -46,9 +47,8 @@ public class LoginGrafico extends BaseController {
         LoginApplicativo lg = new LoginApplicativo();
         CredenzialiBean credenzialiBean = new CredenzialiBean();
 
-        if(enteredEmail.getText().isEmpty() && enteredPassword.getText().isEmpty()){
-            credenzialiBean.setEmail("Utente2");
-            credenzialiBean.setPassword("1234");
+        if(enteredEmail.getText().isEmpty() || enteredPassword.getText().isEmpty()) {
+            wrongLogin.setText("I campi non possono essere vuoti");
         }
         else{
             credenzialiBean.setEmail(enteredEmail.getText());

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginGrafico">
+<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RegistraGrafico">
    <children>
       <Pane layoutX="105.0" layoutY="40.0" prefHeight="320.0" prefWidth="390.0" style="-fx-background-color: #d54806; -fx-background-radius: 10;">
          <children>
@@ -30,7 +30,7 @@
                   <Font name="Yu Gothic UI Semibold" size="24.0" />
                </font>
             </Text>
-            <Label fx:id="wrongSignUp" layoutX="100.0" layoutY="66.0" prefHeight="18.0" prefWidth="189.0" textFill="#0900ff" />
+            <Label fx:id="wrongSignUp" layoutX="124.0" layoutY="66.0" prefHeight="18.0" prefWidth="140.0" textFill="#0900ff" />
             <Label layoutX="46.0" layoutY="119.0" text="Username" textFill="#030303">
                <font>
                   <Font name="System Bold" size="14.0" />

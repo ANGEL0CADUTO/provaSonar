@@ -16,6 +16,8 @@ import utils.RecensioneButtonTableCell;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA AI MANGA ACQUISTATI DALL'UTENTE
 public class MieiAcquistiGrafico extends UserGuiController{
 
 

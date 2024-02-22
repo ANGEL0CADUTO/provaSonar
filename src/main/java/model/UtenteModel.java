@@ -4,6 +4,8 @@ package model;
 
 import java.math.BigDecimal;
 
+
+//MODEL PER GESTIRE LE INFORMAZIONI DELL' UTENTE
 public class UtenteModel {
 
     public int getInformazioniUtenteID() {

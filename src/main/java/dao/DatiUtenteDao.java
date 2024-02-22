@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 public class DatiUtenteDao {
     private static final Logger logger = Logger.getLogger(DatiUtenteDao.class.getName());
 
+
+    //INSERISCE LE INFORMAZIONI DI CONSEGNA PER UN UTENTE
     public int addDatiUser(DatiUtenteBean bean1) {
         int generatedKey = -1;
 
@@ -49,7 +51,8 @@ public class DatiUtenteDao {
      return generatedKey;
     }
 
-    //DA CORREGGERE PERCHE USIAMO IL BEAN CHE IN RELTA DOVREBBE SPARIRE DALL'APPLICATIVO IN GIU
+
+    //RICAVA LE INFORMAZIONI DI UN UTENTE A PARTIRE DALL'IDUTENTE
     public DatiUtente getDatiUserByInformazioniUtenteID(int id) {
 
         Connection conn = DBConnection.getIstance().connection();
@@ -74,6 +77,8 @@ public class DatiUtenteDao {
         }
         return dati;
     }
+
+    //MODIFICA I DATI DELL'UTENTE
     public boolean modificaDatiUser(DatiUtenteBean bean){
         boolean b = false;
         Connection conn = DBConnection.getIstance().connection();

@@ -3,8 +3,7 @@ package bean;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-//DA UTILIZZARE QUANDO UTENTE CLICCA SU UNA COPIAMANGA SPECIFICA X FARE QUALCOSA(COMPRARE,VENDERE)//
-
+//BEAN PER GESTIRE LA SINGOLA COPIA DI MANGA
 public class CopiaMangaBean {
 
     private int idCopiaManga;

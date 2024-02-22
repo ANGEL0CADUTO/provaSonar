@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
-
+//CONTROLLORE GRAFICO PER L'INTERFACCIA GRAFICA RELATIVA AGLI ANNUNCI DELL'UTENTE
 public class MieiAnnunciGrafico extends UserGuiController {
 
 

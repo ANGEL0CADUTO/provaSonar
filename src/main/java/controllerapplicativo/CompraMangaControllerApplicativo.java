@@ -64,7 +64,7 @@ public class CompraMangaControllerApplicativo {
     public boolean saveToMySQLDatabase(String notifica) {
         NotificheDAO dao = new NotificheDAO();
 
-        // Parsing generale
+
         Map<String, String> parsedData = parseNotifica(notifica);
 
         String utente = parsedData.get("utente");
@@ -73,7 +73,7 @@ public class CompraMangaControllerApplicativo {
         String manga = parsedData.get("manga");
         String prezzoOfferta = parsedData.get("prezzo_offerta");
 
-        // Parsing specifico per utente
+
         utente = parseUtente(notifica, utente);
 
         NotificaModel notificaModel = new NotificaModel();
@@ -86,10 +86,9 @@ public class CompraMangaControllerApplicativo {
             if (prezzoOfferta != null) {
                 notificaModel.setPrezzoOfferta(Integer.parseInt(prezzoOfferta.trim().replace("\n", "")));
             }
-            // ...
+
 
         } catch (NumberFormatException e) {
-            // Gestione dell'errore se il parsing fallisce
             logger.severe("Errore durante il parsing: " + e.getMessage());
             return false;
         }
