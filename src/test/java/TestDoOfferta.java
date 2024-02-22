@@ -17,10 +17,11 @@ class TestDoOfferta {
 /*
         private static final Logger logger = Logger.getLogger(TestDoOfferta.class.getName());
 
-        @Test
+        @Test//Questo test serve a controllare che un offerta non inserita correttamente non verrà inserita.
         public void testDoOfferta() {
 
             OffertaControllerApplicativo offertaController = new OffertaControllerApplicativo();
+
 
             OffertaBean offertaBean = new OffertaBean();
             offertaBean.setIdAnnuncio(38);
@@ -34,7 +35,7 @@ class TestDoOfferta {
 
                 boolean result = offertaController.doOfferta(offertaBean);
 
-                assertFalse(result);
+                assertFalse(result); //Se l'offerta viene inserita il test fallisce.
             } catch (CreditoInsufficienteException e) {
                 logger.info(e.getMessage());
 

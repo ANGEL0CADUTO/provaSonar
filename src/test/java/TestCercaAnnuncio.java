@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestCercaAnnuncio {
 /*
-    @Test
+    @Test//Questo test serve a controllare che la ricerca di un annuncio funzioni correttamente.
     public void testCercaAnnuncio() {
         CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
         copiaMangaBean.setIdCopiaManga(45);
@@ -18,7 +18,7 @@ public class TestCercaAnnuncio {
 
         boolean result = annuncioController.cercaAnnuncio(copiaMangaBean);
 
-        // Verifica dell'output
+        // Verifica dell'output, se result assume valore true allora il test ha successo.
         assertTrue(result);
     }*/
 }
