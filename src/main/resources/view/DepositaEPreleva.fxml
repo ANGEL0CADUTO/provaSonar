@@ -117,7 +117,7 @@
                   <Image url="@../photo/euro.png" />
                </image>
             </ImageView>
-            <Button fx:id="depositaEPrelevaButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefWidth="90.0" text="Conto" />
+            <Button fx:id="depositaEPrelevaButton1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToDepositaEPreleva" prefWidth="90.0" style="-fx-background-color: #0077b6;" text="Conto" />
          </HBox>
          <HBox alignment="CENTER" prefHeight="33.0" prefWidth="170.0" style="-fx-background-color: #d54806;">
             <ImageView fitHeight="30.0" fitWidth="30.0">

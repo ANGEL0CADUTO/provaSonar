@@ -33,7 +33,7 @@ public class AnnuncioControllerGrafico extends UserGuiController {
 
     private CopiaMangaBean copiaMangaBean;
 
-    protected AnnuncioControllerGrafico(UtenteBean bean, CopiaMangaBean copiaMangaBean) {
+    public AnnuncioControllerGrafico(UtenteBean bean, CopiaMangaBean copiaMangaBean) {
         super(bean);
         this.copiaMangaBean = copiaMangaBean;
     }

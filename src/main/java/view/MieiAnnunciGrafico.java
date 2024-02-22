@@ -66,7 +66,7 @@ public class MieiAnnunciGrafico extends UserGuiController {
             prezzoColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getPrezzo())));
             dataColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(myDateTimeFormatter.format(cellData.getValue().getDataAnnuncio())));
             volumeColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getVolume())));
-
+            nOfferteColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getNumeroOfferte())));
             offerteButtonColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(""));
 
             //DEVO CAPIRE BENE COME PASSARE I DATI

@@ -201,6 +201,8 @@ public class AnnuncioDAO {
 
 
 
+
+
     public boolean setStatoAccettatoByAnnuncioID(int idAnnuncio) {
         boolean b = false;
         String query = "UPDATE annuncio SET statoAnnuncio = 2 WHERE idAnnuncio = ?";

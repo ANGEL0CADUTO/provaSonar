@@ -14,6 +14,8 @@ public class AnnuncioModel {
 
     private String nomeManga;
 
+    private int numeroOfferte;
+
 
     private BigDecimal prezzo;
 
@@ -28,6 +30,13 @@ public class AnnuncioModel {
 
     private LocalDateTime dataAnnuncio;
 
+    public int getNumeroOfferte() {
+        return numeroOfferte;
+    }
+
+    public void setNumeroOfferte(int numeroOfferte) {
+        this.numeroOfferte = numeroOfferte;
+    }
 
 
     public int getCopiaMangaID() {

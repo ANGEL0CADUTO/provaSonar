@@ -6,10 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.NotificaModel;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Logger;
 
 public class NotificheJSONDAO {
@@ -46,6 +43,15 @@ public class NotificheJSONDAO {
             // Gestisci eventuali eccezioni o restituisci un valore predefinito in caso di errore
             return null;
         }
+    }
+
+    public boolean saveNotifica(String notifica, String filePath){
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write(notifica);
+        } catch (IOException e) {
+            logger.severe("Errore durante il salvataggio del file JSON: " + e.getMessage());
+        }
+        return true;
     }
 
 

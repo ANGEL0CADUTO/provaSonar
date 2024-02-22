@@ -146,7 +146,7 @@
                         <Image url="@../photo/handshake.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="compraButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToCompra" prefWidth="90.0" text="Compra" />
+                  <Button fx:id="compraButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToCompra" prefWidth="90.0" style="-fx-background-color: #0077b6;" text="Compra" />
                </children>
             </HBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="139.0" prefWidth="167.0" style="-fx-background-color: #d54806;">

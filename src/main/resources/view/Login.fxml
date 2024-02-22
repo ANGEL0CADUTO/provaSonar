@@ -24,7 +24,7 @@
                </font>
             </Label>
             <TextField fx:id="enteredEmail" layoutX="121.0" layoutY="102.0" promptText="Email" />
-            <Button fx:id="login" layoutX="148.0" layoutY="225.0" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: #fa8000;" text="Log In" />
+            <Button fx:id="login" layoutX="157.0" layoutY="223.0" mnemonicParsing="false" onAction="#userLogin" text="Login" />
             <PasswordField fx:id="enteredPassword" layoutX="121.0" layoutY="177.0" promptText="Password" />
             <Text fx:id="home" layoutX="140.0" layoutY="51.0" onMouseClicked="#goToHomePage" strokeType="OUTSIDE" strokeWidth="0.0" text="MangaInk">
                <font>

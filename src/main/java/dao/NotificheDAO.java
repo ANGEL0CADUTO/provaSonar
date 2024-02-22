@@ -12,12 +12,11 @@ public class NotificheDAO {
 
     private static final Logger logger = Logger.getLogger(NotificheDAO.class.getName());
 
-    public NotificaModel readNotificaFromDatabase(int notificaId) {
-        String query = "SELECT utente, volume, venditore, manga, prezzo_offerta FROM notifiche WHERE id = ?";
+    public NotificaModel readNotificaFromDatabase() {
+        String query = "SELECT utente, volume, venditore, manga, prezzo_offerta FROM notifiche WHERE idnotifiche = (select max(idnotifiche) from notifiche)";
         Connection conn = DBConnection.getIstance().connection();
 
         try (PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setInt(1, notificaId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 NotificaModel notificaModel = new NotificaModel();
@@ -36,23 +35,28 @@ public class NotificheDAO {
         return null;
     }
 
-    public void saveNotificaInDatabase(NotificaModel notifica, int idOfferta) {
-        String query = "INSERT INTO notifiche (idOfferta,utente, volume, venditore, manga, prezzo_offerta) VALUES (?,?, ?, ?, ?, ?)";
+    public boolean saveNotificaInDatabase(NotificaModel notifica) {
+        String query = "INSERT INTO notifiche (utente, volume, venditore, manga, prezzo_offerta) VALUES (?, ?, ?, ?, ?)";
         Connection conn = DBConnection.getIstance().connection();
 
         try (PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setInt(1, idOfferta);
-            statement.setString(2, notifica.getUtente());
-            statement.setString(3, String.valueOf(notifica.getVolume()));
-            statement.setString(4, notifica.getVenditore());
-            statement.setString(5, notifica.getManga());
-            statement.setString(6, String.valueOf(notifica.getPrezzoOfferta()));
 
-            statement.executeUpdate();
+            statement.setString(1, notifica.getUtente());
+            statement.setString(2, String.valueOf(notifica.getVolume()));
+            statement.setString(3, notifica.getVenditore());
+            statement.setString(4, notifica.getManga());
+            statement.setString(5, String.valueOf(notifica.getPrezzoOfferta()));
+
+            int rows = statement.executeUpdate();
+            if(rows>0){
+                return true;
+            }
+
 
         } catch (SQLException ex) {
             logger.severe("Errore in saveNotificaInDatabase: " + ex.getMessage());
         }
+        return false;
     }
 }
 

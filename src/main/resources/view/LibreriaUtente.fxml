@@ -43,11 +43,10 @@
             </HBox>
             <TableView fx:id="table" prefHeight="414.0" prefWidth="431.0">
                <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="44.800048828125" text="ID" />
                   <TableColumn fx:id="nomeColumn" prefWidth="105.5999755859375" text="Manga" />
                   <TableColumn fx:id="volumeColumn" prefWidth="52.79998779296875" text="Volume" />
-                  <TableColumn fx:id="provaColumn" prefWidth="126.4000244140625" text="Data Acquisto" />
-                  <TableColumn fx:id="annuncioColumn" prefWidth="103.19996948242186" />
+                  <TableColumn fx:id="provaColumn" prefWidth="145.60003662109375" text="Data Acquisto" />
+                  <TableColumn fx:id="annuncioColumn" prefWidth="130.39999389648438" />
                </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -166,7 +165,7 @@
                         <Image url="@../photo/book.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" text="Libreria" />
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" style="-fx-background-color: #0077b6;" text="Libreria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">

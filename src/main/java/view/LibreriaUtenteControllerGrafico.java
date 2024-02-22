@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.collections.*;
+import utils.AnnuncioButtonTableCell;
 
 import java.io.IOException;
 
@@ -136,7 +137,6 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
         observableList.addListener((ListChangeListener<CopiaMangaModel>) change -> {
             while (change.next()) {
                 if (change.wasAdded() && isUpdatingTableView) {
-                    logger.info("Elementi aggiunti: " + change.getAddedSubList());
                     isUpdatingTableView = false;
                     isUpdatingTableView = true;
                 } else if (change.wasRemoved() && isUpdatingTableView) {
@@ -152,70 +152,16 @@ public class LibreriaUtenteControllerGrafico extends UserGuiController  {
     private void inizializzaColonneTabella() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCopiaManga())));
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitolo()));
         volumeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getVolume())));
         provaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDataAcquisto().format(formatter)));
     }
 
     private void inizializzaColonnaAzioni() {
-        annuncioColumn.setCellFactory(param -> new TableCell<CopiaMangaModel, String>() {
-            private final Label label = new Label("In vendita");
-            private  final Button bottone = new Button("Vendi");
+        annuncioColumn.setCellFactory(param -> new AnnuncioButtonTableCell(utenteBean, myAnchorPane));
 
-            {
-                bottone.setOnAction(event -> gestisciClicBottone());
-            }
-
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    visualizzaAzioneBottone();
-                }
-            }
-
-            private void gestisciClicBottone() {
-                CopiaMangaModel copiaMangaModel = getTableView().getItems().get(getIndex());
-                CopiaMangaBean copiaMangaBean = creaCopiaMangaBean(copiaMangaModel);
-                apriFinestraInserisciAnnuncio(copiaMangaBean);
-            }
-
-            private void visualizzaAzioneBottone() {
-                if (getTableView().getItems().get(getIndex()).getStatoCopiaManga() == 1) {
-                    setGraphic(bottone);
-                } else {
-                    setGraphic(label);
-                }
-            }
-        });
     }
 
-    private CopiaMangaBean creaCopiaMangaBean(CopiaMangaModel copiaMangaModel) {
-        CopiaMangaBean copiaMangaBean = new CopiaMangaBean();
-        copiaMangaBean.setIdCopiaManga(copiaMangaModel.getIdCopiaManga());
-        copiaMangaBean.setTitolo(copiaMangaModel.getTitolo());
-        copiaMangaBean.setVolume(copiaMangaModel.getVolume());
-        copiaMangaBean.setIdUtente(utenteBean.getIdUtente());
-        return copiaMangaBean;
-    }
-
-    private void apriFinestraInserisciAnnuncio(CopiaMangaBean copiaMangaBean) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InserisciAnnuncio.fxml"));
-            loader.setControllerFactory(c -> new AnnuncioControllerGrafico(utenteBean, copiaMangaBean));
-
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            logger.severe("Errore in LibreriaUtenteControllerGrafico in initializeData: " + e.getMessage());
-        }
-    }
 
 
     public void setVisible(){

@@ -9,19 +9,19 @@
 #logout.button:hover{
     -fx-background-color: derive(#d54806, 20%);
 }
-#searchButton.button ,#depositaCredito.button,#prelevaCredito.button,#acquistiButton.button,#vendutiButton.button,#aggiungiButton,#confermaButton,#modificaButton.button,#inviaButton.button,#offerta1.button{
+#searchButton.button,#login.button,#depositaCredito.button,#prelevaCredito.button,#acquistiButton.button,#vendutiButton.button,#aggiungiButton,#confermaButton,#modificaButton.button,#inviaButton.button,#offerta1.button{
     -fx-background-color: #FF7F00;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-pref-height: 30px; /* Regola l'altezza desiderata del bottone */
     -fx-pref-width: 70px; /* Imposta la larghezza desiderata del bottone a metà */
 }
-#searchButton.button:hover, #depositaCredito.button:hover, #prelevaCredito.button:hover, #acquistiButton.button:hover, #vendutiButton.button:hover, #aggiungiButton:hover, #confermaButton:hover, #modificaButton.button:hover, #inviaButton.button:hover,#offerta1.button:hover {
+#searchButton.button:hover,#login.button:hover, #depositaCredito.button:hover, #prelevaCredito.button:hover, #acquistiButton.button:hover, #vendutiButton.button:hover, #aggiungiButton:hover, #confermaButton:hover, #modificaButton.button:hover, #inviaButton.button:hover,#offerta1.button:hover {
     -fx-background-color: derive(#FF7F00, 20%);
 }
 
 
-#recensioniButton.button{
+#recensioniButton.button,#registra.button{
     -fx-background-color: #FF7F00;
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -30,7 +30,7 @@
 
 }
 
-#recensioniButton.button:hover{
+#recensioniButton.button:hover, #registra.button:hover{
     -fx-background-color: derive(#FF7F00, 20%);
 }
 

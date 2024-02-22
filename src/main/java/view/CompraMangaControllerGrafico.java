@@ -30,6 +30,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 public class CompraMangaControllerGrafico extends UserGuiController implements OffertaObserver {
@@ -55,6 +56,8 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
     private TableColumn<CopiaMangaModel, String> compraColumn;
     @FXML
     private TableColumn<CopiaMangaModel, String> votoColumn;
+
+
 
 
 
@@ -170,10 +173,12 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
     @Override
     public void update() {
         String notifica = creaNotifica();
-        saveToJsonFile(notifica, "NotificaFile.json");
+        CompraMangaControllerApplicativo applicativo = new CompraMangaControllerApplicativo();
+        applicativo.saveNotifica(notifica);
     }
 
-    private String creaNotifica() {
+
+        private String creaNotifica() {
         List<OffertaModel> offerteModelList;
         offerteModelList = offerteList.getState();
         OffertaControllerApplicativo offertaApplicativo = new OffertaControllerApplicativo();
@@ -198,18 +203,12 @@ public class CompraMangaControllerGrafico extends UserGuiController implements O
 
     }
 
-    private void saveToJsonFile(String notifica, String filePath) {
-
-        try (FileWriter writer = new FileWriter(filePath)) {
-            writer.write(notifica);
-        } catch (IOException e) {
-            logger.severe("Errore durante il salvataggio del file JSON: " + e.getMessage());
-        }
-
-    }
 
 
-    }
+
+
+
+}
 
 
 

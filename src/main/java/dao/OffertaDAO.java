@@ -81,6 +81,25 @@ public class OffertaDAO {
         return array;
     }
 
+    public int getNumeroOfferteRicevuteByAnnuncioID(int idAnnuncio){
+        String query = "SELECT COUNT(*) from offerta WHERE annuncioID = ? AND statoOfferta = 1";
+        Connection conn = DBConnection.getIstance().connection();
+        int numero = 0;
+        try(PreparedStatement st = conn.prepareStatement(query)){
+
+            st.setInt(1,idAnnuncio);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                numero = rs.getInt(1);
+            }
+
+
+        }catch (SQLException e){
+            logger.severe("Errore in getNumeroOfferteRicevuteByAnnuncioID in OFFERTADAO: "+ e.getMessage());
+        }
+        return numero;
+    }
+
     public boolean accettaOfferta(OffertaModel offerta){
         boolean b = false;
         String query = "UPDATE offerta SET statoOfferta = CASE WHEN idOfferta != ? THEN 2 WHEN idOfferta = ? THEN 3 END, dataVendita = NOW() WHERE annuncioID = ?";

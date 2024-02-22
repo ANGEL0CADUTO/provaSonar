@@ -61,7 +61,7 @@
                         <Image url="@../photo/book.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" text="Libreria" />
+                  <Button fx:id="libreriaButton1" mnemonicParsing="false" onAction="#goToLibreria" prefWidth="90.0" style="-fx-background-color: #0077b6;" text="Libreria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #d54806;">

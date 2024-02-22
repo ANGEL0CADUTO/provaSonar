@@ -8,7 +8,7 @@ public class AnnuncioBean {
         private int idAnnuncio;
 
 
-
+        private int numeroOfferte;
         private int utenteVenditoreID;
         private String nomeUtente;
         private String nomeManga;
@@ -54,7 +54,13 @@ public class AnnuncioBean {
         }
 
 
+        public int getNumeroOfferte() {
+            return numeroOfferte;
+        }
 
+        public void setNumeroOfferte(int numeroOfferte) {
+            this.numeroOfferte = numeroOfferte;
+        }
 
 
         public void setDataAnnuncio(LocalDateTime dataAnnuncio) {
