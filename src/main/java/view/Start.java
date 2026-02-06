@@ -17,7 +17,7 @@ public class Start extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
 
         UtenteBean utente = new UtenteBean();
-        loader.setControllerFactory(c-> new HomePage(utente));
+        loader.setControllerFactory(c-> new HomePage(utente));//
 
         Parent root = loader.load();
         Scene scene = new Scene(root);

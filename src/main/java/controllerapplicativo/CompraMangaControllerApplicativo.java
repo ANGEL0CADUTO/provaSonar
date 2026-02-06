@@ -11,16 +11,17 @@ import model.NotificaModel;
 
 
 
-import java.io.FileInputStream;
+
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
 public class CompraMangaControllerApplicativo {
-    private static final String PATH = "src/main/resources/connection.properties";
+
     private static final Logger logger = Logger.getLogger(CompraMangaControllerApplicativo.class.getName());
 
 
@@ -37,7 +38,7 @@ public class CompraMangaControllerApplicativo {
     }
 
     public boolean saveNotifica(String notifica) {
-        try (FileInputStream config = new FileInputStream(PATH)) {
+        try (InputStream config = getClass().getClassLoader().getResourceAsStream("connection.properties")) {
             Properties properties = new Properties();
             properties.load(config);
 

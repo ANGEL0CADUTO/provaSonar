@@ -3,7 +3,7 @@ package cliview;
 import bean.UtenteBean;
 
 
-public class StartCLI {//ola
+public class StartCLI {
 
     public static void main(String[] args) {
 

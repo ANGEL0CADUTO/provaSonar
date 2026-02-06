@@ -28,7 +28,7 @@ public class HomePage extends UserGuiController {
 
 
     protected HomePage(UtenteBean bean) {
-        super(bean);
+        super(bean);//
 
     }
 

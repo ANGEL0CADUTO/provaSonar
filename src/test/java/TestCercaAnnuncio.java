@@ -19,5 +19,5 @@ public class TestCercaAnnuncio {
 
         // Verifica dell'output, se result assume valore true allora il test ha successo.
         assertTrue(result);
-    }*
+    }*/
 }

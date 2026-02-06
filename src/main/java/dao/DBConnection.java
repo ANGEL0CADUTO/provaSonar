@@ -1,8 +1,9 @@
 package dao;
 
-import java.io.FileInputStream;
+
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -16,7 +17,6 @@ import java.util.logging.Logger;
 public class DBConnection {
     private static final Logger logger = Logger.getLogger(DBConnection.class.getName());
 
-    private static final String PATH = "src/main/resources/connection.properties";
 
     private static DBConnection instance = null;
     private Connection conn = null;
@@ -50,7 +50,12 @@ public class DBConnection {
     }
 
     private void getInfo(){
-        try(FileInputStream config = new FileInputStream(PATH)){
+        try(InputStream config = getClass().getClassLoader().getResourceAsStream("connection.properties")){
+
+            if (config == null) {
+                logger.severe("Errore: Il file connection.properties non è stato trovato nel classpath!");
+                return;
+            }
 
             Properties properties = new Properties();
             properties.load(config);
