@@ -6,7 +6,7 @@ import model.DatiUtente;
 import java.sql.*;
 import java.util.logging.Logger;
 
-public class DatiUtenteDao {
+public class DatiUtenteDao implements DatiUtenteDaoInterface{
     private static final Logger logger = Logger.getLogger(DatiUtenteDao.class.getName());
 
 

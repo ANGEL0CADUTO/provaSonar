@@ -4,7 +4,10 @@ import dao.DatiUtenteDao;
 import bean.CredenzialiBean;
 import bean.DatiUtenteBean;
 import bean.UtenteBean;
+import dao.DatiUtenteDaoInterface;
 import dao.UtenteDAO;
+import dao.UtenteDaoInterface;
+import engineering.DAOFactory;
 import exceptions.CredenzialiSbagliateException;
 import model.Credenziali;
 import model.DatiUtente;
@@ -15,7 +18,8 @@ public class LoginApplicativo {
 
 
     public UtenteBean login(CredenzialiBean bean) throws CredenzialiSbagliateException {
-        UtenteDAO dao = new UtenteDAO();
+        //UtenteDAO dao = new UtenteDAO();
+        UtenteDaoInterface dao = DAOFactory.getInstance().getUtenteDAO();
         Credenziali credenziali = new Credenziali();
         UtenteModel utente;
 
@@ -28,7 +32,8 @@ public class LoginApplicativo {
             throw new CredenzialiSbagliateException();
         }
 
-        DatiUtenteDao dao2 = new DatiUtenteDao();
+       // DatiUtenteDao dao2 = new DatiUtenteDao();
+        DatiUtenteDaoInterface dao2 = DAOFactory.getInstance().getDatiUtenteDAO();
         DatiUtente dati = dao2.getDatiUserByInformazioniUtenteID(utente.getInformazioniUtenteID());
         DatiUtenteBean datiBean = new DatiUtenteBean();
         datiBean.setIdInformazioniUtente(utente.getInformazioniUtenteID());

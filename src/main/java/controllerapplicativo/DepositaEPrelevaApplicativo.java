@@ -2,6 +2,8 @@ package controllerapplicativo;
 
 import bean.UtenteBean;
 import dao.UtenteDAO;
+import dao.UtenteDaoInterface;
+import engineering.DAOFactory;
 import exceptions.CreditoInsufficienteException;
 import model.UtenteModel;
 
@@ -11,7 +13,8 @@ public class DepositaEPrelevaApplicativo {
 
     public boolean deposita(UtenteBean bean, String cifra ) {
 
-        UtenteDAO depositaCredito = new UtenteDAO();
+       // UtenteDAO depositaCredito = new UtenteDAO();
+        UtenteDaoInterface depositaCredito = DAOFactory.getInstance().getUtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
 
@@ -20,7 +23,8 @@ public class DepositaEPrelevaApplicativo {
     }
 
     public boolean preleva(UtenteBean bean, String cifraString) throws CreditoInsufficienteException {
-        UtenteDAO prelevaCredito = new UtenteDAO();
+        //UtenteDAO prelevaCredito = new UtenteDAO();
+        UtenteDaoInterface prelevaCredito = DAOFactory.getInstance().getUtenteDAO();
         UtenteModel model = new UtenteModel();
         model.setIdUtente(bean.getIdUtente());
 

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.logging.Logger;
 
-public class UtenteDAO {
+public class UtenteDAO implements UtenteDaoInterface {
     private static final Logger logger = Logger.getLogger(UtenteDAO.class.getName());
     private static final String CREDITO = "credito";
 
